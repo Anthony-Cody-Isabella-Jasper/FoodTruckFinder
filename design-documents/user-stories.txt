@@ -1,0 +1,9 @@
+- As a visitor when I go to Food Truck Finder I expect to be on a home page where I can view food trucks and their reviews, and register to become a user
+- As a visitor when I click on a food truck link I expect to be redirected to a page that shows the individual food truck I selected showing me the map, menu and reviews of the food truck
+- As a visitor when I click the “Register” button I expect to be brought to the register page where I fill out my user information based on whether I want to create a user or a truck owner profile
+- As a user when I click the “Log in” button I expect to be brought to a login page and sign in using my username and password
+- As a user when I go to my profile page I expect to see my information, reviews I have posted and my favorites
+- As a user when edit my profile I expect to be able to change my information(username, email, password and profile image)
+- As a user I will be able to delete any review I have written and delete my account entirely
+- As a user when I visit an individual food truck page I expect to be able to see reviews as well as write a review and verify that the food truck is at the location stated
+- As a user when I visit the index page of food trucks I expect to be able to search for trucks by name and see their location on the map and filter through different cuisine options

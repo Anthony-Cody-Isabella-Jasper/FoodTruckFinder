@@ -1,0 +1,10 @@
+- User: can create profile/log in
+- User: can edit profile information
+- User: can see truck within a certain radius of them
+- User: can search for specific trucks, cuisines of food and location of truck and view specific truck profile and menu
+- User: can confirm truck is on location shown
+- User: can review truck
+- Truck User: can create/edit/log in profile
+- Truck User: can set location to be at and confirm within app
+- Admin: can approve truck profile create
+- Admin: can delete and ban user/truck profile

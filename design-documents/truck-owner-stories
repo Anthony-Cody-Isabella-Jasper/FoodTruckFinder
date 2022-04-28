@@ -1,0 +1,6 @@
+- When I go to the home page, I expect to have an option to go to the login page or the register page.
+- When I go to the register page, I expect to be able to differentiate my profile from normal site users as a food truck.
+- When I log in on the login page, I expect to be redirected to my truck’s profile.
+- When I go to my truck’s profile, I expect to see user reviews and to go to the edit profile page.
+- When I go to the edit profile page, I expect to be able to edit the location, menu, prices, cuisine, and profile. I also expect to be able to add and delete photos for the truck profile page.
+- At the end of the workday, I expect to be able to remove the truck’s location to prevent customers from going to the location when the truck is closed.

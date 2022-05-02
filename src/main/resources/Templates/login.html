@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+    <body>
+        <nav th:include="notLoggedNav"></nav>
+
+        <h1>Food Truck Finder</h1>
+        <h2>Please Log In</h2>
+
+        <form>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="text" id="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+
+        <footer th:include="footer"></footer>
+    </body>
+</html>

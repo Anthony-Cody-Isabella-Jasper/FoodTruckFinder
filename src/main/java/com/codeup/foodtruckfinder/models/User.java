@@ -1,6 +1,7 @@
 package com.codeup.foodtruckfinder.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +23,9 @@ public class User {
     private String profilePicture;
     @Column
     private String location;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
+    private List<Truck> favoriteTrucks;
 
     public User() {
     }
@@ -108,5 +112,13 @@ public class User {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<Truck> getFavoriteTrucks() {
+        return favoriteTrucks;
+    }
+
+    public void setFavoriteTrucks(List<Truck> favoriteTrucks) {
+        this.favoriteTrucks = favoriteTrucks;
     }
 }

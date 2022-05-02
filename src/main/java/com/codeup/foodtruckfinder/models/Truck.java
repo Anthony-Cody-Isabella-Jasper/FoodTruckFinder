@@ -31,6 +31,8 @@ public class Truck {
     @Column(nullable = false)
     private Boolean location_confirmation;
 
+    @ManyToMany(mappedBy = "favoriteTrucks")
+    private List<User> usersFavorited;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
     private List<Menu> menu;
 

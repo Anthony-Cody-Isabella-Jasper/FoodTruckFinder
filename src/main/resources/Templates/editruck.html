@@ -1,0 +1,30 @@
+<head th:replace="partials :: head"></head>
+
+<nav th:replace="partials :: loggedNav"></nav>
+
+<nav th:replace="partials :: notLoggedNav"></nav>
+
+<div>
+    <form method="post" th:action="@{}" th:object="${}">
+        <label for="name">Name:</label>
+        <input id="name" th:field="*{}" type="text">
+        <br>
+        <label for="description">Description:</label>
+        <input id="description" th:field="*{}" type="text">
+        <br>
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" th:field="*{}" type="text">
+        <br>
+        <label for="locationAddress">Location Address:</label>
+        <input id="locationAddress" th:field="*{}" type="text">
+        <br>
+        <label for="profilePic">Profile Pic</label>
+        <input id="profilePic" type="file"/>
+        <br>
+        <label for="images">Truck images</label>
+        <input id="images" type="file"/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<footer th:replace="partials :: footer"></footer>

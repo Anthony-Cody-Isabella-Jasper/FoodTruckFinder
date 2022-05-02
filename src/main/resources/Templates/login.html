@@ -1,11 +1,11 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-    <head th:include="head">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="Partials/partials :: head">
         <meta charset="UTF-8">
         <title>Login</title>
     </head>
     <body>
-        <nav th:include="notLoggedNav"></nav>
+    <nav th:replace="Partials/partials :: notLoggedNav"></nav>
 
         <div class="text-center">
             <h1>Food Truck Finder</h1>
@@ -21,6 +21,6 @@
             </form>
         </div>
 
-        <footer th:include="footer"></footer>
+        <footer th:replace="Partials/partials :: footer"></footer>
     </body>
-<!--</html>-->
+</html>

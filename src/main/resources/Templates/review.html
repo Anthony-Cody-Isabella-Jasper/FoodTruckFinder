@@ -1,12 +1,12 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-  <head th:include="head">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="Partials/partials :: head">
       <meta charset="UTF-8">
       <title>Review</title>
       <link rel="stylesheet" href="../Static/main.css">
   </head>
   <body>
-    <nav th:include="loggedNav"></nav>
+  <nav th:replace="Partials/partials :: loggedNav"></nav>
 
     <div class="container">
         <h1>Food Truck Name</h1>
@@ -54,6 +54,6 @@
         </form>
     </div>
 
-    <footer th:include="footer"></footer>
+    <footer th:replace="Partials/partials :: footer"></footer>
   </body>
-<!--</html>-->
+</html>

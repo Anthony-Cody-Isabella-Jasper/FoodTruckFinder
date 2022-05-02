@@ -1,0 +1,65 @@
+<head th:replace="partials :: head"></head>
+
+<!-- ADD CONDITIONAL FOR LOGGED OR NOT LOGGED-->
+<nav th:replace="partials :: loggedNav"></nav>
+<nav th:replace="partials :: notLoggedNav"></nav>
+
+<div>
+    Add Map from API
+</div>
+
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="truckSearch">Add magnifying glass icon</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Search for FoodTruck" aria-label="Search"
+           aria-describedby="truckSearch">
+</div>
+
+<div>
+    <div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-expanded="false">
+                Cuisine Filter
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Cuisine1</a>
+                <a class="dropdown-item" href="#">Cuisine2</a>
+                <a class="dropdown-item" href="#">Cuisine3</a>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="vegetarian" id="vegetarian">
+            <label class="form-check-label" for="vegetarian">
+                Vegetarian
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="vegan" id="vegan">
+            <label class="form-check-label" for="vegan">
+                Vegan
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!--    "FOR EACH" FOR TRUCKS-->
+    <div class="card">
+        <!--        TRUCK IMAGE-->
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+
+            <a href="#"><h5 class="truck-name">Truck name</h5></a>
+            <p class="truck-cuisine">Truck Cuisines</p>
+            <a href="#" class="btn btn-primary">Truck location</a>
+            <p>Truck rating by stars</p>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="partials :: footer"></footer>

@@ -27,6 +27,10 @@ public class User {
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;
 
+    @ManyToMany(cascade =  CascadeType.ALL)
+    @JoinTable(name = "user_confirmations", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
+    private List<Truck> confirmed_trucks;
+
     public User() {
     }
 
@@ -120,5 +124,13 @@ public class User {
 
     public void setFavoriteTrucks(List<Truck> favoriteTrucks) {
         this.favoriteTrucks = favoriteTrucks;
+    }
+
+    public List<Truck> getConfirmed_trucks() {
+        return confirmed_trucks;
+    }
+
+    public void setConfirmed_trucks(List<Truck> confirmed_trucks) {
+        this.confirmed_trucks = confirmed_trucks;
     }
 }

@@ -6,7 +6,6 @@
 
 <div>
     <form method="post" th:action="@{}" th:object="${}">
-        <input type="hidden" th:field="*{}">
         <label for="username">Username:</label>
         <input id="username" th:field="*{}" type="text">
         <br>

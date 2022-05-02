@@ -1,7 +1,19 @@
 <head th:replace="partials :: head"></head>
-
-
-
-
-
+<div>
+    <form method="post" th:action="@{}" th:object="${}">
+        <input type="hidden" th:field="*{}">
+        <label for="username">Username:</label>
+        <input id="username" th:field="*{}" type="text">
+        <br>
+        <label for="email">Email:</label>
+        <input id="email" th:field="*{}" type="text">
+        <br>
+        <label for="password">Password:</label>
+        <input id="password" th:field="*{}" type="text">
+        <br>
+        <label for="confirm">Confirm Password:</label>
+        <input id="confirm" th:field="*{}" type="text">
+        <button type="submit">Post</button>
+    </form>
+</div>
 <footer th:replace="partials :: footer"></footer>

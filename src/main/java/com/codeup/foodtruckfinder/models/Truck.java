@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name="truck_profiles")
+@Table(name = "truck_profiles")
 public class Truck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,15 @@ public class Truck {
     private List<User> usersFavorited;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
     private List<Menu> menu;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
+    private List<TruckPicture> truckPictures;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "trucks_cuisines",
+            joinColumns = {@JoinColumn(name = "truck_id")},
+            inverseJoinColumns = {@JoinColumn(name = "cuisine_id")}
+    )
+    private List<Cuisine> cuisines;
 
     public Truck() {
     }
@@ -120,5 +129,29 @@ public class Truck {
 
     public void setLocation_confirmation(Boolean location_confirmation) {
         this.location_confirmation = location_confirmation;
+    }
+
+    public List<User> getUsersFavorited() {
+        return usersFavorited;
+    }
+
+    public void setUsersFavorited(List<User> usersFavorited) {
+        this.usersFavorited = usersFavorited;
+    }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+
+    public List<TruckPicture> getTruckPictures() {
+        return truckPictures;
+    }
+
+    public void setTruckPictures(List<TruckPicture> truckPictures) {
+        this.truckPictures = truckPictures;
     }
 }

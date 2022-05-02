@@ -33,11 +33,16 @@ public class Truck {
 
     @ManyToMany(mappedBy = "favoriteTrucks")
     private List<User> usersFavorited;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
     private List<Menu> menu;
 
+    @ManyToMany(mappedBy = "confirmed_trucks")
+    private List<User> confirmed_users;
+
     public Truck() {
     }
+
 
     public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, String location, Boolean location_confirmation) {
         this.id = id;
@@ -120,5 +125,29 @@ public class Truck {
 
     public void setLocation_confirmation(Boolean location_confirmation) {
         this.location_confirmation = location_confirmation;
+    }
+
+    public List<User> getUsersFavorited() {
+        return usersFavorited;
+    }
+
+    public void setUsersFavorited(List<User> usersFavorited) {
+        this.usersFavorited = usersFavorited;
+    }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+
+    public List<User> getConfirmed_users() {
+        return confirmed_users;
+    }
+
+    public void setConfirmed_users(List<User> confirmed_users) {
+        this.confirmed_users = confirmed_users;
     }
 }

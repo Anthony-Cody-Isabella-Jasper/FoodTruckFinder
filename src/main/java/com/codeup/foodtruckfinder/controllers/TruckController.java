@@ -1,9 +1,11 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -26,8 +28,11 @@ public class TruckController {
         return "truck/editTruck";
     }
 
-    @PostMapping("/truck/{id}/edit")
-    public String postEditTruck()
+    @PostMapping("/truck/edit")
+    public String postEditTruck(@ModelAttribute Truck truck){
+        truckDao.save(truck);
+        return "redirect:/truck/" + truck.getId() + "/show";
+    }
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model){

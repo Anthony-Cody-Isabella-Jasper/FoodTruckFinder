@@ -5,24 +5,25 @@
 <nav th:replace="partials/partials :: notLoggedNav"></nav>
 
 <div>
-    <form method="post" th:action="@{}" th:object="${truck}">
+    <form method="post" th:action="@{/truck/edit}" th:object="${truck}">
+        <input type="hidden" th:field="*{id}">
         <label for="name">Name:</label>
-        <input id="name" th:field="*{}" type="text">
+        <input id="name" th:field="*{name}" type="text">
         <br>
         <label for="description">Description:</label>
-        <input id="description" th:field="*{}" type="text">
+        <input id="description" th:field="*{description}" type="text">
         <br>
         <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" th:field="*{}" type="text">
+        <input id="phoneNumber" th:field="*{phone}" type="text">
         <br>
         <label for="locationAddress">Location Address:</label>
-        <input id="locationAddress" th:field="*{}" type="text">
+        <input id="locationAddress" th:field="*{location}" type="text">
         <br>
         <label for="profilePic">Profile Pic</label>
-        <input id="profilePic" type="file"/>
+        <input id="profilePic" type="file" th:field="*{profile_picture}"/>
         <br>
-        <label for="images">Truck images</label>
-        <input id="images" type="file"/>
+<!--        <label for="images">Truck images</label>-->
+<!--        <input id="images" type="file" th:field="*{}"/>-->
         <button type="submit">Submit</button>
     </form>
 </div>

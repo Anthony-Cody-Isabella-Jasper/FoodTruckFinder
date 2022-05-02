@@ -1,6 +1,7 @@
 package com.codeup.foodtruckfinder.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table (name="truck_profiles")
@@ -29,6 +30,9 @@ public class Truck {
 
     @Column(nullable = false)
     private Boolean location_confirmation;
+
+    @ManyToMany(mappedBy = "favoriteTrucks")
+    private List<User> usersFavorited;
 
     public Truck() {
     }

@@ -28,7 +28,7 @@ public class TruckController {
         return "truck/editTruck";
     }
 
-    @PostMapping("/truck/edit")
+    @PostMapping("/truck/editTruck")
     public String postEditTruck(@ModelAttribute Truck truck){
         truckDao.save(truck);
         return "redirect:/truck/" + truck.getId() + "/show";

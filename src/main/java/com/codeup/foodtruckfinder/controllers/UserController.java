@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,14 +29,30 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String logUser(){
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile")
+    public String profile(){
+        return "profile";
+    }
+
     @GetMapping("/about")
     public String aboutUs() {
         return "about";
     }
 
-    @GetMapping("/editUser")
-    public String editUserForm() {
 
+    @GetMapping("/editUser/{id}")
+    public String editUserForm(@PathVariable Long id, Model model) {
+        model.addAttribute("user", userDao.getById(id));
         return "editUser";
     }
 

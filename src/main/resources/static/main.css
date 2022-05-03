@@ -47,3 +47,16 @@ img{
 body{
     background-color: #c59b08;
 }
+
+nav{
+    border: 5px solid red;
+}
+
+#logged img{
+    width: 200px;
+    height: 200px;
+}
+#notLogged img{
+    width: 200px;
+    height: 200px;
+}

@@ -34,3 +34,16 @@
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+/*STARS END*/
+
+
+
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+body{
+    background-color: #c59b08;
+}

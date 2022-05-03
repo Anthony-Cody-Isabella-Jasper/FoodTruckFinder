@@ -5,18 +5,18 @@
 <nav th:replace="partials/partials :: notLoggedNav"></nav>
 
 <div>
-    <form method="post" th:action="@{}" th:object="${}">
+    <form method="post" th:action="@{/editUser}" th:object="${user}">
         <label for="username">Username:</label>
-        <input id="username" th:field="*{}" type="text">
+        <input id="username" th:field="*{username}" type="text">
         <br>
         <label for="email">Email:</label>
-        <input id="email" th:field="*{}" type="text">
+        <input id="email" th:field="*{email}" type="text">
         <br>
         <label for="password">Password:</label>
-        <input id="password" th:field="*{}" type="text">
+        <input id="password" th:field="*{password}" type="text">
         <br>
         <label for="confirm">Confirm Password:</label>
-        <input id="confirm" th:field="*{}" type="text">
+        <input id="confirm" th:field="*{password}" type="text">
         <div id="carouselUserPhotoOptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>

@@ -18,9 +18,9 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div th:each="truckImage : ${truckImages}">
+                <div th:each="truckPicture : ${truck.getTruckPictures()}">
                     <div class="carousel-item">
-                        <img th:src="@{truckImage.picture}" class="d-block w-100" alt="...">
+                        <img th:src="@{truckPicture.picture_url}" class="d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             </button>
         </div>
 
-        <form th:action="/review" method="post">
+        <form th:action="/review" method="post" th:object="${review}">
             <div class="rate">
                 <input type="radio" id="star5" name="rate" value="5" />
                 <label for="star5" title="text">5 stars</label>

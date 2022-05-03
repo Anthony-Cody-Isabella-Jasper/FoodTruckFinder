@@ -1,6 +1,7 @@
 package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.User;
+import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,4 +56,9 @@ public class UserController {
         return "editUser";
     }
 
+    @PostMapping("/editUser/{id}")
+    public String editUser(@ModelAttribute User user) {
+        userDao.save(user);
+        return "redirect:/profile";
+    }
 }

@@ -15,7 +15,7 @@ insert into trucks_cuisines (truck_id, cuisine_id) VALUES (1, 1);
 
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hotdog', 'doggo', 13.99, false, false, 1);
 
-insert into reviews (rating, review, truck_id, user_id) VALUES (4, 'Just some quality dogs at ridiculous prices',1, 1);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (4, 'Just some quality dogs at ridiculous prices',1, 1);
 
 insert into user_confirmations (user_id, truck_id) VALUES (1, 1);
 

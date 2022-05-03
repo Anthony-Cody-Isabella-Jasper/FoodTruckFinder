@@ -19,26 +19,26 @@ public class Review {
     private int rating;
 
     @Column(nullable = true)
-    private String review;
+    private String reviewText;
 
 
     public Review() {
     }
 
 
-    public Review(long id, Truck truck, User user, int rating, String review) {
+    public Review(long id, Truck truck, User user, int rating, String reviewText) {
         this.id = id;
         this.truck = truck;
         this.user = user;
         this.rating = rating;
-        this.review = review;
+        this.reviewText = reviewText;
     }
 
-    public Review(Truck truck, User user, int rating, String review) {
+    public Review(Truck truck, User user, int rating, String reviewText) {
         this.truck = truck;
         this.user = user;
         this.rating = rating;
-        this.review = review;
+        this.reviewText = reviewText;
     }
 
     public long getId() {
@@ -73,11 +73,11 @@ public class Review {
         this.rating = rating;
     }
 
-    public String getReview() {
-        return review;
+    public String getReviewText() {
+        return reviewText;
     }
 
-    public void setReview(String review) {
-        this.review = review;
+    public void setReviewText(String reviewText) {
+        this.reviewText = reviewText;
     }
 }

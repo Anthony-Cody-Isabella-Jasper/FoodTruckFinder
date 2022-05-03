@@ -45,10 +45,11 @@ insert into menu_items (description, name, price, vegan, vegetarian, truck_id) V
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Steak, Chicken or Shrimp', 'Taco Taco', 39.36, true, false, 4);
 
 
-insert into reviews (rating, review, truck_id, user_id) VALUES (4, 'Just some quality dogs at ridiculous prices',1, 1);
-insert into reviews (rating, review, truck_id, user_id) VALUES (1, 'Too big',2, 2);
-insert into reviews (rating, review, truck_id, user_id) VALUES (5, 'I mean, sugar is cool',3, 3);
-insert into reviews (rating, review, truck_id, user_id) VALUES (2, 'Get you some tacos here!',4, 4);
+
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (4, 'Just some quality dogs at ridiculous prices',1, 1);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (1, 'Too big',2, 2);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (5, 'I mean, sugar is cool',3, 3);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (2, 'Get you some tacos here!',4, 4);
 
 
 insert into user_confirmations (user_id, truck_id) VALUES (1, 1);

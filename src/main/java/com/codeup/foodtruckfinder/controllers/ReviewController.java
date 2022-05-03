@@ -35,9 +35,8 @@ public class ReviewController {
     @PostMapping("/review")
     public String review(@ModelAttribute Review review) {
         review.setUser(userDao.getById(1L));
+        review.setTruck(truckDao.getTruckById(1));
         reviewDao.save(review);
         return "redirect:/truck/" + review.getTruck().getId() + "/show";
     }
-
-
 }

@@ -1,6 +1,7 @@
 package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.User;
+import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     private final UserRepository userDao;
+    private final ReviewRepository reviewDao;
+    private final TruckRepository truckDao;
 
-    public UserController(UserRepository userDao) {
+    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao) {
         this.userDao = userDao;
+        this.reviewDao = reviewDao;
+        this.truckDao = truckDao;
     }
 
     @GetMapping("/register")
@@ -40,8 +45,11 @@ public class UserController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/profile")
-    public String profile(){
+    @GetMapping("/{id}/profile")
+    public String profile(@PathVariable long id, Model model){
+        model.addAttribute("user", userDao.getById(id));
+        model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
+        model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.getById(id)));
         return "profile";
     }
 

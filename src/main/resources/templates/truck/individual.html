@@ -11,10 +11,10 @@
     <img src=""><p>Verified by <span>#</span> of visitors</p>
   </div>
   <div>
-    <h3>Food Truck Name</h3>
-    <p>Cuisines</p>
-    <p>Phone Number</p>
-    <p>Description</p>
+    <h3 th:text="${truck.name}"></h3>
+    <p th:each="cuisine : ${truck.cuisines}">Truck Cuisines: <span th:text="${cuisine.name}"></span></p>
+    <p>Phone Number: <span th:text="${truck.phone}"></span></p>
+    <p th:text="${truck.description}"></p>
   </div>
   <div>
     <div id="carouselTruckPhotos" class="carousel slide" data-ride="carousel">
@@ -70,11 +70,12 @@
 </div>
 
 <div>
-  <div class="menu-items">
-
+  Menu Items:
+  <div th:each="menu : ${truck.menu}" class="menu-items">
+    <span th:text="${menu.name}"></span>
   </div>
   <div class="truck-reviews">
-
+    truck reviews
   </div>
 </div>
 

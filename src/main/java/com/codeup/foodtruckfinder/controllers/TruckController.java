@@ -1,6 +1,8 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Review;
 import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +14,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class TruckController {
     private final TruckRepository truckDao;
+    private final ReviewRepository reviewDao;
 
-    public TruckController(TruckRepository truckDao) {
+    public TruckController(TruckRepository truckDao, ReviewRepository reviewDao) {
         this.truckDao = truckDao;
+        this.reviewDao = reviewDao;
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("rating", reviewDao.findAll());
+        model.addAttribute("trucks", truckDao.findAll());
         return "index";
     }
 

@@ -18,7 +18,8 @@ public class TruckController {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("trucks",truckDao.findAll());
         return "index";
     }
 

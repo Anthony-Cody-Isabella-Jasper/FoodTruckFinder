@@ -49,13 +49,12 @@
 
 <div class="row">
     <!--    "FOR EACH" FOR TRUCKS-->
-    <div class="card">
+    <div th:each="truck : ${trucks}" class="card">
         <!--        TRUCK IMAGE-->
-        <img src="..." class="card-img-top" alt="...">
+        <img src="" class="card-img-top" alt="...">
         <div class="card-body">
-
-            <a href="#"><h5 class="truck-name">Truck name</h5></a>
-            <p class="truck-cuisine">Truck Cuisines</p>
+            <a th:href="@{/truck/{id}/show(id=${truck.id})}"><h5 class="truck-name"><span th:text="${truck.name}"></span></h5></a>
+            <p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}">Truck Cuisines: <span th:text="${cuisine.name}"></span></p>
             <a href="#" class="btn btn-primary">Truck location</a>
             <p>Truck rating by stars</p>
         </div>

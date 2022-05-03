@@ -17,9 +17,17 @@ insert into trucks (description, latitude, location_confirmation, longitude, nam
 
 
 insert into truck_pictures (picture, truck_id) VALUES ('https://mobile-cuisine.com/wp-content/uploads/2012/12/Good-Dog-Houston-Menu-e1575380234864.jpg', 1);
+insert into truck_pictures (picture, truck_id) VALUES ('https://media.smallbiztrends.com/2022/01/food-truck-ideas.png', 1);
+insert into truck_pictures (picture, truck_id) VALUES ('https://pepethefoodtruck.com/images/truck_rolling.gif', 1);
 insert into truck_pictures (picture, truck_id) VALUES ('https://f5d8k6r5.stackpathcdn.com/wp-content/uploads/2019/07/FoodTruck-Menus-NEW2019-Web.jpg', 2);
+insert into truck_pictures (picture, truck_id) VALUES ('https://media.gettyimages.com/photos/young-entrepreneurs-food-truck-picture-id988321954?s=170667a', 2);
+insert into truck_pictures (picture, truck_id) VALUES ('https://thefoodtruckleague.com/wp-content/uploads/2020/12/Food-truck-league-logo-main-page-1024x813-1.png', 2);
 insert into truck_pictures (picture, truck_id) VALUES ('https://image.shutterstock.com/image-vector/food-truck-menu-street-festival-600w-747123034.jpg', 3);
+insert into truck_pictures (picture, truck_id) VALUES ('https://images.squarespace-cdn.com/content/v1/56e7452be707ebc09b450fda/10a2566c-43fd-4b00-ac98-49dbc05bb465/NFTD-2021-Logo.png', 3);
+insert into truck_pictures (picture, truck_id) VALUES ('https://cdn.cloudflare.steamstatic.com/steam/apps/1160920/header.jpg?t=1642622108', 3);
 insert into truck_pictures (picture, truck_id) VALUES ('https://i.pinimg.com/originals/db/07/19/db071981cc83f55ad9b62c9168b8cc08.jpg', 4);
+insert into truck_pictures (picture, truck_id) VALUES ('https://assets3.thrillist.com/v1/image/3062952/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70', 4);
+insert into truck_pictures (picture, truck_id) VALUES ('https://kcfoodtrucks.com/wp-content/uploads/2021/02/logo-high-400x300.png', 4);
 
 
 insert into cuisines (name)

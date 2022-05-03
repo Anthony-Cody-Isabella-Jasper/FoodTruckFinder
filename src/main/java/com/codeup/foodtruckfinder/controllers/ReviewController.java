@@ -26,8 +26,7 @@ public class ReviewController {
 
     @GetMapping("/review/{id}")
     public String reviewForm(@PathVariable Long id, Model model) {
-        Truck truck = truckDao.getTruckById(id);
-        model.addAttribute("truck", truck);
+        model.addAttribute("truck", truckDao.getTruckById(id));
         model.addAttribute("reviewObj", new Review());
         return "review";
     }

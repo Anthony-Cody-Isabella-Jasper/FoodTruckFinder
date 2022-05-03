@@ -49,7 +49,6 @@ public class UserController {
         return "about";
     }
 
-
     @GetMapping("/editUser/{id}")
     public String editUserForm(@PathVariable Long id, Model model) {
         model.addAttribute("user", userDao.getById(id));

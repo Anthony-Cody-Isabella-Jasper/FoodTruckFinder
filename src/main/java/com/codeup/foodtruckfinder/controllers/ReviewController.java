@@ -28,11 +28,11 @@ public class ReviewController {
     public String reviewForm(@PathVariable Long id, Model model) {
         Truck truck = truckDao.getTruckById(id);
         model.addAttribute("truck", truck);
-        model.addAttribute("review", new Review());
+        model.addAttribute("reviewObj", new Review());
         return "review";
     }
 
-    @PostMapping("/review/{id}")
+    @PostMapping("/review")
     public String review(@ModelAttribute Review review) {
         review.setUser(userDao.getById(1L));
         reviewDao.save(review);

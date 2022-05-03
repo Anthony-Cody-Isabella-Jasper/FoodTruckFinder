@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="partials/partials :: head">
-        <meta charset="UTF-8">
-        <title>Login</title>
-    </head>
-    <body>
-    <nav th:replace="partials/partials :: notLoggedNav"></nav>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>FoodTruckFinder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+
+    <nav th:replace="partials :: notLoggedNav"></nav>
 
         <div class="text-center">
             <h1>Food Truck Finder</h1>
@@ -21,6 +29,6 @@
             </form>
         </div>
 
-        <footer th:replace="partials/partials :: footer"></footer>
+        <footer th:replace="partials :: footer"></footer>
     </body>
 </html>

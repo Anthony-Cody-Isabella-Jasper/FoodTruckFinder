@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "truck_profiles")
+@Table(name = "trucks")
 public class Truck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,10 @@ public class Truck {
     @Column(nullable = true)
     private String profile_picture;
 
-    @Column(nullable = true)
-    private String location;
-
+    @Column
+    private double longitude;
+    @Column
+    private double latitude;
     @Column(nullable = false)
     private Boolean location_confirmation;
 
@@ -48,17 +49,22 @@ public class Truck {
     public Truck() {
     }
 
-    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, String location, Boolean location_confirmation) {
+    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, double longitude, double latitude, Boolean location_confirmation, List<User> usersFavorited, List<Menu> menu, List<User> confirmed_users, List<TruckPicture> truckPictures, List<Cuisine> cuisines) {
         this.id = id;
         this.truck_owner = truck_owner;
         this.name = name;
         this.description = description;
         this.phone = phone;
         this.profile_picture = profile_picture;
-        this.location = location;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.location_confirmation = location_confirmation;
+        this.usersFavorited = usersFavorited;
+        this.menu = menu;
+        this.confirmed_users = confirmed_users;
+        this.truckPictures = truckPictures;
+        this.cuisines = cuisines;
     }
-
 
     public Truck(String name, String description, String phone, String profile_picture) {
         this.name = name;
@@ -115,12 +121,20 @@ public class Truck {
         this.profile_picture = profile_picture;
     }
 
-    public String getLocation() {
-        return location;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public Boolean getLocation_confirmation() {

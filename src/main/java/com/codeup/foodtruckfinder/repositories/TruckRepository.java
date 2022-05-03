@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface TruckRepository extends JpaRepository <Truck, Long> {
     Truck getTruckById(long id);
-    Truck getByTruckPictures();
 }

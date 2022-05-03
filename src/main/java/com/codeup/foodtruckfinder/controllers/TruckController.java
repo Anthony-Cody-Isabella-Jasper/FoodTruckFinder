@@ -42,7 +42,9 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model){
-        model.addAttribute("truck", truckDao.getTruckById(id));
+        Truck truck = truckDao.getTruckById(id);
+        model.addAttribute("truck", truck);
+        model.addAttribute("reviews", reviewDao.getReviewsByTruck(truck));
         return "truck/individual";
     }
 

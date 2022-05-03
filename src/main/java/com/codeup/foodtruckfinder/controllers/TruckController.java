@@ -40,11 +40,11 @@ public class TruckController {
         return "truck/individual";
     }
 
-//    @GetMapping("/truck/{id}/profile")
-//    public String truckProfile(@PathVariable Long id, Model model){
-//        model.addAttribute("truck", truckDao.getById(id));
-//        return "";
-//    }
+    @GetMapping("/truck/{id}/profile")
+    public String truckProfile(@PathVariable Long id, Model model){
+        model.addAttribute("truck", truckDao.getById(id));
+        return "truck/individual";
+    }
 
 
 

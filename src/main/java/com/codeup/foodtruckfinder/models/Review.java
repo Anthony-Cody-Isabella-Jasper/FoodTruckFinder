@@ -25,6 +25,7 @@ public class Review {
     public Review() {
     }
 
+
     public Review(long id, Truck truck, User user, int rating, String review) {
         this.id = id;
         this.truck = truck;

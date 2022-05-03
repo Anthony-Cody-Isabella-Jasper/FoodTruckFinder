@@ -1,23 +1,33 @@
 <head th:replace="partials/partials :: head"></head>
 
-<nav th:replace="partials/partials :: loggedNav"></nav>
 
+<nav th:replace="partials/partials :: loggedNav"></nav>
 <nav th:replace="partials/partials :: notLoggedNav"></nav>
 
 <div>
-    <div style="border:solid 2px red">This will hold a profile picture</div>
-    <div style="border:solid 2px black">This will hold user info</div>
+    <img th:attr="src=${user.profilePicture},alt=${user.profilePicture}">
+    <div>
+        <p th:text="${user.username}"></p>
+        <p th:text="${user.email}"></p>
+    </div>
 </div>
 
-<div>
-<h3>My Favorites</h3>
 
-<div>This will hold a users favorites</div>
+<h3>My Favorites</h3>
+<!--    USERS FAVORITES-->
+
+<div class="userFavorites" th:each="favorite : ${favorites}">
+    <img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
+   <p th:text="${favorite.name}"></p>
+    <p th:text="${favorite.phone}"></p>
+</div>
 
 <h3>My Reviews</h3>
+<!--USERS REVIEWS-->
+<div class="usersReviews" th:each="review : ${reviews}">
+    <p th:text="${review.rating}"></p>
+    <p th:text="${review.review}"></p>
 </div>
-
-<div>This will hold a users reviews</div>
 
 <footer th:replace="partials/partials :: footer"></footer>
 

@@ -4,7 +4,7 @@ insert into users (admin, email, password, profile_picture, truck_owner, usernam
 
 insert into users (admin, email, password, profile_picture, truck_owner, username) values (false, 'email2@email.com', 'pass', null, true, 'User2');
 
-insert into trucks (description, latitude, longitude, location_confirmation, name, phone, profile_picture, truck_owner_id) values ('new food truck on the block', null, null, false,'FoodyTruck', '789-543-5432', 'https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/02/food-truck-finder-850x476.png?ezimgfmt=ng%3Awebp%2Fngcb12%2Frs%3Adevice%2Frscb12-1', 2);
+insert into trucks (description, latitude, longitude, location_confirmation, name, phone, profile_picture, truck_owner_id) values ('new food truck on the block', 75, 75, false,'FoodyTruck', '789-543-5432', 'https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/02/food-truck-finder-850x476.png?ezimgfmt=ng%3Awebp%2Fngcb12%2Frs%3Adevice%2Frscb12-1', 2);
 
 insert into truck_pictures (picture, truck_id) VALUES ('https://mobile-cuisine.com/wp-content/uploads/2012/12/Good-Dog-Houston-Menu-e1575380234864.jpg', 1);
 

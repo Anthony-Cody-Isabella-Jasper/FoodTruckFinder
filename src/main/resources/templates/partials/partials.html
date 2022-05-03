@@ -1,3 +1,4 @@
+<!--HEAD FRAG START-->
 <head th:fragment="head" xmlns:th="http://www.w3.org/1999/xhtml">
 	<!DOCTYPE html>
 	<html xmlns:th="http://www.thymeleaf.org">
@@ -11,16 +12,28 @@
 
 	<link rel="stylesheet" href="/main.css">
 	</head>
+<!--	HEAD FRAG END-->
+
+
+<!--	LOGGED NAV FRAG START-->
 	<nav th:fragment="loggedNav">
 		<nav>
 			<h2>logged nav</h2>
 		</nav>
 	</nav>
+<!--	LOGGED NAV FRAG END-->
+
+
+<!--	NOT LOGGED FRAG START-->
 	<nav th:fragment="notLoggedNav">
 		<nav>
 			<h2>Not logged nav</h2>
 		</nav>
 	</nav>
+<!--	NOT LOGGED FRAG END-->
+
+
+<!--	FOOTER FRAG START-->
 	<footer th:fragment="footer">
 		<div class="container">
 			<footer class="d-flex flex-wrap border-top">
@@ -41,3 +54,4 @@
 		</body>
 	</html>
 	</footer>
+<!-- FOOTER FRAG END-->

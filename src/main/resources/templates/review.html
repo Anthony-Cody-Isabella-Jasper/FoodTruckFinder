@@ -34,7 +34,7 @@
             </button>
         </div>
 
-        <form th:action="/review" method="post" th:object="${review}">
+        <form th:action="@{/review}" method="post" th:object="${review}">
             <div class="rate">
                 <input type="radio" id="star5" name="rate" value="5" />
                 <label for="star5" title="text">5 stars</label>

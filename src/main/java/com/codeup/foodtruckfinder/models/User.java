@@ -21,13 +21,11 @@ public class User {
     private boolean admin;
     @Column
     private String profilePicture;
-    @Column
-    private String location;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;
 
-    @ManyToMany(cascade =  CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_confirmations", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> confirmed_trucks;
 
@@ -43,15 +41,16 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-    public User(long id, String username, String password, String email, boolean truckOwner, String profilePicture, String location) {
+    public User(long id, String username, String password, String email, boolean truckOwner, boolean admin, String profilePicture, List<Truck> favoriteTrucks, List<Truck> confirmed_trucks) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.truckOwner = truckOwner;
-        this.admin = false;
+        this.admin = admin;
         this.profilePicture = profilePicture;
-        this.location = location;
+        this.favoriteTrucks = favoriteTrucks;
+        this.confirmed_trucks = confirmed_trucks;
     }
 
     public long getId() {
@@ -108,14 +107,6 @@ public class User {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public List<Truck> getFavoriteTrucks() {

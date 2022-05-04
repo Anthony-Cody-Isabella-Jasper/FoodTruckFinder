@@ -55,6 +55,7 @@
 		$.ajax({
 			url: "https://randomuser.me/api/?lego",
 			dataType: "json",
+			cache: false,
 			success: function (data) {
 				picture.firstChild.src = data.results[0].picture.thumbnail;
 				picture.lastChild.value = data.results[0].picture.thumbnail;

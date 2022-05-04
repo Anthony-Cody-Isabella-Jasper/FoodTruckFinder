@@ -65,13 +65,14 @@ public class UserController {
 
     @GetMapping("/editUser/{id}")
     public String editUserForm(@PathVariable Long id, Model model) {
-        model.addAttribute("user", userDao.getById(id));
+        User editUser = userDao.getById(id);
+        model.addAttribute("user", editUser);
         return "editUser";
     }
 
     @PostMapping("/editUser/{id}")
     public String editUser(@ModelAttribute User user) {
         userDao.save(user);
-        return "redirect:/profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 }

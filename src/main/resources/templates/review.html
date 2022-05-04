@@ -16,7 +16,10 @@
   <nav th:replace="partials :: loggedNav"></nav>
 
     <div class="container">
-        <h1>Food Truck Name</h1>
+        <div>
+            <h1 th:text="${truck.name}"></h1>
+            <img th:src="${truck.profile_picture}" alt="">
+        </div>
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">

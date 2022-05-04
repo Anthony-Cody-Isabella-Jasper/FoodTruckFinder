@@ -2,9 +2,11 @@ package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Review;
 import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +35,7 @@ public class ReviewController {
 
     @PostMapping("/review")
     public String review(@ModelAttribute Review review) {
-        review.setUser(userDao.getById(1L));
+        review.setUser((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         review.setTruck(truckDao.getTruckById(1));
         reviewDao.save(review);
         return "redirect:/truck/" + review.getTruck().getId() + "/show";

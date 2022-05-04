@@ -22,33 +22,23 @@
 		<input type="text" class="form-control" placeholder="Search for FoodTruck" aria-label="Search" aria-describedby="truckSearch">
 	</div>
 	<div>
-		<div>
-			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-					Cuisine Filter
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		<form th:action="@{/}" method="post">
+			<div class="input-group">
+				<label for="cuisineSelect" class="input-group-text">Cuisine</label>
+				<select name="filterCuisine" id="cuisineSelect" class="custom-select">
+					<option value="all" selected></option>
+					<option value="all">all</option>
 					<div th:each="cuisine : ${cuisines}">
-						<form th:action="@{/}" method="post">
-							<input type="hidden" name="filterCuisine" th:value="${cuisine.name}">
-							<button class="dropdown-item" type="submit" th:text="${cuisine.name}"></button>
-						</form>
+						<option th:value="${cuisine.name}" th:text="${cuisine.name}"></option>
 					</div>
-				</div>
+				</select>
+				<label for="veganCheck"></label>
+				<input type="checkbox" name="vegan" id="veganCheck" value="false">
+				<label for="vegetarianCheck"></label>
+				<input type="checkbox" name="vegetarian" id="vegetarianCheck" value="false">
 			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="vegetarian" id="vegetarian">
-				<label class="form-check-label" for="vegetarian">
-					Vegetarian
-				</label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" value="vegan" id="vegan">
-				<label class="form-check-label" for="vegan">
-					Vegan
-				</label>
-			</div>
-		</div>
+			<button type="submit">Apply Filters</button>
+		</form>
 	</div>
 	<div class="row">
 		<!--    "FOR EACH" FOR TRUCKS-->

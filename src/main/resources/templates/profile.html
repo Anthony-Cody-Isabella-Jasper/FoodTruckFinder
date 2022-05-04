@@ -38,6 +38,7 @@
 <h3>My Reviews</h3>
 <!--USERS REVIEWS-->
 <div class="usersReviews" th:each="review : ${reviews}">
+    <p th:text="${review.truck.name}"></p>
     <p th:text="${review.rating}"></p>
     <p th:text="${review.reviewText}"></p>
 </div>

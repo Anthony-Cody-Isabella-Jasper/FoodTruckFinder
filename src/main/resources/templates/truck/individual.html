@@ -31,13 +31,6 @@
   </div>
   <div>
     <div id="carouselTruckPhotos" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselIndicators" data-slide-to="4"></li>
-      </ol>
       <div class="carousel-inner">
         <div th:if="${stat.first}" th:each="truckPicture, stat : ${truck.truckPictures}" class="carousel-item active">
           <img th:src="${truckPicture.picture}" class="d-block w-100" alt="...">
@@ -64,6 +57,7 @@
     <span th:text="${menu.name}"></span>
   </div>
   <p>Reviews:</p>
+  <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
   <div th:each="review : ${reviews}" class="truck-reviews">
     <span th:text="${review.reviewText}"></span>
   </div>

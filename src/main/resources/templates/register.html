@@ -42,8 +42,6 @@
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 	</div>
 	<input value="Sign me up!" type="submit"/>
 </form>
@@ -51,17 +49,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 	let avatars = Array.from(document.getElementsByClassName("avatar"));
-	avatars.forEach((picture) => {
-		$.ajax({
-			url: "https://randomuser.me/api/?lego",
-			dataType: "json",
-			cache: false,
-			success: function (data) {
-				picture.firstChild.src = data.results[0].picture.thumbnail;
-				picture.lastChild.value = data.results[0].picture.thumbnail;
-			}
-		});
+	$.ajax({
+		url: "https://randomuser.me/api/?lego&results=" + avatars.length,
+		dataType: "json",
+		cache: false,
+		success: function (data) {
+			avatars.forEach((picture, index) => {
+				picture.firstChild.src = data.results[index].picture.thumbnail;
+				picture.lastChild.value = data.results[index].picture.thumbnail;
+			});
+		}
 	});
 </script>
 <footer th:replace="partials :: footer"></footer>
-

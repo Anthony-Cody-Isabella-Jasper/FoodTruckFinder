@@ -32,6 +32,13 @@ public class User {
     public User() {
     }
 
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
     public User(String username, String password, String email, boolean truckOwner, String profilePicture) {
         this.username = username;
         this.password = password;

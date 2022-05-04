@@ -4,6 +4,7 @@ import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,13 @@ public class UserController {
     private final UserRepository userDao;
     private final ReviewRepository reviewDao;
     private final TruckRepository truckDao;
+    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao) {
+    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.reviewDao = reviewDao;
         this.truckDao = truckDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
@@ -31,6 +34,8 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
     }

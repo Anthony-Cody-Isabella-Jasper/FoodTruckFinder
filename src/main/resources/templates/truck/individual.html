@@ -38,19 +38,19 @@
         <li data-target="#carouselIndicators" data-slide-to="3"></li>
         <li data-target="#carouselIndicators" data-slide-to="4"></li>
       </ol>
-      <div th:each="truckPicture, something : ${truck.truckPictures}" class="carousel-inner">
-        <div th:if="${something.index == 1}" class="carousel-item active">
+      <div class="carousel-inner">
+        <div th:if="${stat.first}" th:each="truckPicture, stat : ${truck.truckPictures}" class="carousel-item active">
           <img th:src="${truckPicture.picture}" class="d-block w-100" alt="...">
         </div>
-        <div th:unless="${something.index != 1}" class="carousel-item">
+        <div th:unless="${stat.first}" th:each="truckPicture, stat : ${truck.truckPictures}" class="carousel-item">
           <img th:src="${truckPicture.picture}" class="d-block w-100" alt="...">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+      <button class="carousel-control-prev" type="button" data-target="#carouselTruckPhotos" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+      <button class="carousel-control-next" type="button" data-target="#carouselTruckPhotos" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </button>
@@ -65,7 +65,7 @@
   </div>
   <p>Reviews:</p>
   <div th:each="review : ${reviews}" class="truck-reviews">
-    <span th:text="${review.review}"></span>
+    <span th:text="${review.reviewText}"></span>
   </div>
 </div>
 

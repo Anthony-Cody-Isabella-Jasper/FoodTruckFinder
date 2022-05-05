@@ -1,8 +1,6 @@
 package com.codeup.foodtruckfinder.controllers;
 
-import com.codeup.foodtruckfinder.models.Cuisine;
 import com.codeup.foodtruckfinder.models.Truck;
-import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
@@ -11,8 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class TruckController {
@@ -35,8 +31,8 @@ public class TruckController {
     }
 
     @PostMapping("/")
-    public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan") boolean vegan, @RequestParam(name = "vegetarian") boolean vegetarian) {
-        if(filterCuisine.equals("all")) {
+    public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan", required = false) boolean vegan, @RequestParam(name = "vegetarian", required = false) boolean vegetarian) {
+        if (filterCuisine.equals("all")) {
             model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));
         } else {
             model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <meta charset="UTF-8"/>
     <title>FoodTruckFinder</title>
@@ -35,8 +34,6 @@
         <br>
         <label for="confirm">Confirm Password:</label>
         <input id="confirm" th:field="*{password}" type="text">
-    </form>
-</div>
 
         <div id="carouselUserPhotoOptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -89,5 +86,6 @@
         </div>
         <button type="submit">Submit</button>
     </form>
+</div>
 
     <footer th:replace="partials :: footer"></footer>

@@ -25,6 +25,7 @@ public class ReviewController {
 
     @GetMapping("/review/{id}")
     public String reviewForm(@PathVariable Long id, Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truckDao.getTruckById(id));
         model.addAttribute("reviewObj", new Review());
         return "review";

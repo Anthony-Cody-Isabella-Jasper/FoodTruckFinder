@@ -6,8 +6,7 @@
 			<a href="/"><h2>FoodTruckFinder</h2></a>
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-					<img th:attr="${#authentication.getPrincipal().getProfilePicture()}">
-<!--					<img th:attr="src=${#authentication.getPrincipal().getProfilePicture()}">-->
+					<img th:attr="src=${user.getProfilePicture}">
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" th:href="@{/{username}/profile(username=${#authentication.name})}">View Profile</a>

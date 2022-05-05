@@ -32,7 +32,7 @@
 			<label for="cuisineSelect">Cuisine</label>
 			<select name="filterCuisine" id="cuisineSelect" class="custom-select">
 				<option value="all" selected></option>
-				<option value="all">all</option>
+				<option value="all">all cuisines</option>
 				<div th:each="cuisine : ${cuisines}">
 					<option th:value="${cuisine.name}" th:text="${cuisine.name}"></option>
 				</div>
@@ -42,6 +42,9 @@
 			<label for="vegetarianCheck">Vegetarian</label>
 			<input type="checkbox" id="vegetarianCheck"> <input type="hidden" id="vegetarianValue" name="vegetarian">
 			<button type="submit">Apply Filters</button>
+		</form>
+		<form th:action="@{/}" method="get">
+			<button type="submit">Clear Filters</button>
 		</form>
 	</div>
 	<div class="row">
@@ -55,7 +58,7 @@
 				<p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}">Truck Cuisines:
 					<span th:text="${cuisine.name}"></span></p>
 				<a href="#" class="btn btn-primary">Truck location</a>
-				<p>averaged rating goes here</p>
+				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
 			</div>
 		</div>
 	</div>

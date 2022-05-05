@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8"/>
 	<title>FoodTruckFinder</title>
@@ -11,14 +10,14 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
+	
 	<div sec:authorize="isAuthenticated()">
 		<nav th:replace="partials :: loggedNav"></nav>
 	</div>
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
-
+	
 	<div id="map">
 		Add Map from API
 	</div>
@@ -30,20 +29,18 @@
 	</div>
 	<div>
 		<form th:action="@{/}" method="post">
-			<div class="input-group">
-				<label for="cuisineSelect" class="input-group-text">Cuisine</label>
-				<select name="filterCuisine" id="cuisineSelect" class="custom-select">
-					<option value="all" selected></option>
-					<option value="all">all</option>
-					<div th:each="cuisine : ${cuisines}">
-						<option th:value="${cuisine.name}" th:text="${cuisine.name}"></option>
-					</div>
-				</select>
-				<label for="veganCheck"></label>
-				<input type="checkbox" name="vegan" id="veganCheck" value="false">
-				<label for="vegetarianCheck"></label>
-				<input type="checkbox" name="vegetarian" id="vegetarianCheck" value="false">
-			</div>
+			<label for="cuisineSelect">Cuisine</label>
+			<select name="filterCuisine" id="cuisineSelect" class="custom-select">
+				<option value="all" selected></option>
+				<option value="all">all</option>
+				<div th:each="cuisine : ${cuisines}">
+					<option th:value="${cuisine.name}" th:text="${cuisine.name}"></option>
+				</div>
+			</select>
+			<label for="veganCheck">Vegan</label>
+			<input type="checkbox" id="veganCheck"> <input type="hidden" name="vegan" id="veganValue">
+			<label for="vegetarianCheck">Vegetarian</label>
+			<input type="checkbox" id="vegetarianCheck"> <input type="hidden" id="vegetarianValue" name="vegetarian">
 			<button type="submit">Apply Filters</button>
 		</form>
 	</div>
@@ -63,6 +60,18 @@
 		</div>
 	</div>
 	<script>
+		let vegetarianCheck = document.getElementById("vegetarianCheck");
+		let veganCheck = document.getElementById("veganCheck");
+		let vegetarianValue = document.getElementById("vegetarianValue");
+		let veganValue = document.getElementById("veganValue");
+		vegetarianValue.value = false;
+		veganValue.value = false;
+		document.getElementById("vegetarianCheck").addEventListener("change", () => {
+			vegetarianValue.value = vegetarianCheck.checked;
+		});
+		document.getElementById("veganCheck").addEventListener("change", () => {
+			veganValue.value = veganCheck.checked;
+		});
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';
 		const map = new mapboxgl.Map({
 			container: 'map', // container ID

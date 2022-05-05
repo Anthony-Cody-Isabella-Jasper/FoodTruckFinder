@@ -65,6 +65,15 @@ public class TruckController {
         return "truck/individual";
     }
 
+//    @PostMapping("/truck/{id}/show")
+//    public String addToFav(@PathVariable Long id, @ModelAttribute Truck truck) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        truck.setUsersFavorited(user);
+//
+//        return "/profile";
+//    }
+
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());

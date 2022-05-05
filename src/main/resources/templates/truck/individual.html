@@ -65,7 +65,7 @@
   </div>
   <p>Reviews:</p>
   <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
-  <div th:each="review : ${reviews}" class="truck-reviews">
+  <div th:each="review : ${truck.reviews}" class="truck-reviews">
     <span th:text="${review.reviewText}"></span>
   </div>
 </div>

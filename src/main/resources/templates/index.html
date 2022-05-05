@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8"/>
 	<title>FoodTruckFinder</title>
@@ -10,8 +11,14 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<!-- ADD CONDITIONAL FOR LOGGED OR NOT LOGGED-->
-	<nav th:replace="partials :: loggedNav"></nav>
+
+	<div sec:authorize="isAuthenticated()">
+		<nav th:replace="partials :: loggedNav"></nav>
+	</div>
+	<div sec:authorize="!isAuthenticated()">
+		<nav th:replace="partials :: notLoggedNav"></nav>
+	</div>
+
 	<div id="map">
 		Add Map from API
 	</div>

@@ -47,21 +47,16 @@ public class UserController {
         return "redirect:/index";
     }
 
-<<<<<<< HEAD
+
     @GetMapping("/{username}/profile")
-    public String profile(@PathVariable String username, Model model){
+    public String profile(@PathVariable String username, Model model) {
         model.addAttribute("user", userDao.findByUsername(username));
         model.addAttribute("favorites", userDao.findByUsername(username).getFavoriteTrucks());
         model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.findByUsername(username)));
-=======
-    @GetMapping("/{id}/profile")
-    public String profile(@PathVariable Long id, Model model){
-        model.addAttribute("user", userDao.getById(id));
-        model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
-        model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.getById(id)));
->>>>>>> origin/main
-        return "profile";
+        return "/profile";
     }
+
+
 
     @GetMapping("/about")
     public String aboutUs() {

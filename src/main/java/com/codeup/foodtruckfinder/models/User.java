@@ -27,8 +27,8 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_confirmations", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> confirmed_trucks;
-@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-private List<Review> reviews;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Review> reviews;
 
     public User() {
     }
@@ -49,7 +49,7 @@ private List<Review> reviews;
         this.profilePicture = profilePicture;
     }
 
-    public User(long id, String username, String password, String email, boolean truckOwner, boolean admin, String profilePicture, List<Truck> favoriteTrucks, List<Truck> confirmed_trucks) {
+    public User(long id, String username, String password, String email, boolean truckOwner, boolean admin, String profilePicture, List<Truck> favoriteTrucks, List<Truck> confirmed_trucks, List<Review> reviews) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -59,6 +59,7 @@ private List<Review> reviews;
         this.profilePicture = profilePicture;
         this.favoriteTrucks = favoriteTrucks;
         this.confirmed_trucks = confirmed_trucks;
+        this.reviews = reviews;
     }
 
     public long getId() {
@@ -131,5 +132,13 @@ private List<Review> reviews;
 
     public void setConfirmed_trucks(List<Truck> confirmed_trucks) {
         this.confirmed_trucks = confirmed_trucks;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

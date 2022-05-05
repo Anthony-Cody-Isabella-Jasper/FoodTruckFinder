@@ -21,14 +21,14 @@ public class User {
     private boolean admin;
     @Column
     private String profilePicture;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_confirmations", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> confirmed_trucks;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+private List<Review> reviews;
 
     public User() {
     }

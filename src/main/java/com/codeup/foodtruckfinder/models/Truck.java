@@ -45,11 +45,12 @@ public class Truck {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "trucks_cuisines", joinColumns = {@JoinColumn(name = "truck_id")}, inverseJoinColumns = {@JoinColumn(name = "cuisine_id")})
     private List<Cuisine> cuisines;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
+    private List<Review> reviews;
     public Truck() {
     }
 
-    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, double longitude, double latitude, Boolean location_confirmation, List<User> usersFavorited, List<Menu> menu, List<User> confirmed_users, List<TruckPicture> truckPictures, List<Cuisine> cuisines) {
+    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, double longitude, double latitude, Boolean location_confirmation, List<User> usersFavorited, List<Menu> menu, List<User> confirmed_users, List<TruckPicture> truckPictures, List<Cuisine> cuisines, List<Review> reviews) {
         this.id = id;
         this.truck_owner = truck_owner;
         this.name = name;
@@ -64,6 +65,7 @@ public class Truck {
         this.confirmed_users = confirmed_users;
         this.truckPictures = truckPictures;
         this.cuisines = cuisines;
+        this.reviews = reviews;
     }
 
     public Truck(String name, String description, String phone, String profile_picture) {
@@ -183,5 +185,20 @@ public class Truck {
 
     public void setCuisines(List<Cuisine> cuisines) {
         this.cuisines = cuisines;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+    public double averageRating() {
+        double total = 0;
+        for(Review review : reviews) {
+            total += review.getRating();
+        }
+        return total / reviews.size();
     }
 }

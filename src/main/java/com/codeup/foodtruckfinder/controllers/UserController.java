@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/profile")
-    public String profile(@PathVariable long id, Model model){
+    public String profile(@PathVariable Long id, Model model){
         model.addAttribute("user", userDao.getById(id));
         model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
         model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.getById(id)));

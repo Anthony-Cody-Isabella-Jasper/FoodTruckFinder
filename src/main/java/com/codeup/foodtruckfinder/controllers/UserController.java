@@ -4,6 +4,7 @@ import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
     private final UserRepository userDao;
-    private final ReviewRepository reviewDao;
     private final TruckRepository truckDao;
     private PasswordEncoder passwordEncoder;
 
     public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
-        this.reviewDao = reviewDao;
         this.truckDao = truckDao;
         this.passwordEncoder = passwordEncoder;
     }
@@ -52,14 +51,14 @@ public class UserController {
     public String profile(@PathVariable String username, Model model) {
         model.addAttribute("user", userDao.findByUsername(username));
         model.addAttribute("favorites", userDao.findByUsername(username).getFavoriteTrucks());
-        model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.findByUsername(username)));
         return "/profile";
     }
 
 
 
     @GetMapping("/about")
-    public String aboutUs() {
+    public String aboutUs(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         return "about";
     }
 

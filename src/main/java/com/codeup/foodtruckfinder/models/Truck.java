@@ -40,8 +40,10 @@ public class Truck {
 
     @ManyToMany(mappedBy = "confirmed_trucks")
     private List<User> confirmed_users;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
     private List<TruckPicture> truckPictures;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "trucks_cuisines", joinColumns = {@JoinColumn(name = "truck_id")}, inverseJoinColumns = {@JoinColumn(name = "cuisine_id")})
     private List<Cuisine> cuisines;

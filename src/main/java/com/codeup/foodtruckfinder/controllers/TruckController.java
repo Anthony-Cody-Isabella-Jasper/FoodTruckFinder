@@ -17,21 +17,19 @@ import java.util.List;
 @Controller
 public class TruckController {
     private final TruckRepository truckDao;
-    private final ReviewRepository reviewDao;
     private final CuisineRepository cuisineDao;
     private final UserRepository userDao;
 
     public TruckController(TruckRepository truckDao, ReviewRepository reviewDao, CuisineRepository cuisineDao, UserRepository userDao) {
         this.truckDao = truckDao;
-        this.reviewDao = reviewDao;
         this.cuisineDao = cuisineDao;
         this.userDao = userDao;
     }
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("cuisines", cuisineDao.findAll());
-        model.addAttribute("rating", reviewDao.findAll());
         model.addAttribute("trucks", truckDao.findAll());
         return "index";
     }
@@ -44,7 +42,6 @@ public class TruckController {
             model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));
         }
         model.addAttribute("cuisines", cuisineDao.findAll());
-        model.addAttribute("rating", reviewDao.findAll());
         return "index";
     }
 
@@ -63,8 +60,8 @@ public class TruckController {
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
         Truck truck = truckDao.getTruckById(id);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);
-        model.addAttribute("reviews", reviewDao.getReviewsByTruck(truck));
         return "truck/individual";
     }
 
@@ -79,6 +76,7 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/individual";
     }

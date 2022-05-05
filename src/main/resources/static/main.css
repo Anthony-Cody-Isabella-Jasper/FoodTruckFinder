@@ -46,6 +46,9 @@ img{
 
 body{
     background-color: #c59b08;
+    margin-left: 75px;
+    margin-right: 75px;
+    padding: 0;
 }
 
 nav{
@@ -61,3 +64,13 @@ nav{
     height: 200px;
 }
 /*TEST END*/
+
+/*map*/
+#map{
+    width: 400px;
+    height: 400px;
+    margin: 50px;
+}
+.card{
+    margin: 25px;
+}

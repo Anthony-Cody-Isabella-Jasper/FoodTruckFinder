@@ -5,6 +5,7 @@ import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
+import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +17,13 @@ public class TruckController {
     private final TruckRepository truckDao;
     private final ReviewRepository reviewDao;
     private final CuisineRepository cuisineDao;
+    private final UserRepository userDao;
 
-    public TruckController(TruckRepository truckDao, ReviewRepository reviewDao, CuisineRepository cuisineDao) {
+    public TruckController(TruckRepository truckDao, ReviewRepository reviewDao, CuisineRepository cuisineDao, UserRepository userDao) {
         this.truckDao = truckDao;
         this.reviewDao = reviewDao;
         this.cuisineDao = cuisineDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/")

@@ -44,14 +44,14 @@ public class UserController {
 
     @PostMapping("/login")
     public String logUser(){
-        return "redirect:/profile";
+        return "redirect:/index";
     }
 
-    @GetMapping("/{id}/profile")
-    public String profile(@PathVariable long id, Model model){
-        model.addAttribute("user", userDao.getById(id));
-        model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
-        model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.getById(id)));
+    @GetMapping("/{username}/profile")
+    public String profile(@PathVariable String username, Model model){
+        model.addAttribute("user", userDao.findByUsername(username));
+        model.addAttribute("favorites", userDao.findByUsername(username).getFavoriteTrucks());
+        model.addAttribute("reviews", reviewDao.getReviewsByUserOrderByIdDesc(userDao.findByUsername(username)));
         return "profile";
     }
 
@@ -60,17 +60,17 @@ public class UserController {
         return "about";
     }
 
-    @GetMapping("/editUser/{id}")
-    public String editUserForm(@PathVariable Long id, Model model) {
-        User editUser = userDao.getById(id);
+    @GetMapping("/editUser/{username}")
+    public String editUserForm(@PathVariable String username, Model model) {
+        User editUser = userDao.findByUsername(username);
         model.addAttribute("user", editUser);
         return "editUser";
     }
 
-    @PostMapping("/editUser/{id}")
+    @PostMapping("/editUser/{username}")
     public String editUser(@ModelAttribute User user) {
         userDao.save(user);
-        return "redirect:/" + user.getId() + "/profile";
+        return "redirect:/" + user.getUsername() + "/profile";
     }
 
 }

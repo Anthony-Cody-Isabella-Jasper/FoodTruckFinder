@@ -23,7 +23,7 @@
 </div>
 
 <div>
-    <form method="post" th:action="@{/editUser/{id}(id=${user.getId()})}" th:object="${user}">
+    <form method="post" th:action="@{/editUser/{username}(username=${user.getUsername()})}" th:object="${user}">
         <label for="username">Username:</label>
         <input id="username" th:field="*{username}" type="text">
         <br>
@@ -35,6 +35,8 @@
         <br>
         <label for="confirm">Confirm Password:</label>
         <input id="confirm" th:field="*{password}" type="text">
+    </form>
+</div>
 <!--         CAROUSEL IMAGE WILL BE CHANGED AND WRAPPED IN RADIO BUTTON         -->
 <!--        <div id="carouselUserPhotoOptions" class="carousel slide" data-ride="carousel">-->
 <!--            <ol class="carousel-indicators">-->

@@ -21,6 +21,7 @@ public class User {
     private boolean admin;
     @Column
     private String profilePicture;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;

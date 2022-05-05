@@ -6,16 +6,17 @@
 			<a href="/"><h2>FoodTruckFinder</h2></a>
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-					<img src="https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/3/trying-to-impress-me-with-your-car-it-better-be-a-food-truck-yvonne-remick.jpg">
+					<input type="text" th:value="${#authentication.getPrincipal().getProfilePicture()}">
+<!--					<img th:attr="src=${#authentication.getPrincipal().getProfilePicture()}">-->
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="/{id}/profile">View Profile</a>
+					<a class="dropdown-item" th:href="@{/{username}/profile(username=${#authentication.name})}">View Profile</a>
 
 					<a class="dropdown-item"><form th:action="@{/logout}" th:method="post">
 						<button class="btn-link btn">Logout</button>
 					</form></a>
 
-					<a class="dropdown-item" href="/editUser/{id}">Edit profile when on profile page</a>
+					<a class="dropdown-item" th:href="@{/editUser/{username}(username=${#authentication.name})}">Edit profile when on profile page</a>
 				</div>
 			</div>
 		</nav>

@@ -65,6 +65,13 @@
   </div>
   <p>Reviews:</p>
   <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
+
+  <form th:action="@{/addFavorite}" th:method="post" >
+    <input type="hidden" th:value="${truck.getId()}" name="truckId">
+
+    <button type="submit">Add Favorite</button>
+  </form>
+
   <div th:each="review : ${truck.reviews}" class="truck-reviews">
     <span th:text="${review.reviewText}"></span>
   </div>

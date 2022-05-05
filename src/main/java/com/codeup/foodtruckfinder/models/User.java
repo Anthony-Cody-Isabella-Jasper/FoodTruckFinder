@@ -38,6 +38,7 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        profilePicture   = copy.profilePicture;
     }
 
     public User(String username, String password, String email, boolean truckOwner, String profilePicture) {

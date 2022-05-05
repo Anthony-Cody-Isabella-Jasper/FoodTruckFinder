@@ -33,9 +33,13 @@ public class TruckController {
 
     @PostMapping("/")
     public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan") boolean vegan, @RequestParam(name = "vegetarian") boolean vegetarian) {
+        if(filterCuisine.equals("all")) {
+            model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));
+        } else {
+            model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));
+        }
         model.addAttribute("cuisines", cuisineDao.findAll());
         model.addAttribute("rating", reviewDao.findAll());
-        model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));
         return "index";
     }
 

@@ -2,10 +2,12 @@ package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Cuisine;
 import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,7 @@ public class TruckController {
 
     @GetMapping("/")
     public String index(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("cuisines", cuisineDao.findAll());
         model.addAttribute("rating", reviewDao.findAll());
         model.addAttribute("trucks", truckDao.findAll());
@@ -61,6 +64,7 @@ public class TruckController {
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
         Truck truck = truckDao.getTruckById(id);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);
         model.addAttribute("reviews", reviewDao.getReviewsByTruck(truck));
         return "truck/individual";
@@ -68,6 +72,7 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/individual";
     }

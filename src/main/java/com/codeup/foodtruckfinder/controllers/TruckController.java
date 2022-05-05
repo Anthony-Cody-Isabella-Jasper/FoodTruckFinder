@@ -2,10 +2,12 @@ package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Cuisine;
 import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -65,6 +67,15 @@ public class TruckController {
         model.addAttribute("reviews", reviewDao.getReviewsByTruck(truck));
         return "truck/individual";
     }
+
+//    @PostMapping("/truck/{id}/show")
+//    public String addToFav(@PathVariable Long id, @ModelAttribute Truck truck) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        truck.setUsersFavorited(user);
+//
+//        return "/profile";
+//    }
 
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {

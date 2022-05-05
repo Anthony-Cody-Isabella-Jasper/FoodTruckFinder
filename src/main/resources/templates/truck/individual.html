@@ -65,6 +65,9 @@
   </div>
   <p>Reviews:</p>
   <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
+<!--  <form th:action="@{/truck/{id}/show(id=${truck.id})}" th:method="post" th:object="truck">-->
+<!--      <button type="submit">Add to favorites</button>-->
+<!--  </form>-->
   <div th:each="review : ${reviews}" class="truck-reviews">
     <span th:text="${review.reviewText}"></span>
   </div>

@@ -33,14 +33,12 @@
 	<label for="password">Password</label>
 	<input id="password" type="password" th:field="*{password}"/>
 	
-	<div class="form-check">
-		<input class="form-check-input" type="checkbox" value="user" id="userCheck">
+	<div>
+		<input name="roleSelect" type="radio" value="user" id="userCheck" checked>
 		<label class="form-check-label" for="userCheck">
 			Consumer
-		</label>
-	</div>
-	<div class="form-check">
-		<input class="form-check-input" type="checkbox" value="truck" id="truckCheck">
+		</label><br>
+		<input name="roleSelect" type="radio" value="truck" id="truckCheck">
 		<label class="form-check-label" for="truckCheck">
 			Truck Owner
 		</label>

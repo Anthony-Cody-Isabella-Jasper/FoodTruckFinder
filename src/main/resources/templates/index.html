@@ -56,7 +56,7 @@
 					<span th:text="${cuisine.name}"></span></p>
 				<a href="#" class="btn btn-primary">Truck location</a>
 				<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>                </p>
+				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
 				<a href="#" class="btn btn-primary">Truck location</a>
 			</div>
 		</div>
@@ -79,9 +79,6 @@
 			})
 		);
 		let trucks = [];
-		let longitudes = [];
-		let latitudes = [];
-		let truckNames = [];
 		/*<![CDATA[*/
 		/*[# th:each="truck : ${trucks}"]*/
 		trucks.push({

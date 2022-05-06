@@ -63,7 +63,8 @@
   <div th:each="menu : ${truck.menu}" class="menu-items">
     <span th:text="${menu.name}"></span>
   </div>
-  <p>Reviews:</p>
+  <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
+
   <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
 
 

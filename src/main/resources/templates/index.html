@@ -58,6 +58,7 @@
 				<p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}">Truck Cuisines:
 					<span th:text="${cuisine.name}"></span></p>
 				<a href="#" class="btn btn-primary">Truck location</a>
+				<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
 				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
 			</div>
 		</div>

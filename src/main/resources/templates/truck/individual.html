@@ -21,7 +21,10 @@
 			<div id="map"></div>
 			<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
 				<input type="hidden" name="longitude" id="truckLongitude"> <input type="hidden" name="latitude" id="truckLatitude">
-				<button class="btn btn-light" type="submit">Set Truck Location</button>
+				<button class="btn btn-light" type="submit">Activate Beacon</button>
+			</form>
+			<form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+				<button class="btn btn-light" type="submit">Go Ghost</button>
 			</form>
 			<p>Verified at location by Truck owner / ADD GREEN CHECK AND RED CHECK ?</p>
 			<p>Verified by <span>#</span> of visitors</p>

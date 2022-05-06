@@ -10,27 +10,24 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	
 	<div sec:authorize="isAuthenticated()">
 		<nav th:replace="partials :: loggedNav"></nav>
 	</div>
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
-
-
-
 	<div id="map"></div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-			<span class="input-group-text" id="truckSearch">Add magnifying glass icon</span>
-		</div>
-		<input type="text" class="form-control" placeholder="Search for FoodTruck" aria-label="Search" aria-describedby="truckSearch">
+	<div>
+		<form th:action="@{/search}" method="post">
+			<input type="text" name="search" placeholder="Food Truck Search">
+			<button type="submit" class="btn btn-light"><i class="bi bi-search"></i> Search</button>
+		</form>
 	</div>
 	<div>
-		<form th:action="@{/}" method="post">
+		<h5>Food Truck Filters</h5>
+		<form th:action="@{/filter}" method="post">
 			<label for="cuisineSelect">Cuisine</label>
-			<select name="filterCuisine" id="cuisineSelect" class="custom-select">
+			<select name="filterCuisine" id="cuisineSelect">
 				<option value="all" selected></option>
 				<option value="all">all cuisines</option>
 				<div th:each="cuisine : ${cuisines}">
@@ -41,10 +38,10 @@
 			<input type="checkbox" id="veganCheck" name="vegan">
 			<label for="vegetarianCheck">Vegetarian</label>
 			<input type="checkbox" id="vegetarianCheck" name="vegetarian">
-			<button type="submit">Apply Filters</button>
+			<button type="submit" class="btn btn-light">Apply Filters</button>
 		</form>
 		<form th:action="@{/}" method="get">
-			<button type="submit">Clear Filters</button>
+			<button type="submit" class="btn btn-light">Clear Filters</button>
 		</form>
 	</div>
 	<div class="row">
@@ -60,6 +57,8 @@
 				<a href="#" class="btn btn-primary">Truck location</a>
 				<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
 				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
+				</p>
+				<a href="#" class="btn btn-primary">Truck location</a>
 			</div>
 		</div>
 	</div>

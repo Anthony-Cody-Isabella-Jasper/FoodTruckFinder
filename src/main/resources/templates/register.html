@@ -33,14 +33,13 @@
 	<label for="password">Password</label>
 	<input id="password" type="password" th:field="*{password}"/>
 	
-	<div class="form-check">
-		<input class="form-check-input" type="checkbox" value="user" id="userCheck">
+	<div>
+		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked onclick="showProfPics()">
 		<label class="form-check-label" for="userCheck">
 			Consumer
 		</label>
-	</div>
-	<div class="form-check">
-		<input class="form-check-input" type="checkbox" value="truck" id="truckCheck">
+		<br>
+		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck" onclick="showProfPics()">
 		<label class="form-check-label" for="truckCheck">
 			Truck Owner
 		</label>
@@ -51,30 +50,8 @@
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
 	</div>
 	<input value="Sign me up!" type="submit"/>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-	let avatars = Array.from(document.getElementsByClassName("avatar"));
-	let fetchedPictures = [];
-	$.ajax({
-		url: "https://randomuser.me/api/?lego&results=" + 50,
-		dataType: "json",
-		cache: false,
-		success: function (data) {
-			data.results.forEach(result => {
-				if(!fetchedPictures.includes(result.picture.thumbnail)) {
-					fetchedPictures.push(result.picture.thumbnail);
-				}
-			});
-			avatars.forEach((picture, index) => {
-				picture.firstChild.src = fetchedPictures[index];
-				picture.lastChild.value = fetchedPictures[index];
-			});
-		}
-	});
-</script>
 <footer th:replace="partials :: footer"></footer>

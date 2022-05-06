@@ -28,12 +28,12 @@ public class FavoriteController {
     public String addFavorite(@RequestParam Long truckId, @RequestParam String username) {
         User user = userDao.findByUsername(username);
         List<Truck> fave;
-        if(user.getFavoriteTrucks() == null) {
+        if (user == null) {
+            return "redirect:/login";
+        } else if(user.getFavoriteTrucks() == null) {
             fave = new ArrayList<>();
-            System.out.println("new list created");
         } else {
             fave = user.getFavoriteTrucks();
-            System.out.println("not new list");
         }
         fave.add(truckDao.getTruckById(truckId));
         user.setFavoriteTrucks(fave);

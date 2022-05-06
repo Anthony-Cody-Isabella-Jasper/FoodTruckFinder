@@ -25,10 +25,12 @@ public class Truck {
     @Column(nullable = true)
     private String profile_picture;
 
-    @Column
-    private double longitude;
-    @Column
-    private double latitude;
+    @Column(nullable = true)
+    private Double longitude;
+  
+    @Column(nullable = true)
+    private Double latitude;
+  
     @Column(nullable = false)
     private Boolean location_confirmation;
 
@@ -125,19 +127,19 @@ public class Truck {
         this.profile_picture = profile_picture;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 

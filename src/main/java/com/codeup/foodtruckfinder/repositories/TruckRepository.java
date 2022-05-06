@@ -2,7 +2,9 @@ package com.codeup.foodtruckfinder.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.codeup.foodtruckfinder.models.Truck;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,4 +19,14 @@ public interface TruckRepository extends JpaRepository<Truck, Long> {
 
     @Query(value = "SELECT DISTINCT t.id, t.description, t.latitude, t.location_confirmation, t.longitude, t.name, t.phone, t.profile_picture, t.truck_owner_id FROM trucks t JOIN menu_items mi on t.id = mi.truck_id WHERE mi.vegetarian = ?1 AND mi.vegan = ?2", nativeQuery = true)
     List<Truck> filterTrucks(boolean vegetarian, boolean vegan);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE trucks SET longitude = null WHERE id = ?1", nativeQuery = true)
+    void nullLongitude(long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE trucks SET latitude = null WHERE id = ?1", nativeQuery = true)
+    void nullLatitude(long id);
 }

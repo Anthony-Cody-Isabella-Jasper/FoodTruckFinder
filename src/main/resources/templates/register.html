@@ -34,11 +34,12 @@
 	<input id="password" type="password" th:field="*{password}"/>
 	
 	<div>
-		<input name="roleSelect" type="radio" value="user" id="userCheck" checked>
+		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked onclick="showProfPics()">
 		<label class="form-check-label" for="userCheck">
 			Consumer
-		</label><br>
-		<input name="roleSelect" type="radio" value="truck" id="truckCheck">
+		</label>
+		<br>
+		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck" onclick="showProfPics()">
 		<label class="form-check-label" for="truckCheck">
 			Truck Owner
 		</label>

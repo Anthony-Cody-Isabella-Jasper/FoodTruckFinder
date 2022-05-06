@@ -41,4 +41,15 @@ public class FavoriteController {
         return "redirect:/" + user.getUsername() + "/profile";
     }
 
+    @PostMapping("/deleteFavorite")
+    public String deleteFavorite(@RequestParam Long truckId, @RequestParam String username) {
+        System.out.println("username: " + username);
+        System.out.println("truckId = " + truckId);
+
+        User user = userDao.findByUsername(username);
+        System.out.println("user.getId() = " + user.getId());
+        userDao.deleteFavorite(user.getId(), truckId);
+        return "redirect:/" + user.getUsername() + "/profile";
+    }
+
 }

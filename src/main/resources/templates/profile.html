@@ -40,6 +40,13 @@
     <img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
    <p th:text="${favorite.name}"></p>
     <p th:text="${favorite.phone}"></p>
+
+    <form th:action="@{/deleteFavorite}" th:method="post" >
+        <input hidden th:value="${favorite.getId()}" name="truckId">
+        <input hidden th:value="${#authentication.getName()}" name="username">
+        <button type="submit">Delete Favorite</button>
+    </form>
+
 </div>
 
 <h3>My Reviews</h3>

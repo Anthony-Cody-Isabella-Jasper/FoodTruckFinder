@@ -39,6 +39,7 @@ public class TruckController {
 
     @PostMapping("/filter")
     public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan", required = false) boolean vegan, @RequestParam(name = "vegetarian", required = false) boolean vegetarian) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (filterCuisine.equals("all")) {
             model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));
         } else {

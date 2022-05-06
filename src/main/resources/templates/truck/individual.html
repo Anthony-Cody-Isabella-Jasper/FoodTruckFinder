@@ -19,11 +19,11 @@
 	<div>
 		<div>
 			<div id="map"></div>
-			<button id="triangulate">Triangulate Location</button>
+			<button class="btn btn-light" id="triangulate">Triangulate Location</button>
 			<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
 				<input type="hidden" name="longitude" id="truckLongitude">
 				<input type="hidden" name="latitude" id="truckLatitude">
-				<button class="btn btn-light" type="submit" id="beacon" disabled>Activate Beacon</button>
+				<button class="btn btn-light" type="submit" id="beacon" hidden>Activate Beacon</button>
 			</form>
 			<form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
 				<button class="btn btn-light" type="submit">Go Ghost</button>
@@ -104,15 +104,23 @@
 				zoom: 9 // starting zoom
 			});
 		}
-		let geolocate = new mapboxgl.GeolocateControl;
-		map.addControl(geolocate);
-		geolocate.on('geolocate', e => {
-			document.getElementById("truckLongitude").value = e.coords.longitude;
-			document.getElementById("truckLatitude").value = e.coords.latitude;
-			document.getElementById("beacon").disabled = false;
-		});
+		map.addControl(new mapboxgl.GeolocateControl({
+			positionOptions: {
+				enableHighAccuracy: true
+			},
+			trackUserLocation: true,
+			showUserHeading: true
+		}));
 		document.getElementById("triangulate").addEventListener("click", () => {
-		
-		})
+			let triangulate = document.getElementById("triangulate");
+			triangulate.disabled = true;
+			triangulate.innerText = "Pinging Satellites...";
+			navigator.geolocation.getCurrentPosition(position => {
+				document.getElementById("truckLongitude").value = position.coords.longitude;
+				document.getElementById("truckLatitude").value = position.coords.latitude;
+				document.getElementById("triangulate").hidden = true;
+				document.getElementById("beacon").hidden = false;
+			});
+		});
 	</script>
 	<footer th:replace="partials :: footer"></footer>

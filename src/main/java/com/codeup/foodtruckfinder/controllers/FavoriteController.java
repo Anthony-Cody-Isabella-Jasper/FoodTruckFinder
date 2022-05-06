@@ -29,7 +29,7 @@ public class FavoriteController {
         User user = userDao.findByUsername(username);
         List<Truck> fave;
         if (user == null) {
-            return "redirect:/";
+            return "redirect:/login";
         } else if(user.getFavoriteTrucks() == null) {
             fave = new ArrayList<>();
             System.out.println("new list created");

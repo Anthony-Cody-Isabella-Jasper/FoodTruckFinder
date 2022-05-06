@@ -10,12 +10,21 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">
+
+<div sec:authorize="isAuthenticated()">
+	<nav th:if="${!#authentication.principal.isTruckOwner}">
 		<nav th:replace="partials :: loggedNav"></nav>
-	</div>
-	<div sec:authorize="!isAuthenticated()">
-		<nav th:replace="partials :: notLoggedNav"></nav>
-	</div>
+	</nav>
+	<nav th:if="${#authentication.principal.isTruckOwner}">
+		<nav th:replace="partials :: truckNav"></nav>
+	</nav>
+</div>
+
+<div sec:authorize="!isAuthenticated()">
+	<nav th:replace="partials :: notLoggedNav"></nav>
+</div>
+
+
 	<div>
 		<div>
 			<div id="map"></div>
@@ -65,7 +74,7 @@
 		<a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
 		<form th:action="@{/addFavorite}" th:method="post">
 			<input hidden th:value="${truck.getId()}" name="truckId">
-			<input hidden th:value="${#authentication.getName()}" name="username">
+			<input hidden th:value="${#authentication.principal.getId()}" name="id">
 			<button type="submit">Add Favorite</button>
 		</form>
 		<div th:each="review : ${truck.reviews}" class="truck-reviews">

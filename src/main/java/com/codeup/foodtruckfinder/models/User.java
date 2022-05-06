@@ -46,6 +46,12 @@ public class User {
         admin = copy.admin;
     }
 
+    public User(String username, String email, String profilePicture){
+        this.username = username;
+        this.email = email;
+        this.profilePicture = profilePicture;
+    }
+
     public User(String username, String password, String email, boolean truckOwner, String profilePicture) {
         this.username = username;
         this.password = password;

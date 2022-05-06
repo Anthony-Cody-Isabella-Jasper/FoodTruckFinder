@@ -30,10 +30,8 @@ public class FavoriteController {
         List<Truck> fave;
         if(user.getFavoriteTrucks() == null) {
             fave = new ArrayList<>();
-            System.out.println("new list created");
         } else {
             fave = user.getFavoriteTrucks();
-            System.out.println("not new list");
         }
         fave.add(truckDao.getTruckById(truckId));
         user.setFavoriteTrucks(fave);

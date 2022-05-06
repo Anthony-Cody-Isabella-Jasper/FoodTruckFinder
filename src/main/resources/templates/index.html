@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="UTF-8"/>
-	<title>FoodTruckFinder</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-	<link rel="stylesheet" th:href="@{/main.css}">
+    <meta charset="UTF-8"/>
+    <title>FoodTruckFinder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">
-		<nav th:replace="partials :: loggedNav"></nav>
-	</div>
-	<div sec:authorize="!isAuthenticated()">
-		<nav th:replace="partials :: notLoggedNav"></nav>
-	</div>
+
+  <div sec:authorize="isAuthenticated()">
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
+</div>
+
+<div sec:authorize="!isAuthenticated()">
+    <nav th:replace="partials :: notLoggedNav"></nav>
+</div>
+
 	<div id="map"></div>
 	<div>
 		<form th:action="@{/search}" method="post">
@@ -96,3 +105,4 @@
 		});
 	</script>
 	<footer th:replace="partials :: footer"></footer>
+

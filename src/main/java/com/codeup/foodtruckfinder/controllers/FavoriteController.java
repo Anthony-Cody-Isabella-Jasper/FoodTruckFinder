@@ -25,8 +25,8 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public String addFavorite(@RequestParam Long truckId, @RequestParam String username) {
-        User user = userDao.findByUsername(username);
+    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id) {
+        User user = userDao.getById(id);
         List<Truck> fave;
         if (user == null) {
             return "redirect:/login";
@@ -38,18 +38,14 @@ public class FavoriteController {
         fave.add(truckDao.getTruckById(truckId));
         user.setFavoriteTrucks(fave);
         userDao.save(user);
-        return "redirect:/" + user.getUsername() + "/profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 
     @PostMapping("/deleteFavorite")
-    public String deleteFavorite(@RequestParam Long truckId, @RequestParam String username) {
-        System.out.println("username: " + username);
-        System.out.println("truckId = " + truckId);
-
-        User user = userDao.findByUsername(username);
-        System.out.println("user.getId() = " + user.getId());
-        userDao.deleteFavorite(user.getId(), truckId);
-        return "redirect:/" + user.getUsername() + "/profile";
+    public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {
+        User user = userDao.getById(id);
+        userDao.deleteFavorite(id, truckId);
+        return "redirect:/" + user.getId() + "/profile";
     }
 
 }

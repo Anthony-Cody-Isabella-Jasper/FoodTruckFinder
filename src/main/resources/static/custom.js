@@ -17,12 +17,10 @@ $.ajax({
     }
 });
 
-// let html = '<p>After confirmation, you can edit your trucks profile</p>'
 
 function showProfPics() {
     if (document.getElementById("truckCheck").checked === true) {
         document.getElementById("avatar-choices").style.visibility = "hidden";
-        // document.getElementById("avatar-choices").innerHTML = html;
     } else if(document.getElementById("userCheck").checked === true){
         document.getElementById("avatar-choices").style.visibility = "visible";
     }

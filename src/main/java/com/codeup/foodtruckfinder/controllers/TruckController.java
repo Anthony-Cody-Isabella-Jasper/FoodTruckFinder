@@ -39,6 +39,7 @@ public class TruckController {
 
     @PostMapping("/filter")
     public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan", required = false) boolean vegan, @RequestParam(name = "vegetarian", required = false) boolean vegetarian) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (filterCuisine.equals("all")) {
             model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));
         } else {
@@ -68,14 +69,16 @@ public class TruckController {
         return "truck/individual";
     }
 
-//    @PostMapping("/truck/{id}/show")
-//    public String addToFav(@PathVariable Long id, @ModelAttribute Truck truck) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        truck.setUsersFavorited(user);
-//
-//        return "/profile";
-//    }
+    @PostMapping("/truck/{id}/located")
+    public String setTruckLocation(Model model, @PathVariable Long id, @RequestParam("longitude") double longitude, @RequestParam("latitude") double latitude) {
+        Truck truck = truckDao.getTruckById(id);
+        truck.setLatitude(latitude);
+        truck.setLongitude(longitude);
+        truckDao.save(truck);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("truck", truck);
+        return "truck/individual";
+    }
 
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {

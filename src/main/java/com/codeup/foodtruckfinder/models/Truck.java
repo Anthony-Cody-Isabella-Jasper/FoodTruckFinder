@@ -27,8 +27,10 @@ public class Truck {
 
     @Column(nullable = true)
     private Double longitude;
+  
     @Column(nullable = true)
     private Double latitude;
+  
     @Column(nullable = false)
     private Boolean location_confirmation;
 

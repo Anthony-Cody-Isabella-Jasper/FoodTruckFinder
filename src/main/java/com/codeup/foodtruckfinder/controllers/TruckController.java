@@ -2,7 +2,6 @@ package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
-import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,7 @@ public class TruckController {
     private final CuisineRepository cuisineDao;
     private final UserRepository userDao;
 
-    public TruckController(TruckRepository truckDao, ReviewRepository reviewDao, CuisineRepository cuisineDao, UserRepository userDao) {
+    public TruckController(TruckRepository truckDao, CuisineRepository cuisineDao, UserRepository userDao) {
         this.truckDao = truckDao;
         this.cuisineDao = cuisineDao;
         this.userDao = userDao;
@@ -30,7 +29,15 @@ public class TruckController {
         return "index";
     }
 
-    @PostMapping("/")
+    @PostMapping("/search")
+    public String searchIndex(Model model, @RequestParam(name = "search") String search) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("cuisines", cuisineDao.findAll());
+        model.addAttribute("trucks", truckDao.searchTrucks(search));
+        return "index";
+    }
+
+    @PostMapping("/filter")
     public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan", required = false) boolean vegan, @RequestParam(name = "vegetarian", required = false) boolean vegetarian) {
         if (filterCuisine.equals("all")) {
             model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));

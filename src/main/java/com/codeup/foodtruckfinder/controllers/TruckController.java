@@ -70,11 +70,21 @@ public class TruckController {
     }
 
     @PostMapping("/truck/{id}/located")
-    public String setTruckLocation(Model model, @PathVariable Long id, @RequestParam("longitude") double longitude, @RequestParam("latitude") double latitude) {
+    public String setTruckLocation(Model model, @PathVariable Long id, @RequestParam("longitude") Double longitude, @RequestParam("latitude") Double latitude) {
         Truck truck = truckDao.getTruckById(id);
         truck.setLatitude(latitude);
         truck.setLongitude(longitude);
         truckDao.save(truck);
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("truck", truck);
+        return "truck/individual";
+    }
+
+    @PostMapping("/truck/{id}/unlocated")
+    public String removeTruckLocation(Model model, @PathVariable Long id) {
+        Truck truck = truckDao.getTruckById(id);
+        truckDao.nullLongitude(id);
+        truckDao.nullLatitude(id);
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);
         return "truck/individual";

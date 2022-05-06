@@ -52,8 +52,11 @@
 			<div class="card-body">
 				<a th:href="@{/truck/{id}/show(id=${truck.id})}"><h5 class="truck-name">
 					<span th:text="${truck.name}"></span></h5></a>
+				<p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}">Truck Cuisines:
+					<span th:text="${cuisine.name}"></span></p>
+				<a href="#" class="btn btn-primary">Truck location</a>
+				<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
 				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
-				<p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}"><span th:text="${cuisine.name}"></span>
 				</p>
 				<a href="#" class="btn btn-primary">Truck location</a>
 			</div>

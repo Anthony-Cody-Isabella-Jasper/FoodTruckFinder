@@ -4,10 +4,9 @@ import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +24,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public String addFavorite(@RequestParam Long truckId, @RequestParam String username) {
+    public Object addFavorite(@RequestParam Long truckId, @RequestParam String username) {
         User user = userDao.findByUsername(username);
         List<Truck> fave;
         if (user == null) {
@@ -35,19 +34,21 @@ public class FavoriteController {
         } else {
             fave = user.getFavoriteTrucks();
         }
-        fave.add(truckDao.getTruckById(truckId));
-        user.setFavoriteTrucks(fave);
-        userDao.save(user);
+
+        long userId = user.getId();
+        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(userId)) {
+            return "redirect:/truck/" + truckId + "/show";
+        } else {
+            fave.add(truckDao.getTruckById(truckId));
+            user.setFavoriteTrucks(fave);
+            userDao.save(user);
+        }
         return "redirect:/" + user.getUsername() + "/profile";
     }
 
     @PostMapping("/deleteFavorite")
     public String deleteFavorite(@RequestParam Long truckId, @RequestParam String username) {
-        System.out.println("username: " + username);
-        System.out.println("truckId = " + truckId);
-
         User user = userDao.findByUsername(username);
-        System.out.println("user.getId() = " + user.getId());
         userDao.deleteFavorite(user.getId(), truckId);
         return "redirect:/" + user.getUsername() + "/profile";
     }

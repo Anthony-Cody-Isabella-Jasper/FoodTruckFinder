@@ -34,6 +34,7 @@
 <div>
     <form method="post" th:action="@{/truck/editTruck}" th:object="${truck}">
         <input type="hidden" th:field="*{id}">
+        <input type="hidden" name="truckPictureUrls" id="truckPictureUrls">
         <label for="name">Name:</label>
         <input id="name" th:field="*{name}" type="text">
         <br>
@@ -44,13 +45,50 @@
         <input id="phoneNumber" th:field="*{phone}" type="text">
         <br>
         <label for="profilePic">Profile Pic</label>
-        <input id="profilePic" type="file" th:field="*{profile_picture}"/>
+        <button type="button" id="profilePicUpload" >Upload Profile Picture</button>
+        <input id="profilePic" type="text" th:field="*{profile_picture}"/>
         <br>
         <input type="hidden" th:field="*{location_confirmation}"/>
         <!--<label for="images">Truck images</label>-->
 <!--        <input id="images" type="file" th:field="*{}"/>-->
+        <button type="button" id="truckPicturesUpload">Upload Truck Picture</button>
         <button type="submit">Submit</button>
     </form>
 </div>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script>
+    const client = filestack.init("AyGiecp5QeqFNsUYFResLz")
 
+    function multiPhotoFileStack(){
+        client.picker(multiPhotoOptions).open()
+    }
+
+    function singlePhotoFileStack(){
+        client.picker(singlePhotoOptions).open()
+    }
+
+    const singlePhotoOptions = {
+        onUploadDone : function(res){
+            document.getElementById("profilePic").setAttribute("value", res.filesUploaded[0].url)
+        }
+    }
+
+    const multiPhotoOptions = {
+        onUploadDone: function(res){
+            console.log(res)
+            let imageUrl = ""
+
+            for (var i = 0; i < res.filesUploaded.length; i++){
+                imageUrl += res.filesUploaded[i].url + ","
+            }
+
+            console.log(imageUrl)
+            document.getElementById("truckPictureUrls").setAttribute("value", imageUrl)
+        },
+        maxFiles: 5,
+    };
+
+    document.getElementById("profilePicUpload").addEventListener("click", singlePhotoFileStack)
+    document.getElementById("truckPicturesUpload").addEventListener("click", multiPhotoFileStack)
+</script>
 <footer th:replace="partials :: footer"></footer>

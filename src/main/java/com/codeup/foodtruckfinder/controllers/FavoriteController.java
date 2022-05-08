@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public Object addFavorite(@RequestParam Long truckId, @RequestParam String username) {
+    public Object addFavorite(@RequestParam Long truckId, @RequestParam String username, RedirectAttributes redirAttrs) {
         User user = userDao.findByUsername(username);
         List<Truck> fave;
         if (user == null) {
@@ -37,7 +38,8 @@ public class FavoriteController {
 
         long userId = user.getId();
         if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(userId)) {
-            return "redirect:/truck/" + truckId + "/show";
+             redirAttrs.addFlashAttribute("error", "This truck is already added to favorites.");
+                return "redirect:/truck/" + truckId + "/show";
         } else {
             fave.add(truckDao.getTruckById(truckId));
             user.setFavoriteTrucks(fave);

@@ -1,6 +1,7 @@
 package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.models.TruckPicture;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
@@ -8,6 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class TruckController {
@@ -56,7 +60,14 @@ public class TruckController {
     }
 
     @PostMapping("/truck/editTruck")
-    public String postEditTruck(@ModelAttribute Truck truck) {
+    public String postEditTruck(@ModelAttribute Truck truck, @RequestParam String truckPictureUrls ) {
+        List<TruckPicture> truckImages = new ArrayList<>();
+        String [] urls = truckPictureUrls.split(",");
+        for (String url : urls){
+            System.out.println(url);
+            truckImages.add(new TruckPicture(url, truck));
+        }
+        truck.setTruckPictures(truckImages);
         truckDao.save(truck);
         return "redirect:/truck/" + truck.getId() + "/show";
     }

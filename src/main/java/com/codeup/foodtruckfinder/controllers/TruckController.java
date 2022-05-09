@@ -76,7 +76,7 @@ public class TruckController {
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
         Truck truck = truckDao.getTruckById(id);
-        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);
         return "truck/individual";
     }

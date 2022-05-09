@@ -33,12 +33,14 @@
 			<form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
 				<button class="btn btn-light" type="submit">Go Ghost</button>
 			</form>
-			<div th:if="${!#authentication.principal.isTruckOwner}">
+			<div sec:authorize="isAuthenticated()">
+				<div th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/truck/verify}" method="post">
 						<input type="hidden" name="truckId" th:value="${truck.id}">
 						<input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
 						<button class="btn btn-light" type="submit">Verify Truck on Location</button>
 					</form>
+				</div>
 			</div>
 			<p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
 		</div>
@@ -75,13 +77,15 @@
 			<span th:text="${menu.name}"></span>
 		</div>
 		<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-		<a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
-		<form th:action="@{/addFavorite}" th:method="post">
-			<input hidden th:value="${truck.getId()}" name="truckId">
-			<input hidden th:value="${#authentication.principal.getId()}" name="id">
-			<div class="alert alert-primary" role="alert" th:text="${error}" th:if="${error}"></div>
-			<button type="submit">Add Favorite</button>
-		</form>
+		<div sec:authorize="isAuthenticated()">
+			<a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
+			<form th:action="@{/addFavorite}" th:method="post">
+				<input hidden th:value="${truck.getId()}" name="truckId">
+				<input hidden th:value="${#authentication.principal.getId()}" name="id">
+				<div class="alert alert-primary" role="alert" th:text="${error}" th:if="${error}"></div>
+				<button type="submit">Add Favorite</button>
+			</form>
+		</div>
 		<div th:each="review : ${truck.reviews}" class="truck-reviews">
 			<span th:text="${review.reviewText}"></span>
 		</div>

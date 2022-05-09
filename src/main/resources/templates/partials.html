@@ -6,13 +6,13 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
                     data-toggle="dropdown" aria-expanded="false">
                 <p>Truck profile picture</p>
-<!--                <img th:attr="src=${#authentication.principal.getProfile_picture()}">-->
+                <img th:attr="src=${#authentication.principal.getTruck().profile_picture}">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
 
-                <a class="dropdown-item" th:href="@{/truck/{id}/show(id=${#authentication.principal.getId()})}">View Truck</a>
+                <a class="dropdown-item" th:href="@{/truck/{id}/show(id=${#authentication.principal.getTruck().getId()})}">View Truck</a>
 
-                <a class="dropdown-item" th:href="@{/truck/{id}/edit(id=${#authentication.principal.getId()})}">Edit Truck</a>
+                <a class="dropdown-item" th:href="@{/truck/{id}/edit(id=${#authentication.principal.getTruck().getId()})}">Edit Truck</a>
 
                 <a class="dropdown-item">
                     <form th:action="@{/logout}" th:method="post">

@@ -21,6 +21,11 @@ public class User {
     private boolean admin;
     @Column
     private String profilePicture;
+
+    @OneToOne
+    private Truck truck;
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;
@@ -44,9 +49,11 @@ public class User {
         reviews = copy.reviews;
         truckOwner = copy.truckOwner;
         admin = copy.admin;
+        truck = copy.truck;
+        ;
     }
 
-    public User(String username, String email, String profilePicture){
+    public User(String username, String email, String profilePicture) {
         this.username = username;
         this.email = email;
         this.profilePicture = profilePicture;
@@ -69,6 +76,20 @@ public class User {
         this.truckOwner = truckOwner;
         this.admin = admin;
         this.profilePicture = profilePicture;
+        this.favoriteTrucks = favoriteTrucks;
+        this.confirmed_trucks = confirmed_trucks;
+        this.reviews = reviews;
+    }
+
+    public User(long id, String username, String password, String email, boolean truckOwner, boolean admin, String profilePicture, Truck truck, List<Truck> favoriteTrucks, List<Truck> confirmed_trucks, List<Review> reviews) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.truckOwner = truckOwner;
+        this.admin = admin;
+        this.profilePicture = profilePicture;
+        this.truck = truck;
         this.favoriteTrucks = favoriteTrucks;
         this.confirmed_trucks = confirmed_trucks;
         this.reviews = reviews;
@@ -153,4 +174,13 @@ public class User {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
+    public Truck getTruck() {
+        return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
+
 }

@@ -22,7 +22,7 @@ public class User {
     @Column
     private String profilePicture;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Truck truck;
 
 
@@ -50,7 +50,7 @@ public class User {
         truckOwner = copy.truckOwner;
         admin = copy.admin;
         truck = copy.truck;
-        ;
+
     }
 
     public User(String username, String email, String profilePicture) {

@@ -34,4 +34,5 @@ public interface TruckRepository extends JpaRepository<Truck, Long> {
     @Modifying
     @Query(value = "DELETE FROM user_confirmations WHERE truck_id = ?1", nativeQuery = true)
     void unverifyTruck(long id);
+
 }

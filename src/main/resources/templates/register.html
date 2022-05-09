@@ -15,10 +15,7 @@
 </head>
 <body>
 
-<div sec:authorize="isAuthenticated()">
-	<nav th:replace="partials :: loggedNav"></nav>
-</div>
-<div sec:authorize="!isAuthenticated()">
+<div>
 	<nav th:replace="partials :: notLoggedNav"></nav>
 </div>
 

@@ -4,12 +4,12 @@ import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id) {
+    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id, RedirectAttributes redirAttrs) {
         User user = userDao.getById(id);
         List<Truck> fave;
         if (user == null) {
@@ -35,11 +35,18 @@ public class FavoriteController {
         } else {
             fave = user.getFavoriteTrucks();
         }
-        fave.add(truckDao.getTruckById(truckId));
-        user.setFavoriteTrucks(fave);
-        userDao.save(user);
+
+        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user)) {
+             redirAttrs.addFlashAttribute("error", "This truck is already added to favorites.");
+                return "redirect:/truck/" + truckId + "/show";
+        } else {
+            fave.add(truckDao.getTruckById(truckId));
+            user.setFavoriteTrucks(fave);
+            userDao.save(user);
+        }
         return "redirect:/" + user.getId() + "/profile";
     }
+
 
     @PostMapping("/deleteFavorite")
     public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {

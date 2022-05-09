@@ -29,4 +29,10 @@ public interface TruckRepository extends JpaRepository<Truck, Long> {
     @Modifying
     @Query(value = "UPDATE trucks SET latitude = null WHERE id = ?1", nativeQuery = true)
     void nullLatitude(long id);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_confirmations WHERE truck_id = ?1", nativeQuery = true)
+    void unverifyTruck(long id);
+
 }

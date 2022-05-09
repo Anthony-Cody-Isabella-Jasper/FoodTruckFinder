@@ -44,7 +44,7 @@
 
 <div class="userFavorites" th:each="favorite : ${favorites}">
     <img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
-   <p th:text="${favorite.name}"></p>
+    <a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><p th:text="${favorite.name}"></p></a>
     <p th:text="${favorite.phone}"></p>
 
     <form th:action="@{/deleteFavorite}" th:method="post" >

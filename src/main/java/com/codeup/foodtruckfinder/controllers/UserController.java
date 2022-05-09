@@ -1,6 +1,9 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Truck;
+import com.codeup.foodtruckfinder.models.PendingTruck;
 import com.codeup.foodtruckfinder.models.User;
+import com.codeup.foodtruckfinder.repositories.PendingTruckRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
@@ -17,12 +20,13 @@ public class UserController {
     private final UserRepository userDao;
     private final TruckRepository truckDao;
     private PasswordEncoder passwordEncoder;
+    private final PendingTruckRepository pendingTruckDao;
 
-
-    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao) {
         this.userDao = userDao;
         this.truckDao = truckDao;
         this.passwordEncoder = passwordEncoder;
+        this.pendingTruckDao = pendingTruckDao;
     }
 
     @GetMapping("/register")
@@ -35,17 +39,27 @@ public class UserController {
     public String registerUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        userDao.save(user);
-        return "redirect:/login";
+        if (user.isTruckOwner()) {
+            PendingTruck pendingTruck = new PendingTruck(user.getUsername(), user.getPassword(), user.getEmail());
+            pendingTruckDao.save(pendingTruck);
+            return "redirect:/pending";
+        } else {
+            userDao.save(user);
+        } return "redirect:/login";
+    }
+
+    @GetMapping("/pending")
+    public String pendingApproval() {
+        return "/pending";
     }
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @PostMapping("/login")
-    public String logUser(){
+    public String logUser() {
         return "redirect:/index";
     }
 
@@ -56,7 +70,6 @@ public class UserController {
         model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
         return "/profile";
     }
-
 
 
     @GetMapping("/about")
@@ -79,6 +92,29 @@ public class UserController {
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";
+    }
+
+    @GetMapping("/admin")
+    public String adminView(Model model){
+        model.addAttribute("users", userDao.findAll());
+        model.addAttribute("trucks", truckDao.findAll());
+        return "admin";
+    }
+
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@RequestParam Long userId) {
+//        User user = userDao.getById(userId);
+        userDao.deleteUserFavorite(userId);
+        userDao.deleteById(userId);
+        return "redirect:/index";
+    }
+
+    @PostMapping("/deleteTruck")
+    public String deleteTruck(@RequestParam Long truckId){
+        Truck truck = truckDao.getById(truckId);
+        truckDao.delete(truck);
+        return "redirect:/index";
     }
 
 }

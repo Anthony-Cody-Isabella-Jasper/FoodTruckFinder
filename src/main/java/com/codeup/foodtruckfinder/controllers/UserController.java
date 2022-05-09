@@ -85,7 +85,10 @@ public class UserController {
     }
 
     @PostMapping("/editUser/{id}")
-    public String editUser(@ModelAttribute User user, HttpSession session) {
+    public String editUser(@ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+        if(passwordEncoder.matches(oldPass, user.getPassword())) {
+            user.setPassword(passwordEncoder.encode(newPass));
+        }
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";

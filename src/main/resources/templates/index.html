@@ -10,18 +10,23 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">
-		<nav th:if="${!#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: loggedNav"></nav>
-		</nav>
-		<nav th:if="${#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: truckNav"></nav>
-		</nav>
-	</div>
-	
-	<div sec:authorize="!isAuthenticated()">
-		<nav th:replace="partials :: notLoggedNav"></nav>
-	</div>
+
+
+  <div sec:authorize="isAuthenticated()">
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
+</div>
+
+<div sec:authorize="!isAuthenticated()">
+    <nav th:replace="partials :: notLoggedNav"></nav>
+</div>
+
+  <a th:href="@{/admin}">ADMIN VIEW</a>
+
 	<div id="map"></div>
 	<div>
 		<form th:action="@{/search}" method="post">

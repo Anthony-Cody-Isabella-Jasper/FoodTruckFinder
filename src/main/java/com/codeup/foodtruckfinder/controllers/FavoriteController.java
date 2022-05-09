@@ -36,7 +36,7 @@ public class FavoriteController {
             fave = user.getFavoriteTrucks();
         }
 
-        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user)) {
+        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user.getId())) {
              redirAttrs.addFlashAttribute("error", "This truck is already added to favorites.");
                 return "redirect:/truck/" + truckId + "/show";
         } else {

@@ -22,7 +22,7 @@ public class User {
     @Column
     private String profilePicture;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Truck truck;
 
     @ManyToMany(cascade = CascadeType.ALL)

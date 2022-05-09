@@ -10,7 +10,7 @@ public class Truck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.REMOVE)
     private User truck_owner;
 
     @Column(nullable = false, unique = true)

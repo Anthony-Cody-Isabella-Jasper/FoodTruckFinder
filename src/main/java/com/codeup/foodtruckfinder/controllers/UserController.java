@@ -1,5 +1,6 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.PendingTruck;
 import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.PendingTruckRepository;
@@ -88,6 +89,29 @@ public class UserController {
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";
+    }
+
+    @GetMapping("/admin")
+    public String adminView(Model model){
+        model.addAttribute("users", userDao.findAll());
+        model.addAttribute("trucks", truckDao.findAll());
+        return "admin";
+    }
+
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@RequestParam Long userId) {
+//        User user = userDao.getById(userId);
+        userDao.deleteUserFavorite(userId);
+        userDao.deleteById(userId);
+        return "redirect:/index";
+    }
+
+    @PostMapping("/deleteTruck")
+    public String deleteTruck(@RequestParam Long truckId){
+        Truck truck = truckDao.getById(truckId);
+        truckDao.delete(truck);
+        return "redirect:/index";
     }
 
 }

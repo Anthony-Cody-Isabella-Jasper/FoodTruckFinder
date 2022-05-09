@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8"/>
-    <title>FoodTruckFinder</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-    <link rel="stylesheet" th:href="@{/main.css}">
+	<meta charset="UTF-8"/>
+	<title>FoodTruckFinder</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-  <div sec:authorize="isAuthenticated()">
-    <nav th:if="${!#authentication.principal.isTruckOwner}">
-        <nav th:replace="partials :: loggedNav"></nav>
-    </nav>
-    <nav th:if="${#authentication.principal.isTruckOwner}">
-        <nav th:replace="partials :: truckNav"></nav>
-    </nav>
-</div>
-
-<div sec:authorize="!isAuthenticated()">
-    <nav th:replace="partials :: notLoggedNav"></nav>
-</div>
-
+	<div sec:authorize="isAuthenticated()">
+		<nav th:if="${!#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: loggedNav"></nav>
+		</nav>
+		<nav th:if="${#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: truckNav"></nav>
+		</nav>
+	</div>
+	
+	<div sec:authorize="!isAuthenticated()">
+		<nav th:replace="partials :: notLoggedNav"></nav>
+	</div>
 	<div id="map"></div>
 	<div>
 		<form th:action="@{/search}" method="post">
@@ -65,7 +62,9 @@
 					<span th:text="${cuisine.name}"></span></p>
 				<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
 				<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
-				<a href="#" class="btn btn-primary">Truck location</a>
+				<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">
+					Truck location
+				</button>
 			</div>
 		</div>
 	</div>
@@ -90,6 +89,7 @@
 		/*<![CDATA[*/
 		/*[# th:each="truck : ${trucks}"]*/
 		trucks.push({
+			id: /*[[${truck.getId()}]]*/,
 			longitude: /*[[${truck.getLongitude()}]]*/,
 			latitude: /*[[${truck.getLatitude()}]]*/,
 			name: /*[[${truck.getName()}]]*/
@@ -99,9 +99,20 @@
 		trucks.forEach((truck, index) => {
 			const marker = new mapboxgl.Marker()
 				.setLngLat([truck.longitude, truck.latitude])
-				.setPopup(new mapboxgl.Popup().setHTML("<h4>" + truck.name + "</h4>"))
+				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a>"))
 				.addTo(map);
+		});
+		Array.from(document.getElementsByClassName("truckLocationButton")).forEach(buttonElement => {
+			buttonElement.addEventListener("click", () => {
+				if (!buttonElement.getAttribute("data-longitude")) {
+					window.alert("This food truck has not set up yet!");
+				} else {
+					map.flyTo({
+						center: [buttonElement.getAttribute("data-longitude"), buttonElement.getAttribute("data-latitude")],
+						essential: true
+					});
+				}
+			});
 		});
 	</script>
 	<footer th:replace="partials :: footer"></footer>
-

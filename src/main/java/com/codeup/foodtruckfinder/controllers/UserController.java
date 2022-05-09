@@ -105,7 +105,7 @@ public class UserController {
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
 //        User user = userDao.getById(userId);
-        userDao.deleteUserFavorite(userId);
+//        userDao.deleteUserFavorite(userId);
         userDao.deleteById(userId);
         return "redirect:/index";
     }

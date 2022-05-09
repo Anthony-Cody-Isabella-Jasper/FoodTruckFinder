@@ -10,21 +10,17 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-<div sec:authorize="isAuthenticated()">
-	<nav th:if="${!#authentication.principal.isTruckOwner}">
-		<nav th:replace="partials :: loggedNav"></nav>
-	</nav>
-	<nav th:if="${#authentication.principal.isTruckOwner}">
-		<nav th:replace="partials :: truckNav"></nav>
-	</nav>
-</div>
-
-<div sec:authorize="!isAuthenticated()">
-	<nav th:replace="partials :: notLoggedNav"></nav>
-</div>
-
-
+	<div sec:authorize="isAuthenticated()">
+		<nav th:if="${!#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: loggedNav"></nav>
+		</nav>
+		<nav th:if="${#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: truckNav"></nav>
+		</nav>
+	</div>
+	<div sec:authorize="!isAuthenticated()">
+		<nav th:replace="partials :: notLoggedNav"></nav>
+	</div>
 	<div>
 		<div>
 			<div id="map"></div>
@@ -37,8 +33,14 @@
 			<form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
 				<button class="btn btn-light" type="submit">Go Ghost</button>
 			</form>
-			<p>Verified at location by Truck owner / ADD GREEN CHECK AND RED CHECK ?</p>
-			<p>Verified by <span>#</span> of visitors</p>
+			<div th:if="${!#authentication.principal.isTruckOwner}">
+					<form th:action="@{/truck/verify}" method="post">
+						<input type="hidden" name="truckId" th:value="${truck.id}">
+						<input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
+						<button class="btn btn-light" type="submit">Verify Truck on Location</button>
+					</form>
+			</div>
+			<p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
 		</div>
 		<div>
 			<h3 th:text="${truck.name}"></h3>

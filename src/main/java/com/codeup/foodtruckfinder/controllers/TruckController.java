@@ -2,6 +2,7 @@ package com.codeup.foodtruckfinder.controllers;
 
 import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.TruckPicture;
+import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
@@ -75,32 +76,35 @@ public class TruckController {
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
         Truck truck = truckDao.getTruckById(id);
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        model.addAttribute("user", (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);
         return "truck/individual";
     }
 
     @PostMapping("/truck/{id}/located")
-    public String setTruckLocation(Model model, @PathVariable Long id, @RequestParam("longitude") Double longitude, @RequestParam("latitude") Double latitude) {
+    public String setTruckLocation(@PathVariable Long id, @RequestParam("longitude") Double longitude, @RequestParam("latitude") Double latitude) {
         Truck truck = truckDao.getTruckById(id);
         truck.setLatitude(latitude);
         truck.setLongitude(longitude);
         truckDao.save(truck);
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("truck", truck);
-        return "truck/individual";
+        return "redirect:/truck/" + id + "/show";
     }
 
     @PostMapping("/truck/{id}/unlocated")
-    public String removeTruckLocation(Model model, @PathVariable Long id) {
-        Truck truck = truckDao.getTruckById(id);
+    public String removeTruckLocation(@PathVariable Long id) {
         truckDao.nullLongitude(id);
         truckDao.nullLatitude(id);
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("truck", truck);
-        return "truck/individual";
+        truckDao.unverifyTruck(id);
+        return "redirect:/truck/" + id + "/show";
     }
-
+    @PostMapping("/truck/verify")
+    public String addVerification(@RequestParam("truckId") Long truckId, @RequestParam("userId") Long userId) {
+        User user = userDao.getById(userId);
+        List<Truck> confirmedTrucks = user.getConfirmed_trucks();
+        confirmedTrucks.add(truckDao.getTruckById(truckId));
+        userDao.save(user);
+        return "redirect:/truck/" + truckId + "/show";
+    }
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());

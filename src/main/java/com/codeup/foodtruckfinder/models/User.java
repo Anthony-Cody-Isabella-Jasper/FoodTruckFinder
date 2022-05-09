@@ -25,7 +25,6 @@ public class User {
     @OneToOne
     private Truck truck;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_favorites", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "truck_id")})
     private List<Truck> favoriteTrucks;
@@ -50,7 +49,6 @@ public class User {
         truckOwner = copy.truckOwner;
         admin = copy.admin;
         truck = copy.truck;
-        ;
     }
 
     public User(String username, String email, String profilePicture) {

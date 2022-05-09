@@ -35,12 +35,14 @@
         <label for="email">Email:</label>
         <input id="email" th:field="*{email}" type="text">
         <br>
-<!--        <a href="#">Change password</a>-->
-<!--        <label for="password">Password:</label>-->
+
         <input hidden id="password" th:field="*{password}">
-<!--        <br>-->
-<!--        <label for="confirm">Confirm Password:</label>-->
-<!--        <input id="confirm" th:field="*{password}" type="password">-->
+        <label for="oldPass">Old Password:</label>
+        <input type="password" id="oldPass" name="oldPass">
+        <br>
+        <label for="newPass">New Password:</label>
+        <input type="password" id="newPass" name="newPass">
+
             <div id="avatar-choices">
                 <label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
                 <label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>

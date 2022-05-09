@@ -25,3 +25,30 @@ function showProfPics() {
         document.getElementById("avatar-choices").style.visibility = "visible";
     }
 }
+
+function showReviews() {
+    var x = document.getElementById("adminReviewDelete");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function showOwners() {
+    var x = document.getElementById("adminTruckDelete");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function showNonOwners() {
+    var x = document.getElementById("adminUserDelete");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}

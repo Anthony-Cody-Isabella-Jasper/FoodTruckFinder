@@ -15,26 +15,32 @@
 </head>
 <body>
 
-<div>
-    <p>Unconfirmed users</p>
-</div>
+<nav>
+    <a onclick="showNonOwners()"><h3>Non-Truck Owners</h3></a>
+    <a onclick="showOwners()"><h3>Truck Owners</h3></a>
+    <a onclick="showReviews()"><h3>Reviews</h3></a>
+</nav>
 
-<div>
-    <p>All Users</p>
-    <div th:each="user : ${users}">
-        <p th:text="${user.id}"></p>
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.email}"></p>
-        <form th:action="@{/deleteUser}" th:method="post">
-            <input hidden th:value="${user.id}" name="userId">
-            <button type="submit">DELETE</button>
-        </form>
+<div id="show"></div>
+
+<div id="adminUserDelete">
+    <p>All Non-Truck Owners</p>
+    <div class="adminBoxes" th:each="user : ${users}">
+        <div th:if="${!user.isTruckOwner()}">
+            <p th:text="${user.id}"></p>
+            <p th:text="${user.username}"></p>
+            <p th:text="${user.email}"></p>
+            <form th:action="@{/deleteUser}" th:method="post">
+                <input hidden th:value="${user.id}" name="userId">
+                <button type="submit">DELETE</button>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <p>reviews by truck?</p>
-    <div th:each="truck : ${trucks}">
+<div id="adminTruckDelete">
+    <p>All Truck Owners</p>
+    <div class="adminBoxes" th:each="truck : ${trucks}">
         <p th:text="${truck.id}"></p>
         <p th:text="${truck.name}"></p>
         <p th:text="${truck.phone}"></p>
@@ -43,9 +49,21 @@
             <input hidden th:value="${truck.id}" name="truckId">
             <button type="submit">DELETE</button>
         </form>
-
     </div>
 </div>
 
+<div id="adminReviewDelete">
+    <p>All Reviews</p>
+    <div class="adminBoxes" th:each="review : ${reviews}">
+        <p th:text="${review.truck}"></p>
+        <p th:text="${review.user}"></p>
+        <p th:text="${review.rating}"></p>
+        <p th:text="${review.reviewText}"></p>
+        <form th:action="@{/deleteReview}" th:method="post">
+            <input hidden th:value="${review.id}" name="reviewId">
+            <button type="submit">DELETE</button>
+        </form>
+    </div>
+</div>
 
 <footer th:replace="partials :: footer"></footer>

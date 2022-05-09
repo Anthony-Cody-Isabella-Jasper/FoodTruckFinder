@@ -21,12 +21,14 @@ public class UserController {
     private final TruckRepository truckDao;
     private PasswordEncoder passwordEncoder;
     private final PendingTruckRepository pendingTruckDao;
+    private final ReviewRepository reviewDao;
 
     public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao) {
         this.userDao = userDao;
         this.truckDao = truckDao;
         this.passwordEncoder = passwordEncoder;
         this.pendingTruckDao = pendingTruckDao;
+        this.reviewDao = reviewDao;
     }
 
     @GetMapping("/register")
@@ -95,23 +97,31 @@ public class UserController {
     public String adminView(Model model){
         model.addAttribute("users", userDao.findAll());
         model.addAttribute("trucks", truckDao.findAll());
+        model.addAttribute("reviews", reviewDao.findAll());
         return "admin";
     }
 
 
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
-//        User user = userDao.getById(userId);
+        userDao.deleteUserConfirmation(userId);
         userDao.deleteUserFavorite(userId);
         userDao.deleteById(userId);
-        return "redirect:/index";
+        return "redirect:/admin";
     }
 
     @PostMapping("/deleteTruck")
     public String deleteTruck(@RequestParam Long truckId){
-        Truck truck = truckDao.getById(truckId);
-        truckDao.delete(truck);
-        return "redirect:/index";
+        userDao.deleteTruckConfirmation(truckId);
+        userDao.deleteTruckFavorite(truckId);
+        truckDao.deleteById(truckId);
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/deleteReview")
+    public String deleteReview(@RequestParam Long reviewId){
+        reviewDao.deleteById(reviewId);
+        return "redirect:/admin";
     }
 
 }

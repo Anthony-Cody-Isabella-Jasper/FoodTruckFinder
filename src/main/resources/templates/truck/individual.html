@@ -77,7 +77,7 @@
 			<span th:text="${menu.name}"></span>
 		</div>
 		<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-		<div sec:authorize="isAuthenticated()">
+		<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 			<a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
 			<form th:action="@{/addFavorite}" th:method="post">
 				<input hidden th:value="${truck.getId()}" name="truckId">

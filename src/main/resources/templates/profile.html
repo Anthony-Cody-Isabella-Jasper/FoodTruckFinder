@@ -16,8 +16,14 @@
 <body>
 
 <div sec:authorize="isAuthenticated()">
-    <nav th:replace="partials :: loggedNav"></nav>
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
 </div>
+
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
@@ -43,7 +49,7 @@
 
     <form th:action="@{/deleteFavorite}" th:method="post" >
         <input hidden th:value="${favorite.getId()}" name="truckId">
-        <input hidden th:value="${#authentication.getName()}" name="username">
+        <input hidden th:value="${#authentication.principal.getId()}" name="id">
         <button type="submit">Delete Favorite</button>
     </form>
 

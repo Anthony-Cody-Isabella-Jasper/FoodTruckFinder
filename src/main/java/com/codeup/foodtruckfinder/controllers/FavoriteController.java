@@ -25,8 +25,8 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public Object addFavorite(@RequestParam Long truckId, @RequestParam String username, RedirectAttributes redirAttrs) {
-        User user = userDao.findByUsername(username);
+    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id, RedirectAttributes redirAttrs) {
+        User user = userDao.getById(id);
         List<Truck> fave;
         if (user == null) {
             return "redirect:/login";
@@ -36,8 +36,7 @@ public class FavoriteController {
             fave = user.getFavoriteTrucks();
         }
 
-        long userId = user.getId();
-        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(userId)) {
+        if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user)) {
              redirAttrs.addFlashAttribute("error", "This truck is already added to favorites.");
                 return "redirect:/truck/" + truckId + "/show";
         } else {
@@ -45,14 +44,15 @@ public class FavoriteController {
             user.setFavoriteTrucks(fave);
             userDao.save(user);
         }
-        return "redirect:/" + user.getUsername() + "/profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 
+
     @PostMapping("/deleteFavorite")
-    public String deleteFavorite(@RequestParam Long truckId, @RequestParam String username) {
-        User user = userDao.findByUsername(username);
-        userDao.deleteFavorite(user.getId(), truckId);
-        return "redirect:/" + user.getUsername() + "/profile";
+    public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {
+        User user = userDao.getById(id);
+        userDao.deleteFavorite(id, truckId);
+        return "redirect:/" + user.getId() + "/profile";
     }
 
 }

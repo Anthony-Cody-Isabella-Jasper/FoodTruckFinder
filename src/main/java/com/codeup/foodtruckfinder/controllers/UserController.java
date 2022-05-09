@@ -10,11 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
     private final UserRepository userDao;
     private final TruckRepository truckDao;
     private PasswordEncoder passwordEncoder;
+
 
     public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
@@ -47,10 +50,10 @@ public class UserController {
     }
 
 
-    @GetMapping("/{username}/profile")
-    public String profile(@PathVariable String username, Model model) {
-        model.addAttribute("user", userDao.findByUsername(username));
-        model.addAttribute("favorites", userDao.findByUsername(username).getFavoriteTrucks());
+    @GetMapping("/{id}/profile")
+    public String profile(@PathVariable Long id, Model model) {
+        model.addAttribute("user", userDao.getById(id));
+        model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
         return "/profile";
     }
 
@@ -62,17 +65,17 @@ public class UserController {
         return "about";
     }
 
-    @GetMapping("/editUser/{username}")
-    public String editUserForm(@PathVariable String username, Model model) {
-        User editUser = userDao.findByUsername(username);
-        model.addAttribute("user", editUser);
+    @GetMapping("/editUser/{id}")
+    public String editUserForm(@PathVariable Long id, Model model) {
+        model.addAttribute("user", userDao.getById(id));
         return "editUser";
     }
 
-    @PostMapping("/editUser/{username}")
-    public String editUser(@ModelAttribute User user) {
+    @PostMapping("/editUser/{id}")
+    public String editUser(@ModelAttribute User user, HttpSession session) {
         userDao.save(user);
-        return "redirect:/" + user.getUsername() + "/profile";
+        session.invalidate();
+        return "redirect:/login";
     }
 
 }

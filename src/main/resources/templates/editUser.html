@@ -15,23 +15,29 @@
 <body>
 
 <div sec:authorize="isAuthenticated()">
-    <nav th:replace="partials :: loggedNav"></nav>
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
 </div>
+
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
 
 <div>
-    <form method="post" th:action="@{/editUser/{username}(username=${user.getUsername()})}" th:object="${user}">
+    <form method="post" th:action="@{/editUser/{id}(id=${user.getId()})}" th:object="${user}">
         <label for="username">Username:</label>
         <input id="username" th:field="*{username}" type="text">
         <br>
         <label for="email">Email:</label>
         <input id="email" th:field="*{email}" type="text">
         <br>
-        <a href="#">Change password</a>
+<!--        <a href="#">Change password</a>-->
 <!--        <label for="password">Password:</label>-->
-<!--        <input id="password" th:field="*{password}" type="password">-->
+        <input hidden id="password" th:field="*{password}">
 <!--        <br>-->
 <!--        <label for="confirm">Confirm Password:</label>-->
 <!--        <input id="confirm" th:field="*{password}" type="password">-->

@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/truck/{id}/edit","/editUser/{username}","/truck/{id}/profile","/{username}/profile","/review/{id}","/truck/{id}/located", "/deleteFavorite")
+                .antMatchers("/truck/{id}/edit","/editUser/{id}","/truck/{id}/profile","/{id}/profile","/review/{id}","/truck/{id}/located", "/deleteFavorite")
                 .authenticated()
         ;
     }

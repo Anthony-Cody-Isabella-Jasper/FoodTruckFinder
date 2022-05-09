@@ -16,8 +16,14 @@
 <body>
 
 <div sec:authorize="isAuthenticated()">
-    <nav th:replace="partials :: loggedNav"></nav>
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
 </div>
+
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>

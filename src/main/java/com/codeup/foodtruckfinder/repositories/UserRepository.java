@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import javax.transaction.Transactional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-User findByUsername(String username);
+    User findByUsername(String username);
+
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM user_favorites u WHERE u.user_id = ?1 AND u.truck_id = ?2", nativeQuery = true)
@@ -33,7 +34,4 @@ User findByUsername(String username);
     @Modifying
     @Query(value = "DELETE FROM user_confirmations u WHERE u.truck_id = ?", nativeQuery = true)
     void deleteTruckConfirmation(long truckId);
-
-
-
 }

@@ -25,16 +25,14 @@
 
 <div id="adminUserDelete">
     <p>All Non-Truck Owners</p>
-    <div class="adminBoxes" th:each="user : ${users}">
-        <div th:if="${!user.isTruckOwner()}">
-            <p th:text="${user.id}"></p>
-            <p th:text="${user.username}"></p>
-            <p th:text="${user.email}"></p>
-            <form th:action="@{/deleteUser}" th:method="post">
-                <input hidden th:value="${user.id}" name="userId">
-                <button type="submit">DELETE</button>
-            </form>
-        </div>
+    <div class="adminBoxes" th:if="${!user.isTruckOwner()}" th:each="user : ${users}">
+        <p th:text="${user.id}"></p>
+        <p th:text="${user.username}"></p>
+        <p th:text="${user.email}"></p>
+        <form th:action="@{/deleteUser}" th:method="post">
+            <input hidden th:value="${user.id}" name="userId">
+            <button type="submit">DELETE</button>
+        </form>
     </div>
 </div>
 
@@ -55,8 +53,8 @@
 <div id="adminReviewDelete">
     <p>All Reviews</p>
     <div class="adminBoxes" th:each="review : ${reviews}">
-        <p th:text="${review.truck}"></p>
-        <p th:text="${review.user}"></p>
+        <p th:text="${review.truck.name}"></p>
+        <p th:text="${review.user.username}"></p>
         <p th:text="${review.rating}"></p>
         <p th:text="${review.reviewText}"></p>
         <form th:action="@{/deleteReview}" th:method="post">

@@ -117,4 +117,15 @@ public class UserController {
         return "redirect:/index";
     }
 
+    @GetMapping("/forgotPassword")
+    public String forgotPasswordView(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return "/forgotPassword";
+    }
+
+    @PostMapping("/forgotPassword")
+    public String forgotPasswordSubmission() {
+
+    }
+
 }

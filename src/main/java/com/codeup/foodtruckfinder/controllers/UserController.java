@@ -124,8 +124,14 @@ public class UserController {
     }
 
     @PostMapping("/forgotPassword")
-    public String forgotPasswordSubmission() {
+    public String forgotPasswordSubmission(Model model, User user) {
+        String userEmail = user.getEmail();
 
+        if(userEmail != null) {
+        }
+
+
+        return "redirect:/login";
     }
 
 }

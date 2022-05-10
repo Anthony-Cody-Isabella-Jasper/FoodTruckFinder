@@ -58,4 +58,11 @@ public class ReviewController {
         reviewDao.save(review);
         return "redirect:" + user.getId() + "/profile";
     }
+
+    @PostMapping("/deleteUserReview")
+    public String deleteUserReview(@RequestParam(name = "revId") Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        reviewDao.deleteById(id);
+        return "redirect:" + user.getId() + "/profile";
+    }
 }

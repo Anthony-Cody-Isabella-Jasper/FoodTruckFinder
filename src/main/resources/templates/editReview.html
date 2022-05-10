@@ -41,7 +41,12 @@
     </div>
     <p>Edit text</p>
     <input th:field="*{reviewText}" type="text">
-    <button type="submit">Submit</button>
+    <button type="submit">Edit</button>
+</form>
+
+<form th:action="@{/deleteUserReview}" th:method="post">
+    <input type="hidden" th:value="${revId}" name="revId">
+    <button type="submit">DELETE</button>
 </form>
 
 

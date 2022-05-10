@@ -27,6 +27,11 @@ public class Review {
     public Review() {
     }
 
+    public Review(int rating, String reviewText){
+        this.rating = rating;
+        this.reviewText = reviewText;
+    }
+
 
     public Review(long id, Truck truck, User user, int rating, String reviewText) {
         this.id = id;

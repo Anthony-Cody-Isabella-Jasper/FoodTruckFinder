@@ -36,4 +36,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "DELETE FROM user_confirmations u WHERE u.truck_id = ?", nativeQuery = true)
     void deleteTruckConfirmation(long truckId);
+
+    boolean existsUserByUsername(String username);
+    boolean existsUserByEmail(String email);
 }

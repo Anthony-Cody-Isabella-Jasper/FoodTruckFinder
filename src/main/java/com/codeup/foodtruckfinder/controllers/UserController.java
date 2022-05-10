@@ -42,7 +42,16 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user, Model model) {
+        if (userDao.existsUserByEmail(user.getEmail())) {
+            model.addAttribute("user", new User());
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/register";
+        } else if (userDao.existsUserByUsername(user.getUsername())) {
+            model.addAttribute("user", new User());
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         if (user.isTruckOwner()) {
@@ -92,7 +101,16 @@ public class UserController {
     }
 
     @PostMapping("/editUser/{id}")
-    public String editUser(@ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+    public String editUser(Model model, @ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+        if (userDao.existsUserByEmail(user.getEmail())) {
+            model.addAttribute("user", userDao.getById(user.getId()));
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/editUser";
+        } else if (userDao.existsUserByUsername(user.getUsername())) {
+            model.addAttribute("user", userDao.getById(user.getId()));
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/editUser";
+        }
         if (passwordEncoder.matches(oldPass, user.getPassword())) {
             user.setPassword(passwordEncoder.encode(newPass));
         }
@@ -168,7 +186,16 @@ public class UserController {
     }
 
     @PostMapping("/approve")
-    public String approved(@RequestParam(name = "pendingId") Long pendingId, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
+    public String approved(Model model, @RequestParam(name = "pendingId") Long pendingId, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
+        if (userDao.existsUserByEmail(email)) {
+            model.addAttribute("pendingUsers", pendingTruckDao.findAll());
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/approve";
+        } else if (userDao.existsUserByUsername(username)) {
+            model.addAttribute("pendingUsers", pendingTruckDao.findAll());
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/approve";
+        }
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
         newTruck.setName("My Truck");
@@ -176,6 +203,12 @@ public class UserController {
         newTruck.setTruck_owner(newUser);
         userDao.save(newUser);
         truckDao.save(newTruck);
+        pendingTruckDao.deleteById(pendingId);
+        return "redirect:/approve";
+    }
+
+    @PostMapping("/reject")
+    public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

@@ -7,6 +7,7 @@ import com.codeup.foodtruckfinder.repositories.PendingTruckRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import com.codeup.foodtruckfinder.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,16 +20,19 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     private final UserRepository userDao;
     private final TruckRepository truckDao;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final PendingTruckRepository pendingTruckDao;
     private final ReviewRepository reviewDao;
+    private final EmailService emailService;
 
-    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao) {
+
+    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao, EmailService emailService) {
         this.userDao = userDao;
         this.truckDao = truckDao;
         this.passwordEncoder = passwordEncoder;
         this.pendingTruckDao = pendingTruckDao;
         this.reviewDao = reviewDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/register")
@@ -141,18 +145,29 @@ public class UserController {
     }
 
     @GetMapping("/forgotPassword")
-    public String forgotPasswordView(Model model) {
-        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    public String forgotPasswordView(Model model, User user) {
+        model.addAttribute("user", user);
         return "/forgotPassword";
     }
 
     @PostMapping("/forgotPassword")
-    public String forgotPasswordSubmission(Model model, User user) {
-        String userEmail = user.getEmail();
+    public String forgotPasswordSubmission(@ModelAttribute User user) {
+        emailService.prepareAndSend(user, "Reset Password", "http://localhost:8080/resetPassword");
+        return "redirect:/login";
+    }
 
-        if (userEmail != null) {
-        }
+    @GetMapping("/resetPassword")
+    public String resetPasswordForm(Model model, User user) {
+        model.addAttribute("user", user);
+        return "/resetPassword";
+    }
 
+    @PostMapping("/resetPassword")
+    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password) {
+        User userTest = userDao.findByEmail(user.getEmail());
+        userTest.setPassword(passwordEncoder.encode(password));
+
+        userDao.save(userTest);
 
         return "redirect:/login";
     }

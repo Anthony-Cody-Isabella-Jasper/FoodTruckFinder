@@ -10,6 +10,8 @@ import javax.transaction.Transactional;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
+    User findByEmail(String email);
+
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM user_favorites u WHERE u.user_id = ?1 AND u.truck_id = ?2", nativeQuery = true)
@@ -34,4 +36,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "DELETE FROM user_confirmations u WHERE u.truck_id = ?", nativeQuery = true)
     void deleteTruckConfirmation(long truckId);
+
+    boolean existsUserByUsername(String username);
+    boolean existsUserByEmail(String email);
 }

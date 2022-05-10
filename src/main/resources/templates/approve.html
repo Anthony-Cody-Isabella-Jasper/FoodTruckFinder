@@ -22,5 +22,16 @@
 			<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
 			<button class="btn btn-primary" type="submit">Approve</button>
 		</form>
+		<form th:action="@{/reject}" method="post">
+			<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
+			<button class="btn btn-danger" type="submit">Reject</button>
+		</form>
 	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		if (/*[[${message}]]*/) {
+			window.alert(/*[[${message}]]*/);
+		}
+		/*]]>*/
+	</script>
 	<footer th:replace="partials :: footer"></footer>

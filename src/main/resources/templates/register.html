@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8"/>
@@ -14,41 +13,47 @@
   <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-<div>
-	<nav th:replace="partials :: notLoggedNav"></nav>
-</div>
-
-
-<form th:action="@{/register}" method="post" th:object="${user}">
-	<label for="username">Username</label>
-	<input id="username" th:field="*{username}"/>
-	
-	<label for="email">Email</label>
-	<input id="email" type="email" th:field="*{email}"/>
-	
-	<label for="password">Password</label>
-	<input id="password" type="password" th:field="*{password}"/>
 	
 	<div>
-		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked onclick="showProfPics()">
-		<label class="form-check-label" for="userCheck">
-			Consumer
-		</label>
-		<br>
-		<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck" onclick="showProfPics()">
-		<label class="form-check-label" for="truckCheck">
-			Truck Owner
-		</label>
+		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
 	
-	<div id="avatar-choices">
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-		<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
-	</div>
-	<input value="Sign me up!" type="submit"/>
-</form>
-
-<footer th:replace="partials :: footer"></footer>
+	
+	<form th:action="@{/register}" method="post" th:object="${user}">
+		<label for="username">Username</label>
+		<input id="username" th:field="*{username}"/>
+		
+		<label for="email">Email</label>
+		<input id="email" type="email" th:field="*{email}"/>
+		
+		<label for="password">Password</label>
+		<input id="password" type="password" th:field="*{password}"/>
+		
+		<div>
+			<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked onclick="showProfPics()">
+			<label class="form-check-label" for="userCheck">
+				Consumer
+			</label>
+			<br>
+			<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck" onclick="showProfPics()">
+			<label class="form-check-label" for="truckCheck">
+				Truck Owner
+			</label>
+		</div>
+		
+		<div id="avatar-choices">
+			<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
+			<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
+			<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
+			<label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""></label>
+		</div>
+		<input value="Sign me up!" type="submit"/>
+	</form>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		if (/*[[${message}]]*/) {
+			window.alert(/*[[${message}]]*/);
+		}
+		/*]]>*/
+	</script>
+	<footer th:replace="partials :: footer"></footer>

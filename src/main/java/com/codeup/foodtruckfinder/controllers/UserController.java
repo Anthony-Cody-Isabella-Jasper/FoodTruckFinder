@@ -7,6 +7,7 @@ import com.codeup.foodtruckfinder.repositories.PendingTruckRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import com.codeup.foodtruckfinder.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,16 +20,19 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     private final UserRepository userDao;
     private final TruckRepository truckDao;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
     private final PendingTruckRepository pendingTruckDao;
     private final ReviewRepository reviewDao;
+    private final EmailService emailService;
 
-    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao) {
+
+    public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao, EmailService emailService) {
         this.userDao = userDao;
         this.truckDao = truckDao;
         this.passwordEncoder = passwordEncoder;
         this.pendingTruckDao = pendingTruckDao;
         this.reviewDao = reviewDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/register")
@@ -38,7 +42,16 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user, Model model) {
+        if (userDao.existsUserByEmail(user.getEmail())) {
+            model.addAttribute("user", new User());
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/register";
+        } else if (userDao.existsUserByUsername(user.getUsername())) {
+            model.addAttribute("user", new User());
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         if (user.isTruckOwner()) {
@@ -88,7 +101,16 @@ public class UserController {
     }
 
     @PostMapping("/editUser/{id}")
-    public String editUser(@ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+    public String editUser(Model model, @ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+        if (userDao.existsUserByEmail(user.getEmail())) {
+            model.addAttribute("user", userDao.getById(user.getId()));
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/editUser";
+        } else if (userDao.existsUserByUsername(user.getUsername())) {
+            model.addAttribute("user", userDao.getById(user.getId()));
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/editUser";
+        }
         if (passwordEncoder.matches(oldPass, user.getPassword())) {
             user.setPassword(passwordEncoder.encode(newPass));
         }
@@ -122,6 +144,35 @@ public class UserController {
         return "redirect:/admin";
     }
 
+    @GetMapping("/forgotPassword")
+    public String forgotPasswordView(Model model, User user) {
+        model.addAttribute("user", user);
+        return "/forgotPassword";
+    }
+
+    @PostMapping("/forgotPassword")
+    public String forgotPasswordSubmission(@ModelAttribute User user) {
+        emailService.prepareAndSend(user, "Reset Password", "http://localhost:8080/resetPassword");
+        return "redirect:/login";
+    }
+
+    @GetMapping("/resetPassword")
+    public String resetPasswordForm(Model model, User user) {
+        model.addAttribute("user", user);
+        return "/resetPassword";
+    }
+
+    @PostMapping("/resetPassword")
+    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password) {
+        User userTest = userDao.findByEmail(user.getEmail());
+        userTest.setPassword(passwordEncoder.encode(password));
+
+        userDao.save(userTest);
+
+        return "redirect:/login";
+    }
+
+
     @PostMapping("/deleteReview")
     public String deleteReview(@RequestParam Long reviewId) {
         reviewDao.deleteById(reviewId);
@@ -135,7 +186,16 @@ public class UserController {
     }
 
     @PostMapping("/approve")
-    public String approved(@RequestParam(name = "pendingId") Long pendingId, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
+    public String approved(Model model, @RequestParam(name = "pendingId") Long pendingId, @RequestParam(name = "username") String username, @RequestParam(name = "email") String email, @RequestParam(name = "password") String password) {
+        if (userDao.existsUserByEmail(email)) {
+            model.addAttribute("pendingUsers", pendingTruckDao.findAll());
+            model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
+            return "/approve";
+        } else if (userDao.existsUserByUsername(username)) {
+            model.addAttribute("pendingUsers", pendingTruckDao.findAll());
+            model.addAttribute("message", "Username already exists. Please pick a different username.");
+            return "/approve";
+        }
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
         newTruck.setName("My Truck");
@@ -143,6 +203,12 @@ public class UserController {
         newTruck.setTruck_owner(newUser);
         userDao.save(newUser);
         truckDao.save(newTruck);
+        pendingTruckDao.deleteById(pendingId);
+        return "redirect:/approve";
+    }
+
+    @PostMapping("/reject")
+    public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

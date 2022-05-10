@@ -13,7 +13,7 @@ public class Truck {
     @OneToOne(cascade = CascadeType.REMOVE)
     private User truck_owner;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = true)

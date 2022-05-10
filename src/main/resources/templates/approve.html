@@ -23,4 +23,11 @@
 			<button class="btn btn-primary" type="submit">Approve</button>
 		</form>
 	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		if (/*[[${message}]]*/) {
+			window.alert(/*[[${message}]]*/);
+		}
+		/*]]>*/
+	</script>
 	<footer th:replace="partials :: footer"></footer>

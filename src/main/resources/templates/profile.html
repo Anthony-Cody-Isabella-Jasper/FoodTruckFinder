@@ -58,9 +58,10 @@
 <h3>My Reviews</h3>
 <!--USERS REVIEWS-->
 <div class="usersReviews" th:each="review : ${user.reviews}">
-    <p th:text="${review.truck.name}"></p>
+<!--    <p th:text="${review.getTruck().name}"></p>-->
     <p th:text="${review.rating}"></p>
     <p th:text="${review.reviewText}"></p>
+    <a th:href="@{/editReview/{id}(id=${review.id})}"><button type="button">Edit Review</button></a>
 </div>
 
 <footer th:replace="partials :: footer"></footer>

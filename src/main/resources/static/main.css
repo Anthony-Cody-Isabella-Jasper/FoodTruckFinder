@@ -39,15 +39,14 @@
 
 
 /*TEST*/
-img{
-    width: 400px;
-    height: 400px;
-}
+/*img{*/
+/*    width: 500px;*/
+/*    height: 500px;*/
+/*}*/
 
 body{
     background-color: black;
-    /*margin-left: 75px;*/
-    /*margin-right: 75px;*/
+    margin: 0;
     padding: 0;
     color: white;
 }
@@ -64,6 +63,11 @@ footer{
     width: 100%;
 }
 
+#truckLogged img{
+    width: 200px;
+    height: 200px;
+}
+
 #logged img{
     width: 200px;
     height: 200px;
@@ -76,15 +80,50 @@ footer{
 
 /*map*/
 #map{
-    width: 400px;
+    width: 60%;
     height: 400px;
-    margin: 50px;
+    margin: auto;
 }
-.card{
-    margin: 25px;
-}
+
 
 .adminBoxes{
     border: 2px solid yellow;
     margin: 10px;
+}
+
+.card{
+    color: black;
+}
+
+#searchBar{
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+#filters{
+    display: flex;
+}
+
+#banana{
+    color: green;
+    z-index: 1000;
+    bottom: 200px;
+}
+
+/* Container holding the image and the text */
+.banana {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+.centered {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a{
+    color: #cccccc;
 }

@@ -122,6 +122,24 @@ public class UserController {
         return "redirect:/admin";
     }
 
+    @GetMapping("/forgotPassword")
+    public String forgotPasswordView(Model model) {
+        model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return "/forgotPassword";
+    }
+
+    @PostMapping("/forgotPassword")
+    public String forgotPasswordSubmission(Model model, User user) {
+        String userEmail = user.getEmail();
+
+        if(userEmail != null) {
+        }
+
+
+        return "redirect:/login";
+    }
+
+
     @PostMapping("/deleteReview")
     public String deleteReview(@RequestParam Long reviewId) {
         reviewDao.deleteById(reviewId);

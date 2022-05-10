@@ -26,7 +26,7 @@
     <div>
         <div id="map"></div>
         <div sec:authorize="isAuthenticated()">
-        <div th:if="${#authentication.principal.isTruckOwner}">
+        <div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
             <button class="btn btn-light" id="triangulate">Triangulate Location</button>
             <form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
                 <input type="hidden" name="longitude" id="truckLongitude">
@@ -37,6 +37,7 @@
                 <button class="btn btn-light" type="submit">Go Ghost</button>
             </form>
         </div>
+
     </div>
         <div sec:authorize="isAuthenticated()">
             <div th:if="${!#authentication.principal.isTruckOwner}">
@@ -84,7 +85,7 @@
         <span th:text="${menu.name}"></span>
     </div>
     <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-    <div sec:authorize="isAuthenticated()">
+    <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
         <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
         <form th:action="@{/addFavorite}" th:method="post">
             <input hidden th:value="${truck.getId()}" name="truckId">

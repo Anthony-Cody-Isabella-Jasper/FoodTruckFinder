@@ -17,7 +17,7 @@ public class ReviewController {
     private final TruckRepository truckDao;
     private final UserRepository userDao;
 
-    public ReviewController(ReviewRepository reviewDao, TruckRepository truckDao, UserRepository userDao){
+    public ReviewController(ReviewRepository reviewDao, TruckRepository truckDao, UserRepository userDao) {
         this.reviewDao = reviewDao;
         this.truckDao = truckDao;
         this.userDao = userDao;
@@ -33,9 +33,36 @@ public class ReviewController {
 
     @PostMapping("/review")
     public String review(@ModelAttribute Review review, @RequestParam("truckId") Long id) {
-        review.setUser((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        review.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         review.setTruck(truckDao.getById(id));
         reviewDao.save(review);
         return "redirect:/truck/" + review.getTruck().getId() + "/show";
+    }
+
+    @GetMapping("/editReview/{id}")
+    public String editReviewPage(@PathVariable Long id, Model model) {
+        model.addAttribute("review", reviewDao.findById(id));
+        model.addAttribute("revId", id);
+        Review review = reviewDao.getById(id);
+        model.addAttribute("trckId", review.getTruck().getId());
+        return "/editReview";
+    }
+
+    @PostMapping("/editReviews")
+    public String editReview(@ModelAttribute Review review, @RequestParam (name="revId") Long id, @RequestParam(name="trckId") Long trckId) {
+        review.setId(id);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        review.setUser(user);
+        Truck truck = truckDao.getTruckById(trckId);
+        review.setTruck(truck);
+        reviewDao.save(review);
+        return "redirect:" + user.getId() + "/profile";
+    }
+
+    @PostMapping("/deleteUserReview")
+    public String deleteUserReview(@RequestParam(name = "revId") Long id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        reviewDao.deleteById(id);
+        return "redirect:" + user.getId() + "/profile";
     }
 }

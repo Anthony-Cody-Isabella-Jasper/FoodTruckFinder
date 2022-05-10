@@ -14,7 +14,6 @@
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
 <div sec:authorize="isAuthenticated()">
     <nav th:if="${!#authentication.principal.isTruckOwner}">
         <nav th:replace="partials :: loggedNav"></nav>
@@ -23,46 +22,30 @@
         <nav th:replace="partials :: truckNav"></nav>
     </nav>
 </div>
-
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
 
-
-
 <div>
-    <img th:attr="src=${user.profilePicture},alt=${user.profilePicture}">
-    <div>
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.email}"></p>
-    </div>
-</div>
-
-
-<h3>My Favorites</h3>
-<!--    USERS FAVORITES-->
-
-<div class="userFavorites" th:each="favorite : ${favorites}">
-    <img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
-    <a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><p th:text="${favorite.name}"></p></a>
-    <p th:text="${favorite.phone}"></p>
-
-    <form th:action="@{/deleteFavorite}" th:method="post" >
-        <input hidden th:value="${favorite.getId()}" name="truckId">
-        <input hidden th:value="${#authentication.principal.getId()}" name="id">
-        <button type="submit">Delete Favorite</button>
+    <form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post" >
+        <label for="itemDescription">Description</label>
+        <input th:field="*{description}" id="itemDescription" type="text"><br>
+        <label for="itemName">Name</label>
+        <input th:field="*{name}" id="itemName" type="text"><br>
+        <label for="itemPrice">Price</label>
+        <input th:field="*{price}" id="itemPrice" type="text"><br>
+        <div>
+            <input th:field="*{vegan}" type="checkbox" value="false" id="vegan">
+            <label class="form-check-label" for="vegan">
+                Vegan
+            </label>
+            <br>
+            <input th:field="*{vegetarian}" type="checkbox" value="false" id="vegetarian">
+            <label class="form-check-label" for="vegetarian">
+                Vegetarian
+            </label>
+        </div>
+        <button type="submit">Submit</button>
     </form>
-
 </div>
-
-<h3>My Reviews</h3>
-<!--USERS REVIEWS-->
-<div class="usersReviews" th:each="review : ${user.reviews}">
-<!--    <p th:text="${review.getTruck().name}"></p>-->
-    <p th:text="${review.rating}"></p>
-    <p th:text="${review.reviewText}"></p>
-    <a th:href="@{/editReview/{id}(id=${review.id})}"><button type="button">Edit Review</button></a>
-</div>
-
 <footer th:replace="partials :: footer"></footer>
-

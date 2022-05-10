@@ -45,14 +45,23 @@ img{
 }
 
 body{
-    background-color: #c59b08;
-    margin-left: 75px;
-    margin-right: 75px;
+    background-color: black;
+    /*margin-left: 75px;*/
+    /*margin-right: 75px;*/
     padding: 0;
+    color: white;
 }
 
 nav{
     border: 5px solid red;
+    background-image: linear-gradient(to right, red , yellow);
+    width: 100%;
+}
+
+footer{
+    background-image: linear-gradient(to right, red , yellow);
+    height: 95px;
+    width: 100%;
 }
 
 #logged img{
@@ -73,4 +82,9 @@ nav{
 }
 .card{
     margin: 25px;
+}
+
+.adminBoxes{
+    border: 2px solid yellow;
+    margin: 10px;
 }

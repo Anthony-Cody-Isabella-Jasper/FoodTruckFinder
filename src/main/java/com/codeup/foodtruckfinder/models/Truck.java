@@ -10,10 +10,10 @@ public class Truck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(cascade=CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.REMOVE)
     private User truck_owner;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = true)
@@ -27,12 +27,9 @@ public class Truck {
 
     @Column(nullable = true)
     private Double longitude;
-  
+
     @Column(nullable = true)
     private Double latitude;
-  
-    @Column(nullable = false)
-    private Boolean location_confirmation;
 
     @ManyToMany(mappedBy = "favoriteTrucks")
     private List<User> usersFavorited;
@@ -51,10 +48,11 @@ public class Truck {
     private List<Cuisine> cuisines;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "truck")
     private List<Review> reviews;
+
     public Truck() {
     }
 
-    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, double longitude, double latitude, Boolean location_confirmation, List<User> usersFavorited, List<Menu> menu, List<User> confirmed_users, List<TruckPicture> truckPictures, List<Cuisine> cuisines, List<Review> reviews) {
+    public Truck(long id, User truck_owner, String name, String description, String phone, String profile_picture, double longitude, double latitude, List<User> usersFavorited, List<Menu> menu, List<User> confirmed_users, List<TruckPicture> truckPictures, List<Cuisine> cuisines, List<Review> reviews) {
         this.id = id;
         this.truck_owner = truck_owner;
         this.name = name;
@@ -63,7 +61,6 @@ public class Truck {
         this.profile_picture = profile_picture;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.location_confirmation = location_confirmation;
         this.usersFavorited = usersFavorited;
         this.menu = menu;
         this.confirmed_users = confirmed_users;
@@ -143,14 +140,6 @@ public class Truck {
         this.latitude = latitude;
     }
 
-    public Boolean getLocation_confirmation() {
-        return location_confirmation;
-    }
-
-    public void setLocation_confirmation(Boolean location_confirmation) {
-        this.location_confirmation = location_confirmation;
-    }
-
     public List<User> getUsersFavorited() {
         return usersFavorited;
     }
@@ -198,9 +187,10 @@ public class Truck {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
     public double averageRating() {
         double total = 0;
-        for(Review review : reviews) {
+        for (Review review : reviews) {
             total += review.getRating();
         }
         return total / reviews.size();

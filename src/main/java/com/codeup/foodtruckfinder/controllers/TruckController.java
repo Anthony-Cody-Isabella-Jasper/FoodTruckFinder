@@ -1,9 +1,11 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Menu;
 import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.TruckPicture;
 import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
+import com.codeup.foodtruckfinder.repositories.MenuRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,11 +21,13 @@ public class TruckController {
     private final TruckRepository truckDao;
     private final CuisineRepository cuisineDao;
     private final UserRepository userDao;
+    private final MenuRepository menuDao;
 
-    public TruckController(TruckRepository truckDao, CuisineRepository cuisineDao, UserRepository userDao) {
+    public TruckController(MenuRepository menuDao, TruckRepository truckDao, CuisineRepository cuisineDao, UserRepository userDao) {
         this.truckDao = truckDao;
         this.cuisineDao = cuisineDao;
         this.userDao = userDao;
+        this.menuDao = menuDao;
     }
 
     @GetMapping("/")
@@ -69,6 +73,25 @@ public class TruckController {
             truckImages.add(new TruckPicture(url, truck));
         }
         truck.setTruckPictures(truckImages);
+        truckDao.save(truck);
+        return "redirect:/truck/" + truck.getId() + "/show";
+    }
+
+    @GetMapping("/truck/{id}/addMenuItem")
+    public String addMenuItem(@PathVariable Long id, Model model){
+        model.addAttribute("menuItem", new Menu());
+        model.addAttribute("truck", truckDao.getTruckById(id));
+        return "truck/addMenuItems";
+    }
+
+    @PostMapping("/truck/addMenuItem")
+    public String postAddMenuItem(@ModelAttribute Menu menuItem){
+        List<Menu> menuItems = new ArrayList<>();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Truck truck = truckDao.getById(user.getTruck().getId());
+        menuItem.setTruck(truck);
+        menuItems.add(menuItem);
+        truck.setMenu(menuItems);
         truckDao.save(truck);
         return "redirect:/truck/" + truck.getId() + "/show";
     }

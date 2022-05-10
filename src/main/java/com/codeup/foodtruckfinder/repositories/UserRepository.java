@@ -20,6 +20,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "DELETE FROM user_favorites u WHERE u.user_id = ?", nativeQuery = true)
     void deleteUserFavorite(long userId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_favorites u WHERE u.truck_id = ?", nativeQuery = true)
+    void deleteTruckFavorite(long truckId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_confirmations u WHERE u.user_id = ?", nativeQuery = true)
+    void deleteUserConfirmation(long userId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_confirmations u WHERE u.truck_id = ?", nativeQuery = true)
+    void deleteTruckConfirmation(long truckId);
 }

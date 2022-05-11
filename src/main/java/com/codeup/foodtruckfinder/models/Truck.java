@@ -190,9 +190,13 @@ public class Truck {
 
     public double averageRating() {
         double total = 0;
+        double reviewCount = reviews.size();
+        if(reviewCount == 0) {
+            return 0;
+        }
         for (Review review : reviews) {
             total += review.getRating();
         }
-        return total / reviews.size();
+        return total / reviewCount;
     }
 }

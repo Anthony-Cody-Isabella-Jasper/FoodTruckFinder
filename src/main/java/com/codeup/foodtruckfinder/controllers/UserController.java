@@ -201,6 +201,7 @@ public class UserController {
         newTruck.setName("My Truck");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);
+        emailService.prepareAndSend(newUser, "Approval", "Congratulations, \nYour account has been approved! \n\nThank you from our team at StreatFoods!");
         userDao.save(newUser);
         truckDao.save(newTruck);
         pendingTruckDao.deleteById(pendingId);
@@ -209,6 +210,7 @@ public class UserController {
 
     @PostMapping("/reject")
     public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
+        emailService.prepareAndSendTruck(pendingTruckDao.getById(pendingId), "Rejection", "Sorry, \nYour account has been rejected \n\nSincerely, our team at StreatFoods");
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

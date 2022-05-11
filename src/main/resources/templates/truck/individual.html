@@ -82,7 +82,11 @@
 <div>
     <p>Menu Items:</p>
     <div th:each="menu : ${truck.menu}" class="menu-items">
-        <span th:text="${menu.name}"></span>
+        <span th:text="${menu.name}"></span><br>
+        <span th:text="${menu.description}"></span><br>
+        <div>$<span th:text="${menu.price}"></span></div><br>
+        <span th:if="${menu.vegan == true}">This is vegan</span><br>
+        <span th:if="${menu.vegetarian == true}">This is vegetarian</span>
     </div>
     <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
     <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">

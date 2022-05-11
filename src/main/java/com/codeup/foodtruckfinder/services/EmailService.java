@@ -1,5 +1,6 @@
 package com.codeup.foodtruckfinder.services;
 
+import com.codeup.foodtruckfinder.models.PendingTruck;
 import com.codeup.foodtruckfinder.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,22 @@ public class EmailService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
         msg.setTo(user.getEmail());
+        msg.setSubject(subject);
+        msg.setText(body);
+
+        try{
+            this.emailSender.send(msg);
+        }
+        catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public void prepareAndSendTruck(PendingTruck pending, String subject, String body) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setFrom(from);
+        msg.setTo(pending.getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 

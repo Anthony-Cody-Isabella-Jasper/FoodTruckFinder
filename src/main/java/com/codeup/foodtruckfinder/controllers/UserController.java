@@ -1,5 +1,6 @@
 package com.codeup.foodtruckfinder.controllers;
 
+import com.codeup.foodtruckfinder.models.Review;
 import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.PendingTruck;
 import com.codeup.foodtruckfinder.models.User;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class UserController {
@@ -136,6 +138,28 @@ public class UserController {
         return "redirect:/";
     }
 
+    @PostMapping("/admin")
+    public String adminSearch(Model model, @RequestParam(name = "usernameSearch") String usernameSearch, @RequestParam(name = "truckSearch") String truckSearch, @RequestParam(name="reviewSearch") String reviewSearch, @RequestParam(name = "searchType") String searchType) {
+        switch (searchType) {
+            case "user":
+                model.addAttribute("users", userDao.adminUserSearch(usernameSearch));
+                model.addAttribute("trucks", new ArrayList<Truck>());
+                model.addAttribute("reviews", new ArrayList<Review>());
+                break;
+            case "truck":
+                model.addAttribute("users", new ArrayList<User>());
+                model.addAttribute("trucks", truckDao.adminTruckSearch(truckSearch));
+                model.addAttribute("reviews", new ArrayList<Review>());
+                break;
+            case "review":
+                model.addAttribute("users", new ArrayList<User>());
+                model.addAttribute("trucks", new ArrayList<Truck>());
+                model.addAttribute("reviews", reviewDao.adminReviewSearch(reviewSearch));
+                break;
+        }
+        return "admin";
+    }
+  
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
         userDao.deleteUserConfirmation(userId);
@@ -190,7 +214,7 @@ public class UserController {
     @GetMapping("/approve")
     public String approveUser(Model model) {
         model.addAttribute("pendingUsers", pendingTruckDao.findAll());
-        return "/approve";
+        return "approve";
     }
 
     @PostMapping("/approve")
@@ -198,28 +222,27 @@ public class UserController {
         if (userDao.existsUserByEmail(email)) {
             model.addAttribute("pendingUsers", pendingTruckDao.findAll());
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
-            return "/approve";
+            return "approve";
         } else if (userDao.existsUserByUsername(username)) {
             model.addAttribute("pendingUsers", pendingTruckDao.findAll());
             model.addAttribute("message", "Username already exists. Please pick a different username.");
-            return "/approve";
+            return "approve";
         }
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
         newTruck.setName("My Truck");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);
+        emailService.prepareAndSend(newUser, "StreatFoods Account Approved", "Congratulations! \nYour account has passed the rigorous StreatFoods approval process! Log in now to finish setting up your food truck. \n\nThank you from our team at StreatFoods");
         userDao.save(newUser);
         truckDao.save(newTruck);
         pendingTruckDao.deleteById(pendingId);
-        emailService.prepareAndSend(newUser, "StreatFoods Account Approved", "Congratulations! Your account has passed the rigorous StreatFoods approval process! Log in now to finish setting up your food truck.");
         return "redirect:/approve";
     }
 
     @PostMapping("/reject")
     public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
-        PendingTruck rejectedTruck = pendingTruckDao.getById(pendingId);
-        emailService.prepareAndSend(new User(rejectedTruck.getUsername(), rejectedTruck.getEmail(), ""), "StreatFoods Account Rejected", "Unfortunately, your new StreatFoods account has been rejected due to not meeting our website usage guidelines. Have a nice day!");
+        emailService.prepareAndSendTruck(pendingTruckDao.getById(pendingId), "StreatFoods Account Rejected", "Unfortunately, \nyour new StreatFoods account has been rejected due to not meeting our website usage guidelines. \n\nHave a nice day from our team at StreatFoods!");
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

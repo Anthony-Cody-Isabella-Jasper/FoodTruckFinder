@@ -61,8 +61,8 @@
 						<span th:text="${truck.name}"></span></h5></a>
 					<p class="truck-cuisine" th:each="cuisine : ${truck.cuisines}">Truck Cuisines:
 						<span th:text="${cuisine.name}"></span></p>
-					<p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-					<p>Average Rating: <span th:text="${truck.averageRating()}"></span></p>
+					<p>Average Rating: <span th:text="${truck.averageRating()}"></span>
+						(<span th:text="${truck.getReviews().size()}"></span> reviews)</p>
 					<a href="#map">
 						<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">
 							Truck location
@@ -72,8 +72,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
 	<script th:inline="javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';
 		const map = new mapboxgl.Map({

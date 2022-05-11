@@ -5,15 +5,15 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
                     data-toggle="dropdown" aria-expanded="false">
-                <img th:attr="src=${#authentication.principal.getTruck().profile_picture}">
+                <img th:src="${user.getTruck().profile_picture}">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
 
-                <a class="dropdown-item" th:href="@{/truck/{id}/show(id=${#authentication.principal.getTruck().getId()})}">View Truck</a>
+                <a class="dropdown-item" th:href="@{/truck/{id}/show(id=${user.getTruck().getId()})}">View Truck</a>
 
-                <a class="dropdown-item" th:href="@{/truck/{id}/edit(id=${#authentication.principal.getTruck().getId()})}">Edit Truck</a>
+                <a class="dropdown-item" th:href="@{/truck/{id}/edit(id=${user.getTruck().getId()})}">Edit Truck</a>
 
-                <a class="dropdown-item" th:href="@{/truck/{id}/addMenuItem(id=${#authentication.principal.getTruck().getId()})}">Add Menu Items +</a>
+                <a class="dropdown-item" th:href="@{/truck/{id}/addMenuItem(id=${user.getTruck().getId()})}">Add Menu Items +</a>
 
                 <a class="dropdown-item">
                     <form th:action="@{/logout}" th:method="post">

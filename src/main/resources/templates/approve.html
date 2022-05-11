@@ -10,6 +10,9 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
+
+<nav th:replace="partials :: notLoggedNav"></nav>
+
 	<div th:each="pendingUser : ${pendingUsers}">
 		<form th:action="@{/approve}" method="post">
 			<label>Username

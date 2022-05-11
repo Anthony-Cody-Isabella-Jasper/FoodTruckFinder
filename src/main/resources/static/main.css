@@ -132,7 +132,13 @@ a{
     color: #cccccc;
 }
 
+
 #carouselTruckPhotos img{
     width: 80%;
     height: 400px;
+}
+
+.modal{
+    color: black;
+
 }

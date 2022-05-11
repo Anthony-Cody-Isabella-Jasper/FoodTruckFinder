@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
@@ -38,5 +39,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void deleteTruckConfirmation(long truckId);
 
     boolean existsUserByUsername(String username);
+
     boolean existsUserByEmail(String email);
+@Query(value = "SELECT * FROM users WHERE username LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
+    List<User> adminUserSearch(String username);
 }

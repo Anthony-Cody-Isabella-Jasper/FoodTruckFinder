@@ -8,11 +8,14 @@ import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.MenuRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,20 +63,37 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/edit")
     public String editTruck(@PathVariable Long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/editTruck";
     }
 
     @PostMapping("/truck/editTruck")
-    public String postEditTruck(@ModelAttribute Truck truck, @RequestParam String truckPictureUrls ) {
+    public String postEditTruck(@ModelAttribute Truck truck, @RequestParam String truckPictureUrls) {
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Truck newTruck = user.getTruck();
+
+        long truckId = user.getTruck().getId();
+        truckDao.deletePictures(truckId);
+
         List<TruckPicture> truckImages = new ArrayList<>();
         String [] urls = truckPictureUrls.split(",");
         for (String url : urls){
             System.out.println(url);
             truckImages.add(new TruckPicture(url, truck));
         }
-        truck.setTruckPictures(truckImages);
-        truckDao.save(truck);
+
+        newTruck.setTruckPictures(truckImages);
+        newTruck.setTruck_owner(user);
+        newTruck.setProfile_picture(truck.getProfile_picture());
+        newTruck.setName(truck.getName());
+        newTruck.setDescription(truck.getDescription());
+        newTruck.setPhone(truck.getPhone());
+
+
+        truckDao.save(newTruck);
         return "redirect:/truck/" + truck.getId() + "/show";
     }
 

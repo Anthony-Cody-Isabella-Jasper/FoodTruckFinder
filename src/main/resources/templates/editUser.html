@@ -31,6 +31,7 @@
 
 <div>
     <form method="post" th:action="@{/editUser/{id}(id=${user.getId()})}" th:object="${user}">
+        <input hidden th:value="${user.id}">
         <label for="username">Username:</label>
         <input id="username" th:field="*{username}" type="text">
         <br>

@@ -94,6 +94,10 @@ footer{
 .card{
     color: black;
 }
+.card img{
+    width: 460px;
+    height: 350px;
+}
 
 #searchBar{
     border: 2px solid yellow;
@@ -128,6 +132,13 @@ a{
     color: #cccccc;
 }
 
+
+#carouselTruckPhotos img{
+    width: 80%;
+    height: 400px;
+}
+
 .modal{
     color: black;
+
 }

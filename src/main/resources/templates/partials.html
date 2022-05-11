@@ -34,14 +34,14 @@
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-expanded="false">
-                <img th:attr="src=${#authentication.principal.getProfilePicture()}">
+                <img th:attr="src=${user.getProfilePicture()}">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" th:href="@{/{id}/profile(id=${#authentication.principal.getId()})}">
+                <a class="dropdown-item" th:href="@{/{id}/profile(id=${user.getId()})}">
                     View Profile
                 </a>
 
-                <a class="dropdown-item" th:href="@{/editUser/{id}(id=${#authentication.principal.getId()})}">
+                <a class="dropdown-item" th:href="@{/editUser/{id}(id=${user.getId()})}">
                     Edit profile
                 </a>
 

@@ -127,6 +127,14 @@ public class UserController {
         return "admin";
     }
 
+    @PostMapping("/deleteUserFromUser")
+    public String deleteUserFromUser(@RequestParam Long userId, HttpSession session) {
+        userDao.deleteUserConfirmation(userId);
+        userDao.deleteUserFavorite(userId);
+        userDao.deleteById(userId);
+        session.invalidate();
+        return "redirect:/";
+    }
 
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {

@@ -201,17 +201,16 @@ public class UserController {
         newTruck.setName("My Truck");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);
+        emailService.prepareAndSend(newUser, "StreatFoods Account Approved", "Congratulations! \nYour account has passed the rigorous StreatFoods approval process! Log in now to finish setting up your food truck. \n\nThank you from our team at StreatFoods");
         userDao.save(newUser);
         truckDao.save(newTruck);
         pendingTruckDao.deleteById(pendingId);
-        emailService.prepareAndSend(newUser, "StreatFoods Account Approved", "Congratulations! Your account has passed the rigorous StreatFoods approval process! Log in now to finish setting up your food truck.");
         return "redirect:/approve";
     }
 
     @PostMapping("/reject")
     public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
-        PendingTruck rejectedTruck = pendingTruckDao.getById(pendingId);
-        emailService.prepareAndSend(new User(rejectedTruck.getUsername(), rejectedTruck.getEmail(), ""), "StreatFoods Account Rejected", "Unfortunately, your new StreatFoods account has been rejected due to not meeting our website usage guidelines. Have a nice day!");
+        emailService.prepareAndSendTruck(pendingTruckDao.getById(pendingId), "StreatFoods Account Rejected", "Unfortunately, \nyour new StreatFoods account has been rejected due to not meeting our website usage guidelines. \n\nHave a nice day from our team at StreatFoods!");
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

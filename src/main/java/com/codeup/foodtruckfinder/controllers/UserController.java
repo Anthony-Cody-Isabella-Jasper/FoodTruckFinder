@@ -128,6 +128,16 @@ public class UserController {
         model.addAttribute("reviews", reviewDao.findAll());
         return "admin";
     }
+
+    @PostMapping("/deleteUserFromUser")
+    public String deleteUserFromUser(@RequestParam Long userId, HttpSession session) {
+        userDao.deleteUserConfirmation(userId);
+        userDao.deleteUserFavorite(userId);
+        userDao.deleteById(userId);
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @PostMapping("/admin")
     public String adminSearch(Model model, @RequestParam(name = "usernameSearch") String usernameSearch, @RequestParam(name = "truckSearch") String truckSearch, @RequestParam(name="reviewSearch") String reviewSearch, @RequestParam(name = "searchType") String searchType) {
         switch (searchType) {
@@ -149,6 +159,7 @@ public class UserController {
         }
         return "admin";
     }
+  
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
         userDao.deleteUserConfirmation(userId);

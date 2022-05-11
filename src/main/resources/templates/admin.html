@@ -1,67 +1,76 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8"/>
-    <title>StreatFoods</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-
-    <link rel="stylesheet" th:href="@{/main.css}">
+	<meta charset="UTF-8"/>
+	<title>StreatFoods</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-<nav>
-    <a onclick="showNonOwners()"><h3>Non-Truck Owners</h3></a>
-    <a onclick="showOwners()"><h3>Truck Owners</h3></a>
-    <a onclick="showReviews()"><h3>Reviews</h3></a>
-</nav>
-
-<div id="show"></div>
-
-<div id="adminUserDelete">
-    <p>All Non-Truck Owners</p>
-    <div class="adminBoxes" th:if="${!user.isTruckOwner()}" th:each="user : ${users}">
-        <p th:text="${user.id}"></p>
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.email}"></p>
-        <form th:action="@{/deleteUser}" th:method="post">
-            <input hidden th:value="${user.id}" name="userId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-<div id="adminTruckDelete">
-    <p>All Truck Owners</p>
-    <div class="adminBoxes" th:each="truck : ${trucks}">
-        <p th:text="${truck.id}"></p>
-        <p th:text="${truck.name}"></p>
-        <p th:text="${truck.phone}"></p>
-
-        <form th:action="@{/deleteTruck}" th:method="post">
-            <input hidden th:value="${truck.id}" name="truckId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-<div id="adminReviewDelete">
-    <p>All Reviews</p>
-    <div class="adminBoxes" th:each="review : ${reviews}">
-        <p th:text="${review.truck.name}"></p>
-        <p th:text="${review.user.username}"></p>
-        <p th:text="${review.rating}"></p>
-        <p th:text="${review.reviewText}"></p>
-        <form th:action="@{/deleteReview}" th:method="post">
-            <input hidden th:value="${review.id}" name="reviewId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-<footer th:replace="partials :: footer"></footer>
+	<form th:action="@{/admin}" method="post">
+		<label>Username <input type="text" name="usernameSearch" id="usernameSearch"></label>
+		<label>Truck Name <input type="text" name="truckSearch" id="truckSearch"></label>
+		<label>Review Text <input type="text" name="reviewSearch" id="reviewSearch"></label>
+		<input type="hidden" name="searchType" id="searchType">
+		<button type="submit" class="btn btn-light">Search</button>
+	</form>
+	<a href="/admin"><button class="btn btn-light">Show All</button></a>
+	<nav>
+		<a onclick="showNonOwners()"><h3>Non-Truck Owners</h3></a> <a onclick="showOwners()"><h3>Trucks</h3></a>
+		<a onclick="showReviews()"><h3>Reviews</h3></a>
+	</nav>
+	<div id="show"></div>
+	<div id="adminUserDelete">
+		<p>All Non-Truck Owners</p>
+		<div class="adminBoxes" th:if="${!user.isTruckOwner()}" th:each="user : ${users}">
+			<p th:text="${user.id}"></p>
+			<p th:text="${user.username}"></p>
+			<p th:text="${user.email}"></p>
+			<form th:action="@{/deleteUser}" th:method="post">
+				<input hidden th:value="${user.id}" name="userId">
+				<button type="submit">DELETE</button>
+			</form>
+		</div>
+	</div>
+	<div id="adminTruckDelete">
+		<p>All Trucks</p>
+		<div class="adminBoxes" th:each="truck : ${trucks}">
+			<p th:text="${truck.id}"></p>
+			<p th:text="${truck.name}"></p>
+			<p th:text="${truck.phone}"></p>
+			
+			<form th:action="@{/deleteTruck}" th:method="post">
+				<input hidden th:value="${truck.id}" name="truckId">
+				<button type="submit">DELETE</button>
+			</form>
+		</div>
+	</div>
+	<div id="adminReviewDelete">
+		<p>All Reviews</p>
+		<div class="adminBoxes" th:each="review : ${reviews}">
+			<p th:text="${review.truck.name}"></p>
+			<p th:text="${review.user.username}"></p>
+			<p th:text="${review.rating}"></p>
+			<p th:text="${review.reviewText}"></p>
+			<form th:action="@{/deleteReview}" th:method="post">
+				<input hidden th:value="${review.id}" name="reviewId">
+				<button type="submit">DELETE</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		let searchType = document.getElementById("searchType");
+		document.getElementById("usernameSearch").addEventListener("click", () => {
+			searchType.value = "user";
+		});
+		document.getElementById("truckSearch").addEventListener("click", () => {
+			searchType.value = "truck";
+		});
+		document.getElementById("reviewSearch").addEventListener("click", () => {
+			searchType.value = "review";
+		});
+	</script>
+	<footer th:replace="partials :: footer"></footer>

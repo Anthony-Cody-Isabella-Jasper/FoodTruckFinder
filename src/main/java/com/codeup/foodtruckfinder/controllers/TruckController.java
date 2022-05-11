@@ -1,9 +1,6 @@
 package com.codeup.foodtruckfinder.controllers;
 
-import com.codeup.foodtruckfinder.models.Menu;
-import com.codeup.foodtruckfinder.models.Truck;
-import com.codeup.foodtruckfinder.models.TruckPicture;
-import com.codeup.foodtruckfinder.models.User;
+import com.codeup.foodtruckfinder.models.*;
 import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.MenuRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
@@ -79,22 +76,40 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/addMenuItem")
     public String addMenuItem(@PathVariable Long id, Model model){
+        List<Cuisine> cuisines = cuisineDao.findAll();
+        model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
         return "truck/addMenuItems";
     }
 
     @PostMapping("/truck/addMenuItem")
-    public String postAddMenuItem(@ModelAttribute Menu menuItem){
+    public String postAddMenuItem(@ModelAttribute Menu menuItem, @RequestParam(name = "type1") String name){
         List<Menu> menuItems = new ArrayList<>();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Truck truck = truckDao.getById(user.getTruck().getId());
+// THIS WILL BE MOVED TO ITS OWN POST MAPPING
+        List<Cuisine> newCuisine = new ArrayList<>();
+        String[] items = name.split(",");
+        for(String item : items) {
+            newCuisine.add(cuisineDao.getById(Long.valueOf(item)));
+        }
+
+        truck.setCuisines(newCuisine);
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         menuItem.setTruck(truck);
         menuItems.add(menuItem);
         truck.setMenu(menuItems);
         truckDao.save(truck);
         return "redirect:/truck/" + truck.getId() + "/show";
     }
+
+//    @PostMapping("/truck/pickCuisine")
+//    public String pickedCuisine() {
+//
+//
+//        return "redirect:/truck/5/addMenuItem";
+//    }
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
@@ -134,6 +149,5 @@ public class TruckController {
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/individual";
     }
-
 
 }

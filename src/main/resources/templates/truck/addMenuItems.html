@@ -27,7 +27,23 @@
 </div>
 
 <div>
+<!--    FORM WILL NEED TO BE IMPLEMENTED-->
+<!--    <form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">-->
+<!--        <div th:each="cuisine : ${cuisines}">-->
+<!--            <label class="form-check-label" for="cuisine">-->
+<!--                <input type="checkbox" th:value="${cuisine.getId()}" id="cuisine" name="type1">-->
+<!--                <span th:text="${cuisine.getName()}"></span>-->
+<!--            </label>-->
+<!--        </div>-->
+<!--        <button type="submit">Submit</button>-->
+<!--    </form>-->
     <form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post" >
+        <div th:each="cuisine : ${cuisines}">
+            <label class="form-check-label" for="cuisine">
+                <input type="checkbox" th:value="${cuisine.getId()}" id="cuisine" name="type1">
+                <span th:text="${cuisine.getName()}"></span>
+            </label>
+        </div>
         <label for="itemDescription">Description</label>
         <input th:field="*{description}" id="itemDescription" type="text"><br>
         <label for="itemName">Name</label>

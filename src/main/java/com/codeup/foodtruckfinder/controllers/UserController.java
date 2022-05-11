@@ -242,7 +242,7 @@ public class UserController {
 
     @PostMapping("/reject")
     public String rejected(@RequestParam(name = "pendingId") Long pendingId) {
-        emailService.prepareAndSendTruck(pendingTruckDao.getById(pendingId), "StreatFoods Account Rejected", "Unfortunately, \nyour new StreatFoods account has been rejected due to not meeting our website usage guidelines. \n\nHave a nice day from our team at StreatFoods!");
+        emailService.prepareAndSendTruck(pendingTruckDao.getById(pendingId), "StreatFoods Account Rejected", "Unfortunately, \nYour new StreatFoods account has been rejected due to not meeting our website usage guidelines. \n\nHave a nice day from our team at StreatFoods!");
         pendingTruckDao.deleteById(pendingId);
         return "redirect:/approve";
     }

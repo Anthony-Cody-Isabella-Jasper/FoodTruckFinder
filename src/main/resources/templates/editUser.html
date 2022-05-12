@@ -27,6 +27,9 @@
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
+<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
 
 
 

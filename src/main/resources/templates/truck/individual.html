@@ -22,6 +22,9 @@
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
+<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
 
 
 <div>
@@ -102,6 +105,7 @@
         </form>
     </div>
     <div th:each="review : ${truck.reviews}" class="truck-reviews">
+        <img th:attr="src=${review.user.profilePicture}">
         <span th:text="${review.user.username}"></span>
         <br>
         <span th:text="${review.reviewText}"></span>

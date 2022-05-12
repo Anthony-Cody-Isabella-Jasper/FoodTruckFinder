@@ -21,6 +21,9 @@
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
+<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+	<nav th:replace="partials :: #adminNav"></nav>
+</div>
 
 
 
@@ -56,7 +59,7 @@
 	</div>
 	<div class="row">
 		<div class="col-4" th:each="truck : ${trucks}">
-			<div class="card">
+			<div class="card mb-5">
 				<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 				<div class="card-body">
 					<a th:href="@{/truck/{id}/show(id=${truck.id})}"><h5 class="truck-name">

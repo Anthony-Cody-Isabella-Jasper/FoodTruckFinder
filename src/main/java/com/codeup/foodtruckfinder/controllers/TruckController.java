@@ -61,9 +61,14 @@ public class TruckController {
     @GetMapping("/truck/{id}/edit")
     public String editTruck(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         if (!user.isTruckOwner() || user.getTruck().getId() != id){
             return "redirect:/";
         }
+
+        List<Cuisine> cuisines = cuisineDao.findAll();
+        model.addAttribute("cuisines", cuisines);
+
         model.addAttribute("user", user);
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/editTruck";
@@ -100,6 +105,7 @@ public class TruckController {
     @GetMapping("/truck/{id}/addMenuItem")
     public String addMenuItem(@PathVariable Long id, Model model){
 
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!user.isTruckOwner() || user.getTruck().getId() != id){
             return "redirect:/";
@@ -111,23 +117,16 @@ public class TruckController {
         model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
+        model.addAttribute("user", user);
         return "truck/addMenuItems";
     }
 
     @PostMapping("/truck/addMenuItem")
-    public String postAddMenuItem(@ModelAttribute Menu menuItem, @RequestParam(name = "type1") String name){
+    public String postAddMenuItem(@ModelAttribute Menu menuItem){
         List<Menu> menuItems = new ArrayList<>();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Truck truck = truckDao.getById(user.getTruck().getId());
-// THIS WILL BE MOVED TO ITS OWN POST MAPPING
-        List<Cuisine> newCuisine = new ArrayList<>();
-        String[] items = name.split(",");
-        for(String item : items) {
-            newCuisine.add(cuisineDao.getById(Long.valueOf(item)));
-        }
 
-        truck.setCuisines(newCuisine);
-//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         menuItem.setTruck(truck);
         menuItems.add(menuItem);
         truck.setMenu(menuItems);
@@ -135,12 +134,19 @@ public class TruckController {
         return "redirect:/truck/" + truck.getId() + "/show";
     }
 
-//    @PostMapping("/truck/pickCuisine")
-//    public String pickedCuisine() {
-//
-//
-//        return "redirect:/truck/5/addMenuItem";
-//    }
+    @PostMapping("/truck/pickCuisine")
+    public String pickedCuisine(@RequestParam(name = "cuisineList") String cuisineList, @RequestParam(name = "truck") Truck truck) {
+        List<Cuisine> newCuisine = new ArrayList<>();
+        String[] list = cuisineList.split(",");
+        for(String cuisine : list) {
+            newCuisine.add(cuisineDao.getById(Long.valueOf(cuisine)));
+        }
+        System.out.println(truck.getId());
+        truck.setCuisines(newCuisine);
+        truckDao.save(truck);
+
+        return "redirect:/truck/" + truck.getId() + "/edit";
+    }
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {

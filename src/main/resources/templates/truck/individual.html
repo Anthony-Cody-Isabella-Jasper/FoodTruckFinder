@@ -40,12 +40,12 @@
 
         </div>
         <div sec:authorize="isAuthenticated()">
-            <div th:if="${!#authentication.principal.isTruckOwner}">
-                <form th:action="@{/truck/verify}" method="post">
-                    <input type="hidden" name="truckId" th:value="${truck.id}">
-                    <input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
-                    <button class="btn btn-light" type="submit">Verify Truck on Location</button>
-                </form>
+            <div th:if="${!#authentication.principal.isTruckOwner && !truck.getConfirmed_users().contains(loggedUser)}">
+                    <form th:action="@{/truck/verify}" method="post">
+                        <input type="hidden" name="truckId" th:value="${truck.id}">
+                        <input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
+                        <button class="btn btn-light" type="submit">Verify Truck on Location</button>
+                    </form>
             </div>
         </div>
         <p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>

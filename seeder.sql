@@ -33,11 +33,35 @@ insert into truck_pictures (picture, truck_id) VALUES ('https://kcfoodtrucks.com
 insert into cuisines (name)
 values ('american');
 insert into cuisines (name)
-values ('burgers');
-insert into cuisines (name)
 values ('mexican');
 insert into cuisines (name)
 values ('indian');
+insert into cuisines (name)
+values ('asian');
+insert into cuisines (name)
+values ('japanese');
+insert into cuisines (name)
+values ('korean');
+insert into cuisines (name)
+values ('european');
+insert into cuisines (name)
+values ('south american');
+insert into cuisines (name)
+values ('hawaiian');
+insert into cuisines (name)
+values ('comfort food');
+insert into cuisines (name)
+values ('seafood');
+insert into cuisines (name)
+values ('tex mex');
+insert into cuisines (name)
+values ('middle eastern');
+insert into cuisines (name)
+values ('mediterranean');
+insert into cuisines (name)
+values ('bbq');
+insert into cuisines (name)
+values ('african');
 
 
 

@@ -30,7 +30,7 @@ public class TruckController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("cuisines", cuisineDao.findAll());
+        model.addAttribute("cuisines", cuisineDao.getCuisinesAlphabetical());
         model.addAttribute("trucks", truckDao.findAll());
         return "index";
     }
@@ -38,7 +38,7 @@ public class TruckController {
     @PostMapping("/search")
     public String searchIndex(Model model, @RequestParam(name = "search") String search) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("cuisines", cuisineDao.findAll());
+        model.addAttribute("cuisines", cuisineDao.getCuisinesAlphabetical());
         model.addAttribute("trucks", truckDao.searchTrucks(search));
         return "index";
     }
@@ -53,7 +53,7 @@ public class TruckController {
         } else {
             model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));
         }
-        model.addAttribute("cuisines", cuisineDao.findAll());
+        model.addAttribute("cuisines", cuisineDao.getCuisinesAlphabetical());
         return "index";
     }
 
@@ -63,7 +63,7 @@ public class TruckController {
         if (!user.isTruckOwner() || user.getTruck().getId() != id) {
             return "redirect:/";
         }
-        List<Cuisine> cuisines = cuisineDao.findAll();
+        List<Cuisine> cuisines = cuisineDao.getCuisinesAlphabetical();
         model.addAttribute("cuisines", cuisines);
         model.addAttribute("user", user);
         model.addAttribute("truck", truckDao.getById(id));
@@ -79,7 +79,6 @@ public class TruckController {
         List<TruckPicture> truckImages = new ArrayList<>();
         String[] urls = truckPictureUrls.split(",");
         for (String url : urls) {
-            System.out.println(url);
             truckImages.add(new TruckPicture(url, truck));
         }
         newTruck.setTruckPictures(truckImages);
@@ -99,7 +98,7 @@ public class TruckController {
             return "redirect:/";
         }
         model.addAttribute("user", user);
-        List<Cuisine> cuisines = cuisineDao.findAll();
+        List<Cuisine> cuisines = cuisineDao.getCuisinesAlphabetical();
         model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
@@ -147,7 +146,6 @@ public class TruckController {
         for (String cuisine : list) {
             newCuisine.add(cuisineDao.getById(Long.valueOf(cuisine)));
         }
-        System.out.println(truck.getId());
         truck.setCuisines(newCuisine);
         truckDao.save(truck);
         return "redirect:/truck/" + truck.getId() + "/edit";

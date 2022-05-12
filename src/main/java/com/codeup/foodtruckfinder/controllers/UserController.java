@@ -114,10 +114,16 @@ public class UserController {
     @PostMapping("/editUser/{id}")
     public String editUser(Model model, @ModelAttribute User user, HttpSession session) {
         User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User newUser = userDao.getById(loggedUser.getId());
 
         String dbUser = user.getEmail();
         String dbUsername = user.getUsername();
 
+        System.out.println(loggedUser.getEmail());
+        System.out.println(dbUser);
+
+        System.out.println(loggedUser.getUsername());
+        System.out.println(dbUsername);
         if (userDao.existsUserByEmail(user.getEmail()) && !dbUser.equals(loggedUser.getEmail())) {
             model.addAttribute("user", userDao.getById(user.getId()));
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
@@ -127,6 +133,14 @@ public class UserController {
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";
         }
+
+        newUser.setPassword(loggedUser.getPassword());
+        newUser.setTruckOwner(loggedUser.isTruckOwner());
+        newUser.setAdmin(loggedUser.isAdmin());
+        user.setPassword(loggedUser.getPassword());
+        user.setTruckOwner(loggedUser.isTruckOwner());
+        user.setAdmin(loggedUser.isAdmin());
+        userDao.save(newUser);
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";

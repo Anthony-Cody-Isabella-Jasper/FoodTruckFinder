@@ -25,7 +25,7 @@ public class FavoriteController {
     }
 
     @PostMapping("/addFavorite")
-    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id, RedirectAttributes redirAttrs, Model model) {
+    public String addFavorite(@RequestParam Long truckId, @RequestParam Long id, RedirectAttributes redirAttrs) {
         User user = userDao.getById(id);
         List<Truck> fave;
         if (user == null) {
@@ -37,11 +37,8 @@ public class FavoriteController {
         }
 
         if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user.getId())) {
-            model.addAttribute("message", "This truck is already added to your favorites");
-            System.out.println("message");
-
-//            redirAttrs.addFlashAttribute("error", "This truck is already added to favorites.");
-                return "redirect:/truck/" + truckId + "/show";
+            redirAttrs.addFlashAttribute("message", "This truck is already added to your favorites");
+            return "redirect:/truck/" + truckId + "/show";
         } else {
             fave.add(truckDao.getTruckById(truckId));
             user.setFavoriteTrucks(fave);

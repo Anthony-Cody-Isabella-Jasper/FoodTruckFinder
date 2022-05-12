@@ -1,6 +1,6 @@
 <!--LOGGED TRUCK NAV-->
 <nav th:fragment="truckNav">
-    <nav id="truckLogged">
+    <nav id="truckLogged" class="nav">
         <a href="/"><h2>StreatFoods</h2></a>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
@@ -29,7 +29,7 @@
 
 <!--	LOGGED NAV FRAG START-->
 <nav th:fragment="loggedNav">
-    <nav id="logged">
+    <nav id="logged" class="nav">
         <a href="/"><h2>StreatFoods</h2></a>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -59,7 +59,7 @@
 
 <!--	NOT LOGGED FRAG START-->
 <nav th:fragment="notLoggedNav">
-    <nav id="notLogged">
+    <nav id="notLogged" class="nav">
         <a href="/"><h2>StreatFoods</h2></a>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
@@ -75,6 +75,18 @@
 </nav>
 <!--	NOT LOGGED FRAG END-->
 
+
+<!--    ADMIN NAV START    -->
+<nav th:fragment="adminNav">
+    <nav id="adminNav" class="nav">
+        <a href="/"><h2>StreatFoods</h2></a>
+        <div>
+            <a th:href="@{/admin}">DELETE VIEW</a>
+            <a th:href="@{/approve}">APPROVE VIEW</a>
+        </div>
+    </nav>
+</nav>
+<!--    ADMIN NAV END   -->
 
 <!--	FOOTER FRAG START-->
 <footer th:fragment="footer">

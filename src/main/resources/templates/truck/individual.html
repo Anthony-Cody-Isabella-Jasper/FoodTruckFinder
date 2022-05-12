@@ -11,7 +11,7 @@
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
+<div sec:authorize="isAuthenticated()" th:if="${!user.isAdmin}">
     <nav th:if="${!#authentication.principal.isTruckOwner}">
         <nav th:replace="partials :: loggedNav"></nav>
     </nav>
@@ -22,6 +22,10 @@
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
+<div th:if="${user.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
+
 <div>
     <div>
         <div id="map"></div>
@@ -100,7 +104,10 @@
         </form>
     </div>
     <div th:each="review : ${truck.reviews}" class="truck-reviews">
+        <span th:text="${review.user.username}"></span>
+        <br>
         <span th:text="${review.reviewText}"></span>
+        <br>
     </div>
 </div>
 <script th:inline="javascript">

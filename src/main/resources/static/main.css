@@ -1,3 +1,10 @@
+/*BODY START*/
+body{
+    margin: 20px;
+    padding: 0;
+}
+/*BODY END*/
+
 /*STYLE FOR RATING STARS*/
 .rate {
     float: left;
@@ -36,78 +43,59 @@
 }
 /*STARS END*/
 
-
-
-/*TEST*/
-/*img{*/
-/*    width: 500px;*/
-/*    height: 500px;*/
-/*}*/
-
-body{
-    background-color: black;
-    margin: 0;
-    padding: 0;
-    color: white;
+/* NAV START*/
+.nav{
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
 }
-
-nav{
-    border: 5px solid red;
-    background-image: linear-gradient(to right, red , yellow);
-    width: 100%;
+.nav img{
+    width: 100px;
+    height: 100px;
 }
+/*NAV END*/
 
-footer{
-    background-image: linear-gradient(to right, red , yellow);
-    height: 95px;
-    width: 100%;
-}
 
-#truckLogged img{
-    width: 200px;
-    height: 200px;
-}
 
-#logged img{
-    width: 200px;
-    height: 200px;
-}
-#notLogged img{
-    width: 200px;
-    height: 200px;
-}
-/*TEST END*/
-
-/*map*/
+/* MAP START*/
 #map{
     width: 60%;
     height: 400px;
     margin: auto;
 }
+/*MAP END*/
 
 
-.adminBoxes{
-    border: 2px solid yellow;
-    margin: 10px;
-}
 
-.card{
-    color: black;
-}
+/*TRUCK CARDS START*/
 .card img{
-    width: 460px;
     height: 350px;
 }
+/*CARDS END*/
 
+
+/* SEARCH BAR START*/
 #searchBar{
     border: 2px solid yellow;
     margin: 10px;
     padding: 10px;
     display: flex;
 }
+
 #filters{
-    display: flex;
+     display: flex;
+ }
+/* SEARCH END*/
+
+
+/* CAROUSEL START */
+#carouselTruckPhotos img{
+    width: 80%;
+    height: 400px;
 }
+/* CAROUSEL END */
 
 #banana{
     color: green;
@@ -115,7 +103,6 @@ footer{
     bottom: 200px;
 }
 
-/* Container holding the image and the text */
 .banana {
     position: relative;
     text-align: center;
@@ -128,17 +115,4 @@ footer{
     transform: translate(-50%, -50%);
 }
 
-a{
-    color: #cccccc;
-}
 
-
-#carouselTruckPhotos img{
-    width: 80%;
-    height: 400px;
-}
-
-.modal{
-    color: black;
-
-}

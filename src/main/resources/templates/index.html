@@ -10,7 +10,7 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">
+	<div sec:authorize="isAuthenticated()" th:if="${!user.isAdmin}">
 		<nav th:if="${!#authentication.principal.isTruckOwner}">
 			<nav th:replace="partials :: loggedNav"></nav>
 		</nav>
@@ -21,9 +21,10 @@
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
-	<a th:href="@{/admin}">ADMIN VIEW</a>
-	<br>
-	<a th:href="@{/approve}">APPROVE VIEW</a>
+	<div th:if="${user.isAdmin}">
+		<nav th:replace="partials :: #adminNav"></nav>
+	</div>
+
 	<div id="map"></div>
 	<div id="searchBar">
 		<div>
@@ -66,7 +67,7 @@
 						<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
 						<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 						<dt>Average Rating</dt>
-						<dd><span class="m-2"><span th:text="${truck.averageRating()}"></span>
+						<dd><span class="m-2"><span th:text="${#numbers.formatDecimal(truck.averageRating(),1,2)}"></span>
 							<em>(<span th:text="${truck.getReviews().size()}"></span> reviews)</em></span>
 						</dd>
 					</dl>

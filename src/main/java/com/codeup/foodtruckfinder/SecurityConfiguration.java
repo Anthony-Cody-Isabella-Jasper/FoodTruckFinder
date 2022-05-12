@@ -59,6 +59,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/truck/{id}/edit","/editUser/{id}","/truck/{id}/profile","/{id}/profile","/review/{id}","/truck/{id}/located", "/deleteFavorite")
                 .authenticated()
+
+
+                /* Pages for admin */
+                .and()
+                .authorizeRequests()
+                .antMatchers("/admin", "/approve")
+                .hasRole("admin")
+
         ;
     }
 }

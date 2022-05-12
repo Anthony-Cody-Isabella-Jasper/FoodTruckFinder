@@ -5,14 +5,11 @@ import com.codeup.foodtruckfinder.repositories.CuisineRepository;
 import com.codeup.foodtruckfinder.repositories.MenuRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +81,8 @@ public class TruckController {
         truckDao.deletePictures(truckId);
 
         List<TruckPicture> truckImages = new ArrayList<>();
-        String [] urls = truckPictureUrls.split(",");
-        for (String url : urls){
+        String[] urls = truckPictureUrls.split(",");
+        for (String url : urls) {
             System.out.println(url);
             truckImages.add(new TruckPicture(url, truck));
         }
@@ -102,43 +99,59 @@ public class TruckController {
         return "redirect:/truck/" + truck.getId() + "/show";
     }
 
-    @GetMapping("/truck/{id}/addMenuItem")
-    public String addMenuItem(@PathVariable Long id, Model model){
-
-
+    @GetMapping("/truck/{id}/editmenu")
+    public String addMenuItem(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!user.isTruckOwner() || user.getTruck().getId() != id){
             return "redirect:/";
         }
         model.addAttribute("user", user);
-
         List<Cuisine> cuisines = cuisineDao.findAll();
-
         model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
         model.addAttribute("user", user);
-        return "truck/addMenuItems";
+        return "truck/editMenu";
     }
 
     @PostMapping("/truck/addMenuItem")
-    public String postAddMenuItem(@ModelAttribute Menu menuItem){
+    public String postAddMenuItem(@ModelAttribute Menu menuItem) {
         List<Menu> menuItems = new ArrayList<>();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Truck truck = truckDao.getById(user.getTruck().getId());
-
         menuItem.setTruck(truck);
         menuItems.add(menuItem);
         truck.setMenu(menuItems);
         truckDao.save(truck);
-        return "redirect:/truck/" + truck.getId() + "/show";
+        return "redirect:/truck/" + truck.getId() + "/editmenu";
+    }
+
+    @PostMapping("/truck/{id}/editMenuItem")
+    public String editMenuItem(@PathVariable Long id, @RequestParam(name = "menuItemId") Long menuItemId, @RequestParam(name = "menuItemName") String menuItemName, @RequestParam(name = "menuItemPrice") double menuItemPrice, @RequestParam(name = "menuItemDescription", required = false) String menuItemDescription, @RequestParam(name = "menuItemVegan", required = false) String menuItemVegan, @RequestParam(name = "menuItemVegetarian", required = false) String menuItemVegetarian) {
+        Menu menuItem = menuDao.getById(menuItemId);
+        menuItem.setName(menuItemName);
+        menuItem.setPrice(menuItemPrice);
+        if(menuItemDescription != null) {
+            menuItem.setDescription(menuItemDescription);
+        }
+        menuItem.setVegan(menuItemVegan != null);
+        menuItem.setVegetarian(menuItemVegetarian != null);
+        menuDao.save(menuItem);
+        return "redirect:/truck/" + id + "/editmenu";
+    }
+
+    @PostMapping("/truck/{id}/deleteMenuItem")
+    public String deleteMenuItem(@PathVariable Long id, @RequestParam(name = "menuItemId") Long menuItemId) {
+        menuDao.deleteById(menuItemId);
+        System.out.println("aaaaa");
+        return "redirect:/truck/" + id + "/editmenu";
     }
 
     @PostMapping("/truck/pickCuisine")
     public String pickedCuisine(@RequestParam(name = "cuisineList") String cuisineList, @RequestParam(name = "truck") Truck truck) {
         List<Cuisine> newCuisine = new ArrayList<>();
         String[] list = cuisineList.split(",");
-        for(String cuisine : list) {
+        for (String cuisine : list) {
             newCuisine.add(cuisineDao.getById(Long.valueOf(cuisine)));
         }
         System.out.println(truck.getId());
@@ -172,6 +185,7 @@ public class TruckController {
         truckDao.unverifyTruck(id);
         return "redirect:/truck/" + id + "/show";
     }
+
     @PostMapping("/truck/verify")
     public String addVerification(@RequestParam("truckId") Long truckId, @RequestParam("userId") Long userId) {
         User user = userDao.getById(userId);
@@ -180,11 +194,11 @@ public class TruckController {
         userDao.save(user);
         return "redirect:/truck/" + truckId + "/show";
     }
+
     @GetMapping("/truck/{id}/profile")
     public String truckProfile(@PathVariable Long id, Model model) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/individual";
     }
-
 }

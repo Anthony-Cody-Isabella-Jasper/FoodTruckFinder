@@ -27,16 +27,6 @@
 </div>
 
 <div>
-    <form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">
-        <div th:each="cuisine : ${cuisines}">
-            <label class="form-check-label" for="cuisine">
-                <input type="hidden" th:value="${truck.getId()}" name="truck">
-                <input type="checkbox" th:value="${cuisine.getId()}" id="cuisine" name="cuisineList">
-                <span th:text="${cuisine.getName()}"></span>
-            </label>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
     <form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post" >
         <label for="itemDescription">Description</label>
         <input th:field="*{description}" id="itemDescription" type="text"><br>

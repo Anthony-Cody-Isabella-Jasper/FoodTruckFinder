@@ -32,6 +32,18 @@
 
 
 <div>
+    <h2>My truck cuisines</h2>
+    <form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">
+        <div th:each="cuisine : ${cuisines}">
+            <label class="form-check-label">
+                <input type="hidden" th:value="${truck.getId()}" name="truck">
+                <input type="checkbox" th:value="${cuisine.getId()}" name="cuisineList" th:if="${truck.cuisines.contains(cuisine)}" checked>
+                <input type="checkbox" th:value="${cuisine.getId()}" name="cuisineList" th:if="${!truck.cuisines.contains(cuisine)}">
+                <span th:text="${cuisine.getName()}"></span>
+            </label>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
     <form method="post" th:action="@{/truck/editTruck}" th:object="${truck}">
         <input type="hidden" th:field="*{id}">
         <input type="hidden" name="truckPictureUrls" id="truckPictureUrls">

@@ -163,6 +163,11 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User loggedUser = userDao.getById(user.getId());
+            model.addAttribute("loggedUser",loggedUser);
+        }
         Truck truck = truckDao.getTruckById(id);
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truck);

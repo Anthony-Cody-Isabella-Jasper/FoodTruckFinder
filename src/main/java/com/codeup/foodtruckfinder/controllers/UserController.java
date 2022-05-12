@@ -114,9 +114,6 @@ public class UserController {
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";
         }
-        if (passwordEncoder.matches(oldPass, user.getPassword())) {
-            user.setPassword(passwordEncoder.encode(newPass));
-        }
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";

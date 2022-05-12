@@ -112,7 +112,7 @@ public class UserController {
     }
 
     @PostMapping("/editUser/{id}")
-    public String editUser(Model model, @ModelAttribute User user, HttpSession session, @RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass) {
+    public String editUser(Model model, @ModelAttribute User user, HttpSession session) {
         if (userDao.existsUserByEmail(user.getEmail())) {
             model.addAttribute("user", userDao.getById(user.getId()));
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");

@@ -61,11 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticated()
 
 
-                /* Pages for admin */
-                .and()
-                .authorizeRequests()
-                .antMatchers("/admin", "/approve")
-                .hasRole("admin")
 
         ;
     }

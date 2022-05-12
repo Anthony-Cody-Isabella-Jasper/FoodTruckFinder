@@ -113,11 +113,16 @@ public class UserController {
 
     @PostMapping("/editUser/{id}")
     public String editUser(Model model, @ModelAttribute User user, HttpSession session) {
-        if (userDao.existsUserByEmail(user.getEmail())) {
+        User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String dbUser = user.getEmail();
+        String dbUsername = user.getUsername();
+
+        if (userDao.existsUserByEmail(user.getEmail()) && !dbUser.equals(loggedUser.getEmail())) {
             model.addAttribute("user", userDao.getById(user.getId()));
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
             return "/editUser";
-        } else if (userDao.existsUserByUsername(user.getUsername())) {
+        } else if (userDao.existsUserByUsername(user.getUsername()) && !dbUsername.equals(loggedUser.getUsername())) {
             model.addAttribute("user", userDao.getById(user.getId()));
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";

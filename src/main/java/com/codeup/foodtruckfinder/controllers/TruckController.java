@@ -47,7 +47,9 @@ public class TruckController {
     public String filteredIndex(Model model, @RequestParam(name = "filterCuisine") String filterCuisine, @RequestParam(name = "vegan", required = false) boolean vegan, @RequestParam(name = "vegetarian", required = false) boolean vegetarian) {
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if (filterCuisine.equals("all")) {
-            model.addAttribute("trucks", truckDao.filterTrucks(vegetarian, vegan));
+            model.addAttribute("trucks", truckDao.findAll());
+        } else if (!vegan && !vegetarian) {
+            model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine));
         } else {
             model.addAttribute("trucks", truckDao.filterTrucks(filterCuisine, vegetarian, vegan));
         }
@@ -58,14 +60,11 @@ public class TruckController {
     @GetMapping("/truck/{id}/edit")
     public String editTruck(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (!user.isTruckOwner() || user.getTruck().getId() != id){
+        if (!user.isTruckOwner() || user.getTruck().getId() != id) {
             return "redirect:/";
         }
-
         List<Cuisine> cuisines = cuisineDao.findAll();
         model.addAttribute("cuisines", cuisines);
-
         model.addAttribute("user", user);
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/editTruck";
@@ -73,28 +72,22 @@ public class TruckController {
 
     @PostMapping("/truck/editTruck")
     public String postEditTruck(@ModelAttribute Truck truck, @RequestParam String truckPictureUrls) {
-
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Truck newTruck = user.getTruck();
-
         long truckId = user.getTruck().getId();
         truckDao.deletePictures(truckId);
-
         List<TruckPicture> truckImages = new ArrayList<>();
         String[] urls = truckPictureUrls.split(",");
         for (String url : urls) {
             System.out.println(url);
             truckImages.add(new TruckPicture(url, truck));
         }
-
         newTruck.setTruckPictures(truckImages);
         newTruck.setTruck_owner(user);
         newTruck.setProfile_picture(truck.getProfile_picture());
         newTruck.setName(truck.getName());
         newTruck.setDescription(truck.getDescription());
         newTruck.setPhone(truck.getPhone());
-
-
         truckDao.save(newTruck);
         return "redirect:/truck/" + truck.getId() + "/show";
     }
@@ -102,7 +95,7 @@ public class TruckController {
     @GetMapping("/truck/{id}/editmenu")
     public String addMenuItem(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.isTruckOwner() || user.getTruck().getId() != id){
+        if (!user.isTruckOwner() || user.getTruck().getId() != id) {
             return "redirect:/";
         }
         model.addAttribute("user", user);
@@ -131,7 +124,7 @@ public class TruckController {
         Menu menuItem = menuDao.getById(menuItemId);
         menuItem.setName(menuItemName);
         menuItem.setPrice(menuItemPrice);
-        if(menuItemDescription != null) {
+        if (menuItemDescription != null) {
             menuItem.setDescription(menuItemDescription);
         }
         menuItem.setVegan(menuItemVegan != null);
@@ -157,16 +150,15 @@ public class TruckController {
         System.out.println(truck.getId());
         truck.setCuisines(newCuisine);
         truckDao.save(truck);
-
         return "redirect:/truck/" + truck.getId() + "/edit";
     }
 
     @GetMapping("/truck/{id}/show")
     public String showTruck(@PathVariable Long id, Model model) {
-        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User loggedUser = userDao.getById(user.getId());
-            model.addAttribute("loggedUser",loggedUser);
+            model.addAttribute("loggedUser", loggedUser);
         }
         Truck truck = truckDao.getTruckById(id);
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());

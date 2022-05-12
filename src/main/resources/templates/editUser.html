@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div sec:authorize="isAuthenticated()">
+<div sec:authorize="isAuthenticated()" th:if="${!user.isAdmin}">
     <nav th:if="${!#authentication.principal.isTruckOwner}">
         <nav th:replace="partials :: loggedNav"></nav>
     </nav>
@@ -24,10 +24,13 @@
         <nav th:replace="partials :: truckNav"></nav>
     </nav>
 </div>
-
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
+<div th:if="${user.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
+
 
 <div>
     <form method="post" th:action="@{/editUser/{id}(id=${user.getId()})}" th:object="${user}">

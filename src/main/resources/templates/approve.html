@@ -11,9 +11,12 @@
 </head>
 <body>
 
-<nav th:replace="partials :: notLoggedNav"></nav>
 
-	<div th:each="pendingUser : ${pendingUsers}">
+	<nav th:replace="partials :: #adminNav"></nav>
+
+
+
+<div th:each="pendingUser : ${pendingUsers}">
 		<form th:action="@{/approve}" method="post">
 			<label>Username
 				<input type="text" name="username" th:value="${pendingUser.getUsername()}"><span th:text="${pendingUser.getUsername()}"></span>

@@ -96,10 +96,13 @@ public class TruckController {
 
     @GetMapping("/truck/{id}/addMenuItem")
     public String addMenuItem(@PathVariable Long id, Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         List<Cuisine> cuisines = cuisineDao.findAll();
         model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
+        model.addAttribute("user", user);
         return "truck/addMenuItems";
     }
 

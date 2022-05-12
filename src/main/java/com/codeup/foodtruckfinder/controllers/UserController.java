@@ -85,6 +85,10 @@ public class UserController {
 
     @GetMapping("/{id}/profile")
     public String profile(@PathVariable Long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isTruckOwner() || user.getId() != id){
+            return "redirect:/";
+        }
         model.addAttribute("user", userDao.getById(id));
         model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
         return "/profile";
@@ -99,6 +103,10 @@ public class UserController {
 
     @GetMapping("/editUser/{id}")
     public String editUserForm(@PathVariable Long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isTruckOwner() || user.getId() != id){
+            return "redirect:/";
+        }
         model.addAttribute("user", userDao.getById(id));
         return "editUser";
     }
@@ -114,9 +122,6 @@ public class UserController {
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";
         }
-        if (passwordEncoder.matches(oldPass, user.getPassword())) {
-            user.setPassword(passwordEncoder.encode(newPass));
-        }
         userDao.save(user);
         session.invalidate();
         return "redirect:/login";
@@ -124,6 +129,10 @@ public class UserController {
 
     @GetMapping("/admin")
     public String adminView(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!user.isAdmin()){
+            return "redirect:/";
+        }
         model.addAttribute("users", userDao.findAll());
         model.addAttribute("trucks", truckDao.findAll());
         model.addAttribute("reviews", reviewDao.findAll());
@@ -211,6 +220,10 @@ public class UserController {
 
     @GetMapping("/approve")
     public String approveUser(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!user.isAdmin()){
+            return "redirect:/";
+        }
         model.addAttribute("pendingUsers", pendingTruckDao.findAll());
         return "approve";
     }

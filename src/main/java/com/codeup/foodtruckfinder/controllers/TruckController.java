@@ -58,8 +58,14 @@ public class TruckController {
     @GetMapping("/truck/{id}/edit")
     public String editTruck(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (!user.isTruckOwner() || user.getTruck().getId() != id){
+            return "redirect:/";
+        }
+
         List<Cuisine> cuisines = cuisineDao.findAll();
         model.addAttribute("cuisines", cuisines);
+
         model.addAttribute("user", user);
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/editTruck";
@@ -96,6 +102,12 @@ public class TruckController {
     @GetMapping("/truck/{id}/editmenu")
     public String addMenuItem(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!user.isTruckOwner() || user.getTruck().getId() != id){
+            return "redirect:/";
+        }
+        model.addAttribute("user", user);
+        List<Cuisine> cuisines = cuisineDao.findAll();
+        model.addAttribute("cuisines", cuisines);
         model.addAttribute("menuItem", new Menu());
         model.addAttribute("truck", truckDao.getTruckById(id));
         model.addAttribute("user", user);

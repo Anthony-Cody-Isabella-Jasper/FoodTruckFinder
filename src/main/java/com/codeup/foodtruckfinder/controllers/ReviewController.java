@@ -25,6 +25,10 @@ public class ReviewController {
 
     @GetMapping("/review/{id}")
     public String reviewForm(@PathVariable Long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isTruckOwner()){
+            return "redirect:/";
+        }
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         model.addAttribute("truck", truckDao.getTruckById(id));
         model.addAttribute("reviewObj", new Review());
@@ -41,7 +45,20 @@ public class ReviewController {
 
     @GetMapping("/editReview/{id}")
     public String editReviewPage(@PathVariable Long id, Model model) {
+
         model.addAttribute("review", reviewDao.findById(id));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Review blockReview = reviewDao.getById(id);
+        Long blockId = blockReview.getUser().getId();
+
+        if (user.isTruckOwner()) {
+            return "redirect:/";
+        }
+       if (user.getId() != blockId){
+           return "redirect:/";
+       }
+
+        model.addAttribute("user", user);
         model.addAttribute("revId", id);
         Review review = reviewDao.getById(id);
         model.addAttribute("trckId", review.getTruck().getId());

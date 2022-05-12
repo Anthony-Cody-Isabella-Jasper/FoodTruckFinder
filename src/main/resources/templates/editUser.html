@@ -38,13 +38,7 @@
         <label for="email">Email:</label>
         <input id="email" th:field="*{email}" type="text">
         <br>
-
-        <input hidden id="password" th:field="*{password}">
-        <label for="oldPass">Old Password:</label>
-        <input type="password" id="oldPass" name="oldPass">
-        <br>
-        <label for="newPass">New Password:</label>
-        <input type="password" id="newPass" name="newPass">
+        <button type="button"><a th:href="@{/resetPassword}">Reset Password</a></button>
 
         <div id="avatar-choices">
             <label class="avatar"><img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture"

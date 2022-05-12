@@ -91,11 +91,14 @@
     </div>
     <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
     <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
+        <span th:text="${message}"></span>
+
         <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
+
         <form th:action="@{/addFavorite}" th:method="post">
             <input hidden th:value="${truck.getId()}" name="truckId">
             <input hidden th:value="${#authentication.principal.getId()}" name="id">
-            <div class="alert alert-primary" role="alert" th:text="${error}" th:if="${error}"></div>
+<!--            <div class="alert alert-primary" role="alert" th:text="${error}" th:if="${error}"></div>-->
             <button type="submit">Add Favorite</button>
         </form>
     </div>
@@ -104,10 +107,17 @@
     </div>
 </div>
 <script th:inline="javascript">
+
+
     let truckLongitude;
     let truckLatitude;
     let truckName;
     /*<![CDATA[*/
+
+   if (/*[[${message}]]*/) {
+       window.alert(/*[[${message}]]*/);
+   }
+
     truckLongitude = /*[[${truck.getLongitude()}]]*/;
     truckLatitude = /*[[${truck.getLatitude()}]]*/;
     truckName = /*[[${truck.getName()}]]*/;
@@ -151,5 +161,6 @@
             document.getElementById("beacon").hidden = false;
         });
     });
+
 </script>
 <footer th:replace="partials :: footer"></footer>

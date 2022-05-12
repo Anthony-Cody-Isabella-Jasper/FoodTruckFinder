@@ -50,6 +50,7 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 25px;
+    margin-bottom: 25px;
 }
 .nav img{
     width: 100px;
@@ -66,7 +67,9 @@ body{
 #map{
     width: 60%;
     height: 400px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
 }
 /*MAP END*/
 
@@ -81,17 +84,35 @@ body{
 
 /* SEARCH BAR START*/
 #searchBar{
-    border: 2px solid yellow;
-    margin: 10px;
     padding: 10px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+#filters{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+#filters form{
+    padding: 15px;
+}
+#filters button{
+    margin-bottom: 5px;
 }
 
-#filters{
-     display: flex;
- }
 /* SEARCH END*/
 
+
+/*  FOOTER START    */
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+/*  FOOTER END  */
 
 /* CAROUSEL START */
 #carouselTruckPhotos img{
@@ -99,6 +120,19 @@ body{
     height: 400px;
 }
 /* CAROUSEL END */
+
+
+/*  REVIEW IMAGE START  */
+.truck-reviews img{
+    width: 75px;
+    height: 75px;
+}
+/*  REVIEW IMG END  */
+
+
+
+
+
 
 #banana{
     color: green;
@@ -117,5 +151,3 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-

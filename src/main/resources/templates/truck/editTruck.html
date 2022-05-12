@@ -21,6 +21,11 @@
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
+	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+		<nav th:replace="partials :: #adminNav"></nav>
+	</div>
+
+
 	<div>
 		<h2>My truck cuisines</h2>
 		<form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">

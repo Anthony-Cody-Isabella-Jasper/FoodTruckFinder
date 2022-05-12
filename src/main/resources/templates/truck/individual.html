@@ -26,19 +26,19 @@
     <div>
         <div id="map"></div>
         <div sec:authorize="isAuthenticated()">
-        <div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
-            <button class="btn btn-light" id="triangulate">Triangulate Location</button>
-            <form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
-                <input type="hidden" name="longitude" id="truckLongitude">
-                <input type="hidden" name="latitude" id="truckLatitude">
-                <button class="btn btn-light" type="submit" id="beacon" hidden>Activate Beacon</button>
-            </form>
-            <form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
-                <button class="btn btn-light" type="submit">Go Ghost</button>
-            </form>
-        </div>
+            <div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
+                <button class="btn btn-light" id="triangulate">Triangulate Location</button>
+                <form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
+                    <input type="hidden" name="longitude" id="truckLongitude">
+                    <input type="hidden" name="latitude" id="truckLatitude">
+                    <button class="btn btn-light" type="submit" id="beacon" hidden>Activate Beacon</button>
+                </form>
+                <form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+                    <button class="btn btn-light" type="submit">Go Ghost</button>
+                </form>
+            </div>
 
-    </div>
+        </div>
         <div sec:authorize="isAuthenticated()">
             <div th:if="${!#authentication.principal.isTruckOwner}">
                 <form th:action="@{/truck/verify}" method="post">
@@ -84,7 +84,8 @@
     <div th:each="menu : ${truck.menu}" class="menu-items">
         <span th:text="${menu.name}"></span><br>
         <span th:text="${menu.description}"></span><br>
-        <div>$<span th:text="${menu.price}"></span></div><br>
+        <div>$<span th:text="${menu.price}"></span></div>
+        <br>
         <span th:if="${menu.vegan == true}">This is vegan</span><br>
         <span th:if="${menu.vegetarian == true}">This is vegetarian</span>
     </div>

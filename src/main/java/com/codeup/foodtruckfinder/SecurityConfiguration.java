@@ -59,6 +59,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/truck/{id}/edit","/editUser/{id}","/truck/{id}/profile","/{id}/profile","/review/{id}","/truck/{id}/located", "/deleteFavorite")
                 .authenticated()
+
+
+
         ;
     }
 }

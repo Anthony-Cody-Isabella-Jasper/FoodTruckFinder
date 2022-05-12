@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -139,27 +140,24 @@ public class UserController {
     }
 
     @PostMapping("/admin")
-    public String adminSearch(Model model, @RequestParam(name = "usernameSearch") String usernameSearch, @RequestParam(name = "truckSearch") String truckSearch, @RequestParam(name="reviewSearch") String reviewSearch, @RequestParam(name = "searchType") String searchType) {
+    public String adminSearch(Model model, @RequestParam(name = "usernameSearch", required = false) String usernameSearch, @RequestParam(name = "truckSearch", required = false) String truckSearch, @RequestParam(name = "reviewSearch", required = false) String reviewSearch, @RequestParam(name = "searchType") String searchType) {
+        model.addAttribute("users", userDao.findAll());
+        model.addAttribute("trucks", truckDao.findAll());
+        model.addAttribute("reviews", reviewDao.findAll());
         switch (searchType) {
             case "user":
                 model.addAttribute("users", userDao.adminUserSearch(usernameSearch));
-                model.addAttribute("trucks", new ArrayList<Truck>());
-                model.addAttribute("reviews", new ArrayList<Review>());
                 break;
             case "truck":
-                model.addAttribute("users", new ArrayList<User>());
                 model.addAttribute("trucks", truckDao.adminTruckSearch(truckSearch));
-                model.addAttribute("reviews", new ArrayList<Review>());
                 break;
             case "review":
-                model.addAttribute("users", new ArrayList<User>());
-                model.addAttribute("trucks", new ArrayList<Truck>());
                 model.addAttribute("reviews", reviewDao.adminReviewSearch(reviewSearch));
                 break;
         }
         return "admin";
     }
-  
+
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
         userDao.deleteUserConfirmation(userId);

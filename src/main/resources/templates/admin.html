@@ -10,68 +10,81 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-<nav>
-    <a onclick="showNonOwners()"><h3>Non-Truck Owners</h3></a>
-    <a onclick="showOwners()"><h3>Truck Owners</h3></a>
-    <a onclick="showReviews()"><h3>Reviews</h3></a>
-    <a th:href="@{/}">Back Home</a>
-</nav>
-
-<div id="show"></div>
-
-<div id="adminUserDelete">
-    <p>All Non-Truck Owners</p>
-    <div class="adminBoxes" th:if="${!user.isTruckOwner()}" th:each="user : ${users}">
-        <p th:text="${user.id}"></p>
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.email}"></p>
-        <form th:action="@{/deleteUser}" th:method="post">
-            <input hidden th:value="${user.id}" name="userId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-<div id="adminTruckDelete">
-    <p>All Truck Owners</p>
-    <div class="adminBoxes" th:each="truck : ${trucks}">
-        <p th:text="${truck.id}"></p>
-        <p th:text="${truck.name}"></p>
-        <p th:text="${truck.phone}"></p>
-
-        <form th:action="@{/deleteTruck}" th:method="post">
-            <input hidden th:value="${truck.id}" name="truckId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-<div id="adminReviewDelete">
-    <p>All Reviews</p>
-    <div class="adminBoxes" th:each="review : ${reviews}">
-        <p th:text="${review.truck.name}"></p>
-        <p th:text="${review.user.username}"></p>
-        <p th:text="${review.rating}"></p>
-        <p th:text="${review.reviewText}"></p>
-        <form th:action="@{/deleteReview}" th:method="post">
-            <input hidden th:value="${review.id}" name="reviewId">
-            <button type="submit">DELETE</button>
-        </form>
-    </div>
-</div>
-
-	<script>
-		let searchType = document.getElementById("searchType");
-		document.getElementById("usernameSearch").addEventListener("click", () => {
-			searchType.value = "user";
-		});
-		document.getElementById("truckSearch").addEventListener("click", () => {
-			searchType.value = "truck";
-		});
-		document.getElementById("reviewSearch").addEventListener("click", () => {
-			searchType.value = "review";
-		});
-	</script>
+	<nav>
+		<a th:href="@{/}">Back Home</a>
+	</nav>
+	<div id="show"></div>
+	<div class="container">
+		<div class="row">
+			<div id="adminUserDelete" class="col">
+				<h3>Standard Users</h3>
+				<form th:action="@{/admin}" method="post">
+					<input type="text" name="usernameSearch" placeholder="Username">
+					<input type="hidden" name="searchType" value="user">
+					<button type="submit" class="btn btn-light">Search</button>
+				</form>
+				<div class="adminBoxes" th:if="${!user.isTruckOwner()}" th:each="user : ${users}">
+					<dl>
+						<dt>Profile ID</dt>
+						<dd th:text="${user.id}"></dd>
+						<dt>Username</dt>
+						<dd th:text="${user.username}"></dd>
+						<dt>Email</dt>
+						<dd th:text="${user.email}"></dd>
+					</dl>
+					<form th:action="@{/deleteUser}" th:method="post">
+						<input hidden th:value="${user.id}" name="userId">
+						<button type="submit" class="btn btn-danger">DELETE</button>
+					</form>
+				</div>
+			</div>
+			<div id="adminTruckDelete" class="col">
+				<h3>Truck Profiles</h3>
+				<form th:action="@{/admin}" method="post">
+					<input type="text" name="truckSearch" placeholder="Truck Name">
+					<input type="hidden" name="searchType" value="truck">
+					<button type="submit" class="btn btn-light">Search</button>
+				</form>
+				<div class="adminBoxes" th:each="truck : ${trucks}">
+					<dl>
+						<dt>Truck ID</dt>
+						<dd th:text="${truck.id}"></dd>
+						<dt>Truck Name</dt>
+						<dd th:text="${truck.name}"></dd>
+						<dt>Phone Number</dt>
+						<dd th:text="${truck.phone}"></dd>
+					</dl>
+					<form th:action="@{/deleteTruck}" th:method="post">
+						<input hidden th:value="${truck.id}" name="truckId">
+						<button type="submit" class="btn btn-danger">DELETE</button>
+					</form>
+				</div>
+			</div>
+			<div id="adminReviewDelete" class="col">
+				<h3>Reviews</h3>
+				<form th:action="@{/admin}" method="post">
+					<input type="text" name="reviewSearch" placeholder="Review Name">
+					<input type="hidden" name="searchType" value="review">
+					<button type="submit" class="btn btn-light">Search</button>
+				</form>
+				<div class="adminBoxes" th:each="review : ${reviews}">
+					<dl>
+						<dt>Truck Name</dt>
+						<dd th:text="${review.truck.name}"></dd>
+						<dt>Author</dt>
+						<dd th:text="${review.user.username}"></dd>
+						<dt>Rating</dt>
+						<dd th:text="${review.rating}"></dd>
+						<dt>Review Text</dt>
+						<dd th:text="${review.reviewText}"></dd>
+					</dl>
+					<form th:action="@{/deleteReview}" th:method="post">
+						<input hidden th:value="${review.id}" name="reviewId">
+						<button type="submit" class="btn btn-danger">DELETE</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<footer th:replace="partials :: footer"></footer>
 

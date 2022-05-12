@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div sec:authorize="isAuthenticated()" th:if="${!user.isAdmin}">
+<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
     <nav th:if="${!#authentication.principal.isTruckOwner}">
         <nav th:replace="partials :: loggedNav"></nav>
     </nav>
@@ -26,9 +26,8 @@
 <div sec:authorize="!isAuthenticated()">
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
-<div th:if="${user.isAdmin}">
-    <nav th:replace="partials :: #adminNav"></nav>
-</div>
+
+
 
 
 <div class="container">

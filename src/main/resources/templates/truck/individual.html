@@ -91,14 +91,11 @@
     </div>
     <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
     <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
-        <span th:text="${message}"></span>
-
         <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
 
         <form th:action="@{/addFavorite}" th:method="post">
             <input hidden th:value="${truck.getId()}" name="truckId">
             <input hidden th:value="${#authentication.principal.getId()}" name="id">
-<!--            <div class="alert alert-primary" role="alert" th:text="${error}" th:if="${error}"></div>-->
             <button type="submit">Add Favorite</button>
         </form>
     </div>

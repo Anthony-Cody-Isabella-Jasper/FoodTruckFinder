@@ -28,7 +28,6 @@ public class UserController {
     private final ReviewRepository reviewDao;
     private final EmailService emailService;
 
-
     public UserController(UserRepository userDao, ReviewRepository reviewDao, TruckRepository truckDao, PasswordEncoder passwordEncoder, PendingTruckRepository pendingTruckDao, EmailService emailService) {
         this.userDao = userDao;
         this.truckDao = truckDao;
@@ -86,7 +85,7 @@ public class UserController {
     @GetMapping("/{id}/profile")
     public String profile(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user.isTruckOwner() || user.getId() != id){
+        if (user.isTruckOwner() || user.getId() != id) {
             return "redirect:/";
         }
         model.addAttribute("user", userDao.getById(id));
@@ -104,7 +103,7 @@ public class UserController {
     @GetMapping("/editUser/{id}")
     public String editUserForm(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user.isTruckOwner() || user.getId() != id){
+        if (user.isTruckOwner() || user.getId() != id) {
             return "redirect:/";
         }
         model.addAttribute("user", userDao.getById(id));
@@ -149,7 +148,7 @@ public class UserController {
     @GetMapping("/admin")
     public String adminView(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.isAdmin()){
+        if (!user.isAdmin()) {
             return "redirect:/";
         }
         model.addAttribute("users", userDao.findAll());
@@ -186,15 +185,35 @@ public class UserController {
         return "admin";
     }
 
+    @PostMapping("/adminEditUser")
+    public String adminEditUser(@RequestParam(name = "userId") Long userId, @RequestParam(name = "userUsername") String username, @RequestParam(name = "userEmail") String email, @RequestParam(name = "userTruckOwner", required = false) String truckOwner, @RequestParam(name = "userAdmin", required = false) String admin) {
+        User user = userDao.getById(userId);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setTruckOwner(truckOwner != null);
+        user.setAdmin(admin != null);
+        userDao.save(user);
+        return "redirect:/admin";
+    }
+
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId, HttpSession httpSession) {
         userDao.deleteUserConfirmation(userId);
         userDao.deleteUserFavorite(userId);
         userDao.deleteById(userId);
-        if(userId == ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()) {
+        if (userId == ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()) {
             httpSession.invalidate();
             return "redirect:/";
         }
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/adminEditTruck")
+    public String adminEditTruck(@RequestParam(name = "truckId") Long truckId, @RequestParam(name = "truckName") String name, @RequestParam(name = "truckDescription") String description) {
+        Truck truck = truckDao.getById(truckId);
+        truck.setName(name);
+        truck.setDescription(description);
+        truckDao.save(truck);
         return "redirect:/admin";
     }
 
@@ -203,6 +222,21 @@ public class UserController {
         userDao.deleteTruckConfirmation(truckId);
         userDao.deleteTruckFavorite(truckId);
         truckDao.deleteById(truckId);
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/adminEditReview")
+    public String adminEditReview(@RequestParam(name = "reviewId") Long reviewId, @RequestParam(name = "reviewRating") int rating, @RequestParam(name = "reviewText") String text) {
+        Review review = reviewDao.getById(reviewId);
+        review.setRating(rating);
+        review.setReviewText(text);
+        reviewDao.save(review);
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/deleteReview")
+    public String deleteReview(@RequestParam Long reviewId) {
+        reviewDao.deleteById(reviewId);
         return "redirect:/admin";
     }
 
@@ -234,17 +268,10 @@ public class UserController {
         return "redirect:/login";
     }
 
-
-    @PostMapping("/deleteReview")
-    public String deleteReview(@RequestParam Long reviewId) {
-        reviewDao.deleteById(reviewId);
-        return "redirect:/admin";
-    }
-
     @GetMapping("/approve")
     public String approveUser(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!user.isAdmin()){
+        if (!user.isAdmin()) {
             return "redirect:/";
         }
         model.addAttribute("pendingUsers", pendingTruckDao.findAll());
@@ -265,6 +292,7 @@ public class UserController {
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
         newTruck.setName("My Truck");
+        newTruck.setDescription("");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);
         emailService.prepareAndSend(newUser, "StreatFoods Account Approved", "Congratulations! \nYour account has passed the rigorous StreatFoods approval process! Log in now to finish setting up your food truck. \n\nThank you from our team at StreatFoods");

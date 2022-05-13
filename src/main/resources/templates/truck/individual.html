@@ -29,7 +29,11 @@
 
 <div>
     <div>
-        <div id="map"></div>
+        <div id="mapDiv">
+            <div id="map"></div>
+            <p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
+        </div>
+
         <div sec:authorize="isAuthenticated()">
             <div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
                 <button class="btn btn-light" id="triangulate">Triangulate Location</button>
@@ -42,25 +46,41 @@
                     <button class="btn btn-light" type="submit">Go Ghost</button>
                 </form>
             </div>
-
         </div>
+
+
         <div sec:authorize="isAuthenticated()">
             <div th:if="${!#authentication.principal.isTruckOwner && !truck.getConfirmed_users().contains(loggedUser)}">
-                    <form th:action="@{/truck/verify}" method="post">
-                        <input type="hidden" name="truckId" th:value="${truck.id}">
-                        <input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
-                        <button class="btn btn-light" type="submit">Verify Truck on Location</button>
-                    </form>
+                <form th:action="@{/truck/verify}" method="post">
+                    <input type="hidden" name="truckId" th:value="${truck.id}">
+                    <input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
+                    <button class="btn btn-light" type="submit">Verify Truck on Location</button>
+                </form>
             </div>
         </div>
-        <p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
     </div>
-    <div>
-        <h3 th:text="${truck.name}"></h3>
-        <p th:each="cuisine : ${truck.cuisines}">Truck Cuisines: <span th:text="${cuisine.name}"></span></p>
-        <p>Phone Number: <span th:text="${truck.phone}"></span></p>
-        <p th:text="${truck.description}"></p>
+
+    <hr>
+
+    <div id="individualTruck">
+        <img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
+        <div>
+            <h3 th:text="${truck.name}"></h3>
+            <p th:each="cuisine : ${truck.cuisines}">Truck Cuisines: <span th:text="${cuisine.name}"></span></p>
+            <p>Phone Number: <span th:text="${truck.phone}"></span></p>
+            <p th:text="${truck.description}"></p>
+            <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
+                <form th:action="@{/addFavorite}" th:method="post">
+                    <input hidden th:value="${truck.getId()}" name="truckId">
+                    <input hidden th:value="${#authentication.principal.getId()}" name="id">
+                    <button type="submit">Add Favorite</button>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <hr>
+
     <div>
         <div id="carouselTruckPhotos" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -73,44 +93,84 @@
                     <img th:src="${truckPicture.picture}" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselTruckPhotos" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-target="#carouselTruckPhotos"
+                    data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-target="#carouselTruckPhotos" data-slide="next">
+            <button class="carousel-control-next" type="button" data-target="#carouselTruckPhotos"
+                    data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </button>
         </div>
     </div>
 </div>
-<div>
-    <p>Menu Items:</p>
-    <div th:each="menu : ${truck.menu}" class="menu-items">
-        <span th:text="${menu.name}"></span><br>
-        <span th:text="${menu.description}"></span><br>
-        <div>$<span th:text="${menu.price}"></span></div>
-        <br>
-        <span th:if="${menu.vegan == true}">This is vegan</span><br>
-        <span th:if="${menu.vegetarian == true}">This is vegetarian</span>
-    </div>
-    <p>Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
-    <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
-        <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write Review!</a>
 
-        <form th:action="@{/addFavorite}" th:method="post">
-            <input hidden th:value="${truck.getId()}" name="truckId">
-            <input hidden th:value="${#authentication.principal.getId()}" name="id">
-            <button type="submit">Add Favorite</button>
-        </form>
+
+<!--    <div id="menuItems">-->
+<!--        <p>Menu Items:</p>-->
+<!--        <div th:each="menu : ${truck.menu}" class="menu-items">-->
+<!--            <div>-->
+<!--                <span th:text="${menu.name}"></span><br>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <span th:text="${menu.description}"></span><br>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <div>$<span th:text="${menu.price}"></span></div>-->
+<!--            </div>-->
+<!--            <span th:if="${menu.vegan == true}">This is vegan</span><br>-->
+<!--            <span th:if="${menu.vegetarian == true}">This is vegetarian</span>-->
+<!--        </div>-->
+<!--    </div>-->
+<hr>
+
+<div id="bottomBox">
+    <div id="menuBox">
+        <h1>MENU</h1>
+        <table class="table">
+
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Vegan/Vegetarian</th>
+            </tr>
+            </thead>
+            <tbody th:each="menu : ${truck.menu}" class="menu-items">
+            <tr>
+                <td th:text="${menu.name}"></td>
+                <td th:text="${menu.description}"></td>
+                <td th:text="${menu.price}"></td>
+                <td th:if="${menu.vegan == true}">This is vegan</td>
+                <td th:if="${menu.vegetarian == true}">This is vegetarian</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div th:each="review : ${truck.reviews}" class="truck-reviews">
-        <img th:attr="src=${review.user.profilePicture}">
-        <span th:text="${review.user.username}"></span>
-        <br>
-        <span th:text="${review.reviewText}"></span>
-        <br>
+
+    <hr>
+
+    <div id="reviewItems">
+        <p id="reviewText">Reviews: <span th:text="${truck.getReviews().size()}"></span></p>
+        <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
+            <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write a Review!</a>
+        </div>
+        <div th:each="review : ${truck.reviews}" class="truck-reviews" id="reviewContent">
+            <div id="reviewLeft">
+                <img th:attr="src=${review.user.profilePicture}">
+                <span th:text="${review.user.username}"></span>
+            </div>
+            <div>
+                <p>"<span th:text="${review.reviewText}"></span>"</p>
+                <p>Rating: <span th:text="${review.rating}"></span></p>
+            </div>
+        </div>
+
     </div>
+</div>
 </div>
 <script th:inline="javascript">
 
@@ -120,9 +180,9 @@
     let truckName;
     /*<![CDATA[*/
 
-   if (/*[[${message}]]*/) {
-       window.alert(/*[[${message}]]*/);
-   }
+    if (/*[[${message}]]*/) {
+        window.alert(/*[[${message}]]*/);
+    }
 
     truckLongitude = /*[[${truck.getLongitude()}]]*/;
     truckLatitude = /*[[${truck.getLatitude()}]]*/;

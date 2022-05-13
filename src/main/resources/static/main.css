@@ -310,6 +310,10 @@ a{
 
     /*  REVIEW END  */
 
+    /*  PROFILE VIEW START  */
+
+    /*  PROFILE END */
+
 
     /*  ABOUT VIEW START  */
     #aboutContainer {
@@ -323,7 +327,6 @@ a{
     #aboutContainer p{
         margin: 5px;
     }
-
     #aboutContainer img{
         max-width: 300px;
         max-height: 300px;
@@ -342,5 +345,6 @@ a{
         justify-content: space-evenly;
     }
     /*  ABOUT END   */
+
 
 }

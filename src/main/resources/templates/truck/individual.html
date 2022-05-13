@@ -61,7 +61,11 @@
 			<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 			<div>
 				<h3 th:text="${truck.name}"></h3>
-				<p th:each="cuisine : ${truck.cuisines}">Truck Cuisines: <span th:text="${cuisine.name}"></span></p>
+        <dl>
+            <dt>Truck Cuisines</dt>
+            <dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
+            <dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
+        </dl>
 				<p>Phone Number: <span th:text="${truck.phone}"></span></p>
 				<p th:text="${truck.description}"></p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +90,15 @@ public class TruckController {
         newTruck.setPhone(truck.getPhone());
         truckDao.save(newTruck);
         return "redirect:/truck/" + truck.getId() + "/show";
+    }
+
+    @PostMapping("/truck/deleteTruckAccount")
+    public String deleteTruckAccount(@RequestParam Long truckId, HttpSession session) {
+        userDao.deleteTruckConfirmation(truckId);
+        userDao.deleteTruckFavorite(truckId);
+        truckDao.deleteById(truckId);
+        session.invalidate();
+        return "redirect:/";
     }
 
     @GetMapping("/truck/{id}/editmenu")
@@ -196,4 +206,5 @@ public class TruckController {
         model.addAttribute("truck", truckDao.getById(id));
         return "truck/individual";
     }
+
 }

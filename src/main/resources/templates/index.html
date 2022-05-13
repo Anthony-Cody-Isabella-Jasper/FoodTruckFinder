@@ -10,7 +10,7 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
+	<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
 		<nav th:if="${!#authentication.principal.isTruckOwner}">
 			<nav th:replace="partials :: loggedNav"></nav>
 		</nav>
@@ -21,12 +21,9 @@
 	<div sec:authorize="!isAuthenticated()">
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
-<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
-	<nav th:replace="partials :: #adminNav"></nav>
-</div>
-
-
-
+	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+		<nav th:replace="partials :: #adminNav"></nav>
+	</div>
 	<div id="map"></div>
 	<div id="searchBar">
 		<div>
@@ -52,9 +49,9 @@
 				<input type="checkbox" id="vegetarianCheck" name="vegetarian">
 				<button type="submit" class="btn btn-light">Apply Filters</button>
 			</form>
-			<form th:action="@{/}" method="get">
+			<a th:href="@{/}">
 				<button type="submit" class="btn btn-light">Clear Filters</button>
-			</form>
+			</a>
 		</div>
 	</div>
 	<div class="row">
@@ -66,17 +63,18 @@
 						<span th:text="${truck.name}"></span></h5></a>
 					<dl>
 						<dt>Truck Cuisines</dt>
-						<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
-						<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
+						<dd th:if="${truck.cuisines.size() == 0}"><em class="m-2">unknown</em></dd>
+						<dd th:if="${truck.cuisines.size() > 0}">
+							<em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 						<dt>Average Rating</dt>
-						<dd><span class="m-2"><span th:text="${#numbers.formatDecimal(truck.averageRating(),1,2)}"></span>
+						<dd>
+							<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 							<em>(<span th:text="${truck.getReviews().size()}"></span> reviews)</em></span>
 						</dd>
 					</dl>
-					<a href="#map">
-						<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">
-							Truck location
-						</button>
+					<a href="#map"><button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">Where Am I?</button></a>
+					<a th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
+						<button class="btn btn-primary">Get Directions</button>
 					</a>
 				</div>
 			</div>
@@ -106,19 +104,21 @@
 			id: /*[[${truck.getId()}]]*/,
 			longitude: /*[[${truck.getLongitude()}]]*/,
 			latitude: /*[[${truck.getLatitude()}]]*/,
-			name: /*[[${truck.getName()}]]*/
+			name: /*[[${truck.getName()}]]*/,
+			averageRatingPercent: /*[[${truck.averageRatingPercent()}]]*/,
 		});
 		/*[/]*/
 		/*]]>*/
 		trucks.forEach((truck, index) => {
 			const marker = new mapboxgl.Marker()
 				.setLngLat([truck.longitude, truck.latitude])
-				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a>"))
+				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary'>Get Directions</button></a>"))
 				.addTo(map);
 		});
 		Array.from(document.getElementsByClassName("truckLocationButton")).forEach(buttonElement => {
-			buttonElement.addEventListener("click", () => {
+			buttonElement.addEventListener("click", (event) => {
 				if (!buttonElement.getAttribute("data-longitude")) {
+					event.preventDefault();
 					window.alert("This food truck has not set up yet!");
 				} else {
 					map.flyTo({

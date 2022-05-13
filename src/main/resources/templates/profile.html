@@ -32,7 +32,7 @@
 </div>
 
 
-<div id="">
+<div id="profileTop">
     <img th:attr="src=${user.profilePicture},alt=${user.profilePicture}">
     <div>
         <p th:text="${user.username}"></p>
@@ -42,7 +42,7 @@
 
 
 <!--    USERS FAVORITES-->
-<div>
+<div id="profileMiddle">
     <div>
         <h3>My Favorites</h3>
     </div>
@@ -60,16 +60,22 @@
 </div>
 
 
-<h3>My Reviews</h3>
 <!--USERS REVIEWS-->
-<div class="usersReviews" th:each="review : ${user.reviews}">
-    <!--    <p th:text="${review.getTruck().name}"></p>-->
-    <p th:text="${review.rating}"></p>
-    <p th:text="${review.reviewText}"></p>
-    <a th:href="@{/editReview/{id}(id=${review.id})}">
-        <button type="button">Edit Review</button>
-    </a>
+<div id="profileBottom">
+    <div>
+        <h3>My Reviews</h3>
+    </div>
+    <div class="usersReviews" th:each="review : ${user.reviews}">
+        <!--    <p th:text="${review.getTruck().name}"></p>-->
+        <p th:text="${review.rating}"></p>
+        <p th:text="${review.reviewText}"></p>
+        <a th:href="@{/editReview/{id}(id=${review.id})}">
+            <button type="button">Edit Review</button>
+        </a>
+    </div>
 </div>
+
+
 
 <footer th:replace="partials :: footer"></footer>
 

@@ -274,6 +274,9 @@ a{
         width: 60%;
         margin-bottom: 50px;
     }
+    #verifyBtn{
+        text-align: center;
+    }
     /*  INDIVIDUAL END  */
 
 
@@ -282,6 +285,11 @@ a{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    #reviewTop img{
+        object-fit: fill;
+        height: 550px;
+        width: 850px;
     }
     #reviewTop h1{
         text-align: center;

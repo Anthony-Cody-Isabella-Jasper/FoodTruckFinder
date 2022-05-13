@@ -72,6 +72,10 @@ insert into trucks_cuisines (truck_id, cuisine_id) VALUES (4, 4);
 
 
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hotdog', 'doggo', 13.85, false, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hamburger', 'burg', 13.40, false, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass fries', 'fry', 13.25,  true, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass coke', 'cola', 14.85, false, true, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hoagie', 'hogg', 3.85, false, false, 1);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('5lb patty', 'Big Boy Burger', 21.99, false, true, 2);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('it has sugar', 'Churro', 3.75, true, false, 3);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Steak, Chicken or Shrimp', 'Taco Taco', 39.36, true, false, 4);

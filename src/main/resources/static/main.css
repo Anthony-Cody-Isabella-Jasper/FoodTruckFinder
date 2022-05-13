@@ -3,6 +3,11 @@ body{
     margin: 20px;
     padding: 0;
 }
+hr{
+    width: 90%;
+    height: 1px;
+    background-color: black;
+}
 /*BODY END*/
 
 /*STYLE FOR RATING STARS*/
@@ -122,16 +127,121 @@ footer{
 /* CAROUSEL END */
 
 
-/*  REVIEW IMAGE START  */
+
+
+
+/*  MAP START  */
+#mapDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+/*  MAP END */
+
+/*  INDIVIDUAL VIEW START  */
+#topTruckBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#individualTruck{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#individualTruck img{
+    width: 350px;
+    height: 350px;
+    margin-right: 25px;
+}
+#carouselTruckPhotos{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 75px;
+}
+
+#bottomBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#reviewItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .truck-reviews img{
     width: 75px;
     height: 75px;
+    border: 1px solid;
+    border-radius: 50%;
 }
-/*  REVIEW IMG END  */
+#reviewLeft{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#reviewItems #reviewText{
+    text-align: center;
+}
+#reviewBtn{
+    text-align: center;
+}
+#reviewContent{
+    display: flex;
+    align-items: center;
+}
+#reviewContent div{
+    padding: 15px;
+}
+#menuBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin-bottom: 50px;
+}
+
+/*  INDIVIDUAL END  */
 
 
 
+/*  ABOUT VIEW START  */
+#aboutContainer {
+    display: flex;
+}
+#aboutContainer a{
+    font-size: 2rem;
+    padding-right: 10px;
+    /*padding-top: 20px;*/
+}
+#aboutContainer p{
+    margin: 5px;
+}
 
+#aboutContainer img{
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid;
+    border-radius: 5%;
+    margin-bottom: 10px;
+}
+.aboutBox{
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+/*  ABOUT END   */
 
 
 #banana{

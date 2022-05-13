@@ -54,6 +54,7 @@
 			</a>
 		</div>
 	</div>
+	<h1 th:if="${trucks.size()} == 0">No Results :(</h1>
 	<div class="row">
 		<div class="col-4" th:each="truck : ${trucks}">
 			<div class="card mb-5">

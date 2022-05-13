@@ -91,6 +91,10 @@ a{
 
 @media screen and (min-width: 769px) and (max-width: 1800px) {
     /* NAV START*/
+    .nav img{
+        width: 75px;
+        height: 75px;
+    }
     .mobileNav { display: none; }
 
     .desktopNav{
@@ -345,6 +349,5 @@ a{
         justify-content: space-evenly;
     }
     /*  ABOUT END   */
-
 
 }

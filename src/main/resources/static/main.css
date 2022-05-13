@@ -8,6 +8,9 @@ hr{
     height: 1px;
     background-color: black;
 }
+a{
+    text-decoration: none;
+}
 /*BODY END*/
 
 /*STYLE FOR RATING STARS*/
@@ -48,200 +51,7 @@ hr{
 }
 /*STARS END*/
 
-/* NAV START*/
-.nav{
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px;
-    margin-bottom: 25px;
-}
-.nav img{
-    width: 100px;
-    height: 100px;
-}
-#adminNav a{
-    padding-right: 25px;
-}
-/*NAV END*/
 
-
-
-/* MAP START*/
-#map{
-    width: 60%;
-    height: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 25px;
-}
-/*MAP END*/
-
-
-
-/*TRUCK CARDS START*/
-.card img{
-    height: 350px;
-}
-/*CARDS END*/
-
-
-/* SEARCH BAR START*/
-#searchBar{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-#filters{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-}
-#filters form{
-    padding: 15px;
-}
-#filters button{
-    margin-bottom: 5px;
-}
-
-/* SEARCH END*/
-
-
-/*  FOOTER START    */
-footer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 25px;
-}
-/*  FOOTER END  */
-
-/* CAROUSEL START */
-#carouselTruckPhotos img{
-    width: 80%;
-    height: 400px;
-}
-/* CAROUSEL END */
-
-
-
-
-
-/*  MAP START  */
-#mapDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-/*  MAP END */
-
-/*  INDIVIDUAL VIEW START  */
-#topTruckBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#individualTruck{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-#individualTruck img{
-    width: 350px;
-    height: 350px;
-    margin-right: 25px;
-}
-#carouselTruckPhotos{
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 75px;
-}
-
-#bottomBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-#reviewItems{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.truck-reviews img{
-    width: 75px;
-    height: 75px;
-    border: 1px solid;
-    border-radius: 50%;
-}
-#reviewLeft{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-#reviewItems #reviewText{
-    text-align: center;
-}
-#reviewBtn{
-    text-align: center;
-}
-#reviewContent{
-    display: flex;
-    align-items: center;
-}
-#reviewContent div{
-    padding: 15px;
-}
-#menuBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-    margin-bottom: 50px;
-}
-
-/*  INDIVIDUAL END  */
-
-
-
-/*  ABOUT VIEW START  */
-#aboutContainer {
-    display: flex;
-}
-#aboutContainer a{
-    font-size: 2rem;
-    padding-right: 10px;
-    /*padding-top: 20px;*/
-}
-#aboutContainer p{
-    margin: 5px;
-}
-
-#aboutContainer img{
-    max-width: 300px;
-    max-height: 300px;
-    border: 1px solid;
-    border-radius: 5%;
-    margin-bottom: 10px;
-}
-.aboutBox{
-    margin-top: 25px;
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-/*  ABOUT END   */
 
 
 #banana{
@@ -260,4 +70,281 @@ footer{
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 425px) {
+    .desktopNav{display: none;}
+
+}
+
+
+
+
+@media screen and (min-width: 426px) and (max-width: 768px){
+.mobileNav {display: none}
+
+}
+
+
+
+
+@media screen and (min-width: 769px) and (max-width: 1800px) {
+    /* NAV START*/
+    .mobileNav { display: none; }
+
+    .desktopNav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 2;
+    }
+    .desktopNav h2{
+        font-size: 2.5rem;
+    }
+    .desktopNav a{
+        padding: 25px;
+        font-size: 1.3rem;
+    }
+    .desktopNav button{
+        font-size: 1.3rem;
+    }
+    #loggedRight{
+        display: flex;
+        align-items: center;
+    }
+    #truckRight{
+        display: flex;
+        align-items: center;
+    }
+    #adminNav{
+        display: flex;
+        flex-grow: 2;
+        justify-content: space-between;
+    }
+    #adminNav h2{
+        font-size: 2.5rem;
+    }
+    #adminNav a{
+        padding: 25px;
+        font-size: 1.3rem;
+    }
+    #adminNav button{
+        font-size: 1.5rem;
+    }
+    #adminRight{
+        display: flex;
+        align-items: center;
+    }
+    /*NAV END*/
+
+
+
+    /* MAP START*/
+    #map{
+        width: 60%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25px;
+    }
+    #mapDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    /*MAP END*/
+
+
+
+    /*TRUCK CARDS START*/
+    .card img{
+        height: 350px;
+    }
+    /*CARDS END*/
+
+
+    /* SEARCH BAR START*/
+    #searchBar{
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    #filters{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    #filters form{
+        padding: 15px;
+    }
+    #filters button{
+        margin-bottom: 5px;
+    }
+    /* SEARCH END*/
+
+
+
+    /*  FOOTER START    */
+    footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 25px;
+    }
+    /*  FOOTER END  */
+
+
+
+    /* CAROUSEL START */
+    #carouselTruckPhotos img{
+        width: 80%;
+        height: 400px;
+    }
+    /* CAROUSEL END */
+
+
+    /*  INDIVIDUAL VIEW START  */
+    #topTruckBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #individualTruck{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    #individualTruck img{
+        width: 350px;
+        height: 350px;
+        margin-right: 25px;
+    }
+    #carouselTruckPhotos{
+        margin-left: 100px;
+        margin-right: 100px;
+        margin-bottom: 75px;
+    }
+
+    #bottomBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #reviewItems{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .truck-reviews img{
+        width: 75px;
+        height: 75px;
+        border: 1px solid;
+        border-radius: 50%;
+    }
+    #reviewLeft{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    #reviewItems #reviewText{
+        text-align: center;
+    }
+    #reviewBtn{
+        text-align: center;
+    }
+    #reviewContent{
+        display: flex;
+        align-items: center;
+    }
+    #reviewContent div{
+        padding: 15px;
+    }
+    #menuBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        margin-bottom: 50px;
+    }
+    #verifyBtn{
+        text-align: center;
+    }
+    /*  INDIVIDUAL END  */
+
+
+    /* REVIEW START   */
+    #reviewTop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #reviewTop img{
+        object-fit: fill;
+        height: 550px;
+        width: 850px;
+    }
+    #reviewTop h1{
+        text-align: center;
+    }
+    #reviewMiddle{
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+    #reviewMiddle img{
+        width: 80%;
+        height: 400px;
+    }
+    #reviewBottom form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /*  REVIEW END  */
+
+    /*  PROFILE VIEW START  */
+
+    /*  PROFILE END */
+
+
+    /*  ABOUT VIEW START  */
+    #aboutContainer {
+        display: flex;
+    }
+    #aboutContainer a{
+        font-size: 2rem;
+        padding-right: 10px;
+        /*padding-top: 20px;*/
+    }
+    #aboutContainer p{
+        margin: 5px;
+    }
+    #aboutContainer img{
+        max-width: 300px;
+        max-height: 300px;
+        border: 1px solid;
+        border-radius: 5%;
+        margin-bottom: 10px;
+    }
+    .aboutBox{
+        margin-top: 25px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    /*  ABOUT END   */
+
+
 }

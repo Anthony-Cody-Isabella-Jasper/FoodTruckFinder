@@ -187,10 +187,14 @@ public class UserController {
     }
 
     @PostMapping("/deleteUser")
-    public String deleteUser(@RequestParam Long userId) {
+    public String deleteUser(@RequestParam Long userId, HttpSession httpSession) {
         userDao.deleteUserConfirmation(userId);
         userDao.deleteUserFavorite(userId);
         userDao.deleteById(userId);
+        if(userId == ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()) {
+            httpSession.invalidate();
+            return "redirect:/";
+        }
         return "redirect:/admin";
     }
 

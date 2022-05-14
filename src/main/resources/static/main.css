@@ -81,7 +81,7 @@ a{
 
 
 
-@media screen and (min-width: 426px) and (max-width: 768px){
+@media screen and (min-width: 426px) and (max-width: 899px){
 .mobileNav {display: none}
 
 }
@@ -89,11 +89,13 @@ a{
 
 
 
-@media screen and (min-width: 769px) and (max-width: 1800px) {
+@media screen and (min-width: 900px) and (max-width: 1800px) {
     /* NAV START*/
     .nav img{
-        width: 75px;
-        height: 75px;
+        width: 125px;
+        height: 125px;
+        border: 1px solid;
+        border-radius: 50%;
     }
     .mobileNav { display: none; }
 

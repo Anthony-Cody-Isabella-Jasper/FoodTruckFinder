@@ -73,7 +73,11 @@
 							<em>(<span th:text="${truck.getReviews().size()}"></span> reviews)</em></span>
 						</dd>
 					</dl>
-					<a href="#map"><button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">Where Am I?</button></a>
+					<a href="#map">
+						<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">
+							Where Am I?
+						</button>
+					</a>
 					<a th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
 						<button class="btn btn-primary">Get Directions</button>
 					</a>
@@ -81,6 +85,8 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<div th:replace="partials :: scripts"></div>
 	<script th:inline="javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';
 		const map = new mapboxgl.Map({
@@ -130,4 +136,5 @@
 			});
 		});
 	</script>
-	<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

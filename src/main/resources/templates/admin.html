@@ -104,7 +104,8 @@
 				</div>
 				<form th:action="@{/adminEditReview}" method="post">
 					<div class="modal-body">
-						<label>Rating <input type="number" name="reviewRating" id="reviewRating" max="5" min="0"></label>
+						<label>Rating <input type="number" name="reviewRating" id="reviewRating" max="5" min="0">
+						</label>
 						<label>Description <input type="text" name="reviewText" id="reviewText"></label>
 						<input type="hidden" name="reviewId" id="reviewId">
 					</div>
@@ -117,6 +118,8 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<div th:replace="partials :: scripts"></div>
 	<script th:inline="javascript">
 		let usersDiv = document.getElementById("usersList");
 		let trucksDiv = document.getElementById("trucksList");
@@ -220,4 +223,5 @@
 			reviewsDiv.append(reviewDiv);
 		});
 	</script>
-	<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

@@ -17,6 +17,12 @@ a {
 .profileImgSelect {
     border: 3px solid blue;
 }
+footer{
+    background-color: #deb217;
+}
+.nav{
+    background-color: red;
+}
 
 /*BODY END*/
 
@@ -417,8 +423,20 @@ a {
     #verifyBtn {
         text-align: center;
     }
-
+#ghost{
+    display: flex;
+    justify-content: center;
+}
+#triangulateBtn{
+    display: flex;
+    justify-content: center;
+}
     /*  INDIVIDUAL END  */
+
+
+
+
+
     /* REVIEW START   */
     #reviewTop {
         display: flex;
@@ -546,6 +564,66 @@ a {
     }
 
     /*  EDIT USER END    */
+
+
+
+    /*  REGISTER START  */
+    #registerForm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #registerForm form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #registerForm label{
+        padding: 10px;
+    }
+    #registerBtn{
+        margin-top: 15px;
+        text-align: center;
+    }
+    #alreadyMember{
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+    }
+    /*  REGISTER END    */
+
+
+    /*  EDIT TRUCK START    */
+    #editTruckTop{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+#editTruckFormBtn{
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#truckCuisinesForm{
+    display: flex;
+    margin: 15px;
+
+}
+.truckCuisinesForm{
+    margin-left: 45px;
+    margin-right: 45px;
+}
+#editTruckButton{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+    /*  EDIT TRUCK END    */
+
+
+
     /*  ABOUT VIEW START  */
     #aboutContainer {
         display: flex;

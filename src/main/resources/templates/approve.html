@@ -10,13 +10,8 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-
-
 	<nav th:replace="partials :: #adminNav"></nav>
-
-
-
-<div th:each="pendingUser : ${pendingUsers}">
+	<div th:each="pendingUser : ${pendingUsers}">
 		<form th:action="@{/approve}" method="post">
 			<label>Username
 				<input type="text" name="username" th:value="${pendingUser.getUsername()}"><span th:text="${pendingUser.getUsername()}"></span>
@@ -33,6 +28,8 @@
 			<button class="btn btn-danger" type="submit">Reject</button>
 		</form>
 	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<div th:replace="partials :: scripts"></div>
 	<script th:inline="javascript">
 		/*<![CDATA[*/
 		if (/*[[${message}]]*/) {
@@ -40,4 +37,5 @@
 		}
 		/*]]>*/
 	</script>
-	<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

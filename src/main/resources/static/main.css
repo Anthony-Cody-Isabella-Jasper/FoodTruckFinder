@@ -476,4 +476,74 @@ a {
 
     /*  ABOUT END   */
 
+
+    /*LOGIN PAGE START*/
+    .loginCenter{
+        text-align: center;
+    }
+
+    #loginButton{
+        margin-top: 15px;
+        width: 20%;
+    }
+
+    .loginFormFieldSize{
+        width:35%;
+    }
+
+    #loginCenterBox{
+
+    }
+
+    #loginBottomBox{
+        margin-top: 20px;
+    }
+    /*LOGIN PAGE END*/
+
+
+    /*FORGOT PASSWORD PAGE START*/
+    #forgotPasscenterBox{
+        text-align: center;
+    }
+
+    #forgotPassFormButtons{
+        margin-top: 15px;
+    }
+
+    #forgotPasscenterBox #email{
+        width: 20%;
+    }
+
+    #forgotPassClear{
+        width: 67.17px;
+    }
+    /*FORGOT PASSWORD PAGE END*/
+
+    /*400 ERROR PAGE START*/
+    #notFoundCenterBox{
+        text-align: center;
+        position: absolute;
+        top: 20%;
+        left: 25%;
+    }
+
+    #notFoundCenterBox p{
+        font-size: 80px;
+        font-weight: bolder;
+        margin: 20px 0px;
+    }
+
+    #errLogo{
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+    }
+
+    #notFoundCenterBox a{
+        font-size: 20px;
+    }
+
+
+    /*400 ERROR PAGE END*/
+
 }

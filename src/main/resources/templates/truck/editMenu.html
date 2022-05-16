@@ -11,24 +11,23 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
-	<nav th:if="${!#authentication.principal.isTruckOwner}">
-		<nav th:replace="partials :: loggedNav"></nav>
-	</nav>
-	<nav th:if="${#authentication.principal.isTruckOwner}">
-		<nav th:replace="partials :: truckNav"></nav>
-	</nav>
-</div>
-<div sec:authorize="!isAuthenticated()">
-	<nav th:replace="partials :: notLoggedNav"></nav>
-</div>
-<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
-	<nav th:replace="partials :: #adminNav"></nav>
-</div>
-
-
-
-<div class="container">
+	<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
+		<nav th:if="${!#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: loggedNav"></nav>
+		</nav>
+		<nav th:if="${#authentication.principal.isTruckOwner}">
+			<nav th:replace="partials :: truckNav"></nav>
+		</nav>
+	</div>
+	<div sec:authorize="!isAuthenticated()">
+		<nav th:replace="partials :: notLoggedNav"></nav>
+	</div>
+	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+		<nav th:replace="partials :: #adminNav"></nav>
+	</div>
+	
+	
+	<div class="container">
 		<form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post">
 			<h3>Add New Menu Item</h3>
 			<label for="itemDescription">Description</label>
@@ -88,6 +87,8 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<div th:replace="partials :: scripts"></div>
 	<script th:inline="javascript">
 		let menuItems = [];
 		let menuList = document.getElementById("menuList");
@@ -138,4 +139,5 @@
 			menuList.append(menuItemElement);
 		});
 	</script>
-	<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

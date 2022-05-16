@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +24,6 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
-
-
 	<div>
 		<h2>My truck cuisines</h2>
 		<form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">
@@ -63,10 +60,8 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccountModal">
 		Delete Account
 	</button>
-
 	<!-- Modal -->
-	<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-		 aria-hidden="true">
+	<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -88,6 +83,8 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<div th:replace="partials :: scripts"></div>
 	<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 	<script>
 		let limitCuisineSelections = () => {
@@ -146,4 +143,5 @@
 		document.getElementById("profilePicUpload").addEventListener("click", singlePhotoFileStack)
 		document.getElementById("truckPicturesUpload").addEventListener("click", multiPhotoFileStack)
 	</script>
-	<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

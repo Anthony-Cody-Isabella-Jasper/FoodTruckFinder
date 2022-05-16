@@ -10,43 +10,50 @@
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
-		<nav th:if="${!#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: loggedNav"></nav>
-		</nav>
-		<nav th:if="${#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: truckNav"></nav>
-		</nav>
-	</div>
-	<div sec:authorize="!isAuthenticated()">
-		<nav th:replace="partials :: notLoggedNav"></nav>
-	</div>
-	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
-		<nav th:replace="partials :: #adminNav"></nav>
-	</div>
-	<form th:action="@{/editReviews}" method="post" th:object="${review}">
-		<input type="hidden" th:value="${revId}" name="revId"> <input hidden th:value="${trckId}" name="trckId">
-		<div class="rate">
-			<input type="radio" id="star5" name="rate" value="5" th:field="*{rating}"/>
-			<label for="star5" title="text">5 stars</label>
-			<input type="radio" id="star4" name="rate" value="4" th:field="*{rating}"/>
-			<label for="star4" title="text">4 stars</label>
-			<input type="radio" id="star3" name="rate" value="3" th:field="*{rating}"/>
-			<label for="star3" title="text">3 stars</label>
-			<input type="radio" id="star2" name="rate" value="2" th:field="*{rating}"/>
-			<label for="star2" title="text">2 stars</label>
-			<input type="radio" id="star1" name="rate" value="1" th:field="*{rating}"/>
-			<label for="star1" title="text">1 star</label>
-		</div>
-		<p>Edit text</p>
-		<input th:field="*{reviewText}" type="text">
-		<button type="submit">Edit</button>
-	</form>
-	<form th:action="@{/deleteUserReview}" th:method="post">
-		<input type="hidden" th:value="${revId}" name="revId">
-		<button type="submit">DELETE</button>
-	</form>
-	<footer th:replace="partials :: footer"></footer>
-	<div th:replace="partials :: scripts"></div>
-</body>
-</html>
+
+<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <nav th:replace="partials :: notLoggedNav"></nav>
+</div>
+<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
+
+
+
+
+<form th:action="@{/editReviews}" method="post" th:object="${review}">
+    <input type="hidden" th:value="${revId}" name="revId">
+    <input hidden th:value="${trckId}" name="trckId">
+    <div class="rate">
+        <input hidden type="radio" id="star5" name="rate" value="5" th:field="*{rating}"/>
+        <label for="star5" title="text">5 stars</label>
+        <input hidden type="radio" id="star4" name="rate" value="4" th:field="*{rating}"/>
+        <label for="star4" title="text">4 stars</label>
+        <input hidden type="radio" id="star3" name="rate" value="3" th:field="*{rating}"/>
+        <label for="star3" title="text">3 stars</label>
+        <input hidden type="radio" id="star2" name="rate" value="2" th:field="*{rating}"/>
+        <label for="star2" title="text">2 stars</label>
+        <input hidden type="radio" id="star1" name="rate" value="1" th:field="*{rating}"/>
+        <label for="star1" title="text">1 star</label>
+    </div>
+    <p>Edit text</p>
+    <input th:field="*{reviewText}" type="text">
+    <button type="submit">Edit</button>
+</form>
+
+<form th:action="@{/deleteUserReview}" th:method="post">
+    <input type="hidden" th:value="${revId}" name="revId">
+    <button type="submit">DELETE</button>
+</form>
+
+
+<footer th:replace="partials :: footer"></footer>
+

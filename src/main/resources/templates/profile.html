@@ -52,39 +52,46 @@
             <img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
             <a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><p th:text="${favorite.name}"></p></a>
             <p th:text="${favorite.phone}"></p>
-            <div id="userReviews" th:if="${#authentication.name == review.user.username}"
-                 th:each="review : ${favorite.getReviews()}">
-                <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-
-                <p>"<span th:text="${review.reviewText}"></span>"</p>
-                <a th:href="@{/editReview/{id}(id=${review.id})}">
-                    <button type="button">Edit Review</button>
-                </a>
-            </div>
             <form th:action="@{/deleteFavorite}" th:method="post">
                 <input hidden th:value="${favorite.getId()}" name="truckId">
                 <input hidden th:value="${#authentication.principal.getId()}" name="id">
                 <button id="deleteFavoriteBtn" type="submit">Delete Favorite</button>
             </form>
+
         </div>
     </div>
 </div>
 
 
 <!--USERS REVIEWS-->
-<!--<div id="profileBottom">-->
-<!--    <div>-->
-<!--        <h3>My Reviews</h3>-->
-<!--    </div>-->
-<!--    <div class="usersReviews" th:each="review : ${user.reviews}">-->
-<!--        <p th:text="${review.truck.name}"></p>-->
-<!--        <p th:text="${review.rating}"></p>-->
-<!--        <p th:text="${review.reviewText}"></p>-->
-<!--        <a th:href="@{/editReview/{id}(id=${review.id})}">-->
-<!--            <button type="button">Edit Review</button>-->
-<!--        </a>-->
-<!--    </div>-->
+
+<!--<div id="userReviews" th:if="${#authentication.name == review.user.username}"-->
+<!--     th:each="review : ${favorite.getReviews()}">-->
+<!--    <p>Your review's for this truck:</p>-->
+<!--    <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>-->
+<!--    <p>"<span th:text="${review.reviewText}"></span>"</p>-->
+<!--    <a th:href="@{/editReview/{id}(id=${review.id})}">-->
+<!--        <button type="button">Edit Review</button>-->
+<!--    </a>-->
 <!--</div>-->
+
+
+<div id="profileBottom">
+    <div>
+        <h3>Reviews</h3>
+    </div>
+    <div class="usersReviews" th:each="review : ${user.reviews}">
+<!--        th:if="${!user.favoriteTrucks.contains(review.truck)}"-->
+        <div id="profileReviews">
+            <p th:text="${review.truck.name}"></p>
+            <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <p>"<span th:text="${review.reviewText}"></span>"</p>
+            <a th:href="@{/editReview/{id}(id=${review.id})}">
+                <button type="button">Edit Review</button>
+            </a>
+        </div>
+    </div>
+</div>
 
 
 <footer th:replace="partials :: footer"></footer>

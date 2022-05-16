@@ -11,15 +11,14 @@ $.ajax({
 		});
 		avatarImgs.forEach((img, imgIndex) => {
 			img.src = fetchedPictures[imgIndex];
-			img.setAttribute("style", "border: solid 3px black");
 		});
 		avatarRadios.forEach((radio, radioIndex) => {
 			radio.value = fetchedPictures[radioIndex];
 			radio.addEventListener("change", () => {
 				avatarImgs.forEach((img, imgIndex) => {
-					img.setAttribute("style", "border: solid 3px black");
+					img.classList.remove("profileImgSelect");
 					if (imgIndex === radioIndex) {
-						img.setAttribute("style", "border: solid 3px lightblue");
+						img.classList.add("profileImgSelect");
 					}
 				});
 			});

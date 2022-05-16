@@ -15,25 +15,29 @@
 	</div>
 	<div class="text-center">
 		<h1>StreatFoods</h1>
-		<h2>Please Log In</h2>
+		<h3>Please Log In</h3>
 	</div>
 	<div th:if="${param.error}">
 		Invalid Username and Password.
 	</div>
-	<div>
+	<div id="loginCenterBox" class="loginCenter">
 		<form th:action="@{/login}" method="post">
 			<label for="username">Username:</label>
 			<br>
-			<input type="text" id="username" name="username">
+			<input class="loginFormFieldSize" type="text" id="username" name="username">
 			<br>
 			<label for="password">Password:</label>
 			<br>
-			<input type="password" id="password" name="password"> <input type="submit" value="Login">
+			<input class="loginFormFieldSize" type="password" id="password" name="password">
+			<br>
+			<input id="loginButton" type="submit" value="Login">
 		</form>
 	</div>
-	<a th:href="@{/register}">Not a user? Register Now!</a>
-	<br>
-	<a th:href="@{/forgotPassword}">Forgot Password?</a>
+	<div id="loginBottomBox" class="loginCenter">
+		<a th:href="@{/register}">Not a user? Register Now!</a>
+		<br>
+		<a th:href="@{/forgotPassword}">Forgot Password?</a>
+	</div>
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
 </body>

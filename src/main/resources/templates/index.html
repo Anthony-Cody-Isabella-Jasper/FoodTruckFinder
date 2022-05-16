@@ -55,8 +55,8 @@
 		</div>
 	</div>
 	<h1 th:if="${trucks.size()} == 0">No Results :(</h1>
-	<div class="row">
-		<div class="col-4" th:each="truck : ${trucks}">
+	<div id="allTrucks" class="row">
+		<div class="col-4 truckDiv" th:each="truck : ${trucks}">
 			<div class="card mb-5">
 				<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -87,6 +87,7 @@
 	</div>
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
+	<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 	<script th:inline="javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';
 		const map = new mapboxgl.Map({
@@ -112,7 +113,7 @@
 			longitude: /*[[${truck.getLongitude()}]]*/,
 			latitude: /*[[${truck.getLatitude()}]]*/,
 			name: /*[[${truck.getName()}]]*/,
-			averageRatingPercent: /*[[${truck.averageRatingPercent()}]]*/,
+			averageRatingPercent: /*[[${truck.averageRatingPercent()}]]*/
 		});
 		/*[/]*/
 		/*]]>*/
@@ -133,6 +134,38 @@
 						essential: true
 					});
 				}
+			});
+		});
+		navigator.geolocation.getCurrentPosition(currentPosition => {
+			let truckDivs = Array.from(document.getElementsByClassName("truckDiv"));
+			let allTrucks = document.getElementById("allTrucks");
+			while(allTrucks.firstChild) {
+				allTrucks.removeChild(allTrucks.firstChild);
+			}
+			let orderedByDistance = [];
+			trucks.forEach((truck, index) => {
+				let distance;
+				if(!!truck.longitude) {
+					distance = turf.distance(turf.point([currentPosition.coords.longitude, currentPosition.coords.latitude]), turf.point([truck.longitude, truck.latitude]), {units: "miles"});
+				} else {
+					distance = 24902;
+				}
+				orderedByDistance.push({
+					truckDiv: truckDivs[index],
+					distanceFromUser: distance
+				});
+			});
+			orderedByDistance.sort((a, b) => {
+				if(a.distanceFromUser > b.distanceFromUser) {
+					return 1;
+				}
+				if(a.distanceFromUser < b.distanceFromUser) {
+					return -1;
+				}
+				return 0;
+			});
+			orderedByDistance.forEach(truck => {
+				allTrucks.append(truck.truckDiv);
 			});
 		});
 	</script>

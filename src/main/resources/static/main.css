@@ -1,20 +1,23 @@
 /*BODY START*/
-body{
+body {
     margin: 20px;
     padding: 0;
-    background-color: green;
 }
-hr{
+
+hr {
     width: 90%;
     height: 1px;
     background-color: black;
 }
-a{
+
+a {
     text-decoration: none;
 }
-.profileImgSelect{
+
+.profileImgSelect {
     border: 3px solid blue;
 }
+
 /*BODY END*/
 
 /*STYLE FOR RATING STARS*/
@@ -23,25 +26,30 @@ a{
     height: 46px;
     padding: 0 10px;
 }
+
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
+
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
+
 .rate > input:checked ~ label {
     color: #ffc700;
 }
+
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;
 }
+
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
@@ -49,12 +57,11 @@ a{
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+
 /*STARS END*/
 
 
-
-
-#banana{
+#banana {
     color: green;
     z-index: 1000;
     bottom: 200px;
@@ -65,6 +72,7 @@ a{
     text-align: center;
     color: black;
 }
+
 .centered {
     position: absolute;
     top: 65%;
@@ -74,206 +82,224 @@ a{
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
-    .desktopNav{display: none;}
+    .desktopNav {
+        display: none;
+    }
 
 }
 
 
-
-
-@media screen and (min-width: 426px) and (max-width: 899px){
-.mobileNav {display: none}
+@media screen and (min-width: 426px) and (max-width: 899px) {
+    .mobileNav {
+        display: none
+    }
 
 }
-
-
 
 
 @media screen and (min-width: 900px) and (max-width: 1800px) {
     /* NAV START*/
-    .nav img{
+    .nav img {
         width: 125px;
         height: 125px;
         border: 1px solid;
         border-radius: 50%;
     }
-    .mobileNav { display: none; }
 
-    .desktopNav{
+    .mobileNav {
+        display: none;
+    }
+
+    .desktopNav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-grow: 2;
         margin-bottom: 75px;
     }
-    .desktopNav h2{
+
+    .desktopNav h2 {
         font-size: 2.5rem;
     }
-    .desktopNav a{
+
+    .desktopNav a {
         padding: 25px;
         font-size: 1.3rem;
     }
-    .desktopNav button{
+
+    .desktopNav button {
         font-size: 1.3rem;
     }
-    #loggedRight{
+
+    #loggedRight {
         display: flex;
         align-items: center;
     }
-    #truckRight{
+
+    #truckRight {
         display: flex;
         align-items: center;
     }
-    #adminNav{
+
+    #adminNav {
         display: flex;
         flex-grow: 2;
         justify-content: space-between;
     }
-    #adminNav h2{
+
+    #adminNav h2 {
         font-size: 2.5rem;
     }
-    #adminNav a{
+
+    #adminNav a {
         padding: 25px;
         font-size: 1.3rem;
     }
-    #adminNav button{
+
+    #adminNav button {
         font-size: 1.5rem;
     }
-    #adminRight{
+
+    #adminRight {
         display: flex;
         align-items: center;
     }
+
     /*NAV END*/
-
-
-
     /* MAP START*/
-    #map{
+    #map {
         width: 60%;
         height: 400px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 25px;
     }
-    #mapDiv{
+
+    #mapDiv {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 20px;
     }
+
     /*MAP END*/
-
-
-
     /*TRUCK CARDS START*/
-    .card img{
+    .card img {
         height: 350px;
     }
+
     /*CARDS END*/
-
-
     /* SEARCH BAR START*/
-    #searchBar{
+    #searchBar {
         padding: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 10px;
     }
-    #filters{
+
+    #filters {
         display: flex;
         align-items: center;
         padding: 10px;
     }
-    #filters form{
+
+    #filters form {
         padding: 15px;
     }
-    #filters button{
+
+    #filters button {
         margin-bottom: 5px;
     }
+
     /* SEARCH END*/
-
-
-
     /*  FOOTER START    */
-    footer{
+    footer {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 25px;
     }
+
     /*  FOOTER END  */
-
-
-
     /* CAROUSEL START */
-    #carouselTruckPhotos img{
+    #carouselTruckPhotos img {
         width: 80%;
         height: 400px;
     }
+
     /* CAROUSEL END */
-
-
     /*  INDIVIDUAL VIEW START  */
-    #topTruckBox{
+    #topTruckBox {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    #individualTruck{
+
+    #individualTruck {
         display: flex;
         justify-content: center;
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    #individualTruck img{
+
+    #individualTruck img {
         width: 350px;
         height: 350px;
         margin-right: 25px;
     }
-    #carouselTruckPhotos{
+
+    #carouselTruckPhotos {
         margin-left: 100px;
         margin-right: 100px;
         margin-bottom: 75px;
     }
 
-    #bottomBox{
+    #bottomBox {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
     }
-    #reviewItems{
+
+    #reviewItems {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
-    .truck-reviews img{
+
+    .truck-reviews img {
         width: 75px;
         height: 75px;
         border: 1px solid;
         border-radius: 50%;
     }
-    #reviewLeft{
+
+    #reviewLeft {
         display: flex;
         align-items: center;
         flex-direction: column;
     }
-    #reviewItems #reviewText{
+
+    #reviewItems #reviewText {
         text-align: center;
     }
-    #reviewBtn{
+
+    #reviewBtn {
         text-align: center;
     }
-    #reviewContent{
+
+    #reviewContent {
         display: flex;
         align-items: center;
     }
-    #reviewContent div{
+
+    #reviewContent div {
         padding: 15px;
     }
-    #menuBox{
+
+    #menuBox {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -281,105 +307,163 @@ a{
         width: 60%;
         margin-bottom: 50px;
     }
-    #verifyBtn{
+
+    #verifyBtn {
         text-align: center;
     }
+
     /*  INDIVIDUAL END  */
-
-
     /* REVIEW START   */
-    #reviewTop{
+    #reviewTop {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    #reviewTop img{
+
+    #reviewTop img {
         object-fit: fill;
         height: 550px;
         width: 850px;
     }
-    #reviewTop h1{
+
+    #reviewTop h1 {
         text-align: center;
     }
-    #reviewMiddle{
+
+    #reviewMiddle {
         margin-top: 75px;
         margin-bottom: 75px;
     }
-    #reviewMiddle img{
+
+    #reviewMiddle img {
         width: 80%;
         height: 400px;
     }
-    #reviewBottom form{
+
+    #reviewBottom form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     /*  REVIEW END  */
+    /*  VIEW USER VIEW START  */
+    #profileTop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
 
-    /*  PROFILE VIEW START  */
-#profileMiddle img{
-    width: 350px;
-    height: 350px;
-}
-#profileMiddle{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 75px;
-}
-    #profileMiddle h3{
+    #profileTop img {
+        margin-right: 15px;
+    }
+
+    #profileTop img {
+        width: 150px;
+        height: 150px;
+    }
+
+    #profileMiddle img {
+        width: 350px;
+        height: 350px;
+    }
+
+    #profileMiddle {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 75px;
+    }
+
+    #profileMiddle h3 {
         text-align: center;
         margin-bottom: 40px;
     }
-#deleteFavoriteBtn{
-    background-color: red;
-    margin-bottom: 20px;
-}
-.userFavorites{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-#profileBottom h3{
-    text-align: center;
-    margin-bottom: 45px;
+    #deleteFavoriteBtn {
+        background-color: red;
+        margin-bottom: 20px;
+    }
+
+    .userFavorites {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    #profileBottom h3 {
+        text-align: center;
+        margin-bottom: 45px;
+        margin-top: 45px;
+    }
+
+    #profileReviews {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin: auto;
+        width: 70%;
+        text-align: center;
+        border-top: 1px solid black;
+    }
+
+    /*  VIEW USER END */
+    /*  EDIT USER START  */
+    #editUserForm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #editUserForm form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+#editUserBtns{
     margin-top: 45px;
-}
-#profileReviews{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 50%;
     text-align: center;
 }
+#editUserBtns a{
+    color: white;
+}
+#editUserBtns button{
+    margin: 15px;
+}
+    .avatar {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 
-    /*  PROFILE END */
-
-
+    /*  EDIT USER END    */
     /*  ABOUT VIEW START  */
     #aboutContainer {
         display: flex;
     }
-    #aboutContainer a{
+
+    #aboutContainer a {
         font-size: 2rem;
         padding-right: 10px;
         /*padding-top: 20px;*/
     }
-    #aboutContainer p{
+
+    #aboutContainer p {
         margin: 5px;
     }
-    #aboutContainer img{
+
+    #aboutContainer img {
         max-width: 300px;
         max-height: 300px;
         border: 1px solid;
         border-radius: 5%;
         margin-bottom: 10px;
     }
-    .aboutBox{
+
+    .aboutBox {
         margin-top: 25px;
         margin-left: 5px;
         margin-right: 5px;
@@ -389,6 +473,7 @@ a{
         align-items: center;
         justify-content: space-evenly;
     }
+
     /*  ABOUT END   */
 
 }

@@ -1,147 +1,179 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>StreatFoods</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-	<link rel="stylesheet" th:href="@{/main.css}">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreatFoods</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
-		<nav th:if="${!#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: loggedNav"></nav>
-		</nav>
-		<nav th:if="${#authentication.principal.isTruckOwner}">
-			<nav th:replace="partials :: truckNav"></nav>
-		</nav>
-	</div>
-	<div sec:authorize="!isAuthenticated()">
-		<nav th:replace="partials :: notLoggedNav"></nav>
-	</div>
-	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
-		<nav th:replace="partials :: #adminNav"></nav>
-	</div>
-	<div>
-		<h2>My truck cuisines</h2>
-		<form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">
-			<div th:each="cuisine : ${cuisines}">
-				<label class="form-check-label">
-					<input type="hidden" th:value="${truck.getId()}" name="truck">
-					<input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList" th:if="${truck.cuisines.contains(cuisine)}" checked>
-					<input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList" th:if="${!truck.cuisines.contains(cuisine)}">
-					<span th:text="${cuisine.getName()}"></span>
-				</label>
-			</div>
-			<button type="submit">Submit</button>
-		</form>
-		<button type="button"><a th:href="@{/resetPassword}">Reset Password</a></button>
-		<form method="post" th:action="@{/truck/editTruck}" th:object="${truck}">
-			<input type="hidden" th:field="*{id}"> <input type="hidden" name="truckPictureUrls" id="truckPictureUrls">
-			<label for="name">Name:</label>
-			<input id="name" th:field="*{name}" type="text">
-			<br>
-			<label for="description">Description:</label>
-			<input id="description" th:field="*{description}" type="text">
-			<br>
-			<label for="phoneNumber">Phone Number:</label>
-			<input id="phoneNumber" th:field="*{phone}" type="text">
-			<br>
-			<label for="profilePic">Profile Pic</label>
-			<button type="button" id="profilePicUpload">Upload Profile Picture</button>
-			<input id="profilePic" type="text" th:field="*{profile_picture}"/>
-			<button type="button" id="truckPicturesUpload">Upload Truck Picture</button>
-			<button type="submit">Submit</button>
-		</form>
-	</div>
-	<!-- Modal button-->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccountModal">
-		Delete Account
-	</button>
-	<!-- Modal -->
-	<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Are you sure you want to delete your account?
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<form th:object="${truck}" method="post" th:action="@{/truck/deleteTruckAccount}">
-						<input type="hidden" th:value="${truck.id}" name="truckId">
-						<button class="btn btn-primary" type="submit">DELETE ACCOUNT</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer th:replace="partials :: footer"></footer>
-	<div th:replace="partials :: scripts"></div>
-	<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-	<script>
-		let limitCuisineSelections = () => {
-			let checkedCount = 0;
-			cuisineChecks.forEach((cuisineElement) => {
-				if (cuisineElement.checked) {
-					checkedCount++;
-				}
-			});
-			if (checkedCount >= 5) {
-				cuisineChecks.forEach((cuisineElement) => {
-					if (!cuisineElement.checked) {
-						cuisineElement.disabled = true;
-					}
-				});
-			} else {
-				cuisineChecks.forEach((cuisineElement) => {
-					cuisineElement.disabled = false;
-				});
-			}
-		}
-		let cuisineChecks = Array.from(document.getElementsByClassName("cuisineCheck"));
-		cuisineChecks.forEach(checkElement => {
-			checkElement.addEventListener("change", limitCuisineSelections);
-		});
-		limitCuisineSelections();
+<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
+    <nav th:if="${!#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: loggedNav"></nav>
+    </nav>
+    <nav th:if="${#authentication.principal.isTruckOwner}">
+        <nav th:replace="partials :: truckNav"></nav>
+    </nav>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <nav th:replace="partials :: notLoggedNav"></nav>
+</div>
+<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
+    <nav th:replace="partials :: #adminNav"></nav>
+</div>
 
-		const client = filestack.init("AyGiecp5QeqFNsUYFResLz")
+<div id="editTruckTop">
+    <h2>Select truck cuisines: </h2>
 
-		function multiPhotoFileStack() {
-			client.picker(multiPhotoOptions).open()
-		}
+    <form th:action="@{/truck/pickCuisine}" th:object="${cuisines}" method="post">
+        <div id="truckCuisinesForm">
+            <div class="truckCuisinesForm">
+                <div th:each="cuisine, iStat : ${cuisines}">
+                    <label th:if="${iStat.odd}" class="form-check-label">
+                        <input type="hidden" th:value="${truck.getId()}" name="truck">
+                        <input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList"
+                               th:if="${truck.cuisines.contains(cuisine)}" checked>
+                        <input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList"
+                               th:if="${!truck.cuisines.contains(cuisine)}">
+                        <span th:text="${cuisine.getName()}"></span>
+                    </label>
+                </div>
+            </div>
 
-		function singlePhotoFileStack() {
-			client.picker(singlePhotoOptions).open()
-		}
+            <div class="truckCuisinesForm">
+                <div th:each="cuisine, iStat : ${cuisines}">
+                    <label th:if="${iStat.even}" class="form-check-label">
+                        <input type="hidden" th:value="${truck.getId()}" name="truck">
+                        <input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList"
+                               th:if="${truck.cuisines.contains(cuisine)}" checked>
+                        <input class="cuisineCheck" type="checkbox" th:value="${cuisine.getId()}" name="cuisineList"
+                               th:if="${!truck.cuisines.contains(cuisine)}">
+                        <span th:text="${cuisine.getName()}"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="editTruckButton">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 
-		const singlePhotoOptions = {
-			onUploadDone: function (res) {
-				document.getElementById("profilePic").setAttribute("value", res.filesUploaded[0].url)
-			}
-		}
-		const multiPhotoOptions = {
-			onUploadDone: function (res) {
-				console.log(res)
-				let imageUrl = ""
 
-				for (var i = 0; i < res.filesUploaded.length; i++) {
-					imageUrl += res.filesUploaded[i].url + ","
-				}
-				console.log(imageUrl)
-				document.getElementById("truckPictureUrls").setAttribute("value", imageUrl)
-			},
-			maxFiles: 5,
-		};
-		document.getElementById("profilePicUpload").addEventListener("click", singlePhotoFileStack)
-		document.getElementById("truckPicturesUpload").addEventListener("click", multiPhotoFileStack)
-	</script>
+    <form id="editTruckForm" method="post" th:action="@{/truck/editTruck}" th:object="${truck}">
+        <input type="hidden" th:field="*{id}"> <input type="hidden" name="truckPictureUrls" id="truckPictureUrls">
+        <label for="name">Name:</label>
+        <input id="name" th:field="*{name}" type="text">
+        <br>
+        <label for="description">Description:</label>
+        <input id="description" th:field="*{description}" type="text">
+        <br>
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" th:field="*{phone}" type="text">
+        <br>
+        <label for="profilePic">Profile Pic</label>
+        <button type="button" id="profilePicUpload">Upload Profile Picture</button>
+        <input id="profilePic" type="text" th:field="*{profile_picture}"/>
+        <button type="button" id="truckPicturesUpload">Upload Other Photos</button>
+        <br>
+        <div id="editTruckFormBtn">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+<!-- Modal button-->
+<div>
+    <button type="button" class="btn btn-primary"><a th:href="@{/resetPassword}">Reset Password</a></button>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">Delete Account</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your account?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form th:object="${truck}" method="post" th:action="@{/truck/deleteTruckAccount}">
+                    <input type="hidden" th:value="${truck.id}" name="truckId">
+                    <button class="btn btn-primary" type="submit">DELETE ACCOUNT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="partials :: footer"></footer>
+<div th:replace="partials :: scripts"></div>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script>
+    let limitCuisineSelections = () => {
+        let checkedCount = 0;
+        cuisineChecks.forEach((cuisineElement) => {
+            if (cuisineElement.checked) {
+                checkedCount++;
+            }
+        });
+        if (checkedCount >= 5) {
+            cuisineChecks.forEach((cuisineElement) => {
+                if (!cuisineElement.checked) {
+                    cuisineElement.disabled = true;
+                }
+            });
+        } else {
+            cuisineChecks.forEach((cuisineElement) => {
+                cuisineElement.disabled = false;
+            });
+        }
+    }
+    let cuisineChecks = Array.from(document.getElementsByClassName("cuisineCheck"));
+    cuisineChecks.forEach(checkElement => {
+        checkElement.addEventListener("change", limitCuisineSelections);
+    });
+    limitCuisineSelections();
+
+    const client = filestack.init("AyGiecp5QeqFNsUYFResLz")
+
+    function multiPhotoFileStack() {
+        client.picker(multiPhotoOptions).open()
+    }
+
+    function singlePhotoFileStack() {
+        client.picker(singlePhotoOptions).open()
+    }
+
+    const singlePhotoOptions = {
+        onUploadDone: function (res) {
+            document.getElementById("profilePic").setAttribute("value", res.filesUploaded[0].url)
+        }
+    }
+    const multiPhotoOptions = {
+        onUploadDone: function (res) {
+            console.log(res)
+            let imageUrl = ""
+
+            for (var i = 0; i < res.filesUploaded.length; i++) {
+                imageUrl += res.filesUploaded[i].url + ","
+            }
+            console.log(imageUrl)
+            document.getElementById("truckPictureUrls").setAttribute("value", imageUrl)
+        },
+        maxFiles: 5,
+    };
+    document.getElementById("profilePicUpload").addEventListener("click", singlePhotoFileStack)
+    document.getElementById("truckPicturesUpload").addEventListener("click", multiPhotoFileStack)
+</script>
 </body>
 </html>

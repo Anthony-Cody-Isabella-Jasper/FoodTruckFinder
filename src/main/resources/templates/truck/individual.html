@@ -29,20 +29,23 @@
 			<div id="mapDiv">
 				<div id="map"></div>
 				<p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
-				<a th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
+				<a th:if="${!#authentication.principal.isTruckOwner}" th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
 					<button class="btn btn-primary">Get Directions</button>
 				</a>
 			</div>
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
-					<button class="btn btn-light" id="triangulate">Triangulate Location</button>
+					<div id="triangulateBtn">
+					<button class="btn btn-primary" id="triangulate">Triangulate Location</button>
+					</div>
+					<br>
 					<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
 						<input type="hidden" name="longitude" id="truckLongitude">
 						<input type="hidden" name="latitude" id="truckLatitude">
-						<button class="btn btn-light" type="submit" id="beacon" hidden>Activate Beacon</button>
+						<button class="btn btn-success" type="submit" id="beacon" hidden>Activate Beacon</button>
 					</form>
-					<form th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
-						<button class="btn btn-light" type="submit">Go Ghost</button>
+					<form id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+						<button class="btn btn-danger"  type="submit">Go Ghost</button>
 					</form>
 				</div>
 			</div>
@@ -51,7 +54,7 @@
 					<form th:action="@{/truck/verify}" method="post">
 						<input type="hidden" name="truckId" th:value="${truck.id}">
 						<input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
-						<button class="btn btn-light" type="submit">Verify Truck on Location</button>
+						<button class="btn btn-success" type="submit">Verify Truck on Location</button>
 					</form>
 				</div>
 			</div>

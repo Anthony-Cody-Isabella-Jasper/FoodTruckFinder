@@ -314,15 +314,14 @@ a{
     /*  REVIEW END  */
 
     /*  PROFILE VIEW START  */
-#profileBottom{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-#profileBottom img {
+#profileMiddle img{
     width: 350px;
     height: 350px;
 }
+#deleteFavoriteBtn{
+    background-color: red;
+}
+
     /*  PROFILE END */
 
 

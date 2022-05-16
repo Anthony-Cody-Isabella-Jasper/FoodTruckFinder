@@ -356,4 +356,30 @@ a{
     }
     /*  ABOUT END   */
 
+
+    /*LOGIN PAGE START*/
+    .loginCenter{
+        text-align: center;
+    }
+
+    #loginButton{
+        margin-top: 15px;
+        width: 20%;
+    }
+
+    .loginFormFieldSize{
+        width:35%;
+    }
+
+    #loginCenterBox{
+
+    }
+
+    #loginBottomBox{
+        margin-top: 20px;
+    }
+
+
+    /*LOGIN PAGE END*/
+
 }

@@ -378,8 +378,27 @@ a{
     #loginBottomBox{
         margin-top: 20px;
     }
-
-
     /*LOGIN PAGE END*/
+
+
+    /*FORGOT PASSWORD PAGE START*/
+    #forgotPasscenterBox{
+        text-align: center;
+    }
+
+    #forgotPassFormButtons{
+        margin-top: 15px;
+    }
+
+    #forgotPasscenterBox #email{
+        width: 20%;
+    }
+
+    #forgotPassClear{
+        width: 67.17px;
+    }
+
+
+    /*FORGOT PASSWORD PAGE END*/
 
 }

@@ -139,13 +139,13 @@
 		navigator.geolocation.getCurrentPosition(currentPosition => {
 			let truckDivs = Array.from(document.getElementsByClassName("truckDiv"));
 			let allTrucks = document.getElementById("allTrucks");
-			while(allTrucks.firstChild) {
+			while (allTrucks.firstChild) {
 				allTrucks.removeChild(allTrucks.firstChild);
 			}
 			let orderedByDistance = [];
 			trucks.forEach((truck, index) => {
 				let distance;
-				if(!!truck.longitude) {
+				if (!!truck.longitude) {
 					distance = turf.distance(turf.point([currentPosition.coords.longitude, currentPosition.coords.latitude]), turf.point([truck.longitude, truck.latitude]), {units: "miles"});
 				} else {
 					distance = 24902;
@@ -156,15 +156,20 @@
 				});
 			});
 			orderedByDistance.sort((a, b) => {
-				if(a.distanceFromUser > b.distanceFromUser) {
+				if (a.distanceFromUser > b.distanceFromUser) {
 					return 1;
 				}
-				if(a.distanceFromUser < b.distanceFromUser) {
+				if (a.distanceFromUser < b.distanceFromUser) {
 					return -1;
 				}
 				return 0;
 			});
 			orderedByDistance.forEach(truck => {
+				if (truck.distanceFromUser < 24902) {
+					let distanceDiv = document.createElement("div");
+					distanceDiv.innerHTML = "<em>" + truck.distanceFromUser.toFixed(1) + " miles away</em>"
+					truck.truckDiv.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.insertAdjacentElement("afterend", distanceDiv);
+				}
 				allTrucks.append(truck.truckDiv);
 			});
 		});

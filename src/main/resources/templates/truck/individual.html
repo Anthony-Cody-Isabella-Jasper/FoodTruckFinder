@@ -35,19 +35,15 @@
 			</div>
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
-					<div id="triangulateBtn">
-					<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+					<div th:if="${truck.longitude == null}" id="triangulateBtn">
+						<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+						<form id="activateBeacon" th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
+							<input type="hidden" name="longitude" id="truckLongitude">
+							<input type="hidden" name="latitude" id="truckLatitude">
+						</form>
 					</div>
-					<br>
-					<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
-						<input type="hidden" name="longitude" id="truckLongitude">
-						<input type="hidden" name="latitude" id="truckLatitude">
-						<div id="activateBeaconBtn">
-						<button class="btn btn-success" type="submit" id="beacon" hidden>Activate Beacon</button>
-						</div>
-					</form>
-					<form id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
-						<button class="btn btn-danger"  type="submit">Go Ghost</button>
+					<form th:if="${truck.longitude != null}" id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+						<button class="btn btn-danger" type="submit">Go Ghost</button>
 					</form>
 				</div>
 			</div>
@@ -70,7 +66,7 @@
 				<h3 th:text="${truck.name}"></h3>
 				<br>
 				<dl>
-					<dt>Truck's Listed Cuisines: </dt>
+					<dt>Truck's Listed Cuisines:</dt>
 					<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
 					<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 				</dl>
@@ -84,6 +80,9 @@
 				<p id="reviewText">Average Rating:
 					<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>(<em><span th:text="${truck.getReviews().size()}"></span>
 						reviews</em>) </p>
+				<p>Description:
+					<br>
+					<span th:text="${truck.description}"></span></p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/addFavorite}" th:method="post">
 						<input hidden th:value="${truck.getId()}" name="truckId">
@@ -206,12 +205,11 @@
 		document.getElementById("triangulate").addEventListener("click", () => {
 			let triangulate = document.getElementById("triangulate");
 			triangulate.disabled = true;
-			triangulate.innerText = "Pinging Satellites...";
+			triangulate.innerText = "Loading...";
 			navigator.geolocation.getCurrentPosition(position => {
 				document.getElementById("truckLongitude").value = position.coords.longitude;
 				document.getElementById("truckLatitude").value = position.coords.latitude;
-				document.getElementById("triangulate").hidden = true;
-				document.getElementById("beacon").hidden = false;
+				document.getElementById("activateBeacon").submit();
 			});
 		});
 	</script>

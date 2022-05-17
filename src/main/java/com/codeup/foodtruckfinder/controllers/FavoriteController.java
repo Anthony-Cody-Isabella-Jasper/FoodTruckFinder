@@ -28,14 +28,11 @@ public class FavoriteController {
     public String addFavorite(@RequestParam Long truckId, @RequestParam Long id, RedirectAttributes redirAttrs) {
         User user = userDao.getById(id);
         List<Truck> fave;
-        if (user == null) {
-            return "redirect:/login";
-        } else if(user.getFavoriteTrucks() == null) {
+        if(user.getFavoriteTrucks() == null) {
             fave = new ArrayList<>();
         } else {
             fave = user.getFavoriteTrucks();
         }
-
         if(user.getFavoriteTrucks().contains(truckDao.getTruckById(truckId)) && userDao.existsById(user.getId())) {
             redirAttrs.addFlashAttribute("message", "This truck is already added to your favorites");
             return "redirect:/truck/" + truckId + "/show";
@@ -47,12 +44,10 @@ public class FavoriteController {
         return "redirect:/" + user.getId() + "/profile";
     }
 
-
     @PostMapping("/deleteFavorite")
     public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {
         User user = userDao.getById(id);
         userDao.deleteFavorite(id, truckId);
         return "redirect:/" + user.getId() + "/profile";
     }
-
 }

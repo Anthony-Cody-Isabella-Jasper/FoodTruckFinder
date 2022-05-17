@@ -12,32 +12,32 @@
 <body>
 	<nav th:replace="partials :: #adminNav"></nav>
 	<div id="show"></div>
-	<div class="container">
+	<div class="container mt-5">
 		<div class="row">
-			<div class="col">
+			<div class="col adminCol">
 				<h3>User Profiles</h3>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="usernameSearch" placeholder="Username">
 					<input type="hidden" name="searchType" value="user">
-					<button type="submit" class="btn btn-light">Search</button>
+					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
 				<div id="usersList"></div>
 			</div>
-			<div class="col">
+			<div class="col adminCol">
 				<h3>Truck Profiles</h3>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="truckSearch" placeholder="Truck Name">
 					<input type="hidden" name="searchType" value="truck">
-					<button type="submit" class="btn btn-light">Search</button>
+					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
 				<div id="trucksList"></div>
 			</div>
-			<div class="col">
+			<div class="col adminCol">
 				<h3>Reviews</h3>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="reviewSearch" placeholder="Review Text">
 					<input type="hidden" name="searchType" value="review">
-					<button type="submit" class="btn btn-light">Search</button>
+					<button type="submit" class="btn btn-primary">Search</button>
 				</form>
 				<div id="reviewsList"></div>
 			</div>
@@ -118,7 +118,6 @@
 			</div>
 		</div>
 	</div>
-	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
 	<script th:inline="javascript">
 		let usersDiv = document.getElementById("usersList");

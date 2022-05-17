@@ -605,14 +605,16 @@ a {
     }
     #menuList{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
     #menuList div{
-        padding: 20px;
-        border-bottom: 1px solid black;
+        padding: 25px;
+        border-top: 1px solid black;
     }
+
 
     /*  EDIT MENU END   */
 
@@ -826,5 +828,12 @@ display: flex;
         color: blue;
     }
     /*500 ERROR PAGE END*/
+
+    /*  ADMIN VIEW START  */
+    .adminCol{
+        text-align: center;
+    }
+
+    /*  ADMIN VIEW END    */
 
 }

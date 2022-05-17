@@ -30,7 +30,7 @@
 			<p>Username: <span th:text="${user.username}"></span></p>
 			<p>Email: <span th:text="${user.email}"></span></p>
 			<p>Total # of favorited trucks: <span th:text="${user.favoriteTrucks.size()}"></span></p>
-			<p>Total # of reviews: <span th:text="${user.favoriteTrucks.size()}"></span></p>
+			<p>Total # of reviews: <span th:text="${user.reviews.size()}"></span></p>
 		</div>
 	</div>
 	<!--    USERS FAVORITES-->
@@ -46,7 +46,7 @@
 				<form th:action="@{/deleteFavorite}" th:method="post">
 					<input hidden th:value="${favorite.getId()}" name="truckId">
 					<input hidden th:value="${#authentication.principal.getId()}" name="id">
-					<button id="deleteFavoriteBtn" type="submit">Delete Favorite</button>
+					<button class="btn btn-danger" id="deleteFavoriteBtn" type="submit">Delete Favorite</button>
 				</form>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 						"<span th:text="${review.reviewText}"></span>"
 					</p>
 					<a th:href="@{/editReview/{id}(id=${review.id})}">
-						<button type="button">Edit Review</button>
+						<button class="btn btn-primary" type="button">Edit Review</button>
 					</a>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="UTF-8"/>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport" />
 	<title>StreatFoods</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -35,17 +35,15 @@
 			</div>
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
-					<div id="triangulateBtn">
-					<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+					<div th:if="${truck.longitude == null}" id="triangulateBtn">
+						<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+						<form id="activateBeacon" th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
+							<input type="hidden" name="longitude" id="truckLongitude">
+							<input type="hidden" name="latitude" id="truckLatitude">
+						</form>
 					</div>
-					<br>
-					<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
-						<input type="hidden" name="longitude" id="truckLongitude">
-						<input type="hidden" name="latitude" id="truckLatitude">
-						<button class="btn btn-success" type="submit" id="beacon" hidden>Activate Beacon</button>
-					</form>
-					<form id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
-						<button class="btn btn-danger"  type="submit">Go Ghost</button>
+					<form th:if="${truck.longitude != null}" id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+						<button class="btn btn-danger" type="submit">Go Ghost</button>
 					</form>
 				</div>
 			</div>
@@ -54,7 +52,9 @@
 					<form th:action="@{/truck/verify}" method="post">
 						<input type="hidden" name="truckId" th:value="${truck.id}">
 						<input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
+						<div id="verifyTruckBtn">
 						<button class="btn btn-success" type="submit">Verify Truck on Location</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -64,19 +64,27 @@
 			<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 			<div>
 				<h3 th:text="${truck.name}"></h3>
+				<br>
 				<dl>
-					<dt>Truck's Listed Cuisines: </dt>
+					<dt>Truck's Listed Cuisines:</dt>
 					<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
 					<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 				</dl>
 				<hr>
 				<p>Phone Number: <span th:text="${truck.phone}"></span></p>
-				<p>Description: <br><span th:text="${truck.description}"></span></p>
+				<br>
+				<div id="truckDescription">
+				<p>Description: <span th:text="${truck.description}"></span></p>
+				</div>
+				<br>
+				<p id="reviewText">Average Rating:
+					<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>(<em><span th:text="${truck.getReviews().size()}"></span>
+						reviews</em>) </p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/addFavorite}" th:method="post">
 						<input hidden th:value="${truck.getId()}" name="truckId">
 						<input hidden th:value="${#authentication.principal.getId()}" name="id">
-						<button type="submit">Add Favorite</button>
+						<button class="btn btn-success" type="submit">Add to Favorites</button>
 					</form>
 				</div>
 			</div>
@@ -103,22 +111,6 @@
 			</div>
 		</div>
 	</div>
-	<!--    <div id="menuItems">-->
-	<!--        <p>Menu Items:</p>-->
-	<!--        <div th:each="menu : ${truck.menu}" class="menu-items">-->
-	<!--            <div>-->
-	<!--                <span th:text="${menu.name}"></span><br>-->
-	<!--            </div>-->
-	<!--            <div>-->
-	<!--                <span th:text="${menu.description}"></span><br>-->
-	<!--            </div>-->
-	<!--            <div>-->
-	<!--                <div>$<span th:text="${menu.price}"></span></div>-->
-	<!--            </div>-->
-	<!--            <span th:if="${menu.vegan == true}">This is vegan</span><br>-->
-	<!--            <span th:if="${menu.vegetarian == true}">This is vegetarian</span>-->
-	<!--        </div>-->
-	<!--    </div>-->
 	<hr>
 	<div id="bottomBox">
 		<div id="menuBox">
@@ -145,12 +137,11 @@
 		</div>
 		<hr>
 		<div id="reviewItems">
-			<p id="reviewText">Average Rating:
-				<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>(<em><span th:text="${truck.getReviews().size()}"></span>
-					reviews</em>) </p>
+
 			<div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 				<a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write a Review!</a>
 			</div>
+
 			<div th:each="review : ${truck.reviews}" class="truck-reviews" id="reviewContent">
 				<div id="reviewLeft">
 					<img th:attr="src=${review.user.profilePicture}"> <span th:text="${review.user.username}"></span>
@@ -162,6 +153,7 @@
 					</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	</div>
@@ -210,12 +202,11 @@
 		document.getElementById("triangulate").addEventListener("click", () => {
 			let triangulate = document.getElementById("triangulate");
 			triangulate.disabled = true;
-			triangulate.innerText = "Pinging Satellites...";
+			triangulate.innerText = "Loading...";
 			navigator.geolocation.getCurrentPosition(position => {
 				document.getElementById("truckLongitude").value = position.coords.longitude;
 				document.getElementById("truckLatitude").value = position.coords.latitude;
-				document.getElementById("triangulate").hidden = true;
-				document.getElementById("beacon").hidden = false;
+				document.getElementById("activateBeacon").submit();
 			});
 		});
 	</script>

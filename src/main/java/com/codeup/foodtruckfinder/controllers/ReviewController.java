@@ -45,23 +45,20 @@ public class ReviewController {
 
     @GetMapping("/editReview/{id}")
     public String editReviewPage(@PathVariable Long id, Model model) {
-
         model.addAttribute("review", reviewDao.findById(id));
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Review blockReview = reviewDao.getById(id);
         Long blockId = blockReview.getUser().getId();
-
         if (user.isTruckOwner()) {
             return "redirect:/";
         }
        if (user.getId() != blockId){
            return "redirect:/";
        }
-
         model.addAttribute("user", user);
         model.addAttribute("revId", id);
         Review review = reviewDao.getById(id);
-        model.addAttribute("trckId", review.getTruck().getId());
+        model.addAttribute("truckId", review.getTruck().getId());
         return "/editReview";
     }
 

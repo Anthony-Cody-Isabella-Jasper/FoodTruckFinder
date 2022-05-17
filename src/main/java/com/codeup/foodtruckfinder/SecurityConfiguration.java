@@ -50,16 +50,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/","/truck/{id}/show","/about","/login","/register","/filter","/search") // anyone can see
+                .antMatchers("/about", "/forgotPassword", "/login", "/pending", "/register", "resetPassword", "/", "/truck/{id}/show") // anyone can see
                 .permitAll()
 
 
                 /* Pages that require authentication */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/truck/{id}/edit","/editUser/{id}","/truck/{id}/profile","/{id}/profile","/review/{id}","/truck/{id}/located", "/deleteFavorite")
+                .antMatchers("/admin", "/approve", "/editUser/{id}", "/{id}/profile", "/truck/{id}/edit", "/truck/{id}/editmenu", "/truck/{id}/profile", "/editReview/{id}", "/review/{id}")
                 .authenticated()
-
 
 
         ;

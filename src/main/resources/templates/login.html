@@ -40,5 +40,12 @@
 	</div>
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		if (/*[[${message}]]*/) {
+			window.alert(/*[[${message}]]*/);
+		}
+		/*]]>*/
+	</script>
 </body>
 </html>

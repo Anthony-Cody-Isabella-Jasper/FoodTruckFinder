@@ -336,6 +336,45 @@ display: flex;
 
 /*    EDIT USER END     */
 
+/*    RESET PASSWORD START  */
+    #resetPassForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    #resetPasswordBtns{
+        margin-top: 15px;
+    }
+/*    RESET PASSWORD END   */
+
+/*    LOGIN START   */
+    .text-center{
+        text-align: center;
+    }
+    #loginCenterBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+    #loginButton{
+        margin-bottom: 15px;
+    }
+    #loginBottomBox{
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    #loginButtonBox{
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    }
+/*    LOGIN END     */
+
 }
 
 

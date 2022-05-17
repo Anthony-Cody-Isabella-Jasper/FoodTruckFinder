@@ -18,8 +18,6 @@ a {
     border: 3px solid blue;
 }
 
-
-
 /*BODY END*/
 
 /*STYLE FOR RATING STARS*/
@@ -896,4 +894,30 @@ display: flex;
     }
     /*  APPROVE END    */
 
+/*    RESET PASSWORD START  */
+    #resetPassForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #resetPassForm div{
+        padding: 10px;
+    }
+/*    RESET PASS END    */
+
+/*    EDIT REVIEW START */
+    #editUserReviewForm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #editReviewDeleteBtn{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+/*    EDIT REVIEW END   */
 }

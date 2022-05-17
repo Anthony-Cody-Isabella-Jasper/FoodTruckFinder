@@ -104,6 +104,12 @@
 				</div>
 				<form th:action="@{/adminEditReview}" method="post">
 					<div class="modal-body">
+						<dl>
+							<dt>Food Truck</dt>
+							<dd id="reviewTruck"></dd>
+							<dt>Author</dt>
+							<dd id="reviewAuthor"></dd>
+						</dl>
 						<label>Rating <input type="number" name="reviewRating" id="reviewRating" max="5" min="0">
 						</label>
 						<label>Description <input type="text" name="reviewText" id="reviewText"></label>
@@ -214,6 +220,8 @@
 			editReviewButton.innerText = "Edit";
 			editReviewButton.addEventListener("click", () => {
 				document.getElementById("reviewId").value = review.id;
+				document.getElementById("reviewTruck").innerText = review.truck;
+				document.getElementById("reviewAuthor").innerText = review.author;
 				document.getElementById("reviewRating").value = review.rating;
 				document.getElementById("reviewText").value = review.reviewText;
 				document.getElementById("deleteReviewId").value = review.id;

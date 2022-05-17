@@ -11,15 +11,14 @@
 </head>
 <body>
 	<nav th:replace="partials :: notLoggedNav"></nav>
-	<div>
-		Thank you for applying as a truck owner! We are processing your application and will email you when you have
-		been approved. Until then, please enjoy this banana. -Food Truck Finder Team
+	<div id="pendingCenterBox">
+		<h2>Pending Approval</h2>
+		<h4>
+			Thank you for applying as a truck owner! We are processing your application and will email you when you have been approved. -StreatFoods Team
+		</h4>
+		<a href="/">Return To Home Page Here</a>
 	</div>
-	<div class="banana">
-		<img src="https://th-thumbnailer.cdn-si-edu.com/4Nq8HbTKgX6djk07DqHqRsRuFq0=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/d5/24/d5243019-e0fc-4b3c-8cdb-48e22f38bff2/istock-183380744.jpg" alt="banana">
-		<div class="centered">WHOLE ASS BANANA</div>
-	</div>
-	<footer th:replace="partials :: footer"></footer>
+	<footer id="pendingFooter" th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
 </body>
 </html>

@@ -165,11 +165,12 @@
 				return 0;
 			});
 			orderedByDistance.forEach(truck => {
+				let distanceDiv = document.createElement("div");
+				distanceDiv.innerHTML = "<em>Not on location</em>"
 				if (truck.distanceFromUser < 24902) {
-					let distanceDiv = document.createElement("div");
-					distanceDiv.innerHTML = "<em>" + truck.distanceFromUser.toFixed(1) + " miles away</em>"
-					truck.truckDiv.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.insertAdjacentElement("afterend", distanceDiv);
+					distanceDiv.innerHTML = "<em>" + truck.distanceFromUser.toFixed(1) + " miles away</em>";
 				}
+				truck.truckDiv.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.insertAdjacentElement("afterend", distanceDiv);
 				allTrucks.append(truck.truckDiv);
 			});
 		});

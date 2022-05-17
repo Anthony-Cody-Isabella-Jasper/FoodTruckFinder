@@ -874,8 +874,26 @@ display: flex;
     .adminCol form{
         margin-bottom: 35px;
     }
-
-
     /*  ADMIN VIEW END    */
+
+    /*  APPROVE VIEW START  */
+    #pendingUserForms{
+        display: flex;
+    border: 1px solid black;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        margin: auto;
+        width: 60%;
+    }
+    #pendingUserForms label{
+        padding-right: 20px;
+    }
+    #approvalH2{
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    /*  APPROVE END    */
 
 }

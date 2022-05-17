@@ -29,7 +29,7 @@
 			<div id="mapDiv">
 				<div id="map"></div>
 				<p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
-				<a th:if="${!#authentication.principal.isTruckOwner}" th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
+				<a th:if="${#authentication.principal.equals('anonymousUser') || !#authentication.principal.isTruckOwner}" th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
 					<button class="btn btn-primary">Get Directions</button>
 				</a>
 			</div>

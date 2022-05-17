@@ -35,17 +35,15 @@
 			</div>
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
-					<div id="triangulateBtn">
-					<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+					<div th:if="${truck.longitude == null}" id="triangulateBtn">
+						<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+						<form id="activateBeacon" th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
+							<input type="hidden" name="longitude" id="truckLongitude">
+							<input type="hidden" name="latitude" id="truckLatitude">
+						</form>
 					</div>
-					<br>
-					<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
-						<input type="hidden" name="longitude" id="truckLongitude">
-						<input type="hidden" name="latitude" id="truckLatitude">
-						<button class="btn btn-success" type="submit" id="beacon" hidden>Activate Beacon</button>
-					</form>
-					<form id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
-						<button class="btn btn-danger"  type="submit">Go Ghost</button>
+					<form th:if="${truck.longitude != null}" id="ghost" th:action="@{/truck/{id}/unlocated(id=${truck.id})}" method="post">
+						<button class="btn btn-danger" type="submit">Go Ghost</button>
 					</form>
 				</div>
 			</div>
@@ -65,13 +63,15 @@
 			<div>
 				<h3 th:text="${truck.name}"></h3>
 				<dl>
-					<dt>Truck's Listed Cuisines: </dt>
+					<dt>Truck's Listed Cuisines:</dt>
 					<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
 					<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 				</dl>
 				<hr>
 				<p>Phone Number: <span th:text="${truck.phone}"></span></p>
-				<p>Description: <br><span th:text="${truck.description}"></span></p>
+				<p>Description:
+					<br>
+					<span th:text="${truck.description}"></span></p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/addFavorite}" th:method="post">
 						<input hidden th:value="${truck.getId()}" name="truckId">
@@ -103,22 +103,6 @@
 			</div>
 		</div>
 	</div>
-	<!--    <div id="menuItems">-->
-	<!--        <p>Menu Items:</p>-->
-	<!--        <div th:each="menu : ${truck.menu}" class="menu-items">-->
-	<!--            <div>-->
-	<!--                <span th:text="${menu.name}"></span><br>-->
-	<!--            </div>-->
-	<!--            <div>-->
-	<!--                <span th:text="${menu.description}"></span><br>-->
-	<!--            </div>-->
-	<!--            <div>-->
-	<!--                <div>$<span th:text="${menu.price}"></span></div>-->
-	<!--            </div>-->
-	<!--            <span th:if="${menu.vegan == true}">This is vegan</span><br>-->
-	<!--            <span th:if="${menu.vegetarian == true}">This is vegetarian</span>-->
-	<!--        </div>-->
-	<!--    </div>-->
 	<hr>
 	<div id="bottomBox">
 		<div id="menuBox">
@@ -210,12 +194,11 @@
 		document.getElementById("triangulate").addEventListener("click", () => {
 			let triangulate = document.getElementById("triangulate");
 			triangulate.disabled = true;
-			triangulate.innerText = "Pinging Satellites...";
+			triangulate.innerText = "Loading...";
 			navigator.geolocation.getCurrentPosition(position => {
 				document.getElementById("truckLongitude").value = position.coords.longitude;
 				document.getElementById("truckLatitude").value = position.coords.latitude;
-				document.getElementById("triangulate").hidden = true;
-				document.getElementById("beacon").hidden = false;
+				document.getElementById("activateBeacon").submit();
 			});
 		});
 	</script>

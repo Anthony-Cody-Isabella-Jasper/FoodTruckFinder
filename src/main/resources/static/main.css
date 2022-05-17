@@ -17,12 +17,8 @@ a {
 .profileImgSelect {
     border: 3px solid blue;
 }
-footer{
-    background-color: #deb217;
-}
-.nav{
-    background-color: red;
-}
+
+
 
 /*BODY END*/
 
@@ -605,6 +601,8 @@ footer{
 display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
+    margin-bottom: 35px;
 }
 #truckCuisinesForm{
     display: flex;
@@ -618,7 +616,26 @@ display: flex;
 #editTruckButton{
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 75px;
+}
+#editTruckBtns{
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+#editTruckBtns button{
+    margin: 20px;
+}
+#editTruckBtns a{
+    text-decoration: none;
+    color: white;
+}
+#editTruckForm{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
     /*  EDIT TRUCK END    */
 

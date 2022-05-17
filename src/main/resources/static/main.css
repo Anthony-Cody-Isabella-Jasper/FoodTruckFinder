@@ -85,6 +85,10 @@ a {
     .desktopNav {
         display: none;
     }
+    footer{
+        display: flex;
+        justify-content: center;
+    }
 
     /*400 ERROR PAGE START*/
     #notFoundCenterBox{
@@ -138,72 +142,201 @@ a {
         color: blue;
     }
     /*500 ERROR PAGE END*/
+
+/*    NAV START */
+    .mobileNav{
+        display: flex;
+        flex-grow: 2;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 45px;
+    }
+    .mobileNavImg{
+        width: 65px;
+        height: 65px;
+    }
+    .mobileLogo img{
+        width: 120px;
+        height: 120px;
+        border: 3px solid #ffb9ad;
+        border-radius: 36px;
+        /*margin: 40px auto;*/
+        /*position: relative;*/
+    }
+/*    NAV END   */
+
+/*    INDEX START*/
+#map{
+  margin: auto;
+    width: 90%;
+    height: 200px;
+}
+#searchBar{
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#clearFilterBtn{
+    margin: 15px;
+}
+#filters h5{
+    margin-top: 15px;
+}
+/*    INDEX END*/
+
+/*    INDIVIDUAL START  */
+    #mapDiv{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    #verifyTruckBtn{
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    #individualTruck{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #menuBox{
+        text-align: center;
+        width: 90%;
+    }
+    #reviewBtn{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+    #reviewItems{
+        display: flex;
+        flex-direction: column;
+    }
+    #reviewLeft img{
+        width: 75px;
+        height: 75px;
+        border: 1px solid;
+        border-radius: 50%;
+    }
+    #reviewContent{
+        display: flex;
+    }
+    #reviewLeft{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 15px;
+        margin-bottom: 25px;
+    }
+    #activateBeaconBtn{
+        display: flex;
+        justify-content: center;
+    }
+/*    INDIVIDUAL END    */
+
+/*    REVIEW START  */
+    #reviewTop{
+display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    #reviewTop img{
+        max-width: 350px;
+        max-height: 350px;
+        margin-bottom: 50px;
+    }
+
+    #reviewMiddle{
+        margin-bottom: 50px;
+    }
+
+    #reviewForm{
+display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #submitReviewBtn{
+        margin: 15px;
+    }
+/*    REVIEW END    */
+
+
 }
 
 
-@media screen and (min-width: 426px) and (max-width: 899px) {
-    .mobileNav {
-        display: none
-    }
+/*@media screen and (min-width: 426px) and (max-width: 899px) {*/
+/*    .mobileNav {*/
+/*        display: none*/
+/*    }*/
 
 
 
-    /*500 ERROR PAGE START*/
-    #serverErrCenterBox{
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 36%;
-    }
+/*    !*500 ERROR PAGE START*!*/
+/*    #serverErrCenterBox{*/
+/*        text-align: center;*/
+/*        position: absolute;*/
+/*        top: 20%;*/
+/*        left: 36%;*/
+/*    }*/
 
-    #serverErrCenterBox p{
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0px;
-    }
+/*    #serverErrCenterBox p{*/
+/*        font-size: 80px;*/
+/*        font-weight: bolder;*/
+/*        margin: 20px 0px;*/
+/*    }*/
 
-    #serverErrLogo{
-        width: 125px;
-        height: 125px;
-        border-radius: 50%;
-    }
+/*    #serverErrLogo{*/
+/*        width: 125px;*/
+/*        height: 125px;*/
+/*        border-radius: 50%;*/
+/*    }*/
 
-    #serverErrCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-    /*500 ERROR PAGE END*/
+/*    #serverErrCenterBox a {*/
+/*        font-size: 20px;*/
+/*        color: blue;*/
+/*    }*/
+/*    !*500 ERROR PAGE END*!*/
 
-    /*400 ERROR PAGE START*/
-    #notFoundCenterBox{
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 36%;
-    }
+/*    !*400 ERROR PAGE START*!*/
+/*    #notFoundCenterBox{*/
+/*        text-align: center;*/
+/*        position: absolute;*/
+/*        top: 20%;*/
+/*        left: 36%;*/
+/*    }*/
 
-    #notFoundCenterBox p{
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0px;
-    }
+/*    #notFoundCenterBox p{*/
+/*        font-size: 80px;*/
+/*        font-weight: bolder;*/
+/*        margin: 20px 0px;*/
+/*    }*/
 
-    #errLogo{
-        width: 125px;
-        height: 125px;
-        border-radius: 50%;
-    }
+/*    #errLogo{*/
+/*        width: 125px;*/
+/*        height: 125px;*/
+/*        border-radius: 50%;*/
+/*    }*/
 
-    #notFoundCenterBox a{
-        font-size: 20px;
-        color: blue;
-    }
-    /*400 ERROR PAGE END*/
+/*    #notFoundCenterBox a{*/
+/*        font-size: 20px;*/
+/*        color: blue;*/
+/*    }*/
+/*    !*400 ERROR PAGE END*!*/
 
-}
+/*}*/
 
 
-@media screen and (min-width: 900px) and (max-width: 1800px) {
+@media screen and (min-width: 426px) and (max-width: 1800px) {
     /* NAV START*/
     .nav img {
     width: 125px;
@@ -377,6 +510,10 @@ a {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 60%;
+
     }
 
     .truck-reviews img {
@@ -398,6 +535,8 @@ a {
 
     #reviewBtn {
         text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 
     #reviewContent {
@@ -431,9 +570,10 @@ a {
         transition: all 0.13s ease-in;
     }
 
-
-    #verifyBtn {
-        text-align: center;
+    #verifyTruckBtn{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
     }
 #ghost{
     display: flex;
@@ -443,6 +583,14 @@ a {
     display: flex;
     justify-content: center;
 }
+#truckDescription {
+    text-align: center;
+}
+#activateBeaconBtn{
+    display: flex;
+    justify-content: center;
+}
+
     /*  INDIVIDUAL END  */
 
 
@@ -883,6 +1031,7 @@ display: flex;
         padding: 5px;
         margin: auto;
         width: 60%;
+        margin-bottom: 15px;
     }
     #pendingUserForms label{
         padding-right: 20px;

@@ -24,7 +24,9 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
+
 	<div id="map"></div>
+
 	<div id="searchBar">
 		<div>
 			<form th:action="@{/search}" method="post">
@@ -47,16 +49,16 @@
 				<input type="checkbox" id="veganCheck" name="vegan">
 				<label for="vegetarianCheck">Vegetarian</label>
 				<input type="checkbox" id="vegetarianCheck" name="vegetarian">
-				<button type="submit" class="btn btn-light">Apply Filters</button>
+				<button type="submit" class="btn btn-success">Apply Filters</button>
 			</form>
 			<a th:href="@{/}">
-				<button type="submit" class="btn btn-light">Clear Filters</button>
+				<button id="clearFilterBtn" type="submit" class="btn btn-danger">Clear Filters</button>
 			</a>
 		</div>
 	</div>
 	<h1 th:if="${trucks.size()} == 0">No Results :(</h1>
 	<div id="allTrucks" class="row">
-		<div class="col-4 truckDiv" th:each="truck : ${trucks}">
+		<div class="col-lg-4 col-md-4 col-sm-12 truckDiv" th:each="truck : ${trucks}">
 			<div class="card mb-5">
 				<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 				<div class="card-body">
@@ -87,6 +89,7 @@
 	</div>
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
+
 	<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 	<script th:inline="javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';

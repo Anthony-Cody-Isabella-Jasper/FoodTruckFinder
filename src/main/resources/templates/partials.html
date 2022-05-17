@@ -55,12 +55,12 @@
 			</div>
 		</div>
 		<div class="mobileNav">
-			<div>
+			<div class="mobileLogo">
 				<a href="/"><img src="/img/Streat.png" alt="Logo"/></a>
 			</div>
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-					<img th:attr="src=${user.getProfilePicture()}">
+					<img class="mobileNavImg" th:attr="src=${user.getProfilePicture()}">
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" th:href="@{/{id}/profile(id=${user.getId()})}"> View Profile </a>
@@ -87,13 +87,14 @@
 				<a href="/register">Register</a> <a href="/login">Login</a>
 			</div>
 		</div>
+
 		<div class="mobileNav">
-			<div>
+			<div class="mobileLogo">
 				<a href="/"><img src="/img/Streat.png" alt="Logo"/></a>
 			</div>
 			<div class="dropdown">
 				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-expanded="false">
-					<img src="https://img.icons8.com/office/40/000000/hamburger.png"/>
+					<img class="mobileNavImg" src="https://img.icons8.com/office/40/000000/hamburger.png"/>
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
 					<a class="dropdown-item" href="/register">Register</a>

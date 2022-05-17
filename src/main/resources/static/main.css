@@ -18,8 +18,6 @@ a {
     border: 3px solid blue;
 }
 
-
-
 /*BODY END*/
 
 /*STYLE FOR RATING STARS*/
@@ -105,7 +103,9 @@ a {
     #errLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #notFoundCenterBox a{
@@ -132,7 +132,9 @@ a {
     #serverErrLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #serverErrCenterBox a {
@@ -140,6 +142,23 @@ a {
         color: blue;
     }
     /*500 ERROR PAGE END*/
+
+    /*PENDING PAGE START*/
+    #pendingCenterBox{
+        text-align: center;
+        margin: 40px 20px;
+    }
+
+    #pendingCenterBox h4{
+        margin: 20px;
+    }
+
+    #pendingCenterBox a{
+        font-size: 20px;
+        color: blue;
+    }
+
+    /*PENDING PAGE END*/
 }
 
 
@@ -147,7 +166,6 @@ a {
     .mobileNav {
         display: none
     }
-
 
 
     /*500 ERROR PAGE START*/
@@ -167,7 +185,9 @@ a {
     #serverErrLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #serverErrCenterBox a {
@@ -175,6 +195,7 @@ a {
         color: blue;
     }
     /*500 ERROR PAGE END*/
+
 
     /*400 ERROR PAGE START*/
     #notFoundCenterBox{
@@ -193,7 +214,9 @@ a {
     #errLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #notFoundCenterBox a{
@@ -201,6 +224,24 @@ a {
         color: blue;
     }
     /*400 ERROR PAGE END*/
+
+
+    /*PENDING PAGE START*/
+    #pendingCenterBox{
+        text-align: center;
+        margin: 40px 20px;
+    }
+
+    #pendingCenterBox h4{
+        margin: 20px;
+    }
+
+    #pendingCenterBox a{
+        font-size: 20px;
+        color: blue;
+    }
+
+    /*PENDING PAGE END*/
 
 }
 
@@ -425,7 +466,7 @@ a {
         padding: 40px 60px;
         max-width: 800px;
         width: 70%;
-        margin: 100px auto 0;
+        margin: 100px auto 100px;
         font-size: 17px;
         line-height: 28px;
         transform: rotate(-1deg);
@@ -793,7 +834,9 @@ display: flex;
     #errLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #notFoundCenterBox a{
@@ -820,7 +863,9 @@ display: flex;
     #serverErrLogo{
         width: 125px;
         height: 125px;
-        border-radius: 50%;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+        margin: 40px auto;
     }
 
     #serverErrCenterBox a {
@@ -828,6 +873,25 @@ display: flex;
         color: blue;
     }
     /*500 ERROR PAGE END*/
+
+
+    /*PENDING PAGE START*/
+    #pendingCenterBox{
+        text-align: center;
+        margin: 40px 20px;
+    }
+
+    #pendingCenterBox h4{
+        margin: 20px;
+    }
+
+    #pendingCenterBox a{
+        font-size: 20px;
+        color: blue;
+    }
+
+    /*PENDING PAGE END*/
+
 
     /*  ADMIN VIEW START  */
     .adminCol{
@@ -896,4 +960,30 @@ display: flex;
     }
     /*  APPROVE END    */
 
+/*    RESET PASSWORD START  */
+    #resetPassForm{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #resetPassForm div{
+        padding: 10px;
+    }
+/*    RESET PASS END    */
+
+/*    EDIT REVIEW START */
+    #editUserReviewForm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #editReviewDeleteBtn{
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+    }
+
+/*    EDIT REVIEW END   */
 }

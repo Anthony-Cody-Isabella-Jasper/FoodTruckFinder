@@ -89,14 +89,14 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body text-center">
 					Are you sure you want to delete your account?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 					<form th:object="${user}" method="post" th:action="@{/deleteUserFromUser}">
 						<input type="hidden" th:value="${user.id}" name="userId">
-						<button class="btn btn-primary" type="submit">DELETE ACCOUNT</button>
+						<button class="btn btn-danger" type="submit">DELETE ACCOUNT</button>
 					</form>
 				</div>
 			</div>

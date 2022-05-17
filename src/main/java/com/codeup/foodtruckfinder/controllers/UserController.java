@@ -59,6 +59,10 @@ public class UserController {
         if (user.isTruckOwner()) {
             PendingTruck pendingTruck = new PendingTruck(user.getUsername(), user.getPassword(), user.getEmail());
             pendingTruckDao.save(pendingTruck);
+            List<User> admins = userDao.findAllAdmins();
+            for (User admin : admins) {
+                emailService.prepareAndSend(admin, "New Food Truck", "A new food truck is awaiting approval on StreatFoods. Please log in for review.");
+            }
             return "redirect:/pending";
         } else {
             userDao.save(user);
@@ -114,15 +118,8 @@ public class UserController {
     public String editUser(Model model, @ModelAttribute User user, HttpSession session) {
         User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User newUser = userDao.getById(loggedUser.getId());
-
         String dbUser = user.getEmail();
         String dbUsername = user.getUsername();
-
-        System.out.println(loggedUser.getEmail());
-        System.out.println(dbUser);
-
-        System.out.println(loggedUser.getUsername());
-        System.out.println(dbUsername);
         if (userDao.existsUserByEmail(user.getEmail()) && !dbUser.equals(loggedUser.getEmail())) {
             model.addAttribute("user", userDao.getById(user.getId()));
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
@@ -132,7 +129,6 @@ public class UserController {
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";
         }
-
         newUser.setPassword(loggedUser.getPassword());
         newUser.setTruckOwner(loggedUser.isTruckOwner());
         newUser.setAdmin(loggedUser.isAdmin());

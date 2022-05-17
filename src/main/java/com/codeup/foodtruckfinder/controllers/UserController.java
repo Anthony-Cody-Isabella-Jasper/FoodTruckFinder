@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model) {
+    public String registerUser(@ModelAttribute User user, Model model, RedirectAttributes redirAttrs) {
         if (userDao.existsUserByEmail(user.getEmail())) {
             model.addAttribute("user", new User());
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
@@ -62,6 +63,7 @@ public class UserController {
             for (User admin : admins) {
                 emailService.prepareAndSend(admin, "New Food Truck", "A new food truck is awaiting approval on StreatFoods. Please log in for review.");
             }
+            redirAttrs.addFlashAttribute("fromSignup", true);
             return "redirect:/pending";
         } else {
             userDao.save(user);
@@ -70,8 +72,11 @@ public class UserController {
     }
 
     @GetMapping("/pending")
-    public String pendingApproval() {
-        return "/pending";
+    public String pendingApproval(Model model) {
+        if (model.getAttribute("fromSignup") != null) {
+            return "/pending";
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -142,6 +147,9 @@ public class UserController {
 
     @GetMapping("/admin")
     public String adminView(Model model) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return "redirect:/";
+        }
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!user.isAdmin()) {
             return "redirect:/";
@@ -243,23 +251,30 @@ public class UserController {
 
     @PostMapping("/forgotPassword")
     public String forgotPasswordSubmission(@ModelAttribute User user) {
-        emailService.prepareAndSend(user, "Reset Password", "http://localhost:8080/resetPassword");
+        emailService.prepareAndSend(user, "Reset Password", "http://localhost:8080/resetPassword?fromEmail=" + user.getEmail());
         return "redirect:/login";
     }
 
     @GetMapping("/resetPassword")
-    public String resetPasswordForm(Model model, User user) {
-        model.addAttribute("user", user);
-        return "/resetPassword";
+    public String resetPasswordForm(Model model, User user, @RequestParam(name = "fromEmail", required = false) String fromEmail, RedirectAttributes redirAttrs) {
+        if (userDao.existsUserByEmail(fromEmail)) {
+            user.setEmail(fromEmail);
+            model.addAttribute("user", user);
+            return "/resetPassword";
+        }
+        redirAttrs.addFlashAttribute("message", "You have not signed up with that email yet. Please sign up now!");
+        return "redirect:/register";
     }
 
     @PostMapping("/resetPassword")
-    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password) {
+    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password, RedirectAttributes redirAttrs) {
         User userTest = userDao.findByEmail(user.getEmail());
-        userTest.setPassword(passwordEncoder.encode(password));
-
-        userDao.save(userTest);
-
+        if (userTest.isAdmin()) {
+            redirAttrs.addFlashAttribute("message", "You cannot reset an admin password. Please login as admin or contact the website administrator.");
+        } else {
+            userTest.setPassword(passwordEncoder.encode(password));
+            userDao.save(userTest);
+        }
         return "redirect:/login";
     }
 

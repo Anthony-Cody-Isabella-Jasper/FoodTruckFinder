@@ -31,7 +31,7 @@
 
 <form th:action="@{/editReviews}" method="post" th:object="${review}">
     <input type="hidden" th:value="${revId}" name="revId">
-    <input hidden th:value="${trckId}" name="trckId">
+    <input hidden th:value="${truckId}" name="truckId">
     <div class="rate">
         <input hidden type="radio" id="star5" name="rate" value="5" th:field="*{rating}"/>
         <label for="star5" title="text">5 stars</label>

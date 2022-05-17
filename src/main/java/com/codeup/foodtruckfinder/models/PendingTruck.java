@@ -8,11 +8,11 @@ public class PendingTruck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     public PendingTruck() {

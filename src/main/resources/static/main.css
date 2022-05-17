@@ -92,11 +92,11 @@ a {
     }
 
     /*400 ERROR PAGE START*/
-    #notFoundCenterBox {
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 25%;
+    #notFoundCenterBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     #notFoundCenterBox p {
@@ -120,11 +120,11 @@ a {
 
     /*400 ERROR PAGE END*/
     /*500 ERROR PAGE START*/
-    #serverErrCenterBox {
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 25%;
+    #serverErrCenterBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     #serverErrCenterBox p {
@@ -194,7 +194,14 @@ a {
         height: 200px;
     }
 
-    #searchBar {
+    /*500 ERROR PAGE START*/
+    #serverErrCenterBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+  }
+      #searchBar {
         margin-top: 35px;
         display: flex;
         flex-direction: column;
@@ -226,7 +233,14 @@ a {
         margin-top: 15px;
     }
 
-    #individualTruck {
+    /*400 ERROR PAGE START*/
+    #notFoundCenterBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+  }
+      #individualTruck {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1091,10 +1105,10 @@ display: flex;
 
     /*400 ERROR PAGE START*/
     #notFoundCenterBox{
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 42%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     #notFoundCenterBox p{
@@ -1120,10 +1134,10 @@ display: flex;
 
     /*500 ERROR PAGE START*/
     #serverErrCenterBox{
-        text-align: center;
-        position: absolute;
-        top: 20%;
-        left: 42%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     #serverErrCenterBox p{

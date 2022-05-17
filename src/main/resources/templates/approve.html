@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>StreatFoods</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-	<link rel="stylesheet" th:href="@{/main.css}">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreatFoods</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
-	<nav th:replace="partials :: #adminNav"></nav>
-	<div th:each="pendingUser : ${pendingUsers}">
-		<form th:action="@{/approve}" method="post">
-			<label>Username
-				<input type="text" name="username" th:value="${pendingUser.getUsername()}"><span th:text="${pendingUser.getUsername()}"></span>
-			</label>
-			<label>Email
-				<input type="text" name="email" th:value="${pendingUser.getEmail()}"><span th:text="${pendingUser.getEmail()}"></span>
-			</label>
-			<input type="hidden" name="password" th:value="${pendingUser.getPassword()}">
-			<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
-			<button class="btn btn-primary" type="submit">Approve</button>
-		</form>
-		<form th:action="@{/reject}" method="post">
-			<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
-			<button class="btn btn-danger" type="submit">Reject</button>
-		</form>
-	</div>
-	<footer th:replace="partials :: footer"></footer>
-	<div th:replace="partials :: scripts"></div>
-	<script th:inline="javascript">
-		/*<![CDATA[*/
-		if (/*[[${message}]]*/) {
-			window.alert(/*[[${message}]]*/);
-		}
-		/*]]>*/
-	</script>
+<nav th:replace="partials :: #adminNav"></nav>
+
+
+<h2 id="approvalH2">Trucks Awaiting Approval</h2>
+
+<div th:each="pendingUser : ${pendingUsers}">
+    <div id="pendingUserForms">
+        <form th:action="@{/approve}" method="post">
+                <label>Username:
+                    <span th:text="${pendingUser.getUsername()}"></span>
+                </label>
+
+                <label>Email:
+                    <span th:text="${pendingUser.getEmail()}"></span>
+                </label>
+            <input type="hidden" name="password" th:value="${pendingUser.getPassword()}">
+
+            <input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
+
+            <button class="btn btn-primary ml-4" type="submit">Approve</button>
+        </form>
+        <form th:action="@{/reject}" method="post">
+
+            <input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
+
+            <button class="btn btn-danger ml-4" type="submit">Reject</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:replace="partials :: scripts"></div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    if (/*[[${message}]]*/) {
+        window.alert(/*[[${message}]]*/);
+    }
+    /*]]>*/
+</script>
 </body>
 </html>

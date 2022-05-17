@@ -29,14 +29,14 @@
 			<div id="mapDiv">
 				<div id="map"></div>
 				<p>User location verifications: <span th:text="${truck.getConfirmed_users().size()}"></span></p>
-				<a th:if="${!#authentication.principal.isTruckOwner}" th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
+				<a th:if="${#authentication.principal.equals('anonymousUser') || !#authentication.principal.isTruckOwner}" th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
 					<button class="btn btn-primary">Get Directions</button>
 				</a>
 			</div>
 			<div sec:authorize="isAuthenticated()">
 				<div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
 					<div id="triangulateBtn">
-					<button class="btn btn-primary" id="triangulate">Triangulate Location</button>
+					<button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
 					</div>
 					<br>
 					<form th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
@@ -65,12 +65,13 @@
 			<div>
 				<h3 th:text="${truck.name}"></h3>
 				<dl>
-					<dt>Truck Cuisines</dt>
+					<dt>Truck's Listed Cuisines: </dt>
 					<dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
 					<dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
 				</dl>
+				<hr>
 				<p>Phone Number: <span th:text="${truck.phone}"></span></p>
-				<p th:text="${truck.description}"></p>
+				<p>Description: <br><span th:text="${truck.description}"></span></p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/addFavorite}" th:method="post">
 						<input hidden th:value="${truck.getId()}" name="truckId">

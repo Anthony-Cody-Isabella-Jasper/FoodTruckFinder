@@ -41,6 +41,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsUserByUsername(String username);
 
     boolean existsUserByEmail(String email);
-@Query(value = "SELECT * FROM users WHERE username LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
+
+    @Query(value = "SELECT * FROM users WHERE username LIKE CONCAT('%', ?1, '%')", nativeQuery = true)
     List<User> adminUserSearch(String username);
+
+    @Query(value = "SELECT * FROM users WHERE admin = true", nativeQuery = true)
+    List<User> findAllAdmins();
 }

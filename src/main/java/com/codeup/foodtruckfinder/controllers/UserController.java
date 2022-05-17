@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -40,7 +39,7 @@ public class UserController {
     @GetMapping("/register")
     public String registerUserForm(Model model) {
         model.addAttribute("user", new User());
-        return "/register";
+        return "sign-up";
     }
 
     @PostMapping("/register")
@@ -48,11 +47,11 @@ public class UserController {
         if (userDao.existsUserByEmail(user.getEmail())) {
             model.addAttribute("user", new User());
             model.addAttribute("message", "Email already exists. Please click on \"Forgot Password\" when logging in to retrieve your password.");
-            return "/register";
+            return "sign-up";
         } else if (userDao.existsUserByUsername(user.getUsername())) {
             model.addAttribute("user", new User());
             model.addAttribute("message", "Username already exists. Please pick a different username.");
-            return "/register";
+            return "sign-up";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);

@@ -85,26 +85,27 @@ a {
     .desktopNav {
         display: none;
     }
-    footer{
+
+    footer {
         display: flex;
         justify-content: center;
     }
 
     /*400 ERROR PAGE START*/
-    #notFoundCenterBox{
+    #notFoundCenterBox {
         text-align: center;
         position: absolute;
         top: 20%;
         left: 25%;
     }
 
-    #notFoundCenterBox p{
+    #notFoundCenterBox p {
         font-size: 80px;
         font-weight: bolder;
         margin: 20px 0px;
     }
 
-    #errLogo{
+    #errLogo {
         width: 125px;
         height: 125px;
         border: 4px solid #ffb9ad;
@@ -112,28 +113,27 @@ a {
         margin: 40px auto;
     }
 
-    #notFoundCenterBox a{
+    #notFoundCenterBox a {
         font-size: 20px;
         color: blue;
     }
+
     /*400 ERROR PAGE END*/
-
-
     /*500 ERROR PAGE START*/
-    #serverErrCenterBox{
+    #serverErrCenterBox {
         text-align: center;
         position: absolute;
         top: 20%;
         left: 25%;
     }
 
-    #serverErrCenterBox p{
+    #serverErrCenterBox p {
         font-size: 80px;
         font-weight: bolder;
         margin: 20px 0px;
     }
 
-    #serverErrLogo{
+    #serverErrLogo {
         width: 125px;
         height: 125px;
         border: 4px solid #ffb9ad;
@@ -145,41 +145,39 @@ a {
         font-size: 20px;
         color: blue;
     }
+
     /*500 ERROR PAGE END*/
-
-
     /*PENDING PAGE START*/
-    #pendingCenterBox{
+    #pendingCenterBox {
         text-align: center;
         margin: 40px 20px;
     }
 
-    #pendingCenterBox h4{
+    #pendingCenterBox h4 {
         margin: 20px;
     }
 
-    #pendingCenterBox a{
+    #pendingCenterBox a {
         font-size: 20px;
         color: blue;
     }
 
     /*PENDING PAGE END*/
-}
-
-
-/*    NAV START */
-    .mobileNav{
+    /*    NAV START */
+    .mobileNav {
         display: flex;
         flex-grow: 2;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 45px;
     }
-    .mobileNavImg{
+
+    .mobileNavImg {
         width: 65px;
         height: 65px;
     }
-    .mobileLogo img{
+
+    .mobileLogo img {
         width: 120px;
         height: 120px;
         border: 3px solid #ffb9ad;
@@ -187,135 +185,149 @@ a {
         /*margin: 40px auto;*/
         /*position: relative;*/
     }
-/*    NAV END   */
 
-/*    INDEX START*/
-#map{
-  margin: auto;
-    width: 90%;
-    height: 200px;
-}
-#searchBar{
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-#clearFilterBtn{
-    margin: 15px;
-}
-#filters h5{
-    margin-top: 15px;
-}
-/*    INDEX END*/
+    /*    NAV END   */
+    /*    INDEX START*/
+    #map {
+        margin: auto;
+        width: 90%;
+        height: 200px;
+    }
 
+    #searchBar {
+        margin-top: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-/*    INDIVIDUAL START  */
-    #mapDiv{
+    #clearFilterBtn {
+        margin: 15px;
+    }
+
+    #filters h5 {
+        margin-top: 15px;
+    }
+
+    /*    INDEX END*/
+    /*    INDIVIDUAL START  */
+    #mapDiv {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
-    #verifyTruckBtn{
+
+    #verifyTruckBtn {
         display: flex;
         justify-content: center;
         margin-top: 15px;
     }
-    #individualTruck{
+
+    #individualTruck {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
     }
-    #menuBox{
+
+    #menuBox {
         text-align: center;
         width: 90%;
     }
-    #reviewBtn{
+
+    #reviewBtn {
         display: flex;
         justify-content: center;
         margin-bottom: 25px;
     }
-    #reviewItems{
+
+    #reviewItems {
         display: flex;
         flex-direction: column;
     }
-    #reviewLeft img{
+
+    #reviewLeft img {
         width: 75px;
         height: 75px;
         border: 1px solid;
         border-radius: 50%;
     }
-    #reviewContent{
+
+    #reviewContent {
         display: flex;
     }
-    #reviewLeft{
+
+    #reviewLeft {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-right: 15px;
         margin-bottom: 25px;
     }
-    #activateBeaconBtn{
+
+    #activateBeaconBtn {
         display: flex;
         justify-content: center;
     }
-/*    INDIVIDUAL END    */
 
-/*    REVIEW START  */
-    #reviewTop{
-display: flex;
+    /*    INDIVIDUAL END    */
+    /*    REVIEW START  */
+    #reviewTop {
+        display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         text-align: center;
     }
-    #reviewTop img{
+
+    #reviewTop img {
         max-width: 350px;
         max-height: 350px;
         margin-bottom: 50px;
     }
 
 
-    #reviewMiddle{
+    #reviewMiddle {
         margin-bottom: 50px;
     }
 
-    #reviewForm{
-display: flex;
+    #reviewForm {
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    #submitReviewBtn{
+
+    #submitReviewBtn {
         margin: 15px;
     }
-/*    REVIEW END    */
 
-
-/*    PROFILE START */
-    #profileTop{
+    /*    REVIEW END    */
+    /*    PROFILE START */
+    #profileTop {
         display: flex;
         justify-content: center;
         align-items: center;
-      }
+    }
 
-  
-    #profileMiddle{
+
+    #profileMiddle {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    #profileMiddle img{
+
+    #profileMiddle img {
         max-width: 350px;
         max-height: 350px;
     }
-    .userFavorites{
+
+    .userFavorites {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -323,59 +335,68 @@ display: flex;
         text-align: center;
         margin-bottom: 25px;
     }
-    #profileBottom{
+
+    #profileBottom {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    #profileBottom h3{
+
+    #profileBottom h3 {
         margin: 15px;
     }
-    #profileReviews{
+
+    #profileReviews {
         text-align: center;
         border-top: 1px solid;
         margin: 15px;
     }
-/*    PROFILE END   */
 
-/*    EDIT USER START   */
-    #editUserForm{
+    /*    PROFILE END   */
+    /*    EDIT USER START   */
+    #editUserForm {
         text-align: center;
     }
-    #avatar-choices h3{
+
+    #avatar-choices h3 {
         margin: 15px;
     }
-    #avatar-choices{
+
+    #avatar-choices {
         margin: 5px;
     }
-    #editUserBtns{
+
+    #editUserBtns {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    #editUserBtns button{
+
+    #editUserBtns button {
         margin: 15px;
     }
-    #editUserBtns a{
+
+    #editUserBtns a {
         color: white;
     }
 
 
-/*    EDIT USER END     */
-
-/*    RESET PASSWORD START  */
-    #resetPassForm{
+    /*    EDIT USER END     */
+    /*    RESET PASSWORD START  */
+    #resetPassForm {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin-bottom: 50px;
     }
-    #resetPasswordBtns{
-        margin-top: 15px;
 
-    #errLogo{
+    #resetPasswordBtns {
+        margin-top: 15px;
+    }
+
+    #errLogo {
         width: 125px;
         height: 125px;
         border: 4px solid #ffb9ad;
@@ -383,13 +404,14 @@ display: flex;
         margin: 40px auto;
 
     }
-/*    RESET PASSWORD END   */
 
-/*    LOGIN START   */
-    .text-center{
+    /*    RESET PASSWORD END   */
+    /*    LOGIN START   */
+    .text-center {
         text-align: center;
     }
-    #loginCenterBox{
+
+    #loginCenterBox {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -397,102 +419,89 @@ display: flex;
         margin-top: 25px;
         margin-bottom: 5px;
     }
-    #loginButton{
+
+    #loginButton {
         margin-bottom: 15px;
     }
-    #loginBottomBox{
+
+    #loginBottomBox {
         text-align: center;
         margin-bottom: 50px;
     }
-    #loginButtonBox{
+
+    #loginButtonBox {
         display: flex;
         justify-content: center;
         margin-top: 5px;
     }
-/*    LOGIN END     */
 
-
+    /*    LOGIN END     */
     /*PENDING PAGE START*/
-    #pendingCenterBox{
+    #pendingCenterBox {
         text-align: center;
         margin: 40px 20px;
     }
 
-    #pendingCenterBox h4{
+    #pendingCenterBox h4 {
         margin: 20px;
     }
 
-    #pendingCenterBox a{
+    #pendingCenterBox a {
         font-size: 20px;
         color: blue;
     }
 
     /*PENDING PAGE END*/
-
+    /*@media screen and (min-width: 426px) and (max-width: 899px) {*/
+    /*    .mobileNav {*/
+    /*        display: none*/
+    /*    }*/
+    /*    !*500 ERROR PAGE START*!*/
+    /*    #serverErrCenterBox{*/
+    /*        text-align: center;*/
+    /*        position: absolute;*/
+    /*        top: 20%;*/
+    /*        left: 36%;*/
+    /*    }*/
+    /*    #serverErrCenterBox p{*/
+    /*        font-size: 80px;*/
+    /*        font-weight: bolder;*/
+    /*        margin: 20px 0px;*/
+    /*    }*/
+    /*    #serverErrLogo{*/
+    /*        width: 125px;*/
+    /*        height: 125px;*/
+    /*        border-radius: 50%;*/
+    /*    }*/
+    /*    #serverErrCenterBox a {*/
+    /*        font-size: 20px;*/
+    /*        color: blue;*/
+    /*    }*/
+    /*    !*500 ERROR PAGE END*!*/
+    /*    !*400 ERROR PAGE START*!*/
+    /*    #notFoundCenterBox{*/
+    /*        text-align: center;*/
+    /*        position: absolute;*/
+    /*        top: 20%;*/
+    /*        left: 36%;*/
+    /*    }*/
+    /*    #notFoundCenterBox p{*/
+    /*        font-size: 80px;*/
+    /*        font-weight: bolder;*/
+    /*        margin: 20px 0px;*/
+    /*    }*/
+    /*    #errLogo{*/
+    /*        width: 125px;*/
+    /*        height: 125px;*/
+    /*        border-radius: 50%;*/
+    /*    }*/
+    /*    #notFoundCenterBox a{*/
+    /*        font-size: 20px;*/
+    /*        color: blue;*/
+    /*    }*/
+    /*    !*400 ERROR PAGE END*!*/
+    /*}*/
 }
-
-
-/*@media screen and (min-width: 426px) and (max-width: 899px) {*/
-/*    .mobileNav {*/
-/*        display: none*/
-/*    }*/
-
-
-
-/*    !*500 ERROR PAGE START*!*/
-/*    #serverErrCenterBox{*/
-/*        text-align: center;*/
-/*        position: absolute;*/
-/*        top: 20%;*/
-/*        left: 36%;*/
-/*    }*/
-
-/*    #serverErrCenterBox p{*/
-/*        font-size: 80px;*/
-/*        font-weight: bolder;*/
-/*        margin: 20px 0px;*/
-/*    }*/
-
-/*    #serverErrLogo{*/
-/*        width: 125px;*/
-/*        height: 125px;*/
-/*        border-radius: 50%;*/
-/*    }*/
-
-/*    #serverErrCenterBox a {*/
-/*        font-size: 20px;*/
-/*        color: blue;*/
-/*    }*/
-/*    !*500 ERROR PAGE END*!*/
-
-/*    !*400 ERROR PAGE START*!*/
-/*    #notFoundCenterBox{*/
-/*        text-align: center;*/
-/*        position: absolute;*/
-/*        top: 20%;*/
-/*        left: 36%;*/
-/*    }*/
-
-/*    #notFoundCenterBox p{*/
-/*        font-size: 80px;*/
-/*        font-weight: bolder;*/
-/*        margin: 20px 0px;*/
-/*    }*/
-
-/*    #errLogo{*/
-/*        width: 125px;*/
-/*        height: 125px;*/
-/*        border-radius: 50%;*/
-/*    }*/
-
-/*    #notFoundCenterBox a{*/
-/*        font-size: 20px;*/
-/*        color: blue;*/
-/*    }*/
-/*    !*400 ERROR PAGE END*!*/
-
-/*}*/
-
 
 @media screen and (min-width: 426px) and (max-width: 1800px) {
     /* NAV START*/

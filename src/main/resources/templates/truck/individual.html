@@ -80,9 +80,6 @@
 				<p id="reviewText">Average Rating:
 					<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>(<em><span th:text="${truck.getReviews().size()}"></span>
 						reviews</em>) </p>
-				<p>Description:
-					<br>
-					<span th:text="${truck.description}"></span></p>
 				<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
 					<form th:action="@{/addFavorite}" th:method="post">
 						<input hidden th:value="${truck.getId()}" name="truckId">

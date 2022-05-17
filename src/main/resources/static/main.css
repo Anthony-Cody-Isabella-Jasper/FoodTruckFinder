@@ -312,6 +312,30 @@ display: flex;
     }
 /*    PROFILE END   */
 
+/*    EDIT USER START   */
+    #editUserForm{
+        text-align: center;
+    }
+    #avatar-choices h3{
+        margin: 15px;
+    }
+    #avatar-choices{
+        margin: 5px;
+    }
+    #editUserBtns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #editUserBtns button{
+        margin: 15px;
+    }
+    #editUserBtns a{
+        color: white;
+    }
+
+/*    EDIT USER END     */
+
 }
 
 

@@ -832,7 +832,49 @@ display: flex;
     /*  ADMIN VIEW START  */
     .adminCol{
         text-align: center;
+       border: 1px solid black;
+        margin: 15px;
     }
+    .adminCol h3{
+        margin-top: 35px;
+    }
+    #usersList button{
+        margin-bottom: 50px;
+    }
+    #usersList div{
+        border-top: 1px solid black;
+    }
+    #usersList dl:nth-of-type(1){
+        margin-top: 35px;
+    }
+    #trucksList button{
+        margin-bottom: 50px;
+    }
+    #trucksList div{
+        border-top: 1px solid black;
+    }
+    #trucksList dl:nth-of-type(1){
+        margin-top: 35px;
+    }
+    #reviewsList button{
+        margin-bottom: 50px;
+    }
+    #reviewsList div{
+        border-top: 1px solid black;
+    }
+    #reviewsList dl:nth-of-type(1){
+        margin-top: 35px;
+    }
+    .adminCol form{
+        margin-bottom: 35px;
+    }
+    .adminCol form{
+        margin-bottom: 35px;
+    }
+    .adminCol form{
+        margin-bottom: 35px;
+    }
+
 
     /*  ADMIN VIEW END    */
 

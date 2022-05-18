@@ -81,7 +81,7 @@
 				<form th:action="@{/adminEditTruck}" method="post" class="text-center">
 					<div class="modal-body">
 						<label>Name<br><input type="text" name="truckName" id="truckName"></label><br>
-						<label>Description<br><textarea cols="20" rows="4" type="text" name="truckDescription" id="truckDescription"></textarea></label><br>
+						<label>Description<br><textarea cols="40" rows="4" type="text" name="truckDescription" id="truckDescription"></textarea></label><br>
 						<input type="hidden" name="truckId" id="truckId">
 					</div>
 					<button type="submit" class="btn btn-primary">Save Changes</button>
@@ -102,7 +102,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form th:action="@{/adminEditReview}" method="post">
+				<form th:action="@{/adminEditReview}" method="post" class="text-center">
 					<div class="modal-body">
 						<dl>
 							<dt>Food Truck</dt>
@@ -110,14 +110,14 @@
 							<dt>Author</dt>
 							<dd id="reviewAuthor"></dd>
 						</dl>
+						<label>Description<br><textarea rows="4" cols="40" type="text" name="reviewText" id="reviewText"></textarea></label><br>
 						<label>Rating <input type="number" name="reviewRating" id="reviewRating" max="5" min="0">
 						</label>
-						<label>Description <input type="text" name="reviewText" id="reviewText"></label>
 						<input type="hidden" name="reviewId" id="reviewId">
 					</div>
 					<button type="submit" class="btn btn-primary">Save Changes</button>
 				</form>
-				<form th:action="@{/deleteReview}" method="post">
+				<form th:action="@{/deleteReview}" method="post" class="text-center m-2">
 					<input type="hidden" name="reviewId" id="deleteReviewId">
 					<button type="submit" class="btn btn-danger">Delete</button>
 				</form>

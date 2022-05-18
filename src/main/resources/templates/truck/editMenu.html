@@ -68,18 +68,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form th:action="@{/truck/{id}/editMenuItem(id=${user.getTruck().getId()})}" method="post">
+            <form th:action="@{/truck/{id}/editMenuItem(id=${user.getTruck().getId()})}" method="post" class="text-center">
                 <div class="modal-body">
                     <label>Name <br><input type="text" name="menuItemName" id="menuItemName"></label><br>
                     <label>Price <br><input type="number" name="menuItemPrice" id="menuItemPrice" step="0.01" min="0"></label><br>
-                    <label>Description <br><input type="text" name="menuItemDescription" id="menuItemDescription"></label><br>
+                    <label>Description <br><textarea rows="4" cols="20" type="text" name="menuItemDescription" id="menuItemDescription"></textarea></label><br>
                     <label><input type="checkbox" name="menuItemVegan" id="menuItemVegan"> Vegan</label>
                     <label><input type="checkbox" name="menuItemVegetarian" id="menuItemVegetarian"> Vegetarian</label>
                     <input type="hidden" name="menuItemId" id="menuItemId">
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>
-            <form th:action="@{/truck/{id}/deleteMenuItem(id=${user.getTruck().getId()})}" method="post">
+            <form th:action="@{/truck/{id}/deleteMenuItem(id=${user.getTruck().getId()})}" method="post" class="text-center m-2">
                 <input id="deleteMenuItemId" type="hidden" name="menuItemId">
                 <button id="deleteMenuItemButton" type="submit" class="btn btn-danger">Delete</button>
             </form>
@@ -129,7 +129,7 @@
             document.getElementById("menuItemId").setAttribute("value", menuItem.id);
             document.getElementById("menuItemName").setAttribute("value", menuItem.name);
             document.getElementById("menuItemPrice").setAttribute("value", menuItem.price);
-            document.getElementById("menuItemDescription").setAttribute("value", menuItem.description);
+            document.getElementById("menuItemDescription").value = menuItem.description;
             document.getElementById("menuItemVegan").checked = !!menuItem.vegan;
             document.getElementById("menuItemVegetarian").checked = !!menuItem.vegetarian;
             document.getElementById("deleteMenuItemId").setAttribute("value", menuItem.id);

@@ -73,11 +73,17 @@
 	
 	<!-- Modal button-->
 	<div id="editUserBtns">
+		<h3>Reset Password:</h3>
 		<form th:action="@{/resetPassword}" th:object="${user}" method="post">
 			<input type="hidden" th:field="*{email}">
-			<label>New Password <input type="password" th:field="*{password}"></label>
+			<label>Enter New Password: <input type="password" th:field="*{password}"></label>
 			<button type="submit" class="btn btn-primary">Reset Password</button>
 		</form>
+		<hr>
+		<br>
+		<br>
+		<br>
+		<h3>- DANGER ZONE -</h3>
 		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
 			Delete Account
 		</button>

@@ -2,6 +2,7 @@
 body {
     margin: 20px;
     padding: 0;
+    background-color: #FCA311;
 }
 
 hr {
@@ -13,6 +14,7 @@ hr {
 a {
     text-decoration: none;
 }
+
 
 .profileImgSelect {
     border: 3px solid blue;
@@ -1005,6 +1007,9 @@ display: flex;
     margin-top: 45px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 #editTruckBtns button{
     margin: 20px;
@@ -1233,7 +1238,9 @@ display: flex;
         align-items: center;
         justify-content: center;
         padding: 5px;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
         width: 50%;
         flex-direction: column;
     }

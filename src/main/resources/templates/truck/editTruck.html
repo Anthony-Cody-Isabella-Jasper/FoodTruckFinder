@@ -61,6 +61,7 @@
             <button class="btn btn-success" type="submit">Submit Cuisines</button>
         </div>
     </form>
+    <hr>
 
 
     <form method="post" th:action="@{/truck/editTruck}" th:object="${truck}">
@@ -76,28 +77,36 @@
             <input id="phoneNumber" th:field="*{phone}" type="text">
         </div>
         <br>
-        <label for="profilePic">Profile Pic</label>
+        <label for="profilePic">Select Profile Picture: </label>
         <button type="button" id="profilePicUpload">Upload Profile Picture</button>
-        <input id="profilePic" type="text" th:field="*{profile_picture}"/>
-        <button type="button" id="truckPicturesUpload">Upload Other Photos</button>
+        <input hidden id="profilePic" type="text" th:field="*{profile_picture}"/>
+        <button type="button" id="truckPicturesUpload">Upload 5 Other Photos</button>
 
         <br>
         <div id="editTruckFormBtn">
             <button class="btn btn-success" type="submit">Submit Changes</button>
         </div>
     </form>
-
+<hr>
 </div>
 
 <!-- Modal button-->
 <div id="editTruckBtns">
     <form th:action="@{/resetPassword}" th:object="${user}" method="post">
+        <h3>Reset Password:</h3>
         <input type="hidden" th:field="*{email}">
-        <label>New Password <input type="password" th:field="*{password}"></label>
+        <label>New Password: <input type="password" th:field="*{password}"></label>
         <button type="submit" class="btn btn-primary">Reset Password</button>
     </form>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <h3>- DANGER ZONE -</h3>
+    <div>
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">Delete Account
     </button>
+    </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

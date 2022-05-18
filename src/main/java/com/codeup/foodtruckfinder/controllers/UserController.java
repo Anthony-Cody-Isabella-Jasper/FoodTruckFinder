@@ -267,13 +267,14 @@ public class UserController {
     }
 
     @PostMapping("/resetPassword")
-    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password, RedirectAttributes redirAttrs) {
+    public String resetPasswordSubmission(@ModelAttribute User user, @RequestParam(name = "password") String password, RedirectAttributes redirAttrs, HttpSession session) {
         User userTest = userDao.findByEmail(user.getEmail());
         if (userTest.isAdmin()) {
             redirAttrs.addFlashAttribute("message", "You cannot reset an admin password. Please login as admin or contact the website administrator.");
         } else {
             userTest.setPassword(passwordEncoder.encode(password));
             userDao.save(userTest);
+            session.invalidate();
         }
         return "redirect:/login";
     }

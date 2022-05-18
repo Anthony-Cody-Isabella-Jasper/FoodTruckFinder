@@ -91,7 +91,11 @@
 
 <!-- Modal button-->
 <div id="editTruckBtns">
-    <button type="button" class="btn btn-primary"><a th:href="@{/resetPassword}">Reset Password</a></button>
+    <form th:action="@{/resetPassword}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{email}">
+        <label>New Password <input type="password" th:field="*{password}"></label>
+        <button type="submit" class="btn btn-primary">Reset Password</button>
+    </form>
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">Delete Account
     </button>
 </div>

@@ -25,17 +25,16 @@
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
 
-	<div id="map"></div>
-
 	<div id="searchBar">
+		<h5>Food Truck Filters</h5>
 		<div>
 			<form th:action="@{/search}" method="post">
-				<input type="text" name="search" placeholder="Food Truck Search">
+				<input type="text" name="search" placeholder="Search by Name">
 				<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
 			</form>
 		</div>
 		<div id="filters">
-			<h5>Food Truck Filters</h5>
+
 			<form th:action="@{/filter}" method="post">
 				<label for="cuisineSelect">Cuisine</label>
 				<select name="filterCuisine" id="cuisineSelect">
@@ -56,6 +55,10 @@
 			</a>
 		</div>
 	</div>
+
+	<div id="map"></div>
+
+
 	<h1 th:if="${trucks.size()} == 0">No Results :(</h1>
 	<div id="allTrucks" class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12 truckDiv" th:each="truck : ${trucks}">

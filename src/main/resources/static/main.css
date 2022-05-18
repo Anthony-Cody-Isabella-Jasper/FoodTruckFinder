@@ -1032,6 +1032,7 @@ display: flex;
     /*  ABOUT VIEW START  */
     #aboutContainer {
         display: flex;
+        align-items: flex-start;
     }
 
     #aboutContainer a {

@@ -1229,13 +1229,13 @@ display: flex;
     /*  APPROVE VIEW START  */
     #pendingUserForms{
         display: flex;
-    border: 1px solid black;
+        border: 1px solid black;
         align-items: center;
         justify-content: center;
         padding: 5px;
         margin: auto;
-        width: 60%;
-        margin-bottom: 15px;
+        width: 50%;
+        flex-direction: column;
     }
     #pendingUserForms label{
         padding-right: 20px;
@@ -1244,6 +1244,14 @@ display: flex;
         text-align: center;
         margin-top: 15px;
         margin-bottom: 20px;
+    }
+    #adminApproveBtn{
+        display: flex;
+        justify-content: center;
+    }
+    #rejectBtn{
+        display: flex;
+        justify-content: center;
     }
     /*  APPROVE END    */
 

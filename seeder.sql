@@ -66,16 +66,24 @@ values ('african');
 
 
 insert into trucks_cuisines (truck_id, cuisine_id) VALUES (1, 1);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (1, 5);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (1, 7);
 insert into trucks_cuisines (truck_id, cuisine_id) VALUES (2, 2);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (2, 3);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (2, 4);
 insert into trucks_cuisines (truck_id, cuisine_id) VALUES (3, 3);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (3, 9);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (3, 1);
 insert into trucks_cuisines (truck_id, cuisine_id) VALUES (4, 4);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (4, 3);
+insert into trucks_cuisines (truck_id, cuisine_id) VALUES (4, 8);
 
 
-insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hotdog', 'doggo', 13.85, false, false, 1);
-insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hamburger', 'burg', 13.40, false, false, 1);
-insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass fries', 'fry', 13.25,  true, false, 1);
-insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass coke', 'cola', 14.85, false, true, 1);
-insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('whole ass hoagie', 'hogg', 3.85, false, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Hotdog', 'doggo', 13.85, false, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Hamburger', 'burg', 13.40, false, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Fries', 'fry', 13.25,  true, false, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Doner', 'cola', 14.85, false, true, 1);
+insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Hoagie', 'hogg', 3.85, false, false, 1);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('5lb patty', 'Big Boy Burger', 21.99, false, true, 2);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('it has sugar', 'Churro', 3.75, true, false, 3);
 insert into menu_items (description, name, price, vegan, vegetarian, truck_id) VALUES ('Steak, Chicken or Shrimp', 'Taco Taco', 39.36, true, false, 4);
@@ -83,9 +91,14 @@ insert into menu_items (description, name, price, vegan, vegetarian, truck_id) V
 
 
 insert into reviews (rating, review_text, truck_id, user_id) VALUES (4, 'Just some quality dogs at ridiculous prices',1, 1);
-insert into reviews (rating, review_text, truck_id, user_id) VALUES (1, 'Too big',2, 2);
-insert into reviews (rating, review_text, truck_id, user_id) VALUES (5, 'I mean, sugar is cool',3, 3);
-insert into reviews (rating, review_text, truck_id, user_id) VALUES (2, 'Get you some tacos here!',4, 4);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (4, 'I love this place!',1, 2);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (1, 'Burger is too big!',2, 2);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (1, 'Terrible service, will not be returning',2, 4);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (5, 'I mean, sugar is cool',3, 2);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (5, 'Best churros in the state',3, 3);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (2, 'Get you some tacos here!',4, 1);
+insert into reviews (rating, review_text, truck_id, user_id) VALUES (2, 'Finally found their location through this app!',4, 4);
+
 
 
 insert into user_confirmations (user_id, truck_id) VALUES (1, 1);

@@ -21,11 +21,13 @@
 				<input type="hidden" name="email" th:value="${pendingUser.getEmail()}">
 				<input type="hidden" name="password" th:value="${pendingUser.getPassword()}">
 				<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
-				<button class="btn btn-primary ml-4" type="submit">Approve</button>
+				<div id="adminApproveBtn">
+				<button class="btn btn-primary mb-3" type="submit">Approve</button>
+				</div>
 			</form>
-			<form th:action="@{/reject}" method="post">
+			<form id="rejectBtn" th:action="@{/reject}" method="post">
 				<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
-				<button class="btn btn-danger ml-4" type="submit">Reject</button>
+				<button class="btn btn-danger" type="submit">Reject</button>
 			</form>
 		</div>
 	</div>

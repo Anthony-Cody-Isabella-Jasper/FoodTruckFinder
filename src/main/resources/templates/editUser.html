@@ -24,9 +24,8 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
-
-
-
+	
+	
 	<div id="editUserForm">
 		<form method="post" th:action="@{/editUser/{id}(id=${user.getId()})}" th:object="${user}">
 			<input hidden th:value="${user.id}">
@@ -36,7 +35,7 @@
 			<label for="email">Edit Email:</label>
 			<input id="email" th:field="*{email}" type="text">
 			<br>
-
+			
 			<div id="avatar-choices">
 				<h3>Edit profile picture: </h3>
 				<br>
@@ -70,14 +69,18 @@
 		</form>
 	</div>
 	<hr>
-
-
+	
+	
 	<!-- Modal button-->
 	<div id="editUserBtns">
-	<button type="button" class="btn btn-primary"><a th:href="@{/resetPassword}">Reset Password</a></button>
-	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
-		Delete Account
-	</button>
+		<form th:action="@{/resetPassword}" th:object="${user}" method="post">
+			<input type="hidden" th:field="*{email}">
+			<label>New Password <input type="password" th:field="*{password}"></label>
+			<button type="submit" class="btn btn-primary">Reset Password</button>
+		</form>
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAccountModal">
+			Delete Account
+		</button>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -102,8 +105,8 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
 	<script src="/js/avatar-selector.js"></script>

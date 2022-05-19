@@ -24,8 +24,9 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
-	<h3 style="text-align: center">About Us</h3>
+
 	<div id="aboutContainer" class="container-fluid">
+		<h3 style="text-align: center">About Us</h3>
 		<div class="aboutBox">
 			<img src="/img/dev-photos/anthony.jpg" alt="anthony photo">
 			<div class="text-center">

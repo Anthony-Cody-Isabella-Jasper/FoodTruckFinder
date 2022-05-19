@@ -14,72 +14,72 @@
 <div>
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
-
-<div id="registerForm">
-    <form th:action="@{/register}" method="post" th:object="${user}">
-        <label for="username">Username:</label>
-        <input id="username" th:field="*{username}" required placeholder="username"/>
-        <br>
-        <label for="email">Email:</label>
-        <input id="email" type="email" th:field="*{email}" required placeholder="email"/>
-        <br>
-        <label for="password">Password:</label>
-        <input id="password" type="password" th:field="*{password}" required placeholder="password"/>
-        <div>
-            <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked
-                   onclick="showProfPics()">
-            <label class="form-check-label" for="userCheck">
-                Consumer
-            </label>
+<div class="container-fluid">
+    <div id="registerForm">
+        <form th:action="@{/register}" method="post" th:object="${user}">
+            <label for="username">Username:</label>
+            <input id="username" th:field="*{username}" required placeholder="username"/>
             <br>
-            <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck"
-                   onclick="showProfPics()">
-            <label class="form-check-label" for="truckCheck">
-                Truck Owner
-            </label>
-        </div>
-        <div id="avatar-choices">
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-            <label class="avatar">
-                <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                          hidden>
-            </label>
-        </div>
-        <div id="registerBtn">
-            <input class="btn btn-success" value="Sign me up!" type="submit"/>
-        </div>
-    </form>
+            <label for="email">Email:</label>
+            <input id="email" type="email" th:field="*{email}" required placeholder="email"/>
+            <br>
+            <label for="password">Password:</label>
+            <input id="password" type="password" th:field="*{password}" required placeholder="password"/>
+            <div>
+                <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked
+                       onclick="showProfPics()">
+                <label class="form-check-label" for="userCheck">
+                    Consumer
+                </label>
+                <br>
+                <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck"
+                       onclick="showProfPics()">
+                <label class="form-check-label" for="truckCheck">
+                    Truck Owner
+                </label>
+            </div>
+            <div id="avatar-choices">
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+                <label class="avatar">
+                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
+                                              hidden>
+                </label>
+            </div>
+            <div id="registerBtn">
+                <input class="btn btn-success" value="Sign me up!" type="submit"/>
+            </div>
+        </form>
+    </div>
+
+    <a id="alreadyMember" th:href="@{/login}">Already a member? Login!</a>
 </div>
-
-<a id="alreadyMember" th:href="@{/login}">Already a member? Login!</a>
-
 
 <footer th:replace="partials :: footer"></footer>
 <div th:replace="partials :: scripts"></div>

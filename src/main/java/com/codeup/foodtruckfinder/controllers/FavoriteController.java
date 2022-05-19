@@ -39,13 +39,13 @@ public class FavoriteController {
             user.setFavoriteTrucks(fave);
             userDao.save(user);
         }
-        return "redirect:/" + user.getId() + "profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 
     @PostMapping("/deleteFavorite")
     public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {
         User user = userDao.getById(id);
         userDao.deleteFavorite(id, truckId);
-        return "redirect:/" + user.getId() + "profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 }

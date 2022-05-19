@@ -11,9 +11,9 @@ insert into users (admin, email, password, profile_picture, truck_owner, usernam
 
 
 insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('new food truck on the block', 30, -98 ,'FoodyTruck', '789-543-5432', 'https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/02/food-truck-finder-850x476.png?ezimgfmt=ng%3Awebp%2Fngcb12%2Frs%3Adevice%2Frscb12-1', 5);
-insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('We have food here?', 20, -10 ,'TruckWfoods', '125-475-4758', 'https://www.thebalancesmb.com/thmb/IRZI2gmNsYFTTPCH774ohMD4uJE=/2088x1436/filters:fill(auto,1)/food-truck-in-the-street-496731672-863bfb69328341c1804fec18e39be715.jpg', 6);
-insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('Lets eat!', 22, -80 ,'GoneCookin', '364-475-8412', 'https://d1m6300l53o0vp.cloudfront.net/wp-content/uploads/2019/11/NicoleMlakar_SAM_FoodTrucks_072413_069.jpg', 7);
-insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('BBQ 4 dayz', 39, -92 ,'HereWeeeGo', '978-854-3791', 'https://cloudfront-us-east-1.images.arcpublishing.com/gray/KE63ZKXDSJDC7KRYIUO6KWN7GY.jpg', 8);
+insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('We have food here?', 31, -97 ,'TruckWfoods', '125-475-4758', 'https://www.thebalancesmb.com/thmb/IRZI2gmNsYFTTPCH774ohMD4uJE=/2088x1436/filters:fill(auto,1)/food-truck-in-the-street-496731672-863bfb69328341c1804fec18e39be715.jpg', 6);
+insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('Lets eat!', 32, -99 ,'GoneCookin', '364-475-8412', 'https://d1m6300l53o0vp.cloudfront.net/wp-content/uploads/2019/11/NicoleMlakar_SAM_FoodTrucks_072413_069.jpg', 7);
+insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('BBQ 4 dayz', 30, -101 ,'HereWeeeGo', '978-854-3791', 'https://cloudfront-us-east-1.images.arcpublishing.com/gray/KE63ZKXDSJDC7KRYIUO6KWN7GY.jpg', 8);
 
 
 insert into truck_pictures (picture, truck_id) VALUES ('https://mobile-cuisine.com/wp-content/uploads/2012/12/Good-Dog-Houston-Menu-e1575380234864.jpg', 1);

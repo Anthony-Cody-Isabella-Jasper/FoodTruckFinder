@@ -5,7 +5,6 @@ import com.codeup.foodtruckfinder.models.Truck;
 import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
-import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +56,7 @@ public class ReviewController {
         model.addAttribute("revId", id);
         Review review = reviewDao.getById(id);
         model.addAttribute("truckId", review.getTruck().getId());
-        return "/editReview";
+        return "edit-review";
     }
 
     @PostMapping("/editReviews")
@@ -68,13 +67,13 @@ public class ReviewController {
         Truck truck = truckDao.getTruckById(truckId);
         review.setTruck(truck);
         reviewDao.save(review);
-        return "redirect:" + user.getId() + "/profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 
     @PostMapping("/deleteUserReview")
     public String deleteUserReview(@RequestParam(name = "revId") Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reviewDao.deleteById(id);
-        return "redirect:" + user.getId() + "/profile";
+        return "redirect:/" + user.getId() + "/profile";
     }
 }

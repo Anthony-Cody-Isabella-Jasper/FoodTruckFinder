@@ -529,6 +529,10 @@ a:link{
     }
 
 
+    .mapboxgl-popup{
+        text-align: center;
+    }
+
     /*MAP END*/
     /*TRUCK CARDS START*/
     .card img {

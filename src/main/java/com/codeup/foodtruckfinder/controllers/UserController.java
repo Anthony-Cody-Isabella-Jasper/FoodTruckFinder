@@ -74,7 +74,7 @@ public class UserController {
     @GetMapping("/pending")
     public String pendingApproval(Model model) {
         if (model.getAttribute("fromSignup") != null) {
-            return "/pending";
+            return "pendingTruck";
         }
         return "redirect:/";
     }
@@ -98,7 +98,7 @@ public class UserController {
         }
         model.addAttribute("user", userDao.getById(id));
         model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
-        return "/profile";
+        return "userProfile";
     }
 
 

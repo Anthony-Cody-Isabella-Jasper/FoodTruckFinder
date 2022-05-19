@@ -268,8 +268,31 @@ a:link{
 
 /*STARS END*/
 
-
-
+/*  REGISTER START  */
+#registerForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#registerForm form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#registerForm label{
+    padding: 10px;
+}
+#registerBtn{
+    margin-top: 15px;
+    text-align: center;
+}
+#alreadyMember{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+/*  REGISTER END    */
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
@@ -281,6 +304,7 @@ a:link{
         display: flex;
         justify-content: center;
     }
+
 
     /*  ABOUT PAGE START    */
     #aboutContainer{
@@ -424,6 +448,9 @@ a:link{
 
     #filters h5 {
         margin-top: 15px;
+    }
+    #cuisineSelect{
+        margin-top: 10px;
     }
 
     /*    INDEX END*/
@@ -616,17 +643,25 @@ a:link{
     }
 
     /*    PROFILE END   */
+
+    /*  FORGOT PASSWORD START   */
+    #forgotPasscenterBox{
+        text-align: center;
+    }
+    #forgotPassFormButtons{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    /*  FORGOT PASS END */
+
     /*    EDIT USER START   */
     #editUserForm {
         text-align: center;
     }
 
-    #avatar-choices h3 {
-        margin: 15px;
-    }
 
     #avatar-choices {
-        margin: 5px;
+        text-align: center;
     }
 
     #editUserBtns {
@@ -731,6 +766,10 @@ a:link{
     .mobileNav {
     display: none;
 }
+    .mobileBreak{
+        display: none;
+    }
+
     .navbar img {
     width: 125px;
     height: 125px;
@@ -1004,29 +1043,29 @@ a:link{
 
 
     /*  REGISTER START  */
-    #registerForm{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #registerForm form{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #registerForm label{
-        padding: 10px;
-    }
-    #registerBtn{
-        margin-top: 15px;
-        text-align: center;
-    }
-    #alreadyMember{
-        display: flex;
-        justify-content: center;
-        margin-top: 35px;
-    }
+    /*#registerForm{*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*}*/
+    /*#registerForm form{*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*}*/
+    /*#registerForm label{*/
+    /*    padding: 10px;*/
+    /*}*/
+    /*#registerBtn{*/
+    /*    margin-top: 15px;*/
+    /*    text-align: center;*/
+    /*}*/
+    /*#alreadyMember{*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    margin-top: 35px;*/
+    /*}*/
     /*  REGISTER END    */
 
 

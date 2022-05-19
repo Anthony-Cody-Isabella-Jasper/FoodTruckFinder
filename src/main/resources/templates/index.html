@@ -45,10 +45,12 @@
 						<option th:value="${cuisine.name}" th:text="${cuisine.name}"></option>
 					</div>
 				</select>
+				<br class="mobileBreak">
 				<label for="veganCheck">Vegan</label>
 				<input type="checkbox" id="veganCheck" name="vegan">
 				<label for="vegetarianCheck">Vegetarian</label>
 				<input type="checkbox" id="vegetarianCheck" name="vegetarian">
+				<br class="mobileBreak">
 				<button type="submit" class="btn btn-green">Apply Filters</button>
 			</form>
 			<a th:href="@{/}">

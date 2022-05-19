@@ -90,7 +90,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/{id}/profile")
+    @GetMapping("/{id}/userProfile")
     public String profile(@PathVariable Long id, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user.isTruckOwner() || user.getId() != id) {

@@ -81,7 +81,7 @@
 				<form th:action="@{/adminEditTruck}" method="post" class="text-center">
 					<div class="modal-body">
 						<label>Name<br><input type="text" name="truckName" id="truckName"></label><br>
-						<label>Description<br><textarea cols="40" rows="4" type="text" name="truckDescription" id="truckDescription"></textarea></label><br>
+						<label>Description<br><textarea cols="40" rows="4" type="text" name="truckDescription" id="editTruckDescription"></textarea></label><br>
 						<input type="hidden" name="truckId" id="truckId">
 					</div>
 					<button type="submit" class="btn btn-primary">Save Changes</button>
@@ -203,7 +203,7 @@
 			editTruckButton.addEventListener("click", () => {
 				document.getElementById("truckId").value = truck.id;
 				document.getElementById("truckName").value = truck.name;
-				document.getElementById("truckDescription").value = truck.description;
+				document.getElementById("editTruckDescription").value = truck.description;
 				document.getElementById("deleteTruckId").value = truck.id;
 			});
 			truckDiv.append(editTruckButton);

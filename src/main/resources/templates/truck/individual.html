@@ -129,7 +129,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
-                <th scope="col">Vegan/Vegetarian</th>
+                <th scope="col">Vegetarian</th>
+                <th scope="col">Vegan</th>
             </tr>
             </thead>
             <tbody th:each="menu : ${truck.menu}" class="menu-items">
@@ -137,8 +138,8 @@
                 <td th:text="${menu.name}"></td>
                 <td th:text="${menu.description}"></td>
                 <td th:text="${menu.price}"></td>
-                <td th:if="${menu.vegan == true}">This is vegan</td>
-                <td th:if="${menu.vegetarian == true}">This is vegetarian</td>
+                <td><span th:if="${menu.vegetarian || menu.vegan}"><i class="bi bi-check"></i></span></td>
+                <td><span th:if="${menu.vegan}"><i class="bi bi-check"></i></span></td>
             </tr>
             </tbody>
         </table>

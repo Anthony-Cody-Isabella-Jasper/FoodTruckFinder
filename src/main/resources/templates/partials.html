@@ -7,8 +7,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent4">
         <nav class="nav flex-sm-column flex-md-row">
-            <a class="nav-link" th:href="@{/truck/{id}/edit(id=${user.getTruck().getId()})}">Edit Truck</a>
             <a class="nav-link" th:href="@{/truck/{id}/show(id=${user.getTruck().getId()})}">View Truck</a>
+            <a class="nav-link" th:href="@{/truck/{id}/edit(id=${user.getTruck().getId()})}">Edit Truck</a>
             <a class="nav-link" th:href="@{/truck/{id}/editmenu(id=${user.getTruck().getId()})}">Edit Menu</a>
         </nav>
     </div>

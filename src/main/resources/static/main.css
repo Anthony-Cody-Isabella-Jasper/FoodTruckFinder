@@ -609,6 +609,10 @@ a {
         padding: 20px;
     }
 
+    .mapboxgl-popup{
+        text-align: center;
+    }
+
     /*MAP END*/
     /*TRUCK CARDS START*/
     .card img {

@@ -91,7 +91,9 @@
 							Show on map
 						</button>
 					</a>
-					<button th:data-latitude="${truck.getLatitude()}" th:data-longitude="${truck.getLongitude()}" class="btn btn-blue directionsButton">Get Directions</button>
+					<button th:data-latitude="${truck.getLatitude()}" th:data-longitude="${truck.getLongitude()}" class="btn btn-blue directionsButton">
+						Get Directions
+					</button>
 				</div>
 			</div>
 		</div>
@@ -196,14 +198,15 @@
 			});
 		});
 		let directionButtons = document.querySelectorAll(".directionsButton");
-		let userAgent = navigator.userAgent;
+		let userAgent = navigator.userAgent.toLowerCase();
 		directionButtons.forEach(button => {
 			button.addEventListener("click", () => {
-				if(userAgent.toLowerCase().includes("iphone")) {
-					window.open("maps://maps.google.com/maps?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
-				} else {
-					window.open("https://maps.google.com/maps?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
-				}
+				// if (userAgent.includes("iphone")) {
+					// window.open("maps://maps.google.com/maps?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
+					window.open("http://maps.apple.com/?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
+				// } else if (userAgent.includes("android")) {
+				// 	window.open("comgooglemaps://?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
+				// }
 			});
 		});
 	</script>

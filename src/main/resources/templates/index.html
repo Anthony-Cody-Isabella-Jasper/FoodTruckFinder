@@ -91,14 +91,7 @@
 							Show on map
 						</button>
 					</a>
-<<<<<<< HEAD
-					<a th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
-						<button class="btn btn-blue">Get Directions</button>
-=======
-					<a th:href="'maps:daddr=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
-						<button class="btn btn-primary">Get Directions</button>
->>>>>>> d3a3d1f9d0d42753c4cf517d599630b9074eb549
-					</a>
+					<button th:data-latitude="${truck.getLatitude()}" th:data-longitude="${truck.getLongitude()}" class="btn btn-blue directionsButton">Get Directions</button>
 				</div>
 			</div>
 		</div>
@@ -145,11 +138,8 @@
 
 // 				.setPopup(new mapboxgl.Popup().setHTML("<a style='color: #c59b08' href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue'>Get Directions</button></a>"))
 
-<<<<<<< HEAD
-				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue' style='margin-top: 10px'>Get Directions</button></a>"))
-=======
-				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='maps:daddr=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary' style='margin-top: 10px'>Get Directions</button></a>"))
->>>>>>> d3a3d1f9d0d42753c4cf517d599630b9074eb549
+				// .setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue' style='margin-top: 10px'>Get Directions</button></a>"))
+				// .setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='maps:daddr=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary' style='margin-top: 10px'>Get Directions</button></a>"))
 
 				.addTo(map);
 		});
@@ -203,6 +193,17 @@
 				}
 				truck.truckDiv.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.insertAdjacentElement("afterend", distanceDiv);
 				allTrucks.append(truck.truckDiv);
+			});
+		});
+		let directionButtons = document.querySelectorAll(".directionsButton");
+		let userAgent = navigator.userAgent;
+		directionButtons.forEach(button => {
+			button.addEventListener("click", () => {
+				if(userAgent.toLowerCase().includes("iphone")) {
+					window.open("maps:daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
+				} else {
+					window.open("https://www.google.com/maps/search/?api=1&query=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
+				}
 			});
 		});
 	</script>

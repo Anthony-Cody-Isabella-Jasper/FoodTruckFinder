@@ -67,13 +67,13 @@ public class ReviewController {
         Truck truck = truckDao.getTruckById(truckId);
         review.setTruck(truck);
         reviewDao.save(review);
-        return "redirect:" + user.getId() + "userProfile";
+        return "redirect:/" + user.getId() + "/userProfile";
     }
 
     @PostMapping("/deleteUserReview")
     public String deleteUserReview(@RequestParam(name = "revId") Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         reviewDao.deleteById(id);
-        return "redirect:" + user.getId() + "userProfile";
+        return "redirect:/" + user.getId() + "/userProfile";
     }
 }

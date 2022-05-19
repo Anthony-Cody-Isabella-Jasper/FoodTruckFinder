@@ -7,11 +7,9 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Righteous&display=swap" rel="stylesheet">
-	
 	<link rel="stylesheet" th:href="@{/main.css}">
 </head>
 <body>
@@ -29,7 +27,6 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
-	
 	<div id="searchBar">
 		<h5>Food Truck Filters</h5>
 		<div>
@@ -39,7 +36,6 @@
 			</form>
 		</div>
 		<div id="filters">
-			
 			<form th:action="@{/filter}" method="post">
 				<label for="cuisineSelect">Cuisine</label>
 				<select name="filterCuisine" id="cuisineSelect">
@@ -62,10 +58,7 @@
 			</a>
 		</div>
 	</div>
-	
 	<div id="map"></div>
-	
-	
 	<h1 th:if="${trucks.size()} == 0">No Results :(</h1>
 	<div id="allTrucks" class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12 truckDiv" th:each="truck : ${trucks}">
@@ -102,7 +95,6 @@
 	</div>
 	<footer th:replace="partials :: footer"></footer>
 	<div th:replace="partials :: scripts"></div>
-	
 	<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 	<script th:inline="javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaG9kZ2VzY29keTAwIiwiYSI6ImNreXVtOG5odDFvc2EycHBlaHhpMzF1c3QifQ.6g0ZKujuRweI-lJkBKuWAQ';
@@ -139,26 +131,27 @@
 		trucks.forEach((truck, index) => {
 			const marker = new mapboxgl.Marker()
 				.setLngLat([truck.longitude, truck.latitude])
-
-				// 				.setPopup(new mapboxgl.Popup().setHTML("<a style='color: #c59b08' href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue'>Get Directions</button></a>"))
-
-				// .setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue' style='margin-top: 10px'>Get Directions</button></a>"))
-				// .setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='maps:daddr=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary' style='margin-top: 10px'>Get Directions</button></a>"))
-
+				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span>"))
 				.addTo(map);
 		});
-		Array.from(document.getElementsByClassName("truckLocationButton")).forEach(buttonElement => {
+		document.querySelectorAll(".truckLocationButton").forEach(buttonElement => {
+			if (buttonElement.getAttribute("data-longitude") == null) {
+				buttonElement.setAttribute("style", "visibility: hidden");
+			}
 			buttonElement.addEventListener("click", (event) => {
-				if (!buttonElement.getAttribute("data-longitude")) {
-					event.preventDefault();
-					window.alert("This food truck has not set up yet!");
-				} else {
-					map.flyTo({
-						center: [buttonElement.getAttribute("data-longitude"), buttonElement.getAttribute("data-latitude")],
-						essential: true,
-						zoom: 15
-					});
-				}
+				map.flyTo({
+					center: [buttonElement.getAttribute("data-longitude"), buttonElement.getAttribute("data-latitude")],
+					essential: true,
+					zoom: 15
+				});
+			});
+		});
+		document.querySelectorAll(".directionsButton").forEach(button => {
+			if (button.getAttribute("data-longitude") == null) {
+				button.setAttribute("style", "visibility: hidden");
+			}
+			button.addEventListener("click", () => {
+				window.open("http://maps.apple.com/?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
 			});
 		});
 		navigator.geolocation.getCurrentPosition(currentPosition => {
@@ -197,18 +190,6 @@
 				}
 				truck.truckDiv.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.insertAdjacentElement("afterend", distanceDiv);
 				allTrucks.append(truck.truckDiv);
-			});
-		});
-		let directionButtons = document.querySelectorAll(".directionsButton");
-		let userAgent = navigator.userAgent.toLowerCase();
-		directionButtons.forEach(button => {
-			button.addEventListener("click", () => {
-				// if (userAgent.includes("iphone")) {
-					// window.open("maps://maps.google.com/maps?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
-					window.open("http://maps.apple.com/?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
-				// } else if (userAgent.includes("android")) {
-				// 	window.open("comgooglemaps://?daddr=" + button.getAttribute("data-latitude") + "," + button.getAttribute("data-longitude"), "_blank");
-				// }
 			});
 		});
 	</script>

@@ -507,6 +507,24 @@ a:link{
     }
 
     /*    INDIVIDUAL END    */
+
+    /*  ADMIN START */
+    .adminCol{
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+        border-bottom: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    #usersList button, #trucksList button, #reviewsList button{
+        margin-bottom: 50px;
+    }
+    /*  ADMIN END   */
+
     /*    REVIEW START  */
     #reviewTop {
         display: flex;

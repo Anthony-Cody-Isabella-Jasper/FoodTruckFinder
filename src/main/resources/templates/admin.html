@@ -12,10 +12,11 @@
 <body>
 	<nav th:replace="partials :: #adminNav"></nav>
 	<div id="show"></div>
-	<div class="container mt-5">
+	<div class="container mt-5 adminContainer">
 		<div class="row">
-			<div class="col adminCol">
+			<div class="col-lg col-sm-auto adminCol">
 				<h3>User Profiles</h3>
+				<br>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="usernameSearch" placeholder="Username">
 					<input type="hidden" name="searchType" value="user">
@@ -23,8 +24,9 @@
 				</form>
 				<div id="usersList"></div>
 			</div>
-			<div class="col adminCol">
+			<div class="col-lg col-sm-auto adminCol">
 				<h3>Truck Profiles</h3>
+				<br>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="truckSearch" placeholder="Truck Name">
 					<input type="hidden" name="searchType" value="truck">
@@ -32,8 +34,9 @@
 				</form>
 				<div id="trucksList"></div>
 			</div>
-			<div class="col adminCol">
+			<div class="col-lg col-sm-auto adminCol">
 				<h3>Reviews</h3>
+				<br>
 				<form th:action="@{/admin}" method="post">
 					<input type="text" name="reviewSearch" placeholder="Review Text">
 					<input type="hidden" name="searchType" value="review">

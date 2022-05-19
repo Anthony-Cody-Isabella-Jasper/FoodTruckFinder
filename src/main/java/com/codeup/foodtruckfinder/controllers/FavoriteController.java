@@ -5,8 +5,6 @@ import com.codeup.foodtruckfinder.models.User;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
 import com.codeup.foodtruckfinder.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -41,13 +39,13 @@ public class FavoriteController {
             user.setFavoriteTrucks(fave);
             userDao.save(user);
         }
-        return "redirect:/" + user.getId() + "/profile";
+        return "redirect:/" + user.getId() + "userProfile";
     }
 
     @PostMapping("/deleteFavorite")
     public String deleteFavorite(@RequestParam Long truckId, @RequestParam Long id) {
         User user = userDao.getById(id);
         userDao.deleteFavorite(id, truckId);
-        return "redirect:/" + user.getId() + "/profile";
+        return "redirect:/" + user.getId() + "userProfile";
     }
 }

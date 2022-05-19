@@ -98,7 +98,7 @@ public class UserController {
         }
         model.addAttribute("user", userDao.getById(id));
         model.addAttribute("favorites", userDao.getById(id).getFavoriteTrucks());
-        return "/profile";
+        return "userProfile";
     }
 
 

@@ -206,6 +206,7 @@
         trackUserLocation: true,
         showUserHeading: true
     }));
+    map.addControl(new mapboxgl.NavigationControl());
     document.getElementById("triangulate").addEventListener("click", () => {
         let triangulate = document.getElementById("triangulate");
         triangulate.disabled = true;

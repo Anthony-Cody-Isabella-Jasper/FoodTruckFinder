@@ -121,6 +121,7 @@
 				showUserHeading: true
 			})
 		);
+		map.addControl(new mapboxgl.NavigationControl());
 		let trucks = [];
 		/*<![CDATA[*/
 		/*[# th:each="truck : ${trucks}"]*/
@@ -151,7 +152,8 @@
 				} else {
 					map.flyTo({
 						center: [buttonElement.getAttribute("data-longitude"), buttonElement.getAttribute("data-latitude")],
-						essential: true
+						essential: true,
+						zoom: 15
 					});
 				}
 			});

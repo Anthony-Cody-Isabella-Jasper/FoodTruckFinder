@@ -1,12 +1,24 @@
 /*BODY START*/
 body {
     padding: 0;
-    background-color: #FF8210;
+    background-color: white;
     font-family: 'Righteous', sans-serif;
 }
 
+.btn-blue {
+    background-color: #49BBC8;
+}
+
+.btn-green {
+    background-color: #5CC68B;
+}
+
+.btn-yellow {
+    background-color: #FEC741;
+}
+
 .card{
-    background-color: darkred;
+    background-color: #cf6a4e;
     color: white;
     text-align: center;
     border-radius: 2%;
@@ -20,10 +32,10 @@ hr {
 
 a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 a:hover{
-    color: black;
+    color: #FEC741;
 }
 a:link{
     text-decoration: none;

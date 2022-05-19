@@ -35,7 +35,7 @@
 		<div>
 			<form th:action="@{/search}" method="post">
 				<input type="text" name="search" placeholder="Search by Name">
-				<button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+				<button type="submit" class="btn btn-blue"><i class="bi bi-search"></i> Search</button>
 			</form>
 		</div>
 		<div id="filters">
@@ -53,7 +53,7 @@
 				<input type="checkbox" id="veganCheck" name="vegan">
 				<label for="vegetarianCheck">Vegetarian</label>
 				<input type="checkbox" id="vegetarianCheck" name="vegetarian">
-				<button type="submit" class="btn btn-success">Apply Filters</button>
+				<button type="submit" class="btn btn-green">Apply Filters</button>
 			</form>
 			<a th:href="@{/}">
 				<button id="clearFilterBtn" type="submit" class="btn btn-danger">Clear Filters</button>
@@ -87,12 +87,12 @@
 						</dd>
 					</dl>
 					<a href="#map">
-						<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-primary truckLocationButton">
+						<button th:data-longitude="${truck.getLongitude()}" th:data-latitude="${truck.getLatitude()}" class="btn btn-blue truckLocationButton">
 							Show on map
 						</button>
 					</a>
 					<a th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}" target="_blank">
-						<button class="btn btn-primary">Get Directions</button>
+						<button class="btn btn-blue">Get Directions</button>
 					</a>
 				</div>
 			</div>
@@ -137,9 +137,9 @@
 			const marker = new mapboxgl.Marker()
 				.setLngLat([truck.longitude, truck.latitude])
 
-// 				.setPopup(new mapboxgl.Popup().setHTML("<a style='color: #c59b08' href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary'>Get Directions</button></a>"))
+// 				.setPopup(new mapboxgl.Popup().setHTML("<a style='color: #c59b08' href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue'>Get Directions</button></a>"))
 
-				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-primary' style='margin-top: 10px'>Get Directions</button></a>"))
+				.setPopup(new mapboxgl.Popup().setHTML("<a href='/truck/" + truck.id + "/show'><h4>" + truck.name + "</h4></a><p style='margin-bottom: 0'>Rating:</p><span style='background-image:linear-gradient(to right, rgb(255,215,0,1) " + truck.averageRatingPercent + "%, rgba(0,0,0,1)" + truck.averageRatingPercent + "%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>&#9733;&#9733;&#9733;&#9733;&#9733;</span><br><a href='https://www.google.com/maps/search/?api=1&query=" + truck.latitude + "," + truck.longitude + "' target='_blank'><button class='btn btn-blue' style='margin-top: 10px'>Get Directions</button></a>"))
 
 				.addTo(map);
 		});

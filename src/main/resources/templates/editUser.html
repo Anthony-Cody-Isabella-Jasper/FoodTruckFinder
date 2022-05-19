@@ -73,7 +73,7 @@
                 </label>
             </div>
             <br>
-            <button class="btn btn-success" type="submit">Submit Edit</button>
+            <button class="btn btn-green" type="submit">Submit Edit</button>
         </form>
     </div>
     <hr>
@@ -88,7 +88,7 @@
 
             <label>Change Password: <input type="password" th:field="*{password}" required
                                            placeholder="new password"></label>
-            <button type="submit" class="btn btn-primary">Change Password</button>
+            <button type="submit" class="btn btn-blue">Change Password</button>
         </form>
         <hr>
         <br>
@@ -114,7 +114,7 @@
                     Are you sure you want to delete your account?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
                     <form th:object="${user}" method="post" th:action="@{/deleteUserFromUser}">
                         <input type="hidden" th:value="${user.id}" name="userId">
                         <button class="btn btn-danger" type="submit">DELETE ACCOUNT</button>

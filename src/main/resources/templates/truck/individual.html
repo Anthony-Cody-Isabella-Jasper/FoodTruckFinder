@@ -31,13 +31,13 @@
     <a th:if="${#authentication.principal.equals('anonymousUser') || !#authentication.principal.isTruckOwner}"
        th:href="'https://www.google.com/maps/search/?api=1&query=' + ${truck.getLatitude()} + ',' + ${truck.getLongitude}"
        target="_blank">
-        <button class="btn btn-primary">Get Directions</button>
+        <button class="btn btn-blue">Get Directions</button>
     </a>
 
     <div sec:authorize="isAuthenticated()">
         <div th:if="${#authentication.principal.isTruckOwner and #authentication.principal.truck.getId() == truck.id}">
             <div th:if="${truck.longitude == null}" id="triangulateBtn">
-                <button class="btn btn-primary" id="triangulate">Mark Your Location!</button>
+                <button class="btn btn-blue" id="triangulate">Mark Your Location!</button>
                 <form id="activateBeacon" th:action="@{/truck/{id}/located(id=${truck.id})}" method="post">
                     <input type="hidden" name="longitude" id="truckLongitude">
                     <input type="hidden" name="latitude" id="truckLatitude">
@@ -55,7 +55,7 @@
                 <input type="hidden" name="truckId" th:value="${truck.id}">
                 <input type="hidden" name="userId" th:value="${#authentication.principal.getId()}">
                 <div id="verifyTruckBtn">
-                    <button class="btn btn-success" type="submit">Verify Truck on Location</button>
+                    <button class="btn btn-greens" type="submit">Verify Truck on Location</button>
                 </div>
             </form>
         </div>
@@ -146,7 +146,7 @@
     <div id="reviewItems">
         <h3>Reviews</h3>
         <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
-            <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-primary">Write a Review!</a>
+            <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-blue">Write a Review!</a>
         </div>
 
         <div th:each="review : ${truck.reviews}" class="truck-reviews" id="reviewContent">
@@ -189,7 +189,7 @@
         });
         const marker = new mapboxgl.Marker()
             .setLngLat([truckLongitude, truckLatitude])
-            .setPopup(new mapboxgl.Popup().setHTML("<h4>" + truckName + "</h4><a href='https://www.google.com/maps/search/?api=1&query=" + truckLatitude + "," + truckLongitude + "' target='_blank'><button class='btn btn-primary'>Get Directions</button></a>"))
+            .setPopup(new mapboxgl.Popup().setHTML("<h4>" + truckName + "</h4><a href='https://www.google.com/maps/search/?api=1&query=" + truckLatitude + "," + truckLongitude + "' target='_blank'><button class='btn btn-blue'>Get Directions</button></a>"))
             .addTo(map);
     } else {
         map = new mapboxgl.Map({

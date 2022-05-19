@@ -56,7 +56,7 @@ public class ReviewController {
         model.addAttribute("revId", id);
         Review review = reviewDao.getById(id);
         model.addAttribute("truckId", review.getTruck().getId());
-        return "/editReview";
+        return "edit-review";
     }
 
     @PostMapping("/editReviews")

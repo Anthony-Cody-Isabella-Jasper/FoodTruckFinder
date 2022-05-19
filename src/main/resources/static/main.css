@@ -1,19 +1,15 @@
 /*BODY START*/
 body {
-    margin: 5px;
     padding: 0;
     background-color: #FF8210;
     font-family: 'Righteous', sans-serif;
 }
+
 .card{
     background-color: darkred;
     color: white;
     text-align: center;
     border-radius: 2%;
-}
-
-#map{
-    border: 15px solid black;
 }
 
 hr {
@@ -35,6 +31,16 @@ a:link{
 .profileImgSelect {
     border: 5px solid darkred;
 }
+#allTrucks {
+    margin: auto;
+}
+
+#individualTruckDescrip{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
 
 /*BODY END*/
 
@@ -43,15 +49,8 @@ a:link{
     align-items: center;
     background-color: darkred;
     margin-bottom: 50px;
-justify-content: center !important;
 }
-.container-fluid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+
 
 /*  NAVBAR END      */
 
@@ -96,24 +95,7 @@ justify-content: center !important;
 /*STARS END*/
 
 
-#banana {
-    color: green;
-    z-index: 1000;
-    bottom: 200px;
-}
 
-.banana {
-    position: relative;
-    text-align: center;
-    color: black;
-}
-
-.centered {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
@@ -211,9 +193,12 @@ justify-content: center !important;
     /*    NAV END   */
     /*    INDEX START*/
     #map {
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 25px;
         width: 90%;
         height: 200px;
+        border: 10px solid black;
     }
 
     /*500 ERROR PAGE START*/
@@ -269,11 +254,34 @@ justify-content: center !important;
         justify-content: center;
         text-align: center;
     }
+      #individualTruck img{
+          width: 300px;
+          height: 300px;
+          margin-bottom: 50px;
+      }
+      .carousel-inner img{
+          width: 300px;
+          height: 300px;
+      }
+      .carousel-inner{
+          text-align: center;
+          margin-bottom: 50px;
+      }
+      #bottomBox{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+      }
 
-    #menuBox {
-        text-align: center;
-        width: 90%;
-    }
+    /*#menuBox {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    text-align: center;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*    width: 90%;*/
+    /*}*/
 
     #reviewBtn {
         display: flex;
@@ -489,56 +497,6 @@ justify-content: center !important;
         color: blue;
     }
 
-    /*PENDING PAGE END*/
-    /*@media screen and (min-width: 426px) and (max-width: 899px) {*/
-    /*    .mobileNav {*/
-    /*        display: none*/
-    /*    }*/
-    /*    !*500 ERROR PAGE START*!*/
-    /*    #serverErrCenterBox{*/
-    /*        text-align: center;*/
-    /*        position: absolute;*/
-    /*        top: 20%;*/
-    /*        left: 36%;*/
-    /*    }*/
-    /*    #serverErrCenterBox p{*/
-    /*        font-size: 80px;*/
-    /*        font-weight: bolder;*/
-    /*        margin: 20px 0px;*/
-    /*    }*/
-    /*    #serverErrLogo{*/
-    /*        width: 125px;*/
-    /*        height: 125px;*/
-    /*        border-radius: 50%;*/
-    /*    }*/
-    /*    #serverErrCenterBox a {*/
-    /*        font-size: 20px;*/
-    /*        color: blue;*/
-    /*    }*/
-    /*    !*500 ERROR PAGE END*!*/
-    /*    !*400 ERROR PAGE START*!*/
-    /*    #notFoundCenterBox{*/
-    /*        text-align: center;*/
-    /*        position: absolute;*/
-    /*        top: 20%;*/
-    /*        left: 36%;*/
-    /*    }*/
-    /*    #notFoundCenterBox p{*/
-    /*        font-size: 80px;*/
-    /*        font-weight: bolder;*/
-    /*        margin: 20px 0px;*/
-    /*    }*/
-    /*    #errLogo{*/
-    /*        width: 125px;*/
-    /*        height: 125px;*/
-    /*        border-radius: 50%;*/
-    /*    }*/
-    /*    #notFoundCenterBox a{*/
-    /*        font-size: 20px;*/
-    /*        color: blue;*/
-    /*    }*/
-    /*    !*400 ERROR PAGE END*!*/
-    /*}*/
 }
 
 @media screen and (min-width: 426px) and (max-width: 1800px) {
@@ -551,80 +509,25 @@ justify-content: center !important;
     height: 125px;
     border: 4px solid #ffb9ad;
     border-radius: 36px;
-        margin: auto;
 }
-
-
-
-
-    /*.desktopNav {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: space-between;*/
-    /*    flex-grow: 2;*/
-    /*    margin-bottom: 75px;*/
-    /*}*/
-
-    /*.desktopNav h2 {*/
-    /*    font-size: 2.5rem;*/
-    /*}*/
-
-    /*.desktopNav a {*/
-    /*    padding: 25px;*/
-    /*    font-size: 1.3rem;*/
-    /*}*/
-
-    /*.desktopNav button {*/
-    /*    font-size: 1.3rem;*/
-    /*}*/
-
-    /*#loggedRight {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*}*/
-
-    /*#truckRight {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*}*/
-
-
-
-    /*#adminNav h2 {*/
-    /*    font-size: 2.5rem;*/
-    /*}*/
-
-    /*#adminNav a {*/
-    /*    padding: 25px;*/
-    /*    font-size: 1.3rem;*/
-    /*}*/
-
-    /*#adminNav button {*/
-    /*    font-size: 1.3rem;*/
-    /*}*/
-
-    /*#adminRight {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*}*/
-
+    .navbar{
+        font-size: x-large;
+    }
+    .navbar button{
+        font-size: x-large;
+    }
 
     /*NAV END*/
     /* MAP START*/
     #map {
-        width: 60%;
+        width: 90%;
         height: 400px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 25px;
+        margin-bottom: 50px;
+        border: 15px solid black;
     }
 
-    #mapDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
 
     /*MAP END*/
     /*TRUCK CARDS START*/
@@ -639,7 +542,7 @@ justify-content: center !important;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
     }
 
     #filters {
@@ -672,6 +575,7 @@ justify-content: center !important;
         height: 400px;
     }
 
+
     /* CAROUSEL END */
     /*  INDIVIDUAL VIEW START  */
     #topTruckBox {
@@ -683,7 +587,9 @@ justify-content: center !important;
 
     #individualTruck {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
         margin-top: 50px;
         margin-bottom: 50px;
     }
@@ -691,13 +597,14 @@ justify-content: center !important;
     #individualTruck img {
         width: 350px;
         height: 350px;
-        margin-right: 25px;
     }
 
     #carouselTruckPhotos {
-        margin-left: 100px;
-        margin-right: 100px;
-        margin-bottom: 75px;
+        margin: 100px;
+
+    }
+    .carousel-inner{
+        text-align: center;
     }
 
     #bottomBox {
@@ -747,6 +654,9 @@ justify-content: center !important;
 
     #reviewContent div {
         padding: 15px;
+    }
+    #mapDiv{
+        text-align: center;
     }
 
     #menuBox {

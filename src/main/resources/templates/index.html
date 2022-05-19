@@ -73,14 +73,17 @@
 					<a th:href="@{/truck/{id}/show(id=${truck.id})}"><h5 class="truck-name">
 						<span th:text="${truck.name}"></span></h5></a>
 					<dl>
+						<br>
 						<dt>Truck Cuisines</dt>
 						<dd th:if="${truck.cuisines.size() == 0}"><em class="m-2">unknown</em></dd>
 						<dd th:if="${truck.cuisines.size() > 0}">
 							<em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
+						<br>
 						<dt>Average Rating</dt>
 						<dd>
 							<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 							<em>(<span th:text="${truck.getReviews().size()}"></span> reviews)</em></span>
+							<br>
 						</dd>
 					</dl>
 					<a href="#map">
@@ -105,8 +108,10 @@
 			container: 'map', // container ID
 			style: 'mapbox://styles/mapbox/streets-v11', // style URL
 			center: [-98.4946, 29.4252], // starting position [lng, lat]
-			zoom: 5 // starting zoom
+			zoom: 5, // starting zoom
+			cooperativeGestures: true
 		});
+		map.addControl(new mapboxgl.FullscreenControl());
 		map.addControl(
 			new mapboxgl.GeolocateControl({
 				positionOptions: {

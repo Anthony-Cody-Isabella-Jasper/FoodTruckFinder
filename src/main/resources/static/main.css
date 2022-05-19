@@ -40,11 +40,17 @@ a:link{
 
 /*  NAVBAR START    */
 .navbar{
-    height: 135px;
     align-items: center;
     background-color: darkred;
-    box-shadow: 0 0 15px 5px white;
     margin-bottom: 50px;
+justify-content: center !important;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 /*  NAVBAR END      */
@@ -399,8 +405,10 @@ a:link{
 
     #editUserBtns {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
 
     #editUserBtns button {
@@ -543,6 +551,7 @@ a:link{
     height: 125px;
     border: 4px solid #ffb9ad;
     border-radius: 36px;
+        margin: auto;
 }
 
 

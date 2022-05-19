@@ -74,7 +74,7 @@ public class UserController {
     @GetMapping("/pending")
     public String pendingApproval(Model model) {
         if (model.getAttribute("fromSignup") != null) {
-            return "/pending";
+            return "pendingTruck";
         }
         return "redirect:/";
     }

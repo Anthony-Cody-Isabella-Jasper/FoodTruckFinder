@@ -40,9 +40,8 @@
             <input id="email" th:field="*{email}" type="text">
             <br>
             <input type="radio" th:field="*{profilePicture}" name="profilePicture" th:value="${user.profilePicture}" hidden>
-            <div id="avatar-choices">
-                <h3>Edit profile picture: </h3>
-                <br>
+            <h3>Edit profile picture: </h3>
+            <div id="editUserAvatarChoices">
                 <label class="avatar">
                     <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
                                               hidden>

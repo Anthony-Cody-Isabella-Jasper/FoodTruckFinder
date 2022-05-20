@@ -33,16 +33,16 @@
 
 
 <div id="editMenuForm">
-    <form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post">
+    <form th:action="@{/truck/addMenuItem}" th:object="${menuItem}" method="post" style="text-align: center">
         <div>
             <h3>Add A New Menu Item</h3>
         </div>
-        <div id="editMenuFormMobile">
-            <label for="itemName">Name</label>
-            <input th:field="*{name}" id="itemName" type="text" required>
-            <label for="itemDescription">Description</label>
-            <textarea th:field="*{description}" id="itemDescription"></textarea>
-            <label for="itemPrice">Price</label>
+        <div id="editMenuFormInputs">
+            <label for="itemName">Name</label><br>
+            <input th:field="*{name}" id="itemName" type="text" required><br>
+            <label for="itemDescription">Description</label><br>
+            <textarea th:field="*{description}" id="itemDescription"></textarea><br>
+            <label for="itemPrice">Price</label><br>
             <input th:field="*{price}" id="itemPrice" type="number" step="0.01" min="0" required>
         </div>
         <div id="veganOrVegitarian">

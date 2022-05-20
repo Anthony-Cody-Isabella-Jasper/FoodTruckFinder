@@ -119,7 +119,7 @@
 					<th scope="col">Name</th>
 					<th scope="col">Description</th>
 					<th scope="col">Price</th>
-          <th scope="col">Vegan/Vegetarian</th>
+          <th class="menuCenter" scope="col">Vegan/Vegetarian</th>
 				</tr>
 				</thead>
 				<tbody th:each="menu : ${truck.menu}" class="menu-items">
@@ -127,7 +127,7 @@
 					<td th:text="${menu.name}"></td>
 					<td th:text="${menu.description}"></td>
 					<td th:text="${menu.price}"></td>
-          <td><span th:if="${menu.vegetarian || menu.vegan}"><img style="width: 20px; height: 20px;" src="https://cdn-icons-png.flaticon.com/512/3778/3778979.png"> </span></td>
+          <td class="menuCenter"><span th:if="${menu.vegetarian || menu.vegan}"><img style="width: 20px; height: 20px;" src="https://cdn-icons-png.flaticon.com/512/3778/3778979.png"> </span></td>
 				</tr>
 				</tbody>
 			</table>

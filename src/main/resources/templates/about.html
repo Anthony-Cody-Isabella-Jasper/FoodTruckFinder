@@ -7,7 +7,11 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Righteous&display=swap" rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/main.css}">
+	<link rel="stylesheet" th:href="@{/konami.js}">
 </head>
 <body>
 	<div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isAdmin}">
@@ -24,26 +28,26 @@
 	<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
 		<nav th:replace="partials :: #adminNav"></nav>
 	</div>
-
+	<h3 style="text-align: center">About Us</h3>
 	<div id="aboutContainer" class="container-fluid">
-		<h3 style="text-align: center">About Us</h3>
+
 		<div class="aboutBox">
 			<img src="/img/dev-photos/anthony.jpg" alt="anthony photo">
 			<div class="text-center">
 				<h5>Anthony Gonzalez</h5>
 				<p>Software Developer with previous experience in manufacturing and distribution. Those industries helped me develop time management, leadership, communication, and multitasking skills leveraging full-stack skills to implement strong back-end solutions and frameworks.</p>
 			</div>
-			<div>
+			<div class="icons">
 				<a href="https://github.com/AnthonyG8520" target="_blank"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/anthony-gonzales-/" target="_blank"><i class="bi bi-linkedin"></i></a>
 			</div>
 		</div>
 		<div class="aboutBox">
-			<img src="/img/dev-photos/cody.jpg" alt="cody photo">
+			<img id="cody" src="/img/dev-photos/cody.jpg" alt="cody photo">
 			<div class="text-center">
 				<h5>Cody Hodges</h5>
 				<p>Passionate Software Developer with knowledge of fundamental software design, testing, and development. Prepared to utilize technical, social, and analytical skills to thrive in the software engineering career field. </p>
 			</div>
-			<div>
+			<div class="icons">
 				<a href="https://github.com/CHodges00" target="_blank"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/cody-b-hodges/" target="_blank"><i class="bi bi-linkedin"></i></a>
 			</div>
 		</div>
@@ -56,7 +60,7 @@
 					interest in technology led to my path in web development. Eager to make effective software programs
 					using prior and newly learned skills. </p>
 			</div>
-			<div>
+			<div class="icons">
 				<a href="https://github.com/izzy-bella01" target="_blank"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/isabella-hernandez-247330226/" target="_blank"><i class="bi bi-linkedin"></i></a>
 			</div>
 		</div>
@@ -68,7 +72,7 @@
 					military experience in IT hardware and software solutions, computer networking, troubleshooting, and
 					team management.</p>
 			</div>
-			<div>
+			<div class="icons">
 				<a href="https://github.com/jsoleymanzadeh" target="_blank"><i class="bi bi-github"></i></a><a href="https://www.linkedin.com/in/jsoleymanzadeh/" target="_blank"><i class="bi bi-linkedin"></i></a>
 			</div>
 		</div>

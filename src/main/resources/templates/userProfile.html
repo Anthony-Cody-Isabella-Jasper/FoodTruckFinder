@@ -43,7 +43,7 @@
 			<h3>Your Favorites</h3>
 		</div>
 		<div class="row">
-			<div class="userFavorites col-lg-4 col-md-12 col-sm-12" th:each="favorite : ${favorites}">
+			<div class="userFavorites col-lg-4 mx-auto col-md-12 col-sm-12" th:each="favorite : ${favorites}">
 				<img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
 				<a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><p th:text="${favorite.name}"></p></a>
 				<p th:text="${favorite.phone}"></p>
@@ -60,7 +60,7 @@
 			<h3>Your Reviews</h3>
 		</div>
 		<div class="row">
-			<div class="usersReviews col-lg-6 col-md-12 col-sm-12" th:each="review : ${user.reviews}">
+			<div class="usersReviews mx-auto col-lg-6 col-md-12 col-sm-12" th:each="review : ${user.reviews}">
 				<div id="profileReviews">
 					<p>Truck name: <span th:text="${review.truck.name}"></span></p>
 					<p>Rating:

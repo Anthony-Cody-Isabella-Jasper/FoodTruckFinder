@@ -669,8 +669,20 @@ a:link{
     }
 
 
-    #avatar-choices {
+    #avatar-choices{
         text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        width: 410px;
+    }
+
+    #editUserAvatarChoices{
+        display: flex;
+        flex-wrap: wrap;
+        width: 330px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     #editUserBtns {
@@ -1027,19 +1039,33 @@ a:link{
         flex-direction: column;
         align-items: center;
     }
-#editUserBtns{
-    margin-top: 45px;
-    text-align: center;
-}
-#editUserBtns a{
-    color: white;
-}
-#editUserBtns button{
-    margin: 15px;
-}
+    #editUserBtns{
+        margin-top: 45px;
+        text-align: center;
+    }
+    #editUserBtns a{
+        color: white;
+    }
+    #editUserBtns button{
+        margin: 15px;
+    }
     .avatar {
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    #avatar-choices{
+        display: flex;
+        flex-wrap: wrap;
+        width: 450px;
+        justify-content: center;
+    }
+
+    #editUserAvatarChoices{
+        display: flex;
+        flex-wrap: wrap;
+        width: 450px;
+        justify-content: center;
     }
 
     /*  EDIT USER END    */

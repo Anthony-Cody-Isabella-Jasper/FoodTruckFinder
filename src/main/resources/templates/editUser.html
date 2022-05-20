@@ -39,7 +39,7 @@
             <label for="email">Edit Email:</label>
             <input id="email" th:field="*{email}" type="text">
             <br>
-
+            <input type="radio" th:field="*{profilePicture}" name="profilePicture" th:value="${user.profilePicture}" hidden>
             <div id="avatar-choices">
                 <h3>Edit profile picture: </h3>
                 <br>

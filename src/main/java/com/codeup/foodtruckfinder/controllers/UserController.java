@@ -246,7 +246,7 @@ public class UserController {
     @GetMapping("/forgotPassword")
     public String forgotPasswordView(Model model, User user) {
         model.addAttribute("user", user);
-        return "/forgotPassword";
+        return "forgot-password";
     }
 
     @PostMapping("/forgotPassword")

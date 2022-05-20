@@ -263,7 +263,7 @@ public class UserController {
         if (userDao.existsUserByEmail(fromEmail)) {
             user.setEmail(fromEmail);
             model.addAttribute("user", user);
-            return "/resetPassword";
+            return "reset-password";
         }
         redirAttrs.addFlashAttribute("message", "You have not signed up with that email yet. Please sign up now!");
         return "redirect:/register";

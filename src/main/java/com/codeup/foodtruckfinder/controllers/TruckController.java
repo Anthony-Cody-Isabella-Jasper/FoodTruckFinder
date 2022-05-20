@@ -96,6 +96,7 @@ public class TruckController {
     public String deleteTruckAccount(@RequestParam Long truckId, HttpSession session) {
         userDao.deleteTruckConfirmation(truckId);
         userDao.deleteTruckFavorite(truckId);
+        userDao.deleteTruckCuisines(truckId);
         truckDao.deleteById(truckId);
         session.invalidate();
         return "redirect:/";

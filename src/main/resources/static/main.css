@@ -1,5 +1,9 @@
 /*BODY START*/
 
+.konami{
+    cursor: url("/img/Streat-2.png"), auto;
+}
+
 body {
     padding: 0;
     background-color: white;
@@ -1044,43 +1048,6 @@ a:link{
     /*  EDIT USER END    */
 
 
-    /*  EDIT MENU START */
-
-
-    /*  EDIT MENU END   */
-
-
-    /*  REGISTER START  */
-    /*#registerForm{*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: center;*/
-    /*}*/
-    /*#registerForm form{*/
-    /*    display: flex;*/
-    /*    flex-direction: column;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-    /*}*/
-    /*#registerForm label{*/
-    /*    padding: 10px;*/
-    /*}*/
-    /*#registerBtn{*/
-    /*    margin-top: 15px;*/
-    /*    text-align: center;*/
-    /*}*/
-    /*#alreadyMember{*/
-    /*    display: flex;*/
-    /*    justify-content: center;*/
-    /*    margin-top: 35px;*/
-    /*}*/
-    /*  REGISTER END    */
-
-
-    /*  EDIT TRUCK START    */
-
-    /*  EDIT TRUCK END    */
-
 
 
     /*  ABOUT VIEW START  */
@@ -1092,7 +1059,6 @@ a:link{
     #aboutContainer a {
         font-size: 2rem;
         padding-right: 10px;
-        /*padding-top: 20px;*/
     }
     .icons{
        margin-top: auto;

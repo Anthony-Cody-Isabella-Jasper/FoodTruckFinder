@@ -1,6 +1,6 @@
 /*BODY START*/
 
-.konami{
+.konami {
     cursor: url("/img/Streat-2.png"), auto;
 }
 
@@ -9,7 +9,8 @@ body {
     background-color: white;
     font-family: 'Righteous', sans-serif;
 }
-.menuCenter{
+
+.menuCenter {
     text-align: center;
 }
 
@@ -26,7 +27,7 @@ body {
     background-color: #FEC741;
 }
 
-.card{
+.card {
     background-color: #cf6a4e;
     color: white;
     text-align: center;
@@ -43,26 +44,31 @@ a {
     text-decoration: none;
     color: black;
 }
-a:hover{
+
+a:hover {
     color: #FEC741;
 }
-a:link{
+
+a:link {
     text-decoration: none;
 }
+
 .profileImgSelect {
     border: 5px solid darkred;
 }
+
 #allTrucks {
     margin: auto;
 }
 
-#individualTruckDescrip{
+#individualTruckDescrip {
     text-align: center;
     justify-content: center;
     align-items: center;
     width: 60%;
 }
-#reviewPage{
+
+#reviewPage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,7 +79,7 @@ a:link{
 /*BODY END*/
 
 /*  NAVBAR START    */
-.navbar{
+.navbar {
     align-items: center;
     background-color: #3F8C8F;
     margin-bottom: 50px;
@@ -83,34 +89,39 @@ a:link{
 /*  NAVBAR END      */
 
 /*  EDIT TRUCK START    */
-#editTruckTop{
+#editTruckTop {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-#editTruckFormBtn{
+
+#editTruckFormBtn {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
     margin-bottom: 35px;
 }
-#truckCuisinesForm{
+
+#truckCuisinesForm {
     display: flex;
     margin: 15px;
 
 }
-.truckCuisinesForm{
+
+.truckCuisinesForm {
     margin-left: 45px;
     margin-right: 45px;
 }
-#editTruckButton{
+
+#editTruckButton {
     display: flex;
     justify-content: center;
     margin-bottom: 75px;
 }
-#editTruckBtns{
+
+#editTruckBtns {
     margin-top: 45px;
     display: flex;
     justify-content: center;
@@ -118,58 +129,69 @@ a:link{
     align-items: center;
     text-align: center;
 }
-#editTruckBtns button{
+
+#editTruckBtns button {
     margin: 20px;
 }
-#editTruckBtns a{
+
+#editTruckBtns a {
     text-decoration: none;
     color: white;
 }
-#editTruckForm{
+
+#editTruckForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-#selectPhotos{
+
+#selectPhotos {
     text-align: center;
 }
+
 /* EDIT TRUCK END   */
 
 /*  EDIT MENU START   */
-#editMenuForm{
+#editMenuForm {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-#editMenuForm h3{
+
+#editMenuForm h3 {
     text-align: center;
     margin-bottom: 20px;
 }
-#editMenuFormBtn{
+
+#editMenuFormBtn {
     display: flex;
     justify-content: center;
     margin-top: 15px;
     margin-bottom: 65px;
 }
-#veganOrVegitarian{
+
+#veganOrVegitarian {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10px;
 }
-#menuList{
+
+#menuList {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-#menuList div{
+
+#menuList div {
     padding: 25px;
     border-top: 1px solid black;
 }
+
 /*  EDIT MENU END   */
 
 
@@ -235,6 +257,7 @@ a:link{
     text-align: center;
     border-top: 1px solid black;
 }
+
 /*  PROFILE END */
 
 /*STYLE FOR RATING STARS*/
@@ -278,29 +301,34 @@ a:link{
 /*STARS END*/
 
 /*  REGISTER START  */
-#registerForm{
+#registerForm {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#registerForm form{
+
+#registerForm form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#registerForm label{
+
+#registerForm label {
     padding: 10px;
 }
-#registerBtn{
+
+#registerBtn {
     margin-top: 15px;
     text-align: center;
 }
-#alreadyMember{
+
+#alreadyMember {
     display: flex;
     justify-content: center;
     margin-top: 35px;
 }
+
 /*  REGISTER END    */
 
 
@@ -316,35 +344,39 @@ a:link{
 
 
     /*  ABOUT PAGE START    */
-    #aboutContainer{
+    #aboutContainer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
-    #aboutContainer h3{
+
+    #aboutContainer h3 {
         margin-bottom: 50px;
     }
-    #aboutContainer img{
+
+    #aboutContainer img {
         width: 300px;
         height: 300px;
         margin-bottom: 15px;
         border: 1px solid black;
         border-radius: 10%;
     }
-    .aboutBox{
+
+    .aboutBox {
         width: 90%;
         margin-bottom: 50px;
     }
-    .aboutBox a{
+
+    .aboutBox a {
         padding: 10px;
         font-size: xx-large;
     }
-    /*  ABOUT END   */
 
+    /*  ABOUT END   */
     /*400 ERROR PAGE START*/
-    #notFoundCenterBox{
+    #notFoundCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -372,7 +404,7 @@ a:link{
 
     /*400 ERROR PAGE END*/
     /*500 ERROR PAGE START*/
-    #serverErrCenterBox{
+    #serverErrCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -424,7 +456,6 @@ a:link{
     }
 
 
-
     /*    NAV END   */
     /*    INDEX START*/
     #map {
@@ -437,13 +468,14 @@ a:link{
     }
 
     /*500 ERROR PAGE START*/
-    #serverErrCenterBox{
+    #serverErrCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-  }
-      #searchBar {
+    }
+
+    #searchBar {
         margin-top: 35px;
         display: flex;
         flex-direction: column;
@@ -458,7 +490,8 @@ a:link{
     #filters h5 {
         margin-top: 15px;
     }
-    #cuisineSelect{
+
+    #cuisineSelect {
         margin-top: 10px;
     }
 
@@ -479,39 +512,43 @@ a:link{
     }
 
     /*400 ERROR PAGE START*/
-    #notFoundCenterBox{
+    #notFoundCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-  }
-      #individualTruck {
+    }
+
+    #individualTruck {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
     }
-      #individualTruck img{
-          width: 300px;
-          height: 300px;
-          margin-bottom: 50px;
-      }
-      .carousel-inner img{
-          width: 300px;
-          height: 300px;
-      }
-      .carousel-inner{
-          text-align: center;
-          margin-bottom: 50px;
-      }
-      #bottomBox{
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          text-align: center;
-      }
 
+    #individualTruck img {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 50px;
+    }
+
+    .carousel-inner img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .carousel-inner {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    #bottomBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
 
 
     #reviewBtn {
@@ -555,9 +592,8 @@ a:link{
     }
 
     /*    INDIVIDUAL END    */
-
     /*  ADMIN START */
-    .adminCol{
+    .adminCol {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 50px;
@@ -568,11 +604,12 @@ a:link{
         align-items: center;
         text-align: center;
     }
-    #usersList button, #trucksList button, #reviewsList button{
+
+    #usersList button, #trucksList button, #reviewsList button {
         margin-bottom: 50px;
     }
-    /*  ADMIN END   */
 
+    /*  ADMIN END   */
     /*    REVIEW START  */
     #reviewTop {
         display: flex;
@@ -652,17 +689,17 @@ a:link{
     }
 
     /*    PROFILE END   */
-
     /*  FORGOT PASSWORD START   */
-    #forgotPasscenterBox{
+    #forgotPasscenterBox {
         text-align: center;
     }
-    #forgotPassFormButtons{
+
+    #forgotPassFormButtons {
         margin-top: 15px;
         margin-bottom: 15px;
     }
-    /*  FORGOT PASS END */
 
+    /*  FORGOT PASS END */
     /*    EDIT USER START   */
     #editUserForm {
         text-align: center;
@@ -759,36 +796,40 @@ a:link{
         color: blue;
     }
 
-/*      EDIT MENU START */
-   #editMenuFormMobile{
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       text-align: center;
-   }
-/*      EDIT MENU END   */
+    /*      EDIT MENU START */
+    #editMenuFormMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /*      EDIT MENU END   */
 
 }
 
 @media screen and (min-width: 426px) and (max-width: 2800px) {
     /* NAV START*/
     .mobileNav {
-    display: none;
-}
-    .mobileBreak{
+        display: none;
+    }
+
+    .mobileBreak {
         display: none;
     }
 
     .navbar img {
-    width: 125px;
-    height: 125px;
-    border: 4px solid #ffb9ad;
-    border-radius: 36px;
-}
-    .navbar{
+        width: 125px;
+        height: 125px;
+        border: 4px solid #ffb9ad;
+        border-radius: 36px;
+    }
+
+    .navbar {
         font-size: x-large;
     }
-    .navbar button{
+
+    .navbar button {
         font-size: x-large;
     }
 
@@ -804,7 +845,7 @@ a:link{
     }
 
 
-    .mapboxgl-popup{
+    .mapboxgl-popup {
         text-align: center;
     }
 
@@ -881,7 +922,8 @@ a:link{
     #carouselTruckPhotos {
         margin: 100px;
     }
-    .carousel-inner{
+
+    .carousel-inner {
         text-align: center;
     }
 
@@ -933,7 +975,8 @@ a:link{
     #reviewContent div {
         padding: 15px;
     }
-    #mapDiv{
+
+    #mapDiv {
         text-align: center;
     }
 
@@ -959,36 +1002,33 @@ a:link{
         transition: all 0.13s ease-in;
     }
 
-    #verifyTruckBtn{
+    #verifyTruckBtn {
         display: flex;
         justify-content: center;
         margin-top: 10px;
     }
-#ghost{
-    display: flex;
-    justify-content: center;
-}
-#triangulateBtn{
-    display: flex;
-    justify-content: center;
-}
-#truckDescription {
-    text-align: center;
-}
-#activateBeaconBtn{
-    display: flex;
-    justify-content: center;
-}
+
+    #ghost {
+        display: flex;
+        justify-content: center;
+    }
+
+    #triangulateBtn {
+        display: flex;
+        justify-content: center;
+    }
+
+    #truckDescription {
+        text-align: center;
+    }
+
+    #activateBeaconBtn {
+        display: flex;
+        justify-content: center;
+    }
 
     /*  INDIVIDUAL END  */
-
-
-
-
-
     /* REVIEW START   */
-
-
     #reviewTop img {
         object-fit: fill;
         height: 500px;
@@ -1003,7 +1043,7 @@ a:link{
         align-items: center;
     }
 
-    #reviewForm{
+    #reviewForm {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1011,8 +1051,6 @@ a:link{
 
     /*  REVIEW END  */
     /*  VIEW USER VIEW START  */
-
-
     /*  VIEW USER END */
     /*  EDIT USER START  */
     #editUserForm {
@@ -1027,26 +1065,26 @@ a:link{
         flex-direction: column;
         align-items: center;
     }
-#editUserBtns{
-    margin-top: 45px;
-    text-align: center;
-}
-#editUserBtns a{
-    color: white;
-}
-#editUserBtns button{
-    margin: 15px;
-}
+
+    #editUserBtns {
+        margin-top: 45px;
+        text-align: center;
+    }
+
+    #editUserBtns a {
+        color: white;
+    }
+
+    #editUserBtns button {
+        margin: 15px;
+    }
+
     .avatar {
         padding-left: 15px;
         padding-right: 15px;
     }
 
     /*  EDIT USER END    */
-
-
-
-
     /*  ABOUT VIEW START  */
     #aboutContainer {
         display: flex;
@@ -1057,8 +1095,9 @@ a:link{
         font-size: 2rem;
         padding-right: 10px;
     }
-    .icons{
-       margin-top: auto;
+
+    .icons {
+        margin-top: auto;
     }
 
     #aboutContainer p {
@@ -1086,65 +1125,63 @@ a:link{
     }
 
     /*  ABOUT END   */
-
-
     /*LOGIN PAGE START*/
-    .loginCenter{
+    .loginCenter {
         text-align: center;
     }
 
-    #loginButton{
+    #loginButton {
         margin-top: 15px;
         width: 20%;
     }
 
-    .loginFormFieldSize{
-        width:35%;
+    .loginFormFieldSize {
+        width: 35%;
     }
 
-    #loginCenterBox{
-
+    #loginCenterBox {
+        width: 50%;
+        margin: auto;
     }
 
-    #loginBottomBox{
+    #loginBottomBox {
         margin-top: 20px;
     }
+
     /*LOGIN PAGE END*/
-
-
     /*FORGOT PASSWORD PAGE START*/
-    #forgotPasscenterBox{
+    #forgotPasscenterBox {
         text-align: center;
     }
 
-    #forgotPassFormButtons{
+    #forgotPassFormButtons {
         margin-top: 15px;
     }
 
-    #forgotPasscenterBox #email{
+    #forgotPasscenterBox #email {
         width: 20%;
     }
 
-    #forgotPassClear{
+    #forgotPassClear {
         width: 67.17px;
     }
-    /*FORGOT PASSWORD PAGE END*/
 
+    /*FORGOT PASSWORD PAGE END*/
     /*400 ERROR PAGE START*/
-    #notFoundCenterBox{
+    #notFoundCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
 
-    #notFoundCenterBox p{
+    #notFoundCenterBox p {
         font-size: 80px;
         font-weight: bolder;
         margin: 20px 0px;
     }
 
-    #errLogo{
+    #errLogo {
         width: 125px;
         height: 125px;
         border: 4px solid #ffb9ad;
@@ -1152,28 +1189,27 @@ a:link{
         margin: 40px auto;
     }
 
-    #notFoundCenterBox a{
+    #notFoundCenterBox a {
         font-size: 20px;
         color: blue;
     }
+
     /*400 ERROR PAGE END*/
-
-
     /*500 ERROR PAGE START*/
-    #serverErrCenterBox{
+    #serverErrCenterBox {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
 
-    #serverErrCenterBox p{
+    #serverErrCenterBox p {
         font-size: 80px;
         font-weight: bolder;
         margin: 20px 0px;
     }
 
-    #serverErrLogo{
+    #serverErrLogo {
         width: 125px;
         height: 125px;
         border: 4px solid #ffb9ad;
@@ -1185,76 +1221,86 @@ a:link{
         font-size: 20px;
         color: blue;
     }
+
     /*500 ERROR PAGE END*/
-
-
     /*PENDING PAGE START*/
-    #pendingCenterBox{
+    #pendingCenterBox {
         text-align: center;
         margin: 40px 20px;
     }
 
-    #pendingCenterBox h4{
+    #pendingCenterBox h4 {
         margin: 20px;
     }
 
-    #pendingCenterBox a{
+    #pendingCenterBox a {
         font-size: 20px;
         color: blue;
     }
 
     /*PENDING PAGE END*/
-
-
     /*  ADMIN VIEW START  */
-    .adminCol{
+    .adminCol {
         text-align: center;
-       border: 1px solid black;
+        border: 1px solid black;
         margin: 15px;
     }
-    .adminCol h3{
-        margin-top: 35px;
-    }
-    #usersList button{
-        margin-bottom: 50px;
-    }
-    #usersList div{
-        border-top: 1px solid black;
-    }
-    #usersList dl:nth-of-type(1){
-        margin-top: 35px;
-    }
-    #trucksList button{
-        margin-bottom: 50px;
-    }
-    #trucksList div{
-        border-top: 1px solid black;
-    }
-    #trucksList dl:nth-of-type(1){
-        margin-top: 35px;
-    }
-    #reviewsList button{
-        margin-bottom: 50px;
-    }
-    #reviewsList div{
-        border-top: 1px solid black;
-    }
-    #reviewsList dl:nth-of-type(1){
-        margin-top: 35px;
-    }
-    .adminCol form{
-        margin-bottom: 35px;
-    }
-    .adminCol form{
-        margin-bottom: 35px;
-    }
-    .adminCol form{
-        margin-bottom: 35px;
-    }
-    /*  ADMIN VIEW END    */
 
+    .adminCol h3 {
+        margin-top: 35px;
+    }
+
+    #usersList button {
+        margin-bottom: 50px;
+    }
+
+    #usersList div {
+        border-top: 1px solid black;
+    }
+
+    #usersList dl:nth-of-type(1) {
+        margin-top: 35px;
+    }
+
+    #trucksList button {
+        margin-bottom: 50px;
+    }
+
+    #trucksList div {
+        border-top: 1px solid black;
+    }
+
+    #trucksList dl:nth-of-type(1) {
+        margin-top: 35px;
+    }
+
+    #reviewsList button {
+        margin-bottom: 50px;
+    }
+
+    #reviewsList div {
+        border-top: 1px solid black;
+    }
+
+    #reviewsList dl:nth-of-type(1) {
+        margin-top: 35px;
+    }
+
+    .adminCol form {
+        margin-bottom: 35px;
+    }
+
+    .adminCol form {
+        margin-bottom: 35px;
+    }
+
+    .adminCol form {
+        margin-bottom: 35px;
+    }
+
+    /*  ADMIN VIEW END    */
     /*  APPROVE VIEW START  */
-    #pendingUserForms{
+    #pendingUserForms {
         display: flex;
         border: 1px solid black;
         align-items: center;
@@ -1266,48 +1312,54 @@ a:link{
         width: 50%;
         flex-direction: column;
     }
-    #pendingUserForms label{
+
+    #pendingUserForms label {
         padding-right: 20px;
     }
-    #approvalH2{
+
+    #approvalH2 {
         text-align: center;
         margin-top: 15px;
         margin-bottom: 20px;
     }
-    #adminApproveBtn{
-        display: flex;
-        justify-content: center;
-    }
-    #rejectBtn{
-        display: flex;
-        justify-content: center;
-    }
-    /*  APPROVE END    */
 
-/*    RESET PASSWORD START  */
-    #resetPassForm{
+    #adminApproveBtn {
+        display: flex;
+        justify-content: center;
+    }
+
+    #rejectBtn {
+        display: flex;
+        justify-content: center;
+    }
+
+    /*  APPROVE END    */
+    /*    RESET PASSWORD START  */
+    #resetPassForm {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    #resetPassForm div{
+
+    #resetPassForm div {
         padding: 10px;
     }
-/*    RESET PASS END    */
 
-/*    EDIT REVIEW START */
-    #editUserReviewForm{
+    /*    RESET PASS END    */
+    /*    EDIT REVIEW START */
+    #editUserReviewForm {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    #editReviewDeleteBtn{
+
+    #editReviewDeleteBtn {
         display: flex;
         justify-content: center;
         margin-top: 25px;
     }
 
-/*    EDIT REVIEW END   */
+    /*    EDIT REVIEW END   */
 }

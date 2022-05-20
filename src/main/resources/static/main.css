@@ -4,10 +4,9 @@ body {
     padding: 0;
     background-color: white;
     font-family: 'Righteous', sans-serif;
-    cursor: url("img/Streat-2.png"),auto;
 }
 .navbar img:hover{
-    transform:scale(1.5);
+    transform:scale(1.2);
 }
 .menuCenter{
     text-align: center;

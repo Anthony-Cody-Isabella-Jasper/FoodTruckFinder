@@ -1,6 +1,7 @@
 "use strict";
 let avatarImgs = document.querySelectorAll(".avatar img");
 let avatarRadios = document.querySelectorAll(".avatar input");
+console.log(avatarRadios);
 let fetchedPictures = [];
 $.ajax({
 	url: "https://randomuser.me/api/?lego&results=" + 50, dataType: "json", cache: false, success: function (data) {

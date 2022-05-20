@@ -121,7 +121,7 @@ public class UserController {
     @PostMapping("/editUser/{id}")
     public String editUser(Model model, @ModelAttribute User user, HttpSession session) {
         User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User updatedUser = userDao.getById(user.getId());
+//        User newUser = userDao.getById(loggedUser.getId());
         String dbUser = user.getEmail();
         String dbUsername = user.getUsername();
         if (userDao.existsUserByEmail(user.getEmail()) && !dbUser.equals(loggedUser.getEmail())) {
@@ -133,10 +133,16 @@ public class UserController {
             model.addAttribute("message", "Username already exists. Please pick a different username.");
             return "/editUser";
         }
-        updatedUser.setUsername(user.getUsername());
-        updatedUser.setEmail(user.getEmail());
-        updatedUser.setProfilePicture(user.getProfilePicture());
-        userDao.save(updatedUser);
+//        newUser.setPassword(loggedUser.getPassword());
+//        newUser.setTruckOwner(loggedUser.isTruckOwner());
+//        newUser.setAdmin(loggedUser.isAdmin());
+//        newUser.setFavoriteTrucks(loggedUser.getFavoriteTrucks());
+        user.setPassword(loggedUser.getPassword());
+        user.setTruckOwner(loggedUser.isTruckOwner());
+        user.setAdmin(loggedUser.isAdmin());
+        user.setFavoriteTrucks(loggedUser.getFavoriteTrucks());
+//        userDao.save(newUser);
+        userDao.save(user);
         session.invalidate();
         return "redirect:/login";
     }
@@ -248,7 +254,7 @@ public class UserController {
 
     @PostMapping("/forgotPassword")
     public String forgotPasswordSubmission(@ModelAttribute User user) {
-        emailService.prepareAndSend(user, "Reset Password", "http://localhost:8080/resetPassword?fromEmail=" + user.getEmail());
+        emailService.prepareAndSend(user, "Reset Password", "http://streatfoods.world/resetPassword?fromEmail=" + user.getEmail());
         return "redirect:/login";
     }
 
@@ -257,7 +263,7 @@ public class UserController {
         if (userDao.existsUserByEmail(fromEmail)) {
             user.setEmail(fromEmail);
             model.addAttribute("user", user);
-            return "/resetPassword";
+            return "reset-password";
         }
         redirAttrs.addFlashAttribute("message", "You have not signed up with that email yet. Please sign up now!");
         return "redirect:/register";

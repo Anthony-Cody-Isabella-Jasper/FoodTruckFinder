@@ -17,14 +17,14 @@
 	<div>
 		<nav th:replace="partials :: notLoggedNav"></nav>
 	</div>
-	<div class="text-center">
+	<div class="text-center mb-4">
 		<h1>StreatFoods</h1>
 		<h3>Please Log In</h3>
 	</div>
 	<div th:if="${param.error}">
 		Invalid Username and Password.
 	</div>
-	<div id="loginCenterBox" class="loginCenter">
+	<div id="loginCenterBox" class="loginCenter mb-5">
 		<form th:action="@{/login}" method="post">
 			<label for="username">Username:</label>
 			<input class="loginFormFieldSize" type="text" id="username" name="username">

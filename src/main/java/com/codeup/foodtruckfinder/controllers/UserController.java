@@ -224,6 +224,7 @@ public class UserController {
     public String deleteTruck(@RequestParam Long truckId) {
         userDao.deleteTruckConfirmation(truckId);
         userDao.deleteTruckFavorite(truckId);
+        userDao.deleteTruckCuisines(truckId);
         truckDao.deleteById(truckId);
         return "redirect:/admin";
     }

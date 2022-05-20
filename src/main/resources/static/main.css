@@ -9,9 +9,6 @@ body {
     background-color: white;
     font-family: 'Righteous', sans-serif;
 }
-.navbar img:hover{
-    transform:scale(1.2);
-}
 .menuCenter{
     text-align: center;
 }

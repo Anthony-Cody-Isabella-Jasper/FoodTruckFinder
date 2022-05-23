@@ -110,14 +110,18 @@
     console.log(menuItems);
     menuItems.forEach((menuItem) => {
         let menuItemElement = document.createElement("div");
-        let menuItemHtml = "<dl><dt>Name</dt><dd>" + menuItem.name + "</dd><dt>Price</dt><dd>$" + menuItem.price.toFixed(2) + "</dd><dt>Description</dt>";
+        let menuItemHtml = "<dl><dt>Name:</dt><dd>" + menuItem.name + "</dd><dt>Price:</dt><dd>$" + menuItem.price.toFixed(2) + "</dd><dt>Description:</dt>";
         if (menuItem.vegan || menuItem.vegetarian) {
             menuItemHtml += "<dd>";
             if (menuItem.vegan) {
-                menuItemHtml += "<em class='m-2'>vegan</em>";
+                menuItemHtml += "<img\n" +
+                    "                        style=\"width: 20px; height: 20px;\"\n" +
+                    "                        src=\"https://cdn-icons-png.flaticon.com/512/3778/3778979.png\">";
             }
             if (menuItem.vegetarian) {
-                menuItemHtml += "<em class='m-2'>vegetarian</em>";
+                menuItemHtml += "<img\n" +
+                    "                        style=\"width: 20px; height: 20px;\"\n" +
+                    "                        src=\"https://cdn-icons-png.flaticon.com/512/3778/3778979.png\">";
             }
             menuItemHtml += "</dd>";
         }

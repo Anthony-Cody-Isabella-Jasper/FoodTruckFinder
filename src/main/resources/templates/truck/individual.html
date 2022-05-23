@@ -162,7 +162,7 @@
     <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
         <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-blue mb-lg-4">Write a Review!</a>
     </div>
-    <div th:each="review : ${truck.reviews}" class="card review-card mb-3">
+    <div th:each="review : ${truck.reviews}" class="card review-card">
         <div class="row">
             <div class="col-lg-4 col-sm-3 reviewImg">
                 <img th:attr="src=${review.user.profilePicture}"> <span style="color: black"

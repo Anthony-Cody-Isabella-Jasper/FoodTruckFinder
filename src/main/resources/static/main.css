@@ -15,7 +15,6 @@
     background-color: black;
 }
 
-
 body {
     background-color: white;
     font-family: 'Righteous', sans-serif;
@@ -269,11 +268,7 @@ a:link {
 }
 
 #profileTop img {
-    margin-right: 15px;
     border: 2px solid black;
-}
-
-#profileTop img {
     width: 150px;
     height: 150px;
 }
@@ -318,6 +313,7 @@ a:link {
     align-items: center;
     text-align: center;
     width: 50%;
+    margin-bottom: 100px;
 }
 
 /*  PROFILE END */
@@ -429,7 +425,7 @@ a:link {
         background-color: #FF8210;
         bottom: 0;
         width: 100%;
-        margin-top: 25px;
+        margin-top: auto;
         display: flex;
     }
 
@@ -455,9 +451,6 @@ a:link {
         background-color: initial;
     }
 
-
-
-
     /*  ABOUT PAGE START    */
     #aboutContainer {
         display: flex;
@@ -465,6 +458,7 @@ a:link {
         justify-content: center;
         align-items: center;
         text-align: center;
+        margin-bottom: 100px;
     }
 
     #aboutContainer h3 {
@@ -795,7 +789,7 @@ a:link {
 
     #profileReviews{
         width: 84%;
-        margin: auto;
+        margin: auto auto 100px;
     }
 
 
@@ -852,6 +846,22 @@ a:link {
 
 
     /*    EDIT USER END     */
+    /*    EDIT REVIEW START */
+    #editUserReviewForm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #editReviewDeleteBtn {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        margin-bottom: 100px;
+    }
+
+    /*    EDIT REVIEW END   */
     /*    RESET PASSWORD START  */
     #resetPassForm {
         display: flex;
@@ -1010,7 +1020,7 @@ a:link {
         background-color: #FF8210;
         bottom: 0;
         width: 100%;
-        margin-top: 100px;
+        margin-top: auto;
 
         display: flex;
         align-items: center;
@@ -1096,7 +1106,7 @@ a:link {
     }
     .review-card{
         width: 60%;
-        margin: auto;
+        margin: auto auto 100px;
     }
 
 
@@ -1228,6 +1238,7 @@ a:link {
     #aboutContainer {
         display: flex;
         align-items: flex-start;
+        margin-bottom: 100px;
     }
 
     #aboutContainer a {
@@ -1497,6 +1508,7 @@ a:link {
         display: flex;
         justify-content: center;
         margin-top: 25px;
+        margin-bottom: 100px;
     }
 
     /*    EDIT REVIEW END   */

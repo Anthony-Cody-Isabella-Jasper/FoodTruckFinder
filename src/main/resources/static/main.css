@@ -1310,8 +1310,8 @@ footer {
     /*500 ERROR PAGE END*/
     /*PENDING PAGE START*/
     #pendingCenterBox {
+        margin-bottom: auto;
         text-align: center;
-        margin: 40px 20px;
     }
 
     #pendingCenterBox h4 {

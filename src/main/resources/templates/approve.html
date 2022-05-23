@@ -26,7 +26,7 @@
 				<input type="hidden" name="password" th:value="${pendingUser.getPassword()}">
 				<input type="hidden" name="pendingId" th:value="${pendingUser.getId()}">
 				<div id="adminApproveBtn">
-				<button class="btn btn-primary mb-3" type="submit">Approve</button>
+				<button class="btn btn-blue mb-3" type="submit">Approve</button>
 				</div>
 			</form>
 			<form id="rejectBtn" th:action="@{/reject}" method="post">

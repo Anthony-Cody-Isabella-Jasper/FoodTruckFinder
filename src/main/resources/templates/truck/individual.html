@@ -100,7 +100,7 @@
                     <form th:action="@{/addFavorite}" th:method="post">
                         <input hidden th:value="${truck.getId()}" name="truckId">
                         <input hidden th:value="${#authentication.principal.getId()}" name="id">
-                        <button class="btn btn-success" type="submit">Add to Favorites</button>
+                        <button class="btn btn-green" type="submit">Add to Favorites</button>
                     </form>
                 </div>
             </div>

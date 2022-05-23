@@ -69,6 +69,10 @@ body {
     background-color: #FEC741;
 }
 
+.btn-danger {
+    color: black;
+}
+
 .card {
     background-color: #cf6a4e;
     color: white;
@@ -441,7 +445,7 @@ a:link {
         background-color: #FF8210;
         bottom: 0;
         width: 100%;
-        margin-top: auto;
+        margin-top: 100px;
         display: flex;
     }
 
@@ -1001,7 +1005,7 @@ a:link {
         background-color: #FF8210;
         bottom: 0;
         width: 100%;
-        margin-top: auto;
+        margin-top: 100px;
 
         display: flex;
         align-items: center;
@@ -1154,6 +1158,7 @@ a:link {
 
     #reviewBottom form {
         margin-top: 50px;
+        margin-bottom: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;

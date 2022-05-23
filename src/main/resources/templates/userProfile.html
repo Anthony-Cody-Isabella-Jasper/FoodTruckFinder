@@ -71,7 +71,7 @@
         <h3>Your Reviews</h3>
     </div>
     <div class="row reviewRow">
-        <div id="profileReviews" class="card col-lg-12 col-sm-12 col-md-12 mb-4" th:each="review : ${user.reviews}">
+        <div id="profileReviews" class="card col-lg-12 col-sm-12 col-md-12" th:each="review : ${user.reviews}">
             <p id="profileReviewName">Truck name: <span th:text="${review.truck.name}"></span></p>
             <p>Rating:
                 <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>

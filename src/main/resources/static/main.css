@@ -109,31 +109,31 @@ a:link {
 /*BODY END*/
 
 /*FOOTER START*/
-footer {
-    background-color: #FF8210;
-    bottom: 0;
-    width: 100%;
-    margin-top: auto;
-}
+/*footer {*/
+/*    background-color: #FF8210;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    margin-top: auto;*/
+/*}*/
 
-#footer-center {
-    width: 33%;
-    font-size: 13.5px;
-    text-align: center;
-    line-height: 1.5;
-}
+/*#footer-center {*/
+/*    width: 33%;*/
+/*    font-size: 13.5px;*/
+/*    text-align: center;*/
+/*    line-height: 1.5;*/
+/*}*/
 
-#footer-left {
-    list-style: none;
-    margin-right: 10px;
-    text-align: center;
-    width: 33%;
-}
+/*#footer-left {*/
+/*    list-style: none;*/
+/*    margin-right: 10px;*/
+/*    text-align: center;*/
+/*    width: 33%;*/
+/*}*/
 
-#footer-right {
-    width: 33%;
-    text-align: center;
-}
+/*#footer-right {*/
+/*    width: 33%;*/
+/*    text-align: center;*/
+/*}*/
 
 /*FOOTER END*/
 
@@ -393,6 +393,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 35px;
+    margin-bottom: 35px;
 }
 .profReviewText{
     width: 70%;
@@ -421,7 +422,6 @@ footer {
         width: 100%;
         margin-top: auto;
         display: flex;
-        justify-content: space-evenly;
     }
 
     #footer-center {
@@ -432,11 +432,11 @@ footer {
         list-style: none;
         margin-right: 10px;
         text-align: center;
-        width: 33%;
+        width: 100%;
     }
 
     #footer-right {
-        width: 33%;
+        width: 100%;
         text-align: center;
     }
 
@@ -973,10 +973,33 @@ footer {
     /* SEARCH END*/
     /*  FOOTER START    */
     footer {
+        background-color: #FF8210;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 25px;
+    }
+
+    #footer-center {
+        width: 33%;
+        font-size: 13.5px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    #footer-left {
+        list-style: none;
+        margin-right: 10px;
+        text-align: center;
+        width: 33%;
+    }
+
+    #footer-right {
+        width: 33%;
+        text-align: center;
     }
 
     /*  FOOTER END  */

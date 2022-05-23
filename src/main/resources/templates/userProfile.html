@@ -43,9 +43,9 @@
 			<h3>Your Favorites</h3>
 		</div>
 		<div class="row">
-			<div class="userFavorites col-lg-4 mx-auto col-md-12 col-sm-12" th:each="favorite : ${favorites}">
-				<img th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
-				<a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><p th:text="${favorite.name}"></p></a>
+			<div class="card userFavorites col-lg-4 mx-auto col-md-12 col-sm-12" th:each="favorite : ${favorites}">
+				<img class="pt-3" th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
+				<a th:href="@{/truck/{id}/show(id=${favorite.getId()})}"><h5 th:text="${favorite.name}"></h5></a>
 				<p th:text="${favorite.phone}"></p>
 				<form th:action="@{/deleteFavorite}" th:method="post">
 					<input hidden th:value="${favorite.getId()}" name="truckId">
@@ -60,8 +60,7 @@
 			<h3>Your Reviews</h3>
 		</div>
 		<div class="row">
-			<div class="usersReviews mx-auto col-lg-6 col-md-12 col-sm-12" th:each="review : ${user.reviews}">
-				<div id="profileReviews">
+			<div id="profileReviews" class="card mx-auto col-lg-6 col-sm-12 col-md-12" th:each="review : ${user.reviews}">
 					<p>Truck name: <span th:text="${review.truck.name}"></span></p>
 					<p>Rating:
 						<span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -73,7 +72,6 @@
 					<a th:href="@{/editReview/{id}(id=${review.id})}">
 						<button class="btn btn-blue" type="button">Edit Review</button>
 					</a>
-				</div>
 			</div>
 		</div>
 	</div>

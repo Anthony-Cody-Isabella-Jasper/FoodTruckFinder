@@ -170,17 +170,6 @@
     <hr>
 
 
-    <!--			<div  class="truck-reviews" id="reviewContent">-->
-    <!--				<div id="reviewLeft">-->
-    <!--					<img th:attr="src=${review.user.profilePicture}"> <span th:text="${review.user.username}"></span>-->
-    <!--				</div>-->
-    <!--				<div>-->
-    <!--					<p>"<span th:text="${review.reviewText}"></span>"</p>-->
-    <!--					<p>Rating:-->
-    <!--						<span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>-->
-    <!--					</p>-->
-    <!--				</div>-->
-    <!--			</div>-->
     <div id="reviewItems">
         <h3>Reviews</h3>
         <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">

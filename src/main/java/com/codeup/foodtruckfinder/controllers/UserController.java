@@ -306,6 +306,7 @@ public class UserController {
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
         newTruck.setName("My Truck");
+        newTruck.setProfile_picture("/img/placeholder-truck-image.png");
         newTruck.setDescription("");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);

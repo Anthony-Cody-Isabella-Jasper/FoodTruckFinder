@@ -12,6 +12,24 @@ body {
     padding: 0 0 14.5rem;
 }
 
+#reviewBtn{
+    text-align: center;
+    margin-bottom: 25px;
+}
+#reviewItems h3{
+    text-align: center;
+}
+.reviewImg{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+#reviewTop img{
+    border: 3px solid black;
+}
+
 
 .menuCenter {
     text-align: center;
@@ -294,9 +312,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin: auto;
     text-align: center;
 }
 
@@ -370,7 +385,18 @@ footer {
     justify-content: center;
     margin-top: 35px;
 }
-
+.profReviewText{
+    width: 70%;
+}
+.userFavorites img{
+    border: 3px solid black;
+}
+#editReviewBtn{
+    margin-bottom: 10px;
+}
+#profileReviewName{
+    margin-top: 10px;
+}
 /*  REGISTER END    */
 
 
@@ -597,17 +623,6 @@ footer {
     }
 
 
-    #reviewBtn {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 25px;
-    }
-
-    #reviewItems {
-        display: flex;
-        flex-direction: column;
-    }
-
     #reviewLeft img {
         width: 75px;
         height: 75px;
@@ -630,6 +645,10 @@ footer {
         align-items: center;
         margin-right: 15px;
         margin-bottom: 25px;
+    }
+
+    .reviewImg {
+        padding-top: 10px;
     }
 
     #activateBeaconBtn {
@@ -708,6 +727,12 @@ footer {
     #profileBottom h3 {
         margin: 15px;
     }
+
+    #profileReviews{
+        width: 84%;
+        margin: auto;
+    }
+
 
 
     /*    PROFILE END   */
@@ -828,6 +853,9 @@ footer {
     #pendingCenterBox a {
         font-size: 20px;
         color: blue;
+    }
+    .favoritesCard{
+        width: 90%;
     }
 
 }
@@ -956,9 +984,7 @@ footer {
         align-items: center;
     }
 
-    #reviewItems {
-        text-align: center;
-    }
+
 
     #individualTruckImg{
        height: 400px;
@@ -969,6 +995,10 @@ footer {
         height: 75px;
             border: 1px solid;
             border-radius: 50%;
+    }
+    .review-card{
+        width: 60%;
+        margin: auto;
     }
 
 
@@ -1371,4 +1401,13 @@ footer {
     }
 
     /*    EDIT REVIEW END   */
+
+    .reviewRow{
+    width: 70%;
+        margin: auto;
+    }
+
+    .favoritesCard {
+        justify-content: space-evenly;
+    }
 }

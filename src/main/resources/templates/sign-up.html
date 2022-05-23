@@ -19,6 +19,10 @@
     <nav th:replace="partials :: notLoggedNav"></nav>
 </div>
 <div class="container-fluid">
+    <div class="text-center mb-4">
+        <h1>StreatFoods</h1>
+        <h3>Register your account</h3>
+    </div>
     <div id="registerForm">
         <form th:action="@{/register}" method="post" th:object="${user}">
             <label for="username">Username:</label>

@@ -62,7 +62,7 @@
             </div>
         </div>
         <div id="editTruckButton">
-            <button class="btn btn-success" type="submit">Submit Cuisines</button>
+            <button class="btn btn-green" type="submit">Submit Cuisines</button>
         </div>
     </form>
     <hr>
@@ -90,7 +90,7 @@
 </div>
         <br>
         <div id="editTruckFormBtn">
-            <button class="btn btn-success" type="submit">Submit Changes</button>
+            <button class="btn btn-green" type="submit">Submit Changes</button>
         </div>
     </form>
 <hr>
@@ -103,7 +103,7 @@
         <input type="hidden" th:field="*{email}">
 
         <label>Change Password: <input type="password" th:field="*{password}" required placeholder="new password"></label>
-        <button type="submit" class="btn btn-primary">Change Password</button>
+        <button type="submit" class="btn btn-blue">Change Password</button>
     </form>
     <hr>
     <br>
@@ -131,7 +131,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <form th:object="${truck}" method="post" th:action="@{/truck/deleteTruckAccount}">
                     <input type="hidden" th:value="${truck.id}" name="truckId">
-                    <button class="btn btn-primary" type="submit">DELETE ACCOUNT</button>
+                    <button class="btn btn-blue" type="submit">DELETE ACCOUNT</button>
                 </form>
             </div>
         </div>

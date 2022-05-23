@@ -55,7 +55,7 @@
             </label>?</span>
         </div>
         <div id="editMenuFormBtn">
-            <button class="btn btn-success" type="submit">Add Item</button>
+            <button class="btn btn-green" type="submit">Add Item</button>
         </div>
     </form>
     <div>
@@ -81,7 +81,7 @@
                     <label><input type="checkbox" name="menuItemVegetarian" id="menuItemVegetarian"> Vegetarian</label>
                     <input type="hidden" name="menuItemId" id="menuItemId">
                 </div>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-blue">Save Changes</button>
             </form>
             <form th:action="@{/truck/{id}/deleteMenuItem(id=${user.getTruck().getId()})}" method="post" class="text-center m-2">
                 <input id="deleteMenuItemId" type="hidden" name="menuItemId">
@@ -125,7 +125,7 @@
         menuItemElement.innerHTML = menuItemHtml;
         let editButton = document.createElement("button");
         editButton.setAttribute("type", "button");
-        editButton.setAttribute("class", "btn btn-primary");
+        editButton.setAttribute("class", "btn btn-blue");
         editButton.setAttribute("data-toggle", "modal");
         editButton.setAttribute("data-target", "#editModal");
         editButton.innerText = "Edit Item";

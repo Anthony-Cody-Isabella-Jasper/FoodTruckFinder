@@ -203,9 +203,18 @@ public class UserController {
 
     @PostMapping("/deleteUser")
     public String deleteUser(@RequestParam Long userId, HttpSession httpSession) {
+        User userToDelete = userDao.getById(userId);
         userDao.deleteUserConfirmation(userId);
         userDao.deleteUserFavorite(userId);
-        userDao.deleteById(userId);
+        if (userToDelete.isTruckOwner()) {
+            long userTruckId = userToDelete.getTruck().getId();
+            userDao.deleteTruckConfirmation(userTruckId);
+            userDao.deleteTruckFavorite(userTruckId);
+            userDao.deleteTruckCuisines(userTruckId);
+            truckDao.deleteById(userTruckId);
+        } else {
+            userDao.deleteById(userId);
+        }
         if (userId == ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()) {
             httpSession.invalidate();
             return "redirect:/";

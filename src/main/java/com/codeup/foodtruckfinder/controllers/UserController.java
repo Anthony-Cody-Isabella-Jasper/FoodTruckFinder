@@ -1,9 +1,6 @@
 package com.codeup.foodtruckfinder.controllers;
 
-import com.codeup.foodtruckfinder.models.Review;
-import com.codeup.foodtruckfinder.models.Truck;
-import com.codeup.foodtruckfinder.models.PendingTruck;
-import com.codeup.foodtruckfinder.models.User;
+import com.codeup.foodtruckfinder.models.*;
 import com.codeup.foodtruckfinder.repositories.PendingTruckRepository;
 import com.codeup.foodtruckfinder.repositories.ReviewRepository;
 import com.codeup.foodtruckfinder.repositories.TruckRepository;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -305,8 +303,14 @@ public class UserController {
         }
         User newUser = new User(username, password, email, true, "");
         Truck newTruck = new Truck();
+
+        TruckPicture stockPhoto = new TruckPicture("/img/placeholder-truck-image.png", newTruck);
+        List<TruckPicture> stockPhotoList = new ArrayList<>();
+        stockPhotoList.add(stockPhoto);
+
         newTruck.setName("My Truck");
         newTruck.setProfile_picture("/img/placeholder-truck-image.png");
+        newTruck.setTruckPictures(stockPhotoList);
         newTruck.setDescription("");
         newUser.setTruck(newTruck);
         newTruck.setTruck_owner(newUser);

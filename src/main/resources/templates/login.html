@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>StreatFoods</title>
+	<title>Logging in...</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
@@ -21,8 +21,8 @@
 		<h1>StreatFoods</h1>
 		<h3>Please Log In</h3>
 	</div>
-	<div th:if="${param.error}">
-		Invalid Username and Password.
+	<div style="text-align: center" th:if="${param.error}">
+		* Invalid Username or Password *
 	</div>
 	<div id="loginCenterBox" class="loginCenter mb-5">
 		<form th:action="@{/login}" method="post">

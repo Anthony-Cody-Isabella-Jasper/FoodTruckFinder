@@ -103,9 +103,7 @@ a:link {
     border: 5px solid darkred;
 }
 
-#allTrucks {
-    margin: auto;
-}
+
 
 #individualTruckDescrip {
     text-align: center;
@@ -124,34 +122,6 @@ a:link {
 
 /*BODY END*/
 
-/*FOOTER START*/
-/*footer {*/
-/*    background-color: #FF8210;*/
-/*    bottom: 0;*/
-/*    width: 100%;*/
-/*    margin-top: auto;*/
-/*}*/
-
-/*#footer-center {*/
-/*    width: 33%;*/
-/*    font-size: 13.5px;*/
-/*    text-align: center;*/
-/*    line-height: 1.5;*/
-/*}*/
-
-/*#footer-left {*/
-/*    list-style: none;*/
-/*    margin-right: 10px;*/
-/*    text-align: center;*/
-/*    width: 33%;*/
-/*}*/
-
-/*#footer-right {*/
-/*    width: 33%;*/
-/*    text-align: center;*/
-/*}*/
-
-/*FOOTER END*/
 
 /*  NAVBAR START    */
 .navbar {
@@ -427,6 +397,10 @@ a:link {
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
+    #allTrucks{
+        margin-left: 2px;
+        margin-right: 2px;
+    }
     .desktopNav {
         display: none;
     }
@@ -976,7 +950,7 @@ a:link {
     /*NAV END*/
     /* MAP START*/
     #map {
-        width: 98%;
+        width: 97%;
         height: 400px;
         margin-left: auto;
         margin-right: auto;
@@ -1528,5 +1502,9 @@ a:link {
     #menuList{
         margin: auto;
         width: 60%;
+    }
+    #allTrucks{
+        margin-right: 5px;
+        margin-left: 5px;
     }
 }

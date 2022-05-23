@@ -77,7 +77,7 @@
 						</dd>
 						<dt>Average Rating</dt>
 						<dd>
-							<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+							<span class="m-2"><span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 							<em>(<span th:text="${truck.getReviews().size()}"></span> reviews)</em></span>
 							<br>
 						</dd>

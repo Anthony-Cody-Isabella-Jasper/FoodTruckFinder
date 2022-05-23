@@ -4,16 +4,20 @@ insert into users (admin, email, password, profile_picture, truck_owner, usernam
 insert into users (admin, email, password, profile_picture, truck_owner, username) values (false, 'email2@email.com', 'pass', 'https://cdn5.vectorstock.com/i/1000x1000/72/74/female-avatar-profile-icon-round-woman-face-vector-18307274.jpg', false, 'User2');
 insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email3@email.com', 'pass', 'https://i.pinimg.com/564x/a6/58/32/a65832155622ac173337874f02b218fb--people-icon-avatar.jpg', false, 'User3');
 insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email4@email.com', 'pass', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMx1itTXTXLB8p4ALTTL8mUPa9TFN_m9h5VQ&usqp=CAU', false, 'User4');
-insert into users (admin, email, password, profile_picture, truck_owner, username, truck_id) VALUES (false, 'email5@email.com', 'pass', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmE--NjTTosid1jFeMFdc12EVQtKi7XPRMYqeHI0_4jJlqBanUiyQ-KrqN5tsdK_MO0j8&usqp=CAU', true, 'User5', 1);
-insert into users (admin, email, password, profile_picture, truck_owner, username, truck_id) VALUES (false, 'email6@email.com', 'pass', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv3v8eT0Vp-0n3xYiISR6P-5Q1GZ0zoKHUQbXd-66yiWE2W4mmpO5LQfk0tUnpAvo54KU&usqp=CAU', true, 'User6', 2);
-insert into users (admin, email, password, profile_picture, truck_owner, username, truck_id) VALUES (false, 'email7@email.com', 'pass', 'https://thumbs.dreamstime.com/b/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-46846330.jpg', true, 'User7', 3);
-insert into users (admin, email, password, profile_picture, truck_owner, username, truck_id) VALUES (false, 'email8@email.com', 'pass', 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg', true, 'User8', 4);
+insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email5@email.com', 'pass', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmE--NjTTosid1jFeMFdc12EVQtKi7XPRMYqeHI0_4jJlqBanUiyQ-KrqN5tsdK_MO0j8&usqp=CAU', true, 'User5');
+insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email6@email.com', 'pass', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv3v8eT0Vp-0n3xYiISR6P-5Q1GZ0zoKHUQbXd-66yiWE2W4mmpO5LQfk0tUnpAvo54KU&usqp=CAU', true, 'User6');
+insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email7@email.com', 'pass', 'https://thumbs.dreamstime.com/b/profile-icon-male-avatar-portrait-casual-person-silhouette-face-flat-design-vector-46846330.jpg', true, 'User7');
+insert into users (admin, email, password, profile_picture, truck_owner, username) VALUES (false, 'email8@email.com', 'pass', 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg', true, 'User8');
 
 insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('new food truck on the block', 30, -98 ,'FoodyTruck', '789-543-5432', 'https://smallbiztrends.com/ezoimgfmt/media.smallbiztrends.com/2022/02/food-truck-finder-850x476.png?ezimgfmt=ng%3Awebp%2Fngcb12%2Frs%3Adevice%2Frscb12-1', 5);
 insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('We have food here?', 31, -97 ,'TruckWfoods', '125-475-4758', 'https://www.thebalancesmb.com/thmb/IRZI2gmNsYFTTPCH774ohMD4uJE=/2088x1436/filters:fill(auto,1)/food-truck-in-the-street-496731672-863bfb69328341c1804fec18e39be715.jpg', 6);
 insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('Lets eat!', 32, -99 ,'GoneCookin', '364-475-8412', 'https://d1m6300l53o0vp.cloudfront.net/wp-content/uploads/2019/11/NicoleMlakar_SAM_FoodTrucks_072413_069.jpg', 7);
 insert into trucks (description, latitude, longitude, name, phone, profile_picture, truck_owner_id) values ('BBQ 4 dayz', 30, -101 ,'HereWeeeGo', '978-854-3791', 'https://cloudfront-us-east-1.images.arcpublishing.com/gray/KE63ZKXDSJDC7KRYIUO6KWN7GY.jpg', 8);
 
+UPDATE users SET truck_id = 1 WHERE id = 5;
+UPDATE users SET truck_id = 2 WHERE id = 6;
+UPDATE users SET truck_id = 3 WHERE id = 7;
+UPDATE users SET truck_id = 4 WHERE id = 8;
 
 insert into truck_pictures (picture, truck_id) VALUES ('https://mobile-cuisine.com/wp-content/uploads/2012/12/Good-Dog-Houston-Menu-e1575380234864.jpg', 1);
 insert into truck_pictures (picture, truck_id) VALUES ('https://media.smallbiztrends.com/2022/01/food-truck-ideas.png', 1);

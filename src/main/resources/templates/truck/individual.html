@@ -70,9 +70,9 @@
 
 
 <div class="card col-lg-12 col-sm-12 mb-3 individualCard m-auto" style="max-width: 1000px;">
-        <div>
+
             <img id="individualTruckImg" style="border: 2px solid black" th:attr="src=${truck.profile_picture}">
-        </div>
+
         <div class="col-md-6">
             <div class="card-body">
 
@@ -100,7 +100,7 @@
                     <form th:action="@{/addFavorite}" th:method="post">
                         <input hidden th:value="${truck.getId()}" name="truckId">
                         <input hidden th:value="${#authentication.principal.getId()}" name="id">
-                        <button class="btn btn-success" type="submit">Add to Favorites</button>
+                        <button class="btn btn-green" type="submit">Add to Favorites</button>
                     </form>
                 </div>
             </div>
@@ -136,7 +136,7 @@
             <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Description</th>
+                <th class="menuNoneMobile" scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th class="menuCenter" scope="col">Vegan/Vegetarian</th>
             </tr>
@@ -144,7 +144,7 @@
             <tbody th:each="menu : ${truck.menu}" class="menu-items">
             <tr>
                 <td th:text="${menu.name}"></td>
-                <td th:text="${menu.description}"></td>
+                <td class="menuNoneMobile" th:text="${menu.description}"></td>
                 <td th:text="${menu.price}"></td>
                 <td class="menuCenter"><span th:if="${menu.vegetarian || menu.vegan}"><img
                         style="width: 20px; height: 20px;"

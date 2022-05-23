@@ -4,6 +4,18 @@
     cursor: url("/img/Streat-2.png"), auto;
 }
 
+.card-img-top{
+    border: 3px solid black;
+}
+
+.carousel-control-next-icon{
+    background-color: black;
+}
+.carousel-control-prev-icon{
+    background-color: black;
+}
+
+
 body {
     background-color: white;
     font-family: 'Righteous', sans-serif;
@@ -55,6 +67,10 @@ body {
 
 .btn-yellow {
     background-color: #FEC741;
+}
+
+.btn-danger {
+    color: black;
 }
 
 .card {
@@ -109,31 +125,31 @@ a:link {
 /*BODY END*/
 
 /*FOOTER START*/
-footer {
-    background-color: #FF8210;
-    bottom: 0;
-    width: 100%;
-    margin-top: auto;
-}
+/*footer {*/
+/*    background-color: #FF8210;*/
+/*    bottom: 0;*/
+/*    width: 100%;*/
+/*    margin-top: auto;*/
+/*}*/
 
-#footer-center {
-    width: 33%;
-    font-size: 13.5px;
-    text-align: center;
-    line-height: 1.5;
-}
+/*#footer-center {*/
+/*    width: 33%;*/
+/*    font-size: 13.5px;*/
+/*    text-align: center;*/
+/*    line-height: 1.5;*/
+/*}*/
 
-#footer-left {
-    list-style: none;
-    margin-right: 10px;
-    text-align: center;
-    width: 33%;
-}
+/*#footer-left {*/
+/*    list-style: none;*/
+/*    margin-right: 10px;*/
+/*    text-align: center;*/
+/*    width: 33%;*/
+/*}*/
 
-#footer-right {
-    width: 33%;
-    text-align: center;
-}
+/*#footer-right {*/
+/*    width: 33%;*/
+/*    text-align: center;*/
+/*}*/
 
 /*FOOTER END*/
 
@@ -393,6 +409,7 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 35px;
+    margin-bottom: 35px;
 }
 .profReviewText{
     width: 70%;
@@ -413,7 +430,16 @@ footer {
     .desktopNav {
         display: none;
     }
+    .menuNoneMobile{
+        display: none;
+    }
 
+    .card-img-top {
+        border: 3px solid black;
+        height: 275px;
+        max-width: 375px;
+        margin: 10px auto;
+    }
 
     footer {
         background-color: #FF8210;
@@ -421,7 +447,6 @@ footer {
         width: 100%;
         margin-top: 25px;
         display: flex;
-        justify-content: space-evenly;
     }
 
     #footer-center {
@@ -432,11 +457,11 @@ footer {
         list-style: none;
         margin-right: 10px;
         text-align: center;
-        width: 33%;
+        width: 100%;
     }
 
     #footer-right {
-        width: 33%;
+        width: 100%;
         text-align: center;
     }
 
@@ -640,7 +665,7 @@ footer {
     }
 
     .carousel-inner img {
-        width: 300px;
+        width: 400px;
         height: 300px;
     }
 
@@ -734,6 +759,7 @@ footer {
     #individualTruckImg{
         height: 300px;
         width: 300px;
+        margin-top: 15px;
     }
     .reviewImg img{
         width: 75px;
@@ -966,6 +992,9 @@ footer {
     /*TRUCK CARDS START*/
     .card img {
         height: 350px;
+        max-width: 400px;
+        object-fit: fill;
+        margin: 10px auto;
     }
 
     /*CARDS END*/
@@ -994,10 +1023,33 @@ footer {
     /* SEARCH END*/
     /*  FOOTER START    */
     footer {
+        background-color: #FF8210;
+        bottom: 0;
+        width: 100%;
+        margin-top: 100px;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 25px;
+    }
+
+    #footer-center {
+        width: 33%;
+        font-size: 13.5px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    #footer-left {
+        list-style: none;
+        margin-right: 10px;
+        text-align: center;
+        width: 33%;
+    }
+
+    #footer-right {
+        width: 33%;
+        text-align: center;
     }
 
     /*  FOOTER END  */
@@ -1072,6 +1124,7 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
         border-top-left-radius: 37px 140px;
         border-top-right-radius: 23px 130px;
         border-bottom-left-radius: 110px 19px;
@@ -1080,7 +1133,7 @@ footer {
         position: relative;
         border: solid 3px #6e7491;
         padding: 40px 60px;
-        max-width: 800px;
+        max-width: 968px;
         width: 70%;
         margin: 25px auto 50px;
         font-size: 17px;
@@ -1125,6 +1178,7 @@ footer {
 
     #reviewBottom form {
         margin-top: 50px;
+        margin-bottom: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1470,5 +1524,9 @@ footer {
 
     .favoritesCard {
         justify-content: space-evenly;
+    }
+    #menuList{
+        margin: auto;
+        width: 60%;
     }
 }

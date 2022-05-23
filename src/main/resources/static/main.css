@@ -445,7 +445,7 @@ a:link {
         background-color: #FF8210;
         bottom: 0;
         width: 100%;
-        margin-top: 100px;
+        margin-top: 25px;
         display: flex;
     }
 
@@ -735,6 +735,27 @@ a:link {
 
     /*  ADMIN END   */
     /*    REVIEW START  */
+
+    #reviewBottom form {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #reviewForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #reviewTop img {
+        object-fit: fill;
+        width: 400px;
+        height: 300px;
+        margin-top: 25px;
+    }
+
     #individualTruckImg{
         height: 300px;
         width: 300px;
@@ -1151,7 +1172,6 @@ a:link {
     /* REVIEW START   */
     #reviewTop img {
         object-fit: fill;
-        height: 500px;
         width: 500px;
         margin-top: 25px;
     }

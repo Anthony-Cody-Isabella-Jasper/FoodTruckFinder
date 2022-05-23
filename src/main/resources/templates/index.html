@@ -64,7 +64,7 @@
 	<div id="allTrucks" class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12 truckDiv" th:each="truck : ${trucks}">
 			<div class="card mb-5">
-				<img th:attr="src=${truck.profile_picture}" class="card-img-top px-3 py-3" alt="...">
+				<img th:attr="src=${truck.profile_picture}" class="card-img-top" alt="...">
 				<div class="card-body">
 					<a th:href="@{/truck/{id}/show(id=${truck.id})}"><h5 class="truck-name">
 						<span th:text="${truck.name}"></span></h5></a>

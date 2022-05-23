@@ -13,6 +13,14 @@ body {
     flex-direction: column;
 }
 
+.individualCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 #reviewBtn{
     text-align: center;
     margin-bottom: 25px;
@@ -406,14 +414,39 @@ footer {
         display: none;
     }
 
+
+    footer {
+        background-color: #FF8210;
+        bottom: 0;
+        width: 100%;
+        margin-top: auto;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #footer-center {
+        display: none;
+    }
+
+    #footer-left {
+        list-style: none;
+        margin-right: 10px;
+        text-align: center;
+        width: 33%;
+    }
+
+    #footer-right {
+        width: 33%;
+        text-align: center;
+    }
+
+
+
     .aBackground{
         background-color: initial;
     }
 
-    footer {
-        display: flex;
-        justify-content: center;
-    }
+
 
 
     /*  ABOUT PAGE START    */
@@ -857,6 +890,13 @@ footer {
     }
     .favoritesCard{
         width: 90%;
+    }
+    .individualCard{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
 }

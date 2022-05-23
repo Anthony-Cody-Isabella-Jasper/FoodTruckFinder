@@ -71,56 +71,44 @@
 
 <div class="card mb-3 m-auto" style="max-width: 1000px;">
     <div class="row no-gutters">
-        <div class="col-md-6 mt-4 mb-4" >
+        <div class="col-md-6 mt-4 mb-4">
             <img id="individualTruckImg" style="border: 2px solid black" th:attr="src=${truck.profile_picture}">
         </div>
         <div class="col-md-6">
             <div class="card-body">
 
-                    <h3 class="card-title" th:text="${truck.name}"></h3>
-                    <br>
-                    <dl>
-                        <dt>Truck's Listed Cuisines:</dt>
-                        <dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
-                        <dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
-                    </dl>
-                    <hr style="width: 50%">
-                    <p>Phone Number: <span th:text="${truck.phone}"></span></p>
-                    <br>
-                    <div id="truckDescription">
-                        <p>Description: <span th:text="${truck.description}"></span></p>
-                    </div>
-                    <br>
-                    <p id="reviewText">Average Rating:
-                        <span class="m-2"><span
-                                th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>
-                        <br>
-                        (<em><span th:text="${truck.getReviews().size()}"></span> reviews</em>)
-                    </p>
-                    <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
-                        <form th:action="@{/addFavorite}" th:method="post">
-                            <input hidden th:value="${truck.getId()}" name="truckId">
-                            <input hidden th:value="${#authentication.principal.getId()}" name="id">
-                            <button class="btn btn-success" type="submit">Add to Favorites</button>
-                        </form>
-                    </div>
+                <h3 class="card-title" th:text="${truck.name}"></h3>
+                <br>
+                <dl>
+                    <dt>Truck's Listed Cuisines:</dt>
+                    <dd><em th:if="${truck.cuisines.size() == 0}" class="m-2">unknown</em></dd>
+                    <dd><em th:each="cuisine : ${truck.cuisines}" th:text="${cuisine.name}" class="m-2"></em></dd>
+                </dl>
+                <hr style="width: 50%">
+                <p>Phone Number: <span th:text="${truck.phone}"></span></p>
+                <br>
+                <div id="truckDescription">
+                    <p>Description: <span th:text="${truck.description}"></span></p>
                 </div>
+                <br>
+                <p id="reviewText">Average Rating:
+                    <span class="m-2"><span
+                            th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${truck.averageRatingPercent()} + '%, rgba(0,0,0,1)' + ${truck.averageRatingPercent()} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>
+                    <br>
+                    (<em><span th:text="${truck.getReviews().size()}"></span> reviews</em>)
+                </p>
+                <div sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
+                    <form th:action="@{/addFavorite}" th:method="post">
+                        <input hidden th:value="${truck.getId()}" name="truckId">
+                        <input hidden th:value="${#authentication.principal.getId()}" name="id">
+                        <button class="btn btn-success" type="submit">Add to Favorites</button>
+                    </form>
+                </div>
+            </div>
 
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <hr>
 <div>
@@ -167,41 +155,32 @@
             </tbody>
         </table>
     </div>
-    <hr>
+</div>
+<hr>
 
 
-    <!--			<div  class="truck-reviews" id="reviewContent">-->
-    <!--				<div id="reviewLeft">-->
-    <!--					<img th:attr="src=${review.user.profilePicture}"> <span th:text="${review.user.username}"></span>-->
-    <!--				</div>-->
-    <!--				<div>-->
-    <!--					<p>"<span th:text="${review.reviewText}"></span>"</p>-->
-    <!--					<p>Rating:-->
-    <!--						<span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>-->
-    <!--					</p>-->
-    <!--				</div>-->
-    <!--			</div>-->
-    <div id="reviewItems">
-        <h3>Reviews</h3>
-        <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
-            <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-blue mb-lg-4">Write a Review!</a>
-        </div>
-        <div th:each="review : ${truck.reviews}" class="card review-card mb-3">
-            <div class="row no-gutters">
-                <div class="col-2 reviewImg m-auto pl-lg-2">
-                    <img th:attr="src=${review.user.profilePicture}"> <span style="color: black" th:text="${review.user.username}"></span>
-                </div>
-                <div class="col-10 pl-2 pr-2">
-                    <div class="card-body">
-                        <p>"<span th:text="${review.reviewText}"></span>"</p>
-                        <p>Rating:
-                            <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                        </p>
-                    </div>
+<div id="reviewItems">
+    <h3>Reviews</h3>
+    <div id="reviewBtn" sec:authorize="isAuthenticated()" th:if="${!#authentication.principal.isTruckOwner}">
+        <a th:href="@{/review/{id}(id=${truck.id})}" class="btn btn-blue mb-lg-4">Write a Review!</a>
+    </div>
+    <div th:each="review : ${truck.reviews}" class="card review-card mb-3">
+        <div class="row">
+            <div class="col-lg-4 col-sm-3 reviewImg">
+                <img th:attr="src=${review.user.profilePicture}"> <span style="color: black"
+                                                                        th:text="${review.user.username}"></span>
+            </div>
+            <div class="col-lg-8 col-sm-5">
+                <div class="card-body">
+                    <p>"<span th:text="${review.reviewText}"></span>"</p>
+                    <p>Rating:
+                        <span th:style="'background-image:linear-gradient(to right, rgb(255,215,0,1) ' + ${review.rating * 100 / 5} + '%, rgba(0,0,0,1)' + ${review.rating * 100 / 5} + '%);-webkit-background-clip:text;-webkit-text-fill-color:transparent'">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 </div>

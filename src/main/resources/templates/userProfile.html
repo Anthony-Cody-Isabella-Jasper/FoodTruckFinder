@@ -29,13 +29,19 @@
 <div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.isAdmin}">
     <nav th:replace="partials :: #adminNav"></nav>
 </div>
+
+<div id="profileHeader">
+    <h3>Your Profile Info</h3>
+</div>
 <div id="profileTop">
-    <img th:attr="src=${user.profilePicture},alt=${user.profilePicture}">
-    <div>
-        <p>Username: <span th:text="${user.username}"></span></p>
-        <p>Email: <span th:text="${user.email}"></span></p>
-        <p>Total # of favorited trucks: <span th:text="${user.favoriteTrucks.size()}"></span></p>
-        <p>Total # of reviews: <span th:text="${user.reviews.size()}"></span></p>
+    <div class="card profileInfoCard">
+        <img th:attr="src=${user.profilePicture},alt=${user.profilePicture}">
+        <div>
+            <p>Username: <span th:text="${user.username}"></span></p>
+            <p>Email: <span th:text="${user.email}"></span></p>
+            <p>Total # of favorited trucks: <span th:text="${user.favoriteTrucks.size()}"></span></p>
+            <p>Total # of reviews: <span th:text="${user.reviews.size()}"></span></p>
+        </div>
     </div>
 </div>
 <!--    USERS FAVORITES-->

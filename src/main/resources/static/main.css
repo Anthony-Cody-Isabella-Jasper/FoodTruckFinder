@@ -4,6 +4,10 @@
     cursor: url("/img/Streat-2.png"), auto;
 }
 
+#menuBox{
+    background-color: white;
+}
+
 .card-img-top{
     border: 3px solid black;
 }
@@ -17,7 +21,7 @@
 
 
 body {
-    background-color: white;
+    background-color: #ffe290;
     font-family: 'Righteous', sans-serif;
     position: relative;
     min-height: 100vh;
@@ -60,9 +64,15 @@ body {
 .btn-blue {
     background-color: #49BBC8;
 }
+.btn-blue:hover{
+    color: white;
+}
 
 .btn-green {
     background-color: #5CC68B;
+}
+.btn-green:hover{
+    color: white;
 }
 
 .btn-yellow {
@@ -74,12 +84,17 @@ body {
 }
 
 .card {
-    background-color: #FEC741;
-    color: white;
+    background-color: #FF8210;
+    color: black;
     text-align: center;
     border-radius: 2%;
 }
-
+.card a{
+    color: white;
+}
+.card a:hover{
+    color: #3F8C8F;
+}
 hr {
     width: 60%;
     height: 1px;
@@ -426,7 +441,7 @@ a:link {
     }
 
     footer {
-        background-color: #FF8210;
+        background-color: #3F8C8F;
         bottom: 0;
         width: 100%;
         margin-top: 25px;
@@ -1008,7 +1023,7 @@ a:link {
     /* SEARCH END*/
     /*  FOOTER START    */
     footer {
-        background-color: #FF8210;
+        background-color: #3F8C8F;
         bottom: 0;
         width: 100%;
         margin-top: 100px;

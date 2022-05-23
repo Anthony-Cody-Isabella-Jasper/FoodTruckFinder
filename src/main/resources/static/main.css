@@ -651,6 +651,7 @@ a:link {
     .carousel-inner img {
         width: 400px;
         height: 300px;
+        object-fit: cover;
     }
 
     .carousel-inner {
@@ -734,7 +735,7 @@ a:link {
     }
 
     #reviewTop img {
-        object-fit: fill;
+        object-fit: cover;
         width: 400px;
         height: 300px;
         margin-top: 25px;
@@ -976,8 +977,8 @@ a:link {
     /*TRUCK CARDS START*/
     .card img {
         height: 350px;
-        max-width: 400px;
-        object-fit: fill;
+        max-width: 420px;
+        object-fit: cover;
         margin: 10px auto;
     }
 
@@ -1041,6 +1042,7 @@ a:link {
     #carouselTruckPhotos img {
         width: 80%;
         height: 400px;
+        object-fit: fill;
     }
 
 
@@ -1155,7 +1157,7 @@ a:link {
     /*  INDIVIDUAL END  */
     /* REVIEW START   */
     #reviewTop img {
-        object-fit: fill;
+        object-fit: cover;
         width: 500px;
         margin-top: 25px;
     }

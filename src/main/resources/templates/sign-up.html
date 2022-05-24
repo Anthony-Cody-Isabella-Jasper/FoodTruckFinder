@@ -1,102 +1,141 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greatness awaits</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/main.css}">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Greatness awaits</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Righteous&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/main.css}">
+	<style>
+		.tooltip-inner {
+			color: black;
+			background-color: white;
+			max-width: 100% !important;
+		}
+	</style>
 </head>
 <body>
-<div>
-    <nav th:replace="partials :: notLoggedNav"></nav>
-</div>
-<div class="container-fluid">
-    <div class="text-center mb-4">
-<!--        <h1 class="mb-5">StreatFoods</h1>-->
-        <h3>Register your account</h3>
-    </div>
-    <div id="registerForm">
-        <form th:action="@{/register}" method="post" th:object="${user}">
-            <label for="username">Username:</label>
-            <input id="username" th:field="*{username}" required placeholder="username"/>
-            <br>
-            <label for="email">Email:</label>
-            <input id="email" type="email" th:field="*{email}" required placeholder="email"/>
-            <br>
-            <label for="password">Password:</label>
-            <input id="password" type="password" th:field="*{password}" required placeholder="password"/>
-            <div>
-                <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked
-                       onclick="showProfPics()">
-                <label class="form-check-label" for="userCheck">
-                    Consumer
-                </label>
-                <br>
-                <input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck"
-                       onclick="showProfPics()">
-                <label class="form-check-label" for="truckCheck">
-                    Truck Owner
-                </label>
-            </div>
-            <div id="avatar-choices">
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-                <label class="avatar">
-                    <img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value=""
-                                              hidden>
-                </label>
-            </div>
-            <div id="registerBtn">
-                <input class="btn btn-green" value="Sign me up!" type="submit"/>
-            </div>
-        </form>
-    </div>
-
-    <a id="alreadyMember" th:href="@{/login}">Already a member? Login!</a>
-</div>
-
-<footer th:replace="partials :: footer"></footer>
-<div th:replace="partials :: scripts"></div>
-<script src="/js/avatar-selector.js"></script>
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    if (/*[[${message}]]*/) {
-        window.alert(/*[[${message}]]*/);
-    }
-    /*]]>*/
-</script>
+	<div>
+		<nav th:replace="partials :: notLoggedNav"></nav>
+	</div>
+	<div class="container-fluid">
+		<div class="text-center mb-4">
+			<!--        <h1 class="mb-5">StreatFoods</h1>-->
+			<h3>Register your account</h3>
+		</div>
+		<div id="registerForm">
+			<form th:action="@{/register}" method="post" th:object="${user}">
+				<label for="username">Username:</label>
+				<input id="username" th:field="*{username}" required placeholder="username"/>
+				<br>
+				<label for="email">Email:</label>
+				<input id="email" type="email" th:field="*{email}" required placeholder="email"/>
+				<br>
+				<label for="password">Password:</label>
+				<input id="password" type="password" th:field="*{password}" required placeholder="password" data-toggle="tooltip" data-placement="top" data-html="true" data-container="body" title="<div class='text-left'>Your password must contain:<ul><li id='uppercaseReq'>An uppercase letter</li><li id='lowercaseReq'>A lowercase letter</li><li id='numeralReq'>A numeral digit</li><li id='charCountReq'>At least 8 characters</li></div>"/>
+				<div>
+					<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="false" id="userCheck" checked onclick="showProfPics()">
+					<label class="form-check-label" for="userCheck">
+						Consumer
+					</label>
+					<br>
+					<input th:field="*{truckOwner}" name="roleSelect" type="radio" value="true" id="truckCheck" onclick="showProfPics()">
+					<label class="form-check-label" for="truckCheck">
+						Truck Owner
+					</label>
+				</div>
+				<div id="avatar-choices">
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+					<label class="avatar">
+						<img src="" alt=""><input th:field="*{profilePicture}" name="profilePicture" type="radio" value="" hidden>
+					</label>
+				</div>
+				<div id="registerBtn">
+					<input id="submitButton" class="btn btn-green" value="Sign me up!" type="submit" disabled/>
+				</div>
+			</form>
+		</div>
+		<a id="alreadyMember" th:href="@{/login}">Already a member? Login!</a>
+	</div>
+	<footer th:replace="partials :: footer"></footer>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+	<script src="/js/konami.js"></script>
+	<script src="/js/avatar-selector.js"></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		if (/*[[${message}]]*/) {
+			window.alert(/*[[${message}]]*/);
+		}
+		/*]]>*/
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+		let passwordElement = document.getElementById("password");
+		let passedNumberReq = false;
+		let passedUppercaseReq = false;
+		let passedLowercaseReq = false;
+		let passedCharCountReq = false;
+		passwordElement.addEventListener("keyup", () => {
+			passedNumberReq = /\d/.test(passwordElement.value);
+			passedUppercaseReq = false;
+			passedLowercaseReq = false;
+			passwordElement.value.split("").forEach((char, index) => {
+				if (char.toUpperCase() === char && char.charCodeAt(0) > 64 && char.charCodeAt(0) < 91) {
+					passedUppercaseReq = true;
+				}
+				if (char.toLowerCase() === char && char.charCodeAt(0) > 96 && char.charCodeAt(0) < 123) {
+					passedLowercaseReq = true;
+				}
+			});
+			passedCharCountReq = passwordElement.value.length > 7;
+			if (passedNumberReq) {
+				document.getElementById("numeralReq").setAttribute("style", "color: green");
+			} else {
+				document.getElementById("numeralReq").setAttribute("style", "color: black");
+			}
+			if (passedUppercaseReq) {
+				document.getElementById("uppercaseReq").setAttribute("style", "color: green");
+			} else {
+				document.getElementById("uppercaseReq").setAttribute("style", "color: black");
+			}
+			if (passedLowercaseReq) {
+				document.getElementById("lowercaseReq").setAttribute("style", "color: green");
+			} else {
+				document.getElementById("lowercaseReq").setAttribute("style", "color: black");
+			}
+			if (passedCharCountReq) {
+				document.getElementById("charCountReq").setAttribute("style", "color: green");
+			} else {
+				document.getElementById("charCountReq").setAttribute("style", "color: black");
+			}
+			document.getElementById("submitButton").disabled = !(passedNumberReq && passedCharCountReq && passedUppercaseReq && passedLowercaseReq);
+		});
+	</script>
 </body>
 </html>

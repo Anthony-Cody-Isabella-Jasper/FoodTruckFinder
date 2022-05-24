@@ -76,7 +76,7 @@
 					</label>
 				</div>
 				<div id="registerBtn">
-					<input id="submitButton" class="btn btn-green" value="Sign me up!" type="submit" disabled/>
+					<input id="submitButton" class="btn btn-green" value="Inadequate Password" type="submit" disabled/>
 				</div>
 			</form>
 		</div>
@@ -101,6 +101,7 @@
 		let passedUppercaseReq = false;
 		let passedLowercaseReq = false;
 		let passedCharCountReq = false;
+		let buttonElement = document.getElementById("submitButton");
 		passwordElement.addEventListener("keyup", () => {
 			passedNumberReq = /\d/.test(passwordElement.value);
 			passedUppercaseReq = false;
@@ -134,7 +135,13 @@
 			} else {
 				document.getElementById("charCountReq").setAttribute("style", "color: black");
 			}
-			document.getElementById("submitButton").disabled = !(passedNumberReq && passedCharCountReq && passedUppercaseReq && passedLowercaseReq);
+			if(passedNumberReq && passedCharCountReq && passedUppercaseReq && passedLowercaseReq) {
+				buttonElement.disabled = false;
+				buttonElement.value = "Sign Me Up!";
+			} else {
+				buttonElement.disabled = true;
+				buttonElement.value = "Inadequate Password";
+			}
 		});
 	</script>
 </body>

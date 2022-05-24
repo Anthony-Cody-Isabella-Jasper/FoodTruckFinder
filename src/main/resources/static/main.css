@@ -1004,6 +1004,9 @@ a:link {
     .mapboxgl-popup {
         text-align: center;
     }
+    .mapboxgl-popup h4:hover{
+        color: #3F8C8F;
+    }
 
     /*MAP END*/
     /*TRUCK CARDS START*/

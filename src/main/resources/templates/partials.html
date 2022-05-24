@@ -1,175 +1,167 @@
 <!--	NOT LOGGED FRAG START-->
 <div th:fragment="notLoggedNav">
-    <div class="nav-background bg-light"></div>
-    <div class="wrapper">
-        <nav class="navbar navbar-light" id="notLoggedNav">
-            <div class="container-fluid">
-                <ul class="nav w-100 justify-content-center">
-                    <li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
-                        <a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
-                            <img src="/img/Streat-3.png" alt="StreatFoods Logo"/>
-                        </a>
-                    </li>
-                    <div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
-                    <li class="nav-item order-md-1 order-lg-1 mt-md-5 pr-3">
-                        <a class="nav-link aBackground text-uppercase px-md-3" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item order-md-2 order-lg-2 mt-md-5 ">
-                        <a class=" nav-link aBackground text-uppercase pl-md-3 pr-md-0 px-lg-3" href="/login">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
-<!--	NOT LOGGED FRAG END-->
+	<div class="nav-background bg-light"></div>
+	<div class="wrapper">
+		<nav class="navbar navbar-light" id="notLoggedNav">
+			<div class="container-fluid">
+				<ul class="nav w-100 justify-content-center">
+					<li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
+						<a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
+							<img src="/img/Streat-3.png" alt="StreatFoods Logo"/> </a>
+					</li>
+					<div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
+					<li class="nav-item order-md-1 order-lg-1 mt-md-5 pr-3">
+						<a class="nav-link aBackground text-uppercase px-md-3" href="/register">Register</a>
+					</li>
+					<li class="nav-item order-md-2 order-lg-2 mt-md-5 ">
+						<a class=" nav-link aBackground text-uppercase pl-md-3 pr-md-0 px-lg-3" href="/login">Login</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div><!--	NOT LOGGED FRAG END-->
 
 <!--	LOGGED NAV FRAG START-->
 <div th:fragment="loggedNav" id="loggedNav">
-    <div class="nav-background bg-light"></div>
-    <div class="wrapper">
-        <nav class="navbar navbar-light">
-            <div class="container-fluid">
-                <ul class="nav w-100 justify-content-center">
-                    <li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
-                        <a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
-                            <img src="/img/Streat-3.png" alt="StreatFoods Logo"/>
-                        </a>
-                    </li>
-                    <div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
-                    <li class="nav-item order-md-1 order-lg-1 mt-md-5 mb-md-5 mr-3">
-                        <a class="nav-link aBackground text-uppercase px-2 px-md-3" th:href="@{/{id}/profile(id=${user.getId()})}">View
-                            Profile</a>
-                    </li>
-                    <li class="nav-item aBackground order-md-2 order-lg-2 mt-md-5 mb-md-5 mr-3">
-                        <a class="nav-link text-uppercase mr-md-4 mr-lg-0 px-2 pl-md-3 pr-md-0 px-lg-3"
-                           th:href="@{/editUser/{id}(id=${user.getId()})}">Edit Profile</a>
-                    </li>
-                    <li class="nav-item aBackground order-md-3 order-lg-3 mt-md-5 mb-md-5">
-                        <form id="userLogout" th:action="@{/logout}" th:method="post">
-                            <a class=" nav-link text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <script th:inline="javascript">
-        function myFunction() {
-            document.getElementById("userLogout").submit();
-        }
-    </script>
+	<div class="nav-background bg-light"></div>
+	<div class="wrapper">
+		<nav class="navbar navbar-light">
+			<div class="container-fluid">
+				<ul class="nav w-100 justify-content-center">
+					<li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
+						<a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
+							<img src="/img/Streat-3.png" alt="StreatFoods Logo"/> </a>
+					</li>
+					<div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
+					<li class="nav-item order-md-1 order-lg-1 mt-md-5 mb-md-5 mr-3">
+						<a class="nav-link aBackground text-uppercase px-2 px-md-3" th:href="@{/{id}/profile(id=${user.getId()})}">View
+							Profile</a>
+					</li>
+					<li class="nav-item aBackground order-md-2 order-lg-2 mt-md-5 mb-md-5 mr-3">
+						<a class="nav-link text-uppercase mr-md-4 mr-lg-0 px-2 pl-md-3 pr-md-0 px-lg-3" th:href="@{/editUser/{id}(id=${user.getId()})}">Edit
+							Profile</a>
+					</li>
+					<li class="nav-item aBackground order-md-3 order-lg-3 mt-md-5 mb-md-5">
+						<form id="userLogout" th:action="@{/logout}" th:method="post">
+							<a class=" nav-link text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	<script th:inline="javascript">
+		function myFunction() {
+			document.getElementById("userLogout").submit();
+		}
+	</script>
 </div>
 
 <!--LOGGED TRUCK NAV-->
 <div th:fragment="truckNav" id="truckLogged">
-    <div class="nav-background bg-light"></div>
-    <div class="wrapper">
-        <nav class="navbar navbar-light">
-            <div class="container-fluid">
-                <ul class="nav w-100 justify-content-center">
-                    <li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
-                        <a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
-                            <img src="/img/Streat-3.png" alt="StreatFoods Logo"/>
-                        </a>
-                    </li>
-                    <div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
-                    <li class="nav-item order-md-1 order-lg-1 mt-md-5">
-                        <a class="nav-link aBackground text-uppercase px-2 px-md-3 mr-lg-3"
-                           th:href="@{/truck/{id}/edit(id=${user.getTruck().getId()})}">Edit Truck</a>
-                    </li>
-                    <li class="nav-item order-md-2 order-lg-2 mt-md-5">
-                        <a class="nav-link aBackground text-uppercase mr-md-4 mr-lg-3 px-2 pl-md-3 pr-md-0 px-lg-3"
-                           th:href="@{/truck/{id}/editmenu(id=${user.getTruck().getId()})}">Edit Menu</a>
-                    </li>
-                    <li class="nav-item order-md-3 order-lg-3 mt-md-5">
-                        <a class="nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3 mr-lg-3"
-                           th:href="@{/truck/{id}/show(id=${user.getTruck().getId()})}">View Truck</a>
-                    </li>
-                    <li class="nav-item order-md-4 order-lg-4 mt-md-5">
-                        <form id="truckLogout" th:action="@{/logout}" th:method="post">
-                            <a class=" nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <script th:inline="javascript">
-        function myFunction() {
-            document.getElementById("truckLogout").submit();
-        }
-    </script>
+	<div class="nav-background bg-light"></div>
+	<div class="wrapper">
+		<nav class="navbar navbar-light">
+			<div class="container-fluid">
+				<ul class="nav w-100 justify-content-center">
+					<li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
+						<a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
+							<img src="/img/Streat-3.png" alt="StreatFoods Logo"/> </a>
+					</li>
+					<div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
+					<li class="nav-item order-md-1 order-lg-1 mt-md-5">
+						<a class="nav-link aBackground text-uppercase px-2 px-md-3 mr-lg-3" th:href="@{/truck/{id}/edit(id=${user.getTruck().getId()})}">Edit
+							Truck</a>
+					</li>
+					<li class="nav-item order-md-2 order-lg-2 mt-md-5">
+						<a class="nav-link aBackground text-uppercase mr-md-4 mr-lg-3 px-2 pl-md-3 pr-md-0 px-lg-3" th:href="@{/truck/{id}/editmenu(id=${user.getTruck().getId()})}">Edit
+							Menu</a>
+					</li>
+					<li class="nav-item order-md-3 order-lg-3 mt-md-5">
+						<a class="nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3 mr-lg-3" th:href="@{/truck/{id}/show(id=${user.getTruck().getId()})}">View
+							Truck</a>
+					</li>
+					<li class="nav-item order-md-4 order-lg-4 mt-md-5">
+						<form id="truckLogout" th:action="@{/logout}" th:method="post">
+							<a class=" nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<script th:inline="javascript">
+		function myFunction() {
+			document.getElementById("truckLogout").submit();
+		}
+	</script>
 </div>
 
 <!--TRUCK FRAG END-->
 
 <!--    ADMIN NAV START    -->
 <div th:fragment="adminNav" id="adminNav">
-    <div class="nav-background bg-light"></div>
-    <div class="wrapper">
-        <nav class="navbar navbar-light">
-            <div class="container-fluid">
-                <ul class="nav w-100 justify-content-center">
-                    <li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
-                        <a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
-                            <img src="/img/Streat-3.png" alt="StreatFoods Logo"/>
-                        </a>
-                    </li>
-                    <div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
-                    <li class="nav-item order-md-1 order-lg-1 mt-md-5 mr-3">
-                        <a class=" nav-link aBackground text-uppercase px-2 px-md-3" th:href="@{/admin}">Main Portal</a>
-                    </li>
-                    <li class="nav-item order-md-2 order-lg-2 mt-md-5 mr-3">
-                        <a class=" nav-link aBackground text-uppercase mr-md-4 mr-lg-0 px-2 pl-md-3 pr-md-0 px-lg-3"
-                           th:href="@{/approve}">Truck Approval</a>
-                    </li>
-                    <li class="nav-item order-md-3 order-lg-3 mt-md-5">
-                        <form id="adminLogout" th:action="@{/logout}" th:method="post">
-                            <a class=" nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <script th:inline="javascript">
-        function myFunction() {
-            document.getElementById("adminLogout").submit();
-        }
-    </script>
-</div>
-<!--    ADMIN NAV END   -->
+	<div class="nav-background bg-light"></div>
+	<div class="wrapper">
+		<nav class="navbar navbar-light">
+			<div class="container-fluid">
+				<ul class="nav w-100 justify-content-center">
+					<li class="order-md-0 order-lg-0 mr-md-auto mr-lg-auto">
+						<a href="/" class="navbar-brand d-block w-100 mb-2 m-md-0 text-center">
+							<img src="/img/Streat-3.png" alt="StreatFoods Logo"/> </a>
+					</li>
+					<div class="w-100 d-md-none"></div><!-- used to force line break in flex items for mobile -->
+					<li class="nav-item order-md-1 order-lg-1 mt-md-5 mr-3">
+						<a class=" nav-link aBackground text-uppercase px-2 px-md-3" th:href="@{/admin}">Main Portal</a>
+					</li>
+					<li class="nav-item order-md-2 order-lg-2 mt-md-5 mr-3">
+						<a class=" nav-link aBackground text-uppercase mr-md-4 mr-lg-0 px-2 pl-md-3 pr-md-0 px-lg-3" th:href="@{/approve}">Truck
+							Approval</a>
+					</li>
+					<li class="nav-item order-md-3 order-lg-3 mt-md-5">
+						<form id="adminLogout" th:action="@{/logout}" th:method="post">
+							<a class=" nav-link aBackground text-uppercase px-2 pl-md-0 pr-md-3 px-lg-3" onclick="myFunction()">Logout</a>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	<script th:inline="javascript">
+		function myFunction() {
+			document.getElementById("adminLogout").submit();
+		}
+	</script>
+</div><!--    ADMIN NAV END   -->
 
 <!--	FOOTER FRAG START-->
 <footer th:fragment="footer">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <div id="footer-left">
-        <h5><a style="color: #FF8210" href="/about">About Us</a></h5>
-        <p>Streatfoods 2022</p>
-    </div>
-    <div id="footer-center">
-        <h5>Our Goal</h5>
-        <p>We strive to provide a site that makes curing and satisfying hunger easier and more accessible than ever. This site incorporates HTML, CSS, Javascript, jQuery, Bootstrap, MySQL, Java, SpringBoot, Thymeleaf & Version Control with Git</p>
-    </div>
-    <div id="footer-right">
-        <h5>View our code</h5>
-        <h2><a style="color: #FF8210" href="https://github.com/Anthony-Cody-Isabella-Jasper/StreatFoods" target="_blank"><i class="bi bi-github"></i></a></h2>
-    </div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<div id="footer-left">
+		<h5><a style="color: #FF8210" href="/about">About Us</a></h5>
+		<p>Streatfoods 2022</p>
+	</div>
+	<div id="footer-center">
+		<h5>Our Goal</h5>
+		<p>We strive to provide a site that makes curing and satisfying hunger easier and more accessible than ever.
+			This site incorporates HTML, CSS, Javascript, jQuery, Bootstrap, MySQL, Java, SpringBoot, Thymeleaf &
+			Version Control with Git</p>
+	</div>
+	<div id="footer-right">
+		<h5>View our code</h5>
+		<h2>
+			<a style="color: #FF8210" href="https://github.com/Anthony-Cody-Isabella-Jasper/StreatFoods" target="_blank"><i class="bi bi-github"></i></a>
+		</h2>
+	</div>
 </footer><!-- FOOTER FRAG END-->
 
 <!--SCRIPT FRAG START-->
 <div th:fragment="scripts">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="/js/konami.js"></script>
-</div>¬
-<!--SCRIPT FRAG END-->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="/js/konami.js"></script>
+</div>¬<!--SCRIPT FRAG END-->

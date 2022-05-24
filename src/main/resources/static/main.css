@@ -8,6 +8,10 @@
     background-color: white;
 }
 
+.reviewRow{
+    justify-content: center;
+}
+
 .card-img-top{
     border: 3px solid black;
 }
@@ -327,7 +331,7 @@ a:link {
     align-items: center;
     text-align: center;
     width: 50%;
-    margin-bottom: 100px;
+    margin-bottom: 25px;
 }
 
 /*  PROFILE END */
@@ -808,7 +812,7 @@ a:link {
 
     #profileReviews{
         width: 84%;
-        margin: auto auto 100px;
+        margin: auto auto 25px;
     }
 
 

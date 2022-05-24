@@ -47,8 +47,10 @@
 <div id="profileMiddle">
     <div>
         <h3>Your Favorites</h3>
+        <hr>
     </div>
     <div class="row favoritesCard">
+        <h3 th:if="${favorites.size() == 0}">You haven't added any favorites :(</h3>
         <div class="card userFavorites col-lg-6 mr-lg-3 ml-lg-3 col-md-12 col-sm-12" th:each="favorite : ${favorites}">
 
             <img class="mt-3 mb-3" th:attr="src=${favorite.profile_picture},alt=${favorite.profile_picture}">
@@ -69,8 +71,10 @@
 <div id="profileBottom">
     <div>
         <h3>Your Reviews</h3>
+        <hr>
     </div>
     <div class="row reviewRow">
+        <h3 class="mt-5 mb-5"  th:if="${user.reviews.size() == 0}">Leave reviews to see them here :)</h3>
         <div id="profileReviews" class="card col-lg-12 col-sm-12 col-md-12" th:each="review : ${user.reviews}">
             <p id="profileReviewName">Truck name: <span th:text="${review.truck.name}"></span></p>
             <p>Rating:

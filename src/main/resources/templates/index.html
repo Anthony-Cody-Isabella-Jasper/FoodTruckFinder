@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	<div id="map"></div>
-	<h1 style="text-align: center" th:if="${trucks.size()} == 0">No Results :(</h1>
+	<h1 style="text-align: center" th:if="${trucks.size()} == 0" class="mb-5">No Results :(</h1>
 	<div id="allTrucks" class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12 truckDiv" th:each="truck : ${trucks}">
 			<div class="card mb-5">

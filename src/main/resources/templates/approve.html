@@ -15,6 +15,7 @@
 <body>
 	<nav th:replace="partials :: #adminNav"></nav>
 	<h2 id="approvalH2">Trucks awaiting approval</h2>
+	<hr>
 	<div th:each="pendingUser : ${pendingUsers}">
 		<div id="pendingUserForms">
 			<form th:action="@{/approve}" method="post">

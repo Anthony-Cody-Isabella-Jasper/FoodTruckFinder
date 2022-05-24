@@ -113,10 +113,10 @@
         <div class="carousel-inner">
             <div th:if="${stat.first}" th:each="truckPicture, stat : ${truck.truckPictures}"
                  class="carousel-item active">
-                <img th:src="${truckPicture.picture}" alt="...">
+                <img style="border: 5px solid black; border-radius: 5px" th:src="${truckPicture.picture}" alt="...">
             </div>
             <div th:unless="${stat.first}" th:each="truckPicture, stat : ${truck.truckPictures}" class="carousel-item">
-                <img th:src="${truckPicture.picture}" alt="...">
+                <img style="border: 5px solid black; border-radius: 5px" th:src="${truckPicture.picture}" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselTruckPhotos" data-slide="prev">

@@ -30,8 +30,8 @@
 	<div id="searchBar">
 		<h5>Food Truck Filters</h5>
 		<div>
-			<form th:action="@{/search}" method="post">
-				<input type="text" name="search" placeholder="Search by Name">
+			<form id="searchForm" th:action="@{/search}" method="post">
+				<input id="searchInput" type="text" name="search" placeholder="Search by Name">
 				<button type="submit" class="btn btn-blue"><i class="bi bi-search"></i> Search</button>
 			</form>
 		</div>

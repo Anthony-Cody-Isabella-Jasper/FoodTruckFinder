@@ -421,6 +421,25 @@ a:link {
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
+    #cuisineSelect{
+        width: 120px;
+        height: 38px;
+        margin-bottom: 10px;
+    }
+    #searchForm{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    #searchForm input{
+        margin-right: 10px;
+    }
+    #searchInput{
+        width: 160px;
+        height: 38px;
+    }
+
+
     #allTrucks{
         margin-left: 2px;
         margin-right: 2px;
@@ -966,6 +985,22 @@ a:link {
 }
 
 @media screen and (min-width: 426px) and (max-width: 2800px) {
+    #cuisineSelect{
+        width: 120px;
+        height: 38px;
+    }
+    #searchForm{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+    }
+    #searchForm input{
+        margin-right: 10px;
+    }
+    #searchInput{
+        width: 160px;
+        height: 38px;
+    }
     /* NAV START*/
     .mobileNav {
         display: none;

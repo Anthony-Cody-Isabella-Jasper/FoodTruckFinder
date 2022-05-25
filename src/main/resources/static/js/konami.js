@@ -12,6 +12,7 @@ document.addEventListener("keyup", event => {
 			success = true;
 		} else {
 			success = false;
+			keypressArray.length = 0;
 		}
 	});
 	if (success && keypressArray.length === 10) {

@@ -1,141 +1,155 @@
 /*BODY START*/
 
 .konami {
-    cursor: url("/img/Streat-2.png"), auto;
+	cursor: url("/img/Streat-2.png"), auto;
 }
 
-#menuBox{
-    background-color: white;
+.tooltip-inner {
+	color: black;
+	background-color: white;
+	max-width: 100% !important;
 }
 
-.reviewRow{
-    justify-content: center;
+#menuBox {
+	background-color: white;
 }
 
-.card-img-top{
-    border: 3px solid black;
+.reviewRow {
+	justify-content: center;
 }
 
-.carousel-control-next-icon{
-    background-color: black;
+.card-img-top {
+	border: 3px solid black;
 }
-.carousel-control-prev-icon{
-    background-color: black;
+
+.carousel-control-next-icon {
+	background-color: black;
+}
+
+.carousel-control-prev-icon {
+	background-color: black;
 }
 
 body {
-    background-color: #ffe290;
-    font-family: 'Righteous', sans-serif;
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+	background-color: #ffe290;
+	font-family: 'Righteous', sans-serif;
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
-.individualCard{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.individualCard {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
-#reviewBtn{
-    text-align: center;
-    margin-bottom: 25px;
+#reviewBtn {
+	text-align: center;
+	margin-bottom: 25px;
 }
-#reviewItems h3{
-    text-align: center;
+
+#reviewItems h3 {
+	text-align: center;
 }
-.reviewImg{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+
+.reviewImg {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
-#reviewTop img{
-    border: 3px solid black;
+
+#reviewTop img {
+	border: 3px solid black;
 }
 
 
 .menuCenter {
-    text-align: center;
+	text-align: center;
 }
 
 
 .btn-blue {
-    background-color: #49BBC8;
+	background-color: #49BBC8;
 }
-.btn-blue:hover{
-    color: white;
+
+.btn-blue:hover {
+	color: white;
 }
 
 .btn-green {
-    background-color: #5CC68B;
+	background-color: #5CC68B;
 }
-.btn-green:hover{
-    color: white;
+
+.btn-green:hover {
+	color: white;
 }
 
 .btn-yellow {
-    background-color: #FEC741;
+	background-color: #FEC741;
 }
 
 .btn-danger {
-    color: black;
+	color: black;
 }
 
 .card {
-    background-color: #FF8210;
-    color: black;
-    text-align: center;
-    border-radius: 2%;
+	background-color: #FF8210;
+	color: black;
+	text-align: center;
+	border-radius: 2%;
 }
-.card a{
-    color: white;
+
+.card a {
+	color: white;
 }
-.card a:hover{
-    color: #3F8C8F;
+
+.card a:hover {
+	color: #3F8C8F;
 }
+
 hr {
-    width: 60%;
-    height: 1px;
-    background-color: black;
+	width: 60%;
+	height: 1px;
+	background-color: black;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 }
 
 a:hover {
-    color: #FEC741;
+	color: #FEC741;
 }
 
 a:link {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .profileImgSelect {
-    border: 5px solid darkred;
+	border: 5px solid darkred;
 }
-
 
 
 #individualTruckDescrip {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	width: 40%;
 }
 
 #reviewPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 /*BODY END*/
@@ -143,13 +157,14 @@ a:link {
 
 /*  NAVBAR START    */
 .navbar {
-    align-items: center;
-    background-color: #3F8C8F;
-    margin-bottom: 50px;
+	align-items: center;
+	background-color: #3F8C8F;
+	margin-bottom: 50px;
 }
-.aBackground{
-    background-color: #FF8210;
-    border-radius: 36px;
+
+.aBackground {
+	background-color: #FF8210;
+	border-radius: 36px;
 }
 
 
@@ -157,113 +172,113 @@ a:link {
 
 /*  EDIT TRUCK START    */
 #editTruckTop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 #editTruckFormBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 15px;
+	margin-bottom: 35px;
 }
 
 #truckCuisinesForm {
-    display: flex;
-    margin: 15px;
+	display: flex;
+	margin: 15px;
 
 }
 
 .truckCuisinesForm {
-    margin-left: 45px;
-    margin-right: 45px;
+	margin-left: 45px;
+	margin-right: 45px;
 }
 
 #editTruckButton {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 75px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 75px;
 }
 
 #editTruckBtns {
-    margin-top: 45px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+	margin-top: 45px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
 #editTruckBtns button {
-    margin: 20px;
+	margin: 20px;
 }
 
 #editTruckBtns a {
-    text-decoration: none;
-    color: white;
+	text-decoration: none;
+	color: white;
 }
 
 #editTruckForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 #selectPhotos {
-    text-align: center;
+	text-align: center;
 }
 
 /* EDIT TRUCK END   */
 
 /*  EDIT MENU START   */
 #editMenuForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 #editMenuForm h3 {
-    text-align: center;
-    margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 20px;
 }
 
 #editMenuFormBtn {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 65px;
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+	margin-bottom: 65px;
 }
 
 #veganOrVegitarian {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
 }
 
 #menuList {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 #menuList div {
-    padding: 25px;
-    border-top: 1px solid black;
+	padding: 25px;
+	border-top: 1px solid black;
 }
 
-#editMenuFormInputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+#editMenuFormInputs {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
 /*  EDIT MENU END   */
@@ -271,99 +286,99 @@ a:link {
 
 /*  PROFILE PAGE START   */
 #profileHeader {
-    text-align: center;
+	text-align: center;
 }
 
 .profileInfoCard {
-    align-items: center;
-    width: 50%;
+	align-items: center;
+	width: 50%;
 }
 
 #profileTop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
 }
 
 #profileTop img {
-    border: 2px solid black;
-    width: 150px;
-    height: 150px;
+	border: 2px solid black;
+	width: 150px;
+	height: 150px;
 }
 
 #profileMiddle img {
-    width: 350px;
-    height: 350px;
+	width: 350px;
+	height: 350px;
 }
 
 #profileMiddle {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 75px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 75px;
 }
 
 #profileMiddle h3 {
-    text-align: center;
-    margin-bottom: 40px;
+	text-align: center;
+	margin-bottom: 40px;
 }
 
 #deleteFavoriteBtn {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .userFavorites {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 25px;
 }
 
 #profileBottom h3 {
-    text-align: center;
-    margin-bottom: 45px;
-    margin-top: 45px;
+	text-align: center;
+	margin-bottom: 45px;
+	margin-top: 45px;
 }
 
 #profileReviews {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 50%;
-    margin-bottom: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 50%;
+	margin-bottom: 25px;
 }
 
 /*  PROFILE END */
 
 /*STYLE FOR RATING STARS*/
 .rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
+	float: left;
+	height: 46px;
+	padding: 0 10px;
 }
 
 .rate:not(:checked) > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ccc;
+	float: right;
+	width: 1em;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 30px;
+	color: #ccc;
 }
 
 .rate:not(:checked) > label:before {
-    content: '★ ';
+	content: '★ ';
 }
 
 .rate > input:checked ~ label {
-    color: #ffc700;
+	color: #ffc700;
 }
 
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;
+	color: #deb217;
 }
 
 .rate > input:checked + label:hover,
@@ -371,1224 +386,1243 @@ a:link {
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
+	color: #c59b08;
 }
 
 /*STARS END*/
 
 /*  REGISTER START  */
 #registerForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #registerForm form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #registerForm label {
-    padding: 10px;
+	padding: 10px;
 }
 
 #registerBtn {
-    margin-top: 15px;
-    text-align: center;
+	margin-top: 15px;
+	text-align: center;
 }
 
 #alreadyMember {
-    display: flex;
-    justify-content: center;
-    margin-top: 35px;
-    margin-bottom: 35px;
+	display: flex;
+	justify-content: center;
+	margin-top: 35px;
+	margin-bottom: 35px;
 }
-.profReviewText{
-    width: 70%;
+
+.profReviewText {
+	width: 70%;
 }
-.userFavorites img{
-    border: 3px solid black;
+
+.userFavorites img {
+	border: 3px solid black;
 }
-#editReviewBtn{
-    margin-bottom: 10px;
+
+#editReviewBtn {
+	margin-bottom: 10px;
 }
-#profileReviewName{
-    margin-top: 10px;
+
+#profileReviewName {
+	margin-top: 10px;
 }
+
 /*  REGISTER END    */
 
 
 @media screen and (min-width: 0px) and (max-width: 425px) {
-    #cuisineSelect{
-        width: 120px;
-        height: 38px;
-        margin-bottom: 10px;
-    }
-    #searchForm{
-        display: flex;
-        align-items: center;
-        padding: 10px;
-    }
-    #searchForm input{
-        margin-right: 10px;
-    }
-    #searchInput{
-        width: 160px;
-        height: 38px;
-    }
-
-
-    #allTrucks{
-        margin-left: 2px;
-        margin-right: 2px;
-    }
-    .review-card{
-        width: 60%;
-        margin: auto auto 25px;
-    }
-    .desktopNav {
-        display: none;
-    }
-    .menuNoneMobile{
-        display: none;
-    }
-
-    .card-img-top {
-        border: 3px solid black;
-        height: 275px;
-        max-width: 375px;
-        margin: 10px auto;
-    }
-
-    footer {
-        background-color: #3F8C8F;
-        bottom: 0;
-        width: 100%;
-        margin-top: auto;
-        display: flex;
-    }
-
-    #footer-center {
-        display: none;
-    }
-
-    #footer-left {
-        list-style: none;
-        margin-right: 10px;
-        text-align: center;
-        width: 100%;
-    }
-
-    #footer-right {
-        width: 100%;
-        text-align: center;
-    }
-
-
-
-    .aBackground{
-        background-color: initial;
-    }
-
-    /*  ABOUT PAGE START    */
-    #aboutContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 100px;
-    }
-
-    #aboutContainer h3 {
-        margin-bottom: 50px;
-    }
-
-    #aboutContainer img {
-        width: 300px;
-        height: 300px;
-        margin-bottom: 15px;
-        border: 1px solid black;
-        border-radius: 10%;
-    }
-
-    .aboutBox {
-        width: 90%;
-        margin-bottom: 50px;
-    }
-
-    .aboutBox a {
-        padding: 10px;
-        font-size: xx-large;
-    }
-
-    /*  ABOUT END   */
-    /*400 ERROR PAGE START*/
-    #notFoundCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #notFoundCenterBox p {
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0;
-    }
-
-    #errLogo {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-        margin: 40px auto;
-    }
-
-    #notFoundCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*400 ERROR PAGE END*/
-    /*500 ERROR PAGE START*/
-    #serverErrCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #serverErrCenterBox p {
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0px;
-    }
-
-    #serverErrLogo {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-        margin: 40px auto;
-    }
-
-    #serverErrCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*500 ERROR PAGE END*/
-    /*PENDING PAGE START*/
-    #pendingCenterBox {
-        text-align: center;
-        margin: 40px 20px;
-    }
-
-    #pendingCenterBox h4 {
-        margin: 20px;
-    }
-
-    #pendingCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*PENDING PAGE END*/
-    /*    NAV START */
-    .navbar img {
-        width: 100px;
-        height: 100px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-    }
-
-
-    /*    NAV END   */
-    /*    INDEX START*/
-    #map {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 25px;
-        width: 93%;
-        height: 200px;
-        border: 10px solid black;
-    }
-
-    /*500 ERROR PAGE START*/
-    #serverErrCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #searchBar {
-        margin-top: 35px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    #clearFilterBtn {
-        margin: 15px;
-    }
-
-    #filters h5 {
-        margin-top: 15px;
-    }
-
-    #cuisineSelect {
-        margin-top: 10px;
-    }
-
-    /*    INDEX END*/
-    /*    INDIVIDUAL START  */
-    #mapDiv {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    #verifyTruckBtn {
-        display: flex;
-        justify-content: center;
-        margin-top: 15px;
-    }
-
-    /*400 ERROR PAGE START*/
-    #notFoundCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #individualTruck {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    #individualTruck img {
-        width: 300px;
-        height: 300px;
-        margin-bottom: 50px;
-    }
-
-    .carousel-inner img {
-        width: 400px;
-        height: 300px;
-        object-fit: cover;
-    }
-
-    .carousel-inner {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    #bottomBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-
-
-    #reviewLeft img {
-        width: 75px;
-        height: 75px;
-        border: 1px solid;
-        border-radius: 50%;
-    }
-
-    #reviewContent {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        margin-bottom: 35px;
-
-    }
-
-    #reviewLeft {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-right: 15px;
-        margin-bottom: 25px;
-    }
-
-    .reviewImg {
-        padding-top: 10px;
-    }
-
-    #activateBeaconBtn {
-        display: flex;
-        justify-content: center;
-    }
-
-    /*    INDIVIDUAL END    */
-    /*  ADMIN START */
-    .adminCol {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 50px;
-        border-bottom: 2px solid black;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    #usersList button, #trucksList button, #reviewsList button {
-        margin-bottom: 50px;
-    }
-
-    /*  ADMIN END   */
-    /*    REVIEW START  */
-
-    #reviewBottom form {
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #reviewForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    #reviewTop img {
-        object-fit: cover;
-        width: 400px;
-        height: 300px;
-        margin-top: 25px;
-    }
-
-    #individualTruckImg{
-        height: 300px;
-        width: 300px;
-        margin-top: 15px;
-    }
-    .reviewImg img{
-        width: 75px;
-        height: 75px;
-        border: 1px solid;
-        border-radius: 50%;
-        margin-left: 10px;
-    }
-    /*    REVIEW END    */
-    /*    PROFILE START */
-    #profileTop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-
-    #profileMiddle {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #profileMiddle img {
-        max-width: 350px;
-        max-height: 350px;
-    }
-
-    .userFavorites {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    #profileBottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    #profileBottom h3 {
-        margin: 15px;
-    }
-
-    #profileReviews{
-        width: 84%;
-        margin: auto auto 25px;
-    }
-
-
-
-    /*    PROFILE END   */
-    /*  FORGOT PASSWORD START   */
-    #forgotPasscenterBox {
-        text-align: center;
-    }
-
-    #forgotPassFormButtons {
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-
-    /*  FORGOT PASS END */
-    /*    EDIT USER START   */
-    #editUserForm {
-        text-align: center;
-    }
-
-
-    #avatar-choices{
-        text-align: center;
-        display: flex;
-        flex-wrap: wrap;
-        width: 410px;
-    }
-
-    #editUserAvatarChoices{
-        display: flex;
-        flex-wrap: wrap;
-        width: 330px;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    #editUserBtns {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    #editUserBtns button {
-        margin: 15px;
-    }
-
-    #editUserBtns a {
-        color: white;
-    }
-
-
-    /*    EDIT USER END     */
-    /*    EDIT REVIEW START */
-    #editUserReviewForm {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    #editReviewDeleteBtn {
-        display: flex;
-        justify-content: center;
-        margin-top: 25px;
-        margin-bottom: 100px;
-    }
-
-    /*    EDIT REVIEW END   */
-    /*    RESET PASSWORD START  */
-    #resetPassForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 50px;
-    }
-
-    #resetPasswordBtns {
-        margin-top: 15px;
-    }
-
-    #errLogo {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-        margin: 40px auto;
-
-    }
-
-    /*    RESET PASSWORD END   */
-    /*    LOGIN START   */
-    .text-center {
-        text-align: center;
-    }
-
-    #loginCenterBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 25px;
-        margin-bottom: 5px;
-    }
-
-    #loginButton {
-        margin-bottom: 15px;
-    }
-
-    #loginBottomBox {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    #loginButtonBox {
-        display: flex;
-        justify-content: center;
-        margin-top: 5px;
-    }
-
-    /*    LOGIN END     */
-    /*PENDING PAGE START*/
-    #pendingCenterBox {
-        text-align: center;
-        margin: 40px 20px;
-    }
-
-    #pendingCenterBox h4 {
-        margin: 20px;
-    }
-
-    #pendingCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-    .favoritesCard{
-        width: 90%;
-    }
-    .individualCard{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+	#cuisineSelect {
+		width: 120px;
+		height: 38px;
+		margin-bottom: 10px;
+	}
+
+	#searchForm {
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+
+	#searchForm input {
+		margin-right: 10px;
+	}
+
+	#searchInput {
+		width: 160px;
+		height: 38px;
+	}
+
+
+	#allTrucks {
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+
+	.review-card {
+		width: 60%;
+		margin: auto auto 25px;
+	}
+
+	.desktopNav {
+		display: none;
+	}
+
+	.menuNoneMobile {
+		display: none;
+	}
+
+	.card-img-top {
+		border: 3px solid black;
+		height: 275px;
+		max-width: 375px;
+		margin: 10px auto;
+	}
+
+	footer {
+		background-color: #3F8C8F;
+		bottom: 0;
+		width: 100%;
+		margin-top: auto;
+		display: flex;
+	}
+
+	#footer-center {
+		display: none;
+	}
+
+	#footer-left {
+		list-style: none;
+		margin-right: 10px;
+		text-align: center;
+		width: 100%;
+	}
+
+	#footer-right {
+		width: 100%;
+		text-align: center;
+	}
+
+
+	.aBackground {
+		background-color: initial;
+	}
+
+	/*  ABOUT PAGE START    */
+	#aboutContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 100px;
+	}
+
+	#aboutContainer h3 {
+		margin-bottom: 50px;
+	}
+
+	#aboutContainer img {
+		width: 300px;
+		height: 300px;
+		margin-bottom: 15px;
+		border: 1px solid black;
+		border-radius: 10%;
+	}
+
+	.aboutBox {
+		width: 90%;
+		margin-bottom: 50px;
+	}
+
+	.aboutBox a {
+		padding: 10px;
+		font-size: xx-large;
+	}
+
+	/*  ABOUT END   */
+	/*400 ERROR PAGE START*/
+	#notFoundCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#notFoundCenterBox p {
+		font-size: 80px;
+		font-weight: bolder;
+		margin: 20px 0;
+	}
+
+	#errLogo {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+		margin: 40px auto;
+	}
+
+	#notFoundCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*400 ERROR PAGE END*/
+	/*500 ERROR PAGE START*/
+	#serverErrCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#serverErrCenterBox p {
+		font-size: 80px;
+		font-weight: bolder;
+		margin: 20px 0px;
+	}
+
+	#serverErrLogo {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+		margin: 40px auto;
+	}
+
+	#serverErrCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*500 ERROR PAGE END*/
+	/*PENDING PAGE START*/
+	#pendingCenterBox {
+		text-align: center;
+		margin: 40px 20px;
+	}
+
+	#pendingCenterBox h4 {
+		margin: 20px;
+	}
+
+	#pendingCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*PENDING PAGE END*/
+	/*    NAV START */
+	.navbar img {
+		width: 100px;
+		height: 100px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+	}
+
+
+	/*    NAV END   */
+	/*    INDEX START*/
+	#map {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 25px;
+		width: 93%;
+		height: 200px;
+		border: 10px solid black;
+	}
+
+	/*500 ERROR PAGE START*/
+	#serverErrCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#searchBar {
+		margin-top: 35px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	#clearFilterBtn {
+		margin: 15px;
+	}
+
+	#filters h5 {
+		margin-top: 15px;
+	}
+
+	#cuisineSelect {
+		margin-top: 10px;
+	}
+
+	/*    INDEX END*/
+	/*    INDIVIDUAL START  */
+	#mapDiv {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	#verifyTruckBtn {
+		display: flex;
+		justify-content: center;
+		margin-top: 15px;
+	}
+
+	/*400 ERROR PAGE START*/
+	#notFoundCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#individualTruck {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	#individualTruck img {
+		width: 300px;
+		height: 300px;
+		margin-bottom: 50px;
+	}
+
+	.carousel-inner img {
+		width: 400px;
+		height: 300px;
+		object-fit: cover;
+	}
+
+	.carousel-inner {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	#bottomBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+
+	#reviewLeft img {
+		width: 75px;
+		height: 75px;
+		border: 1px solid;
+		border-radius: 50%;
+	}
+
+	#reviewContent {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		margin-bottom: 35px;
+
+	}
+
+	#reviewLeft {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-right: 15px;
+		margin-bottom: 25px;
+	}
+
+	.reviewImg {
+		padding-top: 10px;
+	}
+
+	#activateBeaconBtn {
+		display: flex;
+		justify-content: center;
+	}
+
+	/*    INDIVIDUAL END    */
+	/*  ADMIN START */
+	.adminCol {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50px;
+		border-bottom: 2px solid black;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	#usersList button, #trucksList button, #reviewsList button {
+		margin-bottom: 50px;
+	}
+
+	/*  ADMIN END   */
+	/*    REVIEW START  */
+	#reviewBottom form {
+		margin-top: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#reviewForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	#reviewTop img {
+		object-fit: cover;
+		width: 400px;
+		height: 300px;
+		margin-top: 25px;
+	}
+
+	#individualTruckImg {
+		height: 300px;
+		width: 300px;
+		margin-top: 15px;
+	}
+
+	.reviewImg img {
+		width: 75px;
+		height: 75px;
+		border: 1px solid;
+		border-radius: 50%;
+		margin-left: 10px;
+	}
+
+	/*    REVIEW END    */
+	/*    PROFILE START */
+	#profileTop {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+
+	#profileMiddle {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#profileMiddle img {
+		max-width: 350px;
+		max-height: 350px;
+	}
+
+	.userFavorites {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	#profileBottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	#profileBottom h3 {
+		margin: 15px;
+	}
+
+	#profileReviews {
+		width: 84%;
+		margin: auto auto 25px;
+	}
+
+
+	/*    PROFILE END   */
+	/*  FORGOT PASSWORD START   */
+	#forgotPasscenterBox {
+		text-align: center;
+	}
+
+	#forgotPassFormButtons {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+
+	/*  FORGOT PASS END */
+	/*    EDIT USER START   */
+	#editUserForm {
+		text-align: center;
+	}
+
+
+	#avatar-choices {
+		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		width: 410px;
+	}
+
+	#editUserAvatarChoices {
+		display: flex;
+		flex-wrap: wrap;
+		width: 330px;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#editUserBtns {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	#editUserBtns button {
+		margin: 15px;
+	}
+
+	#editUserBtns a {
+		color: white;
+	}
+
+
+	/*    EDIT USER END     */
+	/*    EDIT REVIEW START */
+	#editUserReviewForm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	#editReviewDeleteBtn {
+		display: flex;
+		justify-content: center;
+		margin-top: 25px;
+		margin-bottom: 100px;
+	}
+
+	/*    EDIT REVIEW END   */
+	/*    RESET PASSWORD START  */
+	#resetPassForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 50px;
+	}
+
+	#resetPasswordBtns {
+		margin-top: 15px;
+	}
+
+	#errLogo {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+		margin: 40px auto;
+
+	}
+
+	/*    RESET PASSWORD END   */
+	/*    LOGIN START   */
+	.text-center {
+		text-align: center;
+	}
+
+	#loginCenterBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 25px;
+		margin-bottom: 5px;
+	}
+
+	#loginButton {
+		margin-bottom: 15px;
+	}
+
+	#loginBottomBox {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	#loginButtonBox {
+		display: flex;
+		justify-content: center;
+		margin-top: 5px;
+	}
+
+	/*    LOGIN END     */
+	/*PENDING PAGE START*/
+	#pendingCenterBox {
+		text-align: center;
+		margin: 40px 20px;
+	}
+
+	#pendingCenterBox h4 {
+		margin: 20px;
+	}
+
+	#pendingCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	.favoritesCard {
+		width: 90%;
+	}
+
+	.individualCard {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
 
 }
 
 @media screen and (min-width: 426px) and (max-width: 2800px) {
-    #cuisineSelect{
-        width: 120px;
-        height: 38px;
-    }
-    #searchForm{
-        display: flex;
-        align-items: center;
-        padding: 10px;
-    }
-    #searchForm input{
-        margin-right: 10px;
-    }
-    #searchInput{
-        width: 160px;
-        height: 38px;
-    }
-    /* NAV START*/
-    .mobileNav {
-        display: none;
-    }
-
-    .mobileBreak {
-        display: none;
-    }
-
-    .navbar img {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-    }
-
-    .navbar {
-        font-size: large;
-    }
-
-    .navbar button {
-        font-size: large;
-    }
-
-    /*NAV END*/
-    /* MAP START*/
-    #map {
-        width: 97%;
-        height: 400px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 50px;
-        border: 15px solid black;
-    }
-
-    .mapboxgl-popup {
-        text-align: center;
-    }
-    .mapboxgl-popup h4:hover{
-        color: #3F8C8F;
-    }
-
-    /*MAP END*/
-    /*TRUCK CARDS START*/
-    .card img {
-        height: 350px;
-        max-width: 420px;
-        object-fit: cover;
-        margin: 10px auto;
-    }
-
-    /*CARDS END*/
-    /* SEARCH BAR START*/
-    #searchBar {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        margin-bottom: 30px;
-    }
-
-    #filters {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-    }
-
-    #filters form {
-        padding: 15px;
-    }
-
-    #filters button {
-        margin-bottom: 5px;
-    }
-
-    /* SEARCH END*/
-    /*  FOOTER START    */
-    footer {
-        background-color: #3F8C8F;
-        bottom: 0;
-        width: 100%;
-        margin-top: auto;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #footer-center {
-        width: 33%;
-        font-size: 13.5px;
-        text-align: center;
-        line-height: 1.5;
-    }
-
-    #footer-left {
-        list-style: none;
-        margin-right: 10px;
-        text-align: center;
-        width: 33%;
-    }
-
-    #footer-right {
-        width: 33%;
-        text-align: center;
-    }
-
-    /*  FOOTER END  */
-    /* CAROUSEL START */
-    #carouselTruckPhotos img {
-        width: 80%;
-        height: 400px;
-        object-fit: fill;
-    }
-
-
-    /* CAROUSEL END */
-    /*  INDIVIDUAL VIEW START  */
-    #topTruckBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #individualTruck {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-    }
-
-    #individualTruck img {
-        width: 350px;
-        height: 350px;
-    }
-
-    #carouselTruckPhotos {
-        margin: 100px;
-    }
-
-    .carousel-inner {
-        text-align: center;
-    }
-
-    #bottomBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-
-
-    #individualTruckImg{
-       height: 400px;
-        width: 400px;
-    }
-    .reviewImg img{
-        width: 75px;
-        height: 75px;
-            border: 1px solid;
-            border-radius: 50%;
-    }
-    .review-card{
-        width: 60%;
-        margin: auto auto 25px;
-    }
-
-
-    #mapDiv {
-        text-align: center;
-    }
-
-    #menuBox {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-top-left-radius: 37px 140px;
-        border-top-right-radius: 23px 130px;
-        border-bottom-left-radius: 110px 19px;
-        border-bottom-right-radius: 120px 24px;
-        display: block;
-        position: relative;
-        border: solid 3px #6e7491;
-        padding: 40px 60px;
-        max-width: 968px;
-        width: 70%;
-        margin: 25px auto 50px;
-        font-size: 17px;
-        line-height: 28px;
-        transform: rotate(-1deg);
-        box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
-        transition: all 0.13s ease-in;
-    }
-
-    #verifyTruckBtn {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    #ghost {
-        display: flex;
-        justify-content: center;
-    }
-
-    #triangulateBtn {
-        display: flex;
-        justify-content: center;
-    }
-
-    #truckDescription {
-        text-align: center;
-    }
-
-    #activateBeaconBtn {
-        display: flex;
-        justify-content: center;
-    }
-
-    /*  INDIVIDUAL END  */
-    /* REVIEW START   */
-    #reviewTop img {
-        object-fit: cover;
-        width: 500px;
-        margin-top: 25px;
-    }
-
-    #reviewBottom form {
-        margin-top: 50px;
-        margin-bottom: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #reviewForm {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /*  REVIEW END  */
-    /*  VIEW USER VIEW START  */
-    /*  VIEW USER END */
-    /*  EDIT USER START  */
-    #editUserForm {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    #editUserForm form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #editUserBtns {
-        margin-top: 45px;
-        text-align: center;
-    }
-
-    #editUserBtns a {
-        color: white;
-    }
-
-    #editUserBtns button {
-        margin: 15px;
-    }
-
-    .avatar {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    #avatar-choices{
-        display: flex;
-        flex-wrap: wrap;
-        width: 450px;
-        justify-content: center;
-    }
-
-    #editUserAvatarChoices{
-        display: flex;
-        flex-wrap: wrap;
-        width: 450px;
-        justify-content: center;
-    }
-
-    /*  EDIT USER END    */
-    /*  ABOUT VIEW START  */
-    #aboutContainer {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 100px;
-    }
-
-    #aboutContainer a {
-        font-size: 2rem;
-        padding-right: 10px;
-    }
-
-    .icons {
-        margin-top: auto;
-    }
-
-    #aboutContainer p {
-        margin: 5px;
-    }
-
-    #aboutContainer img {
-        width: 300px;
-        height: 300px;
-        border: 1px solid;
-        border-radius: 5%;
-        margin-bottom: 10px;
-    }
-
-    .aboutBox {
-        margin-top: 25px;
-        margin-left: 5px;
-        margin-right: 5px;
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-
-    /*  ABOUT END   */
-    /*LOGIN PAGE START*/
-    .loginCenter {
-        text-align: center;
-    }
-
-    #loginButton {
-        margin-top: 15px;
-    }
-
-    .loginFormFieldSize {
-        width: 35%;
-    }
-
-    #loginCenterBox {
-        width: 50%;
-        margin: auto;
-    }
-
-    #loginBottomBox {
-        margin-bottom: auto;
-        margin-top: 20px;
-    }
-
-    /*LOGIN PAGE END*/
-    /*FORGOT PASSWORD PAGE START*/
-    #forgotPasscenterBox {
-        text-align: center;
-    }
-
-    #forgotPassFormButtons {
-        margin-top: 15px;
-    }
-
-    #forgotPasscenterBox #email {
-        width: 20%;
-    }
-
-    #forgotPassClear {
-        width: 67.17px;
-    }
-
-    /*FORGOT PASSWORD PAGE END*/
-    /*400 ERROR PAGE START*/
-    #notFoundCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #notFoundCenterBox p {
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0px;
-    }
-
-    #errLogo {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-        margin: 40px auto;
-    }
-
-    #notFoundCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*400 ERROR PAGE END*/
-    /*500 ERROR PAGE START*/
-    #serverErrCenterBox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #serverErrCenterBox p {
-        font-size: 80px;
-        font-weight: bolder;
-        margin: 20px 0px;
-    }
-
-    #serverErrLogo {
-        width: 125px;
-        height: 125px;
-        border: 4px solid #ffb9ad;
-        border-radius: 36px;
-        margin: 40px auto;
-    }
-
-    #serverErrCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*500 ERROR PAGE END*/
-    /*PENDING PAGE START*/
-    #pendingCenterBox {
-        margin-bottom: auto;
-        text-align: center;
-    }
-
-    #pendingCenterBox h4 {
-        margin: 20px;
-    }
-
-    #pendingCenterBox a {
-        font-size: 20px;
-        color: blue;
-    }
-
-    /*PENDING PAGE END*/
-    /*  ADMIN VIEW START  */
-    .adminCol {
-        text-align: center;
-        border: 1px solid black;
-        margin: 15px;
-    }
-
-    .adminCol h3 {
-        margin-top: 35px;
-    }
-
-    #usersList button {
-        margin-bottom: 50px;
-    }
-
-    #usersList div {
-        border-top: 1px solid black;
-    }
-
-    #usersList dl:nth-of-type(1) {
-        margin-top: 35px;
-    }
-
-    #trucksList button {
-        margin-bottom: 50px;
-    }
-
-    #trucksList div {
-        border-top: 1px solid black;
-    }
-
-    #trucksList dl:nth-of-type(1) {
-        margin-top: 35px;
-    }
-
-    #reviewsList button {
-        margin-bottom: 50px;
-    }
-
-    #reviewsList div {
-        border-top: 1px solid black;
-    }
-
-    #reviewsList dl:nth-of-type(1) {
-        margin-top: 35px;
-    }
-
-    .adminCol form {
-        margin-bottom: 35px;
-    }
-
-    .adminCol form {
-        margin-bottom: 35px;
-    }
-
-    .adminCol form {
-        margin-bottom: 35px;
-    }
-
-    /*  ADMIN VIEW END    */
-    /*  APPROVE VIEW START  */
-    #pendingUserForms {
-        display: flex;
-        border: 1px solid black;
-        align-items: center;
-        justify-content: center;
-        padding: 5px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 15px;
-        width: 50%;
-        flex-direction: column;
-    }
-
-    #pendingUserForms label {
-        padding-right: 20px;
-    }
-
-    #approvalH2 {
-        text-align: center;
-        margin-top: 15px;
-        margin-bottom: 20px;
-    }
-
-    #adminApproveBtn {
-        display: flex;
-        justify-content: center;
-    }
-
-    #rejectBtn {
-        display: flex;
-        justify-content: center;
-    }
-
-    /*  APPROVE END    */
-    /*    RESET PASSWORD START  */
-    #resetPassForm {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #resetPassForm div {
-        padding: 10px;
-    }
-
-    /*    RESET PASS END    */
-    /*    EDIT REVIEW START */
-    #editUserReviewForm {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    #editReviewDeleteBtn {
-        display: flex;
-        justify-content: center;
-        margin-top: 25px;
-        margin-bottom: 100px;
-    }
-
-    /*    EDIT REVIEW END   */
-
-    .reviewRow{
-    width: 70%;
-        margin: auto;
-    }
-
-    .favoritesCard {
-        justify-content: space-evenly;
-    }
-    #menuList{
-        margin: auto;
-        width: 60%;
-    }
-    #allTrucks{
-        margin-right: 5px;
-        margin-left: 5px;
-    }
+	#cuisineSelect {
+		width: 120px;
+		height: 38px;
+	}
+
+	#searchForm {
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+
+	#searchForm input {
+		margin-right: 10px;
+	}
+
+	#searchInput {
+		width: 160px;
+		height: 38px;
+	}
+
+	/* NAV START*/
+	.mobileNav {
+		display: none;
+	}
+
+	.mobileBreak {
+		display: none;
+	}
+
+	.navbar img {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+	}
+
+	.navbar {
+		font-size: large;
+	}
+
+	.navbar button {
+		font-size: large;
+	}
+
+	/*NAV END*/
+	/* MAP START*/
+	#map {
+		width: 97%;
+		height: 400px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50px;
+		border: 15px solid black;
+	}
+
+	.mapboxgl-popup {
+		text-align: center;
+	}
+
+	.mapboxgl-popup h4:hover {
+		color: #3F8C8F;
+	}
+
+	/*MAP END*/
+	/*TRUCK CARDS START*/
+	.card img {
+		height: 350px;
+		max-width: 420px;
+		object-fit: cover;
+		margin: 10px auto;
+	}
+
+	/*CARDS END*/
+	/* SEARCH BAR START*/
+	#searchBar {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		margin-bottom: 30px;
+	}
+
+	#filters {
+		display: flex;
+		align-items: center;
+		padding: 10px;
+	}
+
+	#filters form {
+		padding: 15px;
+	}
+
+	#filters button {
+		margin-bottom: 5px;
+	}
+
+	/* SEARCH END*/
+	/*  FOOTER START    */
+	footer {
+		background-color: #3F8C8F;
+		bottom: 0;
+		width: 100%;
+		margin-top: auto;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#footer-center {
+		width: 33%;
+		font-size: 13.5px;
+		text-align: center;
+		line-height: 1.5;
+	}
+
+	#footer-left {
+		list-style: none;
+		margin-right: 10px;
+		text-align: center;
+		width: 33%;
+	}
+
+	#footer-right {
+		width: 33%;
+		text-align: center;
+	}
+
+	/*  FOOTER END  */
+	/* CAROUSEL START */
+	#carouselTruckPhotos img {
+		width: 80%;
+		height: 400px;
+		object-fit: fill;
+	}
+
+
+	/* CAROUSEL END */
+	/*  INDIVIDUAL VIEW START  */
+	#topTruckBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#individualTruck {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	#individualTruck img {
+		width: 350px;
+		height: 350px;
+	}
+
+	#carouselTruckPhotos {
+		margin: 100px;
+	}
+
+	.carousel-inner {
+		text-align: center;
+	}
+
+	#bottomBox {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+
+	#individualTruckImg {
+		height: 400px;
+		width: 400px;
+	}
+
+	.reviewImg img {
+		width: 75px;
+		height: 75px;
+		border: 1px solid;
+		border-radius: 50%;
+	}
+
+	.review-card {
+		width: 60%;
+		margin: auto auto 25px;
+	}
+
+
+	#mapDiv {
+		text-align: center;
+	}
+
+	#menuBox {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		border-top-left-radius: 37px 140px;
+		border-top-right-radius: 23px 130px;
+		border-bottom-left-radius: 110px 19px;
+		border-bottom-right-radius: 120px 24px;
+		display: block;
+		position: relative;
+		border: solid 3px #6e7491;
+		padding: 40px 60px;
+		max-width: 968px;
+		width: 70%;
+		margin: 25px auto 50px;
+		font-size: 17px;
+		line-height: 28px;
+		transform: rotate(-1deg);
+		box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+		transition: all 0.13s ease-in;
+	}
+
+	#verifyTruckBtn {
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+	}
+
+	#ghost {
+		display: flex;
+		justify-content: center;
+	}
+
+	#triangulateBtn {
+		display: flex;
+		justify-content: center;
+	}
+
+	#truckDescription {
+		text-align: center;
+	}
+
+	#activateBeaconBtn {
+		display: flex;
+		justify-content: center;
+	}
+
+	/*  INDIVIDUAL END  */
+	/* REVIEW START   */
+	#reviewTop img {
+		object-fit: cover;
+		width: 500px;
+		margin-top: 25px;
+	}
+
+	#reviewBottom form {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#reviewForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	/*  REVIEW END  */
+	/*  VIEW USER VIEW START  */
+	/*  VIEW USER END */
+	/*  EDIT USER START  */
+	#editUserForm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	#editUserForm form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#editUserBtns {
+		margin-top: 45px;
+		text-align: center;
+	}
+
+	#editUserBtns a {
+		color: white;
+	}
+
+	#editUserBtns button {
+		margin: 15px;
+	}
+
+	.avatar {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	#avatar-choices {
+		display: flex;
+		flex-wrap: wrap;
+		width: 450px;
+		justify-content: center;
+	}
+
+	#editUserAvatarChoices {
+		display: flex;
+		flex-wrap: wrap;
+		width: 450px;
+		justify-content: center;
+	}
+
+	/*  EDIT USER END    */
+	/*  ABOUT VIEW START  */
+	#aboutContainer {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 100px;
+	}
+
+	#aboutContainer a {
+		font-size: 2rem;
+		padding-right: 10px;
+	}
+
+	.icons {
+		margin-top: auto;
+	}
+
+	#aboutContainer p {
+		margin: 5px;
+	}
+
+	#aboutContainer img {
+		width: 300px;
+		height: 300px;
+		border: 1px solid;
+		border-radius: 5%;
+		margin-bottom: 10px;
+	}
+
+	.aboutBox {
+		margin-top: 25px;
+		margin-left: 5px;
+		margin-right: 5px;
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+
+	/*  ABOUT END   */
+	/*LOGIN PAGE START*/
+	.loginCenter {
+		text-align: center;
+	}
+
+	#loginButton {
+		margin-top: 15px;
+	}
+
+	.loginFormFieldSize {
+		width: 35%;
+	}
+
+	#loginCenterBox {
+		width: 50%;
+		margin: auto;
+	}
+
+	#loginBottomBox {
+		margin-bottom: auto;
+		margin-top: 20px;
+	}
+
+	/*LOGIN PAGE END*/
+	/*FORGOT PASSWORD PAGE START*/
+	#forgotPasscenterBox {
+		text-align: center;
+	}
+
+	#forgotPassFormButtons {
+		margin-top: 15px;
+	}
+
+	#forgotPasscenterBox #email {
+		width: 20%;
+	}
+
+	#forgotPassClear {
+		width: 67.17px;
+	}
+
+	/*FORGOT PASSWORD PAGE END*/
+	/*400 ERROR PAGE START*/
+	#notFoundCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#notFoundCenterBox p {
+		font-size: 80px;
+		font-weight: bolder;
+		margin: 20px 0px;
+	}
+
+	#errLogo {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+		margin: 40px auto;
+	}
+
+	#notFoundCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*400 ERROR PAGE END*/
+	/*500 ERROR PAGE START*/
+	#serverErrCenterBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	#serverErrCenterBox p {
+		font-size: 80px;
+		font-weight: bolder;
+		margin: 20px 0px;
+	}
+
+	#serverErrLogo {
+		width: 125px;
+		height: 125px;
+		border: 4px solid #ffb9ad;
+		border-radius: 36px;
+		margin: 40px auto;
+	}
+
+	#serverErrCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*500 ERROR PAGE END*/
+	/*PENDING PAGE START*/
+	#pendingCenterBox {
+		margin-bottom: auto;
+		text-align: center;
+	}
+
+	#pendingCenterBox h4 {
+		margin: 20px;
+	}
+
+	#pendingCenterBox a {
+		font-size: 20px;
+		color: blue;
+	}
+
+	/*PENDING PAGE END*/
+	/*  ADMIN VIEW START  */
+	.adminCol {
+		text-align: center;
+		border: 1px solid black;
+		margin: 15px;
+	}
+
+	.adminCol h3 {
+		margin-top: 35px;
+	}
+
+	#usersList button {
+		margin-bottom: 50px;
+	}
+
+	#usersList div {
+		border-top: 1px solid black;
+	}
+
+	#usersList dl:nth-of-type(1) {
+		margin-top: 35px;
+	}
+
+	#trucksList button {
+		margin-bottom: 50px;
+	}
+
+	#trucksList div {
+		border-top: 1px solid black;
+	}
+
+	#trucksList dl:nth-of-type(1) {
+		margin-top: 35px;
+	}
+
+	#reviewsList button {
+		margin-bottom: 50px;
+	}
+
+	#reviewsList div {
+		border-top: 1px solid black;
+	}
+
+	#reviewsList dl:nth-of-type(1) {
+		margin-top: 35px;
+	}
+
+	.adminCol form {
+		margin-bottom: 35px;
+	}
+
+	.adminCol form {
+		margin-bottom: 35px;
+	}
+
+	.adminCol form {
+		margin-bottom: 35px;
+	}
+
+	/*  ADMIN VIEW END    */
+	/*  APPROVE VIEW START  */
+	#pendingUserForms {
+		display: flex;
+		border: 1px solid black;
+		align-items: center;
+		justify-content: center;
+		padding: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 15px;
+		width: 50%;
+		flex-direction: column;
+	}
+
+	#pendingUserForms label {
+		padding-right: 20px;
+	}
+
+	#approvalH2 {
+		text-align: center;
+		margin-top: 15px;
+		margin-bottom: 20px;
+	}
+
+	#adminApproveBtn {
+		display: flex;
+		justify-content: center;
+	}
+
+	#rejectBtn {
+		display: flex;
+		justify-content: center;
+	}
+
+	/*  APPROVE END    */
+	/*    RESET PASSWORD START  */
+	#resetPassForm {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#resetPassForm div {
+		padding: 10px;
+	}
+
+	/*    RESET PASS END    */
+	/*    EDIT REVIEW START */
+	#editUserReviewForm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	#editReviewDeleteBtn {
+		display: flex;
+		justify-content: center;
+		margin-top: 25px;
+		margin-bottom: 100px;
+	}
+
+	/*    EDIT REVIEW END   */
+	.reviewRow {
+		width: 70%;
+		margin: auto;
+	}
+
+	.favoritesCard {
+		justify-content: space-evenly;
+	}
+
+	#menuList {
+		margin: auto;
+		width: 60%;
+	}
+
+	#allTrucks {
+		margin-right: 5px;
+		margin-left: 5px;
+	}
 }
